@@ -1,0 +1,58 @@
+---
+title: "aa-model"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{aa-model}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(darthpack)
+l_params_all <- load_all_params(file.init = "../data/01_init_params.csv",
+                                file.mort = "../data/01_all_cause_mortality.csv")
+```
+
+# Define model inputs {#model}
+
+As described in the main manuscript, in this first component we declare all model input variables and set their values. The `R` script running the analysis of this component is the *01_model-inputs.R* file in the `R` directory. 
+
+The input to inform the values is divided in three categories: external, estimated, and calibrated. The majority of the Sick-Sicker model parameters are informed by external data. Only three parameter values need to be estimated using model calibration. 
+
+In this component, we start with the general setup of the model, specifying among others the time horizon, name and number of health states, proportion of the cohort in each of the different health states at the start of the simulation and discount rates. The next step is to specify the external parameters. The initial model parameter values and `R` variable names are presented in Table \ref{tab:parameters}. 
+
+Table: \label{tab:parameters} Description of the initial parameters with their `R` name and value of the Sick-Sicker model.
+
+|           **Parameter**            |  **R name** |   **Value**   |
+|:-----------------------------------|:-----------:|:-------------:|
+| Time horizon ($n_t$)               | `n_t`       | `r l_params_all$n_t` years |
+| Names of health states ($n$)       | `v_n`       | H, S1, S2, D  |
+| Annual discount rate (costs/QALYs) | `d_c`/`d_e` |  3%           |
+| Annual transition probabilities    |             |               |
+| - Disease onset (H to S1)          | `p_HS1`     |  `r l_params_all$p_HS1`         |
+| - Recovery (S1 to H)               | `p_S1H`     |  `r l_params_all$p_S1H`          |
+| - Disease progression (S1 to S2)  in the time-homogenous model   | `p_S1S2`    |  `r l_params_all$p_S1S2`        |
+| Annual mortality                   |             |               |
+| - All-cause mortality (H to D)     | `p_HD`      |  age-specific |
+| - Hazard rate ratio of death in S1 vs H | `hr_S1`     |  `r l_params_all$hr_S1`            |
+| - Hazard rate ratio of death in S2 vs H | `hr_S2`     |  `r l_params_all$hr_S1`           |
+| Annual costs                       |             |               |
+| - Healthy individuals              | `c_H`       |  $2,000       |
+| - Sick individuals in S1           | `c_S1`      |  $4,000       |
+| - Sick individuals in S2           | `c_S2`      |  $15,000      |
+| - Dead individuals                 | `c_D`       |  $0           |
+| - Additional costs of sick individuals treated in S1 or S2           | `c_Trt`     |  $12,000      |
+| Utility weights                    |             |               |
+| - Healthy individuals              | `u_H`       |  1.00         |
+| - Sick individuals in S1           | `u_S1`      |  0.75         |
+| - Sick individuals in S2           | `u_S2`      |  0.50         |
+| - Dead individuals                 | `u_D`       |  0.00         |
+| Intervention effect                |             |               |
+| - Utility for treated individuals in S1 | `u_Trt` |  0.95        |

@@ -1,0 +1,54 @@
+Type: Package
+Package: darthpack
+Title: Decision Modeling Coding Framework
+Version: 0.1.0
+Authors@R: 
+    c(person(given = "Fernando",
+             family = "Alarid-Escudero",
+             role = c("aut", "cre"),
+             email = "fernando.alarid@cide.edu"),
+      person(given = "Eline",
+             family = "Krijkamp",
+             role = "aut",
+             email = "elinekrijkamp@gmail.com"),
+      person(given = "Petros",
+             family = "Pechlivanoglou",
+             role = "aut",
+             email = "petros.pechlivanoglou@sickkids.ca"),
+      person(given = "Hawre",
+             family = "Jalal",
+             role = "aut",
+             email = "hjalal@pitt.edu"),
+      person(given = "Szu-Yu",
+             family = "Kao",
+             role = "aut",
+             email = "kaoxx085@umn.edu"),
+      person(given = "Alan",
+             family = "Yang",
+             role = "aut",
+             email = "alan.yang@sickkids.ca"),
+      person(given = "Eva",
+             family = "Enns",
+             role = "aut",
+             email = "eenns@umn.edu"))
+Maintainer: Fernando Alarid-Escudero <fernando.alarid@cide.edu>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: file LICENSE
+Depends:
+    R (>= 3.5.0)
+Imports:
+    dplyr,
+    lhs,
+    plyr,
+    reshape2,
+    truncnorm
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1

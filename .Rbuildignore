@@ -1,0 +1,5 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^dev_history\.R$
+^CODE_OF_CONDUCT\.md$
+^docs$
