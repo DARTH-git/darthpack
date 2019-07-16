@@ -2,7 +2,8 @@
 
 export(calculate_ce_out)
 export(calibration_out)
-export(check_transition_array)
+export(check_sum_of_transition_array)
+export(check_transition_probability)
 export(data_summary)
 export(decision_model)
 export(generate_psa_params)
