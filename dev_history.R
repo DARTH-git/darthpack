@@ -47,3 +47,6 @@ chameleon::build_pkgdown()
 # Open `darthpack` pkgdown
 library(chameleon)
 darthpack::open_guide()
+
+## Build documentation to generate a website for the package
+pkgdown::build_site()
