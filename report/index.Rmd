@@ -1,6 +1,6 @@
 --- 
-title: "A Minimal Book Example"
-author: "Yihui Xie"
+title: "darthpack: An R package with DARTH's decision modeling coding framework"
+author: "DARTH"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
