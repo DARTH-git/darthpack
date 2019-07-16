@@ -11,15 +11,18 @@ Authors@R:
       person(given = "Eline",
              family = "Krijkamp",
              role = "aut",
-             email = "elinekrijkamp@gmail.com"),
+             email = "elinekrijkamp@gmail.com",
+             comment = c(ORCID = "0000-0003-3970-2205")),
       person(given = "Petros",
              family = "Pechlivanoglou",
              role = "aut",
-             email = "petros.pechlivanoglou@sickkids.ca"),
+             email = "petros.pechlivanoglou@sickkids.ca",
+             comment = c(ORCID = "0000-0001-5090-7936")),
       person(given = "Hawre",
              family = "Jalal",
              role = "aut",
-             email = "hjalal@pitt.edu"),
+             email = "hjalal@pitt.edu",
+             comment = c(ORCID = "0000-0002-8224-6834")),
       person(given = "Szu-Yu",
              family = "Kao",
              role = "aut",
@@ -31,7 +34,8 @@ Authors@R:
       person(given = "Eva",
              family = "Enns",
              role = "aut",
-             email = "eenns@umn.edu"))
+             email = "eenns@umn.edu",
+             comment = c(ORCID = "0000-0003-0693-7358")))
 Maintainer: Fernando Alarid-Escudero <fernando.alarid@cide.edu>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
