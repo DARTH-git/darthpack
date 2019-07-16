@@ -32,6 +32,12 @@ attachment::att_to_description()
 # Check the package
 devtools::check()
 
-# Create documentation of package on line
+# Install chameleon package
 devtools::install_github("ThinkR-open/chameleon")
+# Build a book from vignettes inside a package
+template <- system.file("rstudio/templates/project/resources", package = "bookdown")
+chameleon::create_book(path = "report/", clean = TRUE,
+            template = template)
+chameleon::open_guide_function(path = "report/")
+# Create documentation of package on line
 chameleon::build_pkgdown()
