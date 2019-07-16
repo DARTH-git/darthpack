@@ -124,7 +124,8 @@ that each of its entries are in \[0, 1\].</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>check_transition_array</span>(<span class='no'>a_P</span>, <span class='no'>n_states</span>, <span class='no'>n_t</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>check_transition_array</span>(<span class='no'>a_P</span>, <span class='no'>n_states</span>, <span class='no'>n_t</span>, <span class='kw'>err_stop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -140,6 +141,11 @@ that each of its entries are in \[0, 1\].</p>
     <tr>
       <th>n_t</th>
       <td><p>Number of cycles.</p></td>
+    </tr>
+    <tr>
+      <th>err_stop</th>
+      <td><p>Logical variable to indicate stop process if error is found. 
+Default = TRUE</p></td>
     </tr>
     <tr>
       <th>verbose</th>
