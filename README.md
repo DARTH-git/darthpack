@@ -1,6 +1,7 @@
 # darthpack
 
-**UNDER CONSTRUCTION!!!**
+![**UNDER CONSTRUCTION!!!**](link-to-image)
+
 
 An R package that showcases the DARTH coding framework to implement model-based coste-effectiveness analysis.
 

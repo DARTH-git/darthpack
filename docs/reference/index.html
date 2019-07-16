@@ -120,51 +120,29 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-model-inputs" class="hasAnchor"><a href="#section-model-inputs" class="anchor"></a>Model inputs</h2>
+          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
         
         <td>
-          <p><code><a href="load_mort_data.html">load_mort_data()</a></code> </p>
+          <p><code><a href="SickSicker_targets.html">SickSicker_targets</a></code> </p>
         </td>
-        <td><p>Load mortality data</p></td>
+        <td><p>Calibration targets for the Sick-Sicker model</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="load_all_params.html">load_all_params()</a></code> </p>
+          <p><code><a href="all_cause_mortality.html">all_cause_mortality</a></code> </p>
         </td>
-        <td><p>Load all parameters</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-decision-model" class="hasAnchor"><a href="#section-decision-model" class="anchor"></a>Decision model</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="decision_model.html">decision_model()</a></code> </p>
-        </td>
-        <td><p>Decision Model</p></td>
+        <td><p>Life table for the US in 2015</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="check_transition_array.html">check_transition_array()</a></code> </p>
+          <p><code><a href="calculate_ce_out.html">calculate_ce_out()</a></code> </p>
         </td>
-        <td><p>Check if transition array is valid</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-calibration" class="hasAnchor"><a href="#section-calibration" class="anchor"></a>Calibration</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
+        <td><p>Calculate cost-effectiveness outcomes</p></td>
+      </tr><tr>
         
         <td>
           <p><code><a href="calibration_out.html">calibration_out()</a></code> </p>
@@ -173,9 +151,63 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="check_sum_of_transition_array.html">check_sum_of_transition_array()</a></code> </p>
+        </td>
+        <td><p>Check if the sum of transition probabilities equal to one.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="check_transition_probability.html">check_transition_probability()</a></code> </p>
+        </td>
+        <td><p>Check if transition array is valid</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="data_summary.html">data_summary()</a></code> </p>
+        </td>
+        <td><p>Summarize posterior output</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="decision_model.html">decision_model()</a></code> </p>
+        </td>
+        <td><p>Decision Model</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="df_params_init.html">df_params_init</a></code> </p>
+        </td>
+        <td><p>Base-case parameter set</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="generate_psa_params.html">generate_psa_params()</a></code> </p>
+        </td>
+        <td><p>Generate PSA dataset of CEA parameters</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="l_psa.html">l_psa</a></code> </p>
+        </td>
+        <td><p>PSA object of the cost-effectiveness analysis decision model</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="likelihood.html">likelihood()</a></code> </p>
         </td>
         <td><p>Likelihood</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="load_all_params.html">load_all_params()</a></code> </p>
+        </td>
+        <td><p>Load all parameters</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="load_mort_data.html">load_mort_data()</a></code> </p>
+        </td>
+        <td><p>Load mortality data</p></td>
       </tr><tr>
         
         <td>
@@ -197,6 +229,24 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="m_calib_post.html">m_calib_post</a></code> </p>
+        </td>
+        <td><p>Posterior distribution of calibrated parameters</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="open_guide.html">open_guide()</a></code> </p>
+        </td>
+        <td><p>Open UserGuide of the package</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="owsa_det.html">owsa_det()</a></code> </p>
+        </td>
+        <td><p>One-way sensitivity analysis (OWSA)</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="posterior.html">posterior()</a></code> </p>
         </td>
         <td><p>Evaluate posterior of calibrated parameters</p></td>
@@ -212,124 +262,24 @@
           <p><code><a href="sample.prior.html">sample.prior()</a></code> </p>
         </td>
         <td><p>Sample from prior distributions of calibrated parameters</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-validation" class="hasAnchor"><a href="#section-validation" class="anchor"></a>Validation</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="data_summary.html">data_summary()</a></code> </p>
-        </td>
-        <td><p>Summarize posterior output</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-deterministic-analysis" class="hasAnchor"><a href="#section-deterministic-analysis" class="anchor"></a>Deterministic analysis</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="calculate_ce_out.html">calculate_ce_out()</a></code> </p>
-        </td>
-        <td><p>Calculate cost-effectiveness outcomes</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="owsa_det.html">owsa_det()</a></code> </p>
-        </td>
-        <td><p>One-way sensitivity analysis (OWSA)</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="twsa_det.html">twsa_det()</a></code> </p>
         </td>
         <td><p>Two-way sensitivity analysis (TWSA)</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-probabilistic-analysis" class="hasAnchor"><a href="#section-probabilistic-analysis" class="anchor"></a>Probabilistic analysis</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="generate_psa_params.html">generate_psa_params()</a></code> </p>
-        </td>
-        <td><p>Generate PSA dataset of CEA parameters</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-general" class="hasAnchor"><a href="#section-general" class="anchor"></a>General</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="open_guide.html">open_guide()</a></code> </p>
-        </td>
-        <td><p>Open UserGuide of the package</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="update_param_list.html">update_param_list()</a></code> </p>
         </td>
         <td><p>Update parameters</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="SickSicker_targets.html">SickSicker_targets</a></code> </p>
-        </td>
-        <td><p>Calibration targets for the Sick-Sicker model</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="all_cause_mortality.html">all_cause_mortality</a></code> </p>
-        </td>
-        <td><p>Life table for the US in 2015</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="df_params_init.html">df_params_init</a></code> </p>
-        </td>
-        <td><p>Base-case parameter set</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="m_calib_post.html">m_calib_post</a></code> </p>
-        </td>
-        <td><p>Posterior distribution of calibrated parameters</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="v_calib_post_map.html">v_calib_post_map</a></code> </p>
         </td>
         <td><p>Maximum-a-posteriori (MAP) estimate of calibrated parameters</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="l_psa.html">l_psa</a></code> </p>
-        </td>
-        <td><p>PSA object of the cost-effectiveness analysis decision model</p></td>
       </tr>
     </tbody>
     </table>
@@ -338,14 +288,7 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-model-inputs">Model inputs</a></li>
-      <li><a href="#section-decision-model">Decision model</a></li>
-      <li><a href="#section-calibration">Calibration</a></li>
-      <li><a href="#section-validation">Validation</a></li>
-      <li><a href="#section-deterministic-analysis">Deterministic analysis</a></li>
-      <li><a href="#section-probabilistic-analysis">Probabilistic analysis</a></li>
-      <li><a href="#section-general">General</a></li>
-      <li><a href="#section-data">Data</a></li>
+      <li><a href="#section-all-functions">All functions</a></li>
     </ul>
   </div>
 </div>
