@@ -1,6 +1,7 @@
 #' Load mortality data
 #'
-#' \code{load_mort_data} is used to load age-specific mortality from .csv file into vector.
+#' \code{load_mort_data} is used to load age-specific mortality from .csv file 
+#' into vector.
 #'
 #' @param file String with the location and name of the file with mortality 
 #' data. If \code{NULL}, \code{v_r_mort_by_age} will be used as default

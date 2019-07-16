@@ -11,8 +11,7 @@ bibliography:
 - book.bib
 - packages.bib
 site: bookdown::bookdown_site
-subtitle: Supplementary Material to, A need for change! A coding framework for improving
-  transparency in decision modeling
+subtitle: Supplementary Material to "A need for change! A coding framework for improving transparency in decision modeling"
 biblio-style: apalike
 ---
 

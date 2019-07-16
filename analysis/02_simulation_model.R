@@ -2,10 +2,6 @@
 # This script runs the cohort implementation of the Sick-Sicker                #
 # state-transition model (STM)                                                 #
 #                                                                              # 
-# Depends on:                                                                  #
-#   01_model_inputs.R                                                          #
-#   02_simulation_model_functions.R                                            #
-#                                                                              # 
 # Authors:                                                                     #
 #     - Fernando Alarid-Escudero, PhD, <fernando.alarid@cide.edu>              # 
 #     - Eline Krijkamp, MS                                                     #

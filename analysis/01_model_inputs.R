@@ -2,9 +2,6 @@
 # This script generates all the required input parameters for the cohort       #
 # implementation of the Sick-Sicker state-transition model (STM)               #
 #                                                                              # 
-# Depends on:                                                                  #
-#   01_model_inputs_functions.R                                                #
-#                                                                              # 
 # Authors:                                                                     #
 #     - Fernando Alarid-Escudero, PhD, <fernando.alarid@cide.edu>              # 
 #     - Eline Krijkamp, MS                                                     #
@@ -26,6 +23,5 @@ library(dplyr) # For data manipulation
 # no required functions
 
 #### 01.2 Load all parameters ####
-l_params_all <- load_all_params(file.init = "data/01_init_params.csv",
-                                file.mort = "data/01_all_cause_mortality.csv")
+l_params_all <- load_all_params()
 #### 01.3 Estimated parameters ####
