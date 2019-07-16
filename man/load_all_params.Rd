@@ -4,8 +4,7 @@
 \alias{load_all_params}
 \title{Load all parameters}
 \usage{
-load_all_params(file.init = "data/01_init_params.csv",
-  file.mort = "data/01_all_cause_mortality.csv")
+load_all_params(file.init = NULL, file.mort = NULL)
 }
 \arguments{
 \item{file.init}{String with the location and name of the file with initial set of parameters}

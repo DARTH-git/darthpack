@@ -42,7 +42,8 @@ Imports:
     lhs,
     plyr,
     reshape2,
-    truncnorm
+    truncnorm,
+    utils
 Suggests: 
     knitr,
     rmarkdown,

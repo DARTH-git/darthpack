@@ -1,8 +1,8 @@
 ---
-title: "aa-model"
+title: "Decision model"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{aa-model}
+  %\VignetteIndexEntry{bb-model}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -14,10 +14,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, echo=FALSE}
 library(darthpack)
-l_params_all <- load_all_params(file.init = "../data/01_init_params.csv",
-                                file.mort = "../data/01_all_cause_mortality.csv")
+l_params_all <- load_all_params()
 ```
 
 # Define model inputs {#model}
@@ -56,3 +55,30 @@ Table: \label{tab:parameters} Description of the initial parameters with their `
 | - Dead individuals                 | `u_D`       |  0.00         |
 | Intervention effect                |             |               |
 | - Utility for treated individuals in S1 | `u_Trt` |  0.95        |
+
+Age-specific background mortality for healthy individuals is represented by the US population in 2015 and obtained from the [Human Mortality database](https://www.mortality.org). This information is stored in the *01_all-cause-mortality.csv* file in the *data* directory. Based on this .csv file a vector with mortality rates by age is created using the `load_mort_data` function in the *01_model-inputs_functions.R* script. This function gives us the flexibility to easily import data from other countries or years. 
+
+```{r}
+print.function(load_mort_data) # print the function
+``` 
+
+Another function in the *01_model-inputs_functions.R* script, is the `load_all_parms` function. This function, which is actually using the `load_mort_data` function, loads all parameters for the decision model from multiple sources and creates a list that contains all parameters and their values. 
+```{r}
+print.function(load_all_params)  # print the function
+``` 
+
+The `load_all_params` function is informed by the arguments `file.init` and `file.mort`. The `file.init` argument is a string with the location and name of the file with initial set of parameters. The initial parameter values for our case-study are stored in the *01_init-params.csv* file located in the *data* directory. The `load_all_params` function read this .csv file into the function environment as a dataframe called, `df_params_init`.  
+
+The `file.mort` argument is a string with the location and name of the file with mortality data. As described before, in our case-study this is the *01_all-cause-mortality.csv* file. Within the `load_all_parms` function, the `load_mort_data` function is used to create a vector with mortality rates from the .csv data. 
+
+After loading all the information, the `load_all_params` generates a list called,`l_params_all`, including all parameters for the model including the general setup parameters and the vector of mortality rates. The function also stores the dataframe  `df_params_init` with the initial set of parameters in the list. This is all executed in the in the *01_model-inputs.R* script by running the code below. 
+
+```{r, eval = FALSE, echo = TRUE}
+l_params_all <- load_all_params()
+```
+
+For the Sick-Sicker model we do not have to estimate parameters, but we do have three parameters that need to be estimated via model calibration. In this stage of the framework, we simply set these parameters to valid “dummy” values that are compatible with the next phase of the analysis, model implementation, but are ultimately just placeholder values until we conduct the calibration phase. This means that these values will be replaced by the best-fitted calibrated values after we performed the calibration in component 3. 
+
+Using a function to create a list of base-case parameters to have all model parameters in a single object is very useful, because this object will have to be updated for the calibration and the different sensitivity analyses in components 3 and 5 of the framework, respectively. Below, we guide you through the components of the function. 
+
+# References {-}

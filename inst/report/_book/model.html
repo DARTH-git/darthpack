@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 Define model inputs | darthpack: An R package with DARTH’s decision modeling coding framework</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 Define model inputs | darthpack: An R package with DARTH’s decision modeling coding framework" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 Define model inputs | darthpack: An R package with DARTH’s decision modeling coding framework" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="DARTH" />
+
+
+<meta name="date" content="2019-07-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The Sick-Sicker model</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#set-up"><i class="fa fa-check"></i>Set-up</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#prerequisites-general"><i class="fa fa-check"></i>Prerequisites general</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="model.html"><a href="model.html"><i class="fa fa-check"></i><b>1</b> Define model inputs</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">darthpack: An R package with DARTH’s decision modeling coding framework</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="model" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Define model inputs</h1>
+<p>As described in the main manuscript, in this first component we declare all model input variables and set their values. The <code>R</code> script running the analysis of this component is the <em>01_model-inputs.R</em> file in the <code>R</code> directory.</p>
+<p>The input to inform the values is divided in three categories: external, estimated, and calibrated. The majority of the Sick-Sicker model parameters are informed by external data. Only three parameter values need to be estimated using model calibration.</p>
+<p>In this component, we start with the general setup of the model, specifying among others the time horizon, name and number of health states, proportion of the cohort in each of the different health states at the start of the simulation and discount rates. The next step is to specify the external parameters. The initial model parameter values and <code>R</code> variable names are presented in Table .</p>
+<table>
+<caption> Description of the initial parameters with their <code>R</code> name and value of the Sick-Sicker model.</caption>
+<thead>
+<tr class="header">
+<th align="left"><strong>Parameter</strong></th>
+<th align="center"><strong>R name</strong></th>
+<th align="center"><strong>Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Time horizon (<span class="math inline">\(n_t\)</span>)</td>
+<td align="center"><code>n_t</code></td>
+<td align="center">75 years</td>
+</tr>
+<tr class="even">
+<td align="left">Names of health states (<span class="math inline">\(n\)</span>)</td>
+<td align="center"><code>v_n</code></td>
+<td align="center">H, S1, S2, D</td>
+</tr>
+<tr class="odd">
+<td align="left">Annual discount rate (costs/QALYs)</td>
+<td align="center"><code>d_c</code>/<code>d_e</code></td>
+<td align="center">3%</td>
+</tr>
+<tr class="even">
+<td align="left">Annual transition probabilities</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">- Disease onset (H to S1)</td>
+<td align="center"><code>p_HS1</code></td>
+<td align="center">0.15</td>
+</tr>
+<tr class="even">
+<td align="left">- Recovery (S1 to H)</td>
+<td align="center"><code>p_S1H</code></td>
+<td align="center">0.5</td>
+</tr>
+<tr class="odd">
+<td align="left">- Disease progression (S1 to S2) in the time-homogenous model</td>
+<td align="center"><code>p_S1S2</code></td>
+<td align="center">0.105</td>
+</tr>
+<tr class="even">
+<td align="left">Annual mortality</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">- All-cause mortality (H to D)</td>
+<td align="center"><code>p_HD</code></td>
+<td align="center">age-specific</td>
+</tr>
+<tr class="even">
+<td align="left">- Hazard rate ratio of death in S1 vs H</td>
+<td align="center"><code>hr_S1</code></td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="left">- Hazard rate ratio of death in S2 vs H</td>
+<td align="center"><code>hr_S2</code></td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="left">Annual costs</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">- Healthy individuals</td>
+<td align="center"><code>c_H</code></td>
+<td align="center">$2,000</td>
+</tr>
+<tr class="even">
+<td align="left">- Sick individuals in S1</td>
+<td align="center"><code>c_S1</code></td>
+<td align="center">$4,000</td>
+</tr>
+<tr class="odd">
+<td align="left">- Sick individuals in S2</td>
+<td align="center"><code>c_S2</code></td>
+<td align="center">$15,000</td>
+</tr>
+<tr class="even">
+<td align="left">- Dead individuals</td>
+<td align="center"><code>c_D</code></td>
+<td align="center">$0</td>
+</tr>
+<tr class="odd">
+<td align="left">- Additional costs of sick individuals treated in S1 or S2</td>
+<td align="center"><code>c_Trt</code></td>
+<td align="center">$12,000</td>
+</tr>
+<tr class="even">
+<td align="left">Utility weights</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">- Healthy individuals</td>
+<td align="center"><code>u_H</code></td>
+<td align="center">1.00</td>
+</tr>
+<tr class="even">
+<td align="left">- Sick individuals in S1</td>
+<td align="center"><code>u_S1</code></td>
+<td align="center">0.75</td>
+</tr>
+<tr class="odd">
+<td align="left">- Sick individuals in S2</td>
+<td align="center"><code>u_S2</code></td>
+<td align="center">0.50</td>
+</tr>
+<tr class="even">
+<td align="left">- Dead individuals</td>
+<td align="center"><code>u_D</code></td>
+<td align="center">0.00</td>
+</tr>
+<tr class="odd">
+<td align="left">Intervention effect</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">- Utility for treated individuals in S1</td>
+<td align="center"><code>u_Trt</code></td>
+<td align="center">0.95</td>
+</tr>
+</tbody>
+</table>
+<p>Age-specific background mortality for healthy individuals is represented by the US population in 2015 and obtained from the <a href="https://www.mortality.org">Human Mortality database</a>. This information is stored in the <em>01_all-cause-mortality.csv</em> file in the <em>data</em> directory. Based on this .csv file a vector with mortality rates by age is created using the <code>load_mort_data</code> function in the <em>01_model-inputs_functions.R</em> script. This function gives us the flexibility to easily import data from other countries or years.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print.function</span>(load_mort_data) <span class="co"># print the function</span></code></pre></div>
+<pre><code>## function(file = all_cause_mortality){
+##   # Load mortality data
+##   df_r_mort_by_age &lt;- file# read.csv(file = file)
+##   # Vector with mortality rates
+##   v_r_mort_by_age  &lt;- as.matrix(dplyr::select(df_r_mort_by_age, Total))
+##   
+##   return(v_r_mort_by_age)
+## }
+## &lt;bytecode: 0x7ffe07359000&gt;
+## &lt;environment: namespace:darthpack&gt;</code></pre>
+<p>Another function in the <em>01_model-inputs_functions.R</em> script, is the <code>load_all_parms</code> function. This function, which is actually using the <code>load_mort_data</code> function, loads all parameters for the decision model from multiple sources and creates a list that contains all parameters and their values.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print.function</span>(load_all_params)  <span class="co"># print the function</span></code></pre></div>
+<pre><code>## function(file.init = df_params_init,
+##                             file.mort = all_cause_mortality){ # User defined
+##   #### Load initial set of initial parameters form .csv file ####
+##   df_params_init  &lt;- file.init #read.csv(file = file.init, stringsAsFactors = F)
+##   
+##   #### All-cause age-specific mortality from .csv file ####
+##   v_r_mort_by_age &lt;- load_mort_data(file = file.mort)
+##   
+##   l_params_all &lt;- with(as.list(df_params_init), {
+##     #### General setup ####
+##     v_names_str &lt;- c(&quot;No Treatment&quot;, &quot;Treatment&quot;)  # CEA strategies
+##     n_str       &lt;- length(v_names_str) # Number of strategies
+##     v_age_names &lt;- n_age_init:(n_age_init + n_t - 1) # vector with age names
+##     v_n &lt;- c(&quot;H&quot;, &quot;S1&quot;, &quot;S2&quot;, &quot;D&quot;)  # vector with the 4 health states of the model:
+##                                     # Healthy (H), Sick (S1), Sicker (S2), Dead (D)
+##     n_states &lt;- length(v_n)         # number of health states 
+##     v_s_init &lt;- c(H = 1, S1 = 0, S2 = 0, D = 0) # initial state vector
+##     #### Create list with all parameters ####
+##     l_params_all &lt;- list(
+##       v_names_str = v_names_str,
+##       n_str       = n_str      ,
+##       n_age_init  = n_age_init, 
+##       n_t         = n_t       , 
+##       v_age_names = v_age_names,
+##       v_n = v_n,
+##       n_states = n_states,
+##       v_s_init = c(H = 1, S1 = 0, S2 = 0, D = 0),
+##       v_r_mort_by_age = v_r_mort_by_age
+##     )
+##     return(l_params_all)
+##   }
+##   )
+##   
+##   l_params_all &lt;- c(l_params_all, 
+##                     df_params_init) # Add initial set of parameters
+## }
+## &lt;bytecode: 0x7ffe07348200&gt;
+## &lt;environment: namespace:darthpack&gt;</code></pre>
+<p>The <code>load_all_params</code> function is informed by the arguments <code>file.init</code> and <code>file.mort</code>. The <code>file.init</code> argument is a string with the location and name of the file with initial set of parameters. The initial parameter values for our case-study are stored in the <em>01_init-params.csv</em> file located in the <em>data</em> directory. The <code>load_all_params</code> function read this .csv file into the function environment as a dataframe called, <code>df_params_init</code>.</p>
+<p>The <code>file.mort</code> argument is a string with the location and name of the file with mortality data. As described before, in our case-study this is the <em>01_all-cause-mortality.csv</em> file. Within the <code>load_all_parms</code> function, the <code>load_mort_data</code> function is used to create a vector with mortality rates from the .csv data.</p>
+<p>After loading all the information, the <code>load_all_params</code> generates a list called,<code>l_params_all</code>, including all parameters for the model including the general setup parameters and the vector of mortality rates. The function also stores the dataframe <code>df_params_init</code> with the initial set of parameters in the list. This is all executed in the in the <em>01_model-inputs.R</em> script by running the code below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l_params_all &lt;-<span class="st"> </span><span class="kw">load_all_params</span>()</code></pre></div>
+<p>For the Sick-Sicker model we do not have to estimate parameters, but we do have three parameters that need to be estimated via model calibration. In this stage of the framework, we simply set these parameters to valid “dummy” values that are compatible with the next phase of the analysis, model implementation, but are ultimately just placeholder values until we conduct the calibration phase. This means that these values will be replaced by the best-fitted calibrated values after we performed the calibration in component 3.</p>
+<p>Using a function to create a list of base-case parameters to have all model parameters in a single object is very useful, because this object will have to be updated for the calibration and the different sensitivity analyses in components 3 and 5 of the framework, respectively. Below, we guide you through the components of the function.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

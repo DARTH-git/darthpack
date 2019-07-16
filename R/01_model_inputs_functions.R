@@ -2,13 +2,18 @@
 #'
 #' \code{load_mort_data} is used to load age-specific mortality from .csv file into vector.
 #'
-#' @param file String with the location and name of the file with mortality data
+#' @param file String with the location and name of the file with mortality 
+#' data. If \code{NULL}, \code{v_r_mort_by_age} will be used as default
 #' @return 
 #' A vector with mortality by age.
 #' @export
-load_mort_data <- function(file = "data/01_all_cause_mortality.csv"){
-  # Load mortality data
-  df_r_mort_by_age <- read.csv(file = file)
+load_mort_data <- function(file = NULL){
+  # Load mortality data from file
+  if(!is.null(file)) {
+    df_r_mort_by_age <- read.csv(file = file)}
+  else{
+    df_r_mort_by_age <- all_cause_mortality
+  }
   # Vector with mortality rates
   v_r_mort_by_age  <- as.matrix(dplyr::select(df_r_mort_by_age, Total))
   
@@ -24,10 +29,14 @@ load_mort_data <- function(file = "data/01_all_cause_mortality.csv"){
 #' @return 
 #' A list of all parameters used for the decision model.
 #' @export
-load_all_params <- function(file.init = "data/01_init_params.csv",
-                            file.mort = "data/01_all_cause_mortality.csv"){ # User defined
+load_all_params <- function(file.init = NULL,
+                            file.mort = NULL){ # User defined
   #### Load initial set of initial parameters form .csv file ####
-  df_params_init  <- read.csv(file = file.init, stringsAsFactors = F)
+  if(!is.null(file.init)) {
+    df_params_init <- read.csv(file = file)
+  } else{
+    df_params_init <- df_params_init
+  }
   
   #### All-cause age-specific mortality from .csv file ####
   v_r_mort_by_age <- load_mort_data(file = file.mort)

@@ -7,7 +7,8 @@ usethis::use_build_ignore("dev_history.R")
 usethis::use_code_of_conduct()
 
 # Add a vignette
-usethis::use_vignette("aa-model")
+usethis::use_vignette("aa-introduction")
+usethis::use_vignette("bb-model")
 
 # Create .rda object for initial set of parameters
 file.init <- "data/01_init_params.csv"
@@ -32,12 +33,17 @@ attachment::att_to_description()
 # Check the package
 devtools::check()
 
-# Install chameleon package
-devtools::install_github("ThinkR-open/chameleon")
-# Build a book from vignettes inside a package
+## Install chameleon package
+# devtools::install_github("ThinkR-open/chameleon")
+
+## Build a book from vignettes inside a package
 template <- system.file("rstudio/templates/project/resources", package = "bookdown")
-chameleon::create_book(path = "report/", clean = TRUE,
+chameleon::create_book(path = "inst/report/", clean = TRUE,
             template = template)
-chameleon::open_guide_function(path = "report/")
+chameleon::open_guide_function(path = "inst/report/")
 # Create documentation of package on line
 chameleon::build_pkgdown()
+
+# Open `darthpack` pkgdown
+library(chameleon)
+darthpack::open_guide()

@@ -1,0 +1,75 @@
+```{r, include = FALSE, warning = FALSE}
+# load packages
+library(knitr)
+# https://haozhu233.github.io/kableExtra/awesome_table_in_html.html
+library(kableExtra)
+library(darthpack)
+l_params_all <- load_all_params()
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# Set working directory via relative path to root from Rmd
+# to avoid issue with the Markdown 
+# http://pbahr.github.io/tips/2016/04/16/fix_rmarkdown_working_directory_issue
+```
+
+# Define model inputs {#model}
+
+As described in the main manuscript, in this first component we declare all model input variables and set their values. The `R` script running the analysis of this component is the *01_model-inputs.R* file in the `R` directory. 
+
+The input to inform the values is divided in three categories: external, estimated, and calibrated. The majority of the Sick-Sicker model parameters are informed by external data. Only three parameter values need to be estimated using model calibration. 
+
+In this component, we start with the general setup of the model, specifying among others the time horizon, name and number of health states, proportion of the cohort in each of the different health states at the start of the simulation and discount rates. The next step is to specify the external parameters. The initial model parameter values and `R` variable names are presented in Table \ref{tab:parameters}. 
+
+Table: \label{tab:parameters} Description of the initial parameters with their `R` name and value of the Sick-Sicker model.
+
+|           **Parameter**            |  **R name** |   **Value**   |
+|:-----------------------------------|:-----------:|:-------------:|
+| Time horizon ($n_t$)               | `n_t`       | `r l_params_all$n_t` years |
+| Names of health states ($n$)       | `v_n`       | H, S1, S2, D  |
+| Annual discount rate (costs/QALYs) | `d_c`/`d_e` |  3%           |
+| Annual transition probabilities    |             |               |
+| - Disease onset (H to S1)          | `p_HS1`     |  `r l_params_all$p_HS1`         |
+| - Recovery (S1 to H)               | `p_S1H`     |  `r l_params_all$p_S1H`          |
+| - Disease progression (S1 to S2)  in the time-homogenous model   | `p_S1S2`    |  `r l_params_all$p_S1S2`        |
+| Annual mortality                   |             |               |
+| - All-cause mortality (H to D)     | `p_HD`      |  age-specific |
+| - Hazard rate ratio of death in S1 vs H | `hr_S1`     |  `r l_params_all$hr_S1`            |
+| - Hazard rate ratio of death in S2 vs H | `hr_S2`     |  `r l_params_all$hr_S1`           |
+| Annual costs                       |             |               |
+| - Healthy individuals              | `c_H`       |  $2,000       |
+| - Sick individuals in S1           | `c_S1`      |  $4,000       |
+| - Sick individuals in S2           | `c_S2`      |  $15,000      |
+| - Dead individuals                 | `c_D`       |  $0           |
+| - Additional costs of sick individuals treated in S1 or S2           | `c_Trt`     |  $12,000      |
+| Utility weights                    |             |               |
+| - Healthy individuals              | `u_H`       |  1.00         |
+| - Sick individuals in S1           | `u_S1`      |  0.75         |
+| - Sick individuals in S2           | `u_S2`      |  0.50         |
+| - Dead individuals                 | `u_D`       |  0.00         |
+| Intervention effect                |             |               |
+| - Utility for treated individuals in S1 | `u_Trt` |  0.95        |
+
+Age-specific background mortality for healthy individuals is represented by the US population in 2015 and obtained from the [Human Mortality database](https://www.mortality.org). This information is stored in the *01_all-cause-mortality.csv* file in the *data* directory. Based on this .csv file a vector with mortality rates by age is created using the `load_mort_data` function in the *01_model-inputs_functions.R* script. This function gives us the flexibility to easily import data from other countries or years. 
+
+```{r}
+print.function(load_mort_data) # print the function
+``` 
+
+Another function in the *01_model-inputs_functions.R* script, is the `load_all_parms` function. This function, which is actually using the `load_mort_data` function, loads all parameters for the decision model from multiple sources and creates a list that contains all parameters and their values. 
+```{r}
+print.function(load_all_params)  # print the function
+``` 
+
+The `load_all_params` function is informed by the arguments `file.init` and `file.mort`. The `file.init` argument is a string with the location and name of the file with initial set of parameters. The initial parameter values for our case-study are stored in the *01_init-params.csv* file located in the *data* directory. The `load_all_params` function read this .csv file into the function environment as a dataframe called, `df_params_init`.  
+
+The `file.mort` argument is a string with the location and name of the file with mortality data. As described before, in our case-study this is the *01_all-cause-mortality.csv* file. Within the `load_all_parms` function, the `load_mort_data` function is used to create a vector with mortality rates from the .csv data. 
+
+After loading all the information, the `load_all_params` generates a list called,`l_params_all`, including all parameters for the model including the general setup parameters and the vector of mortality rates. The function also stores the dataframe  `df_params_init` with the initial set of parameters in the list. This is all executed in the in the *01_model-inputs.R* script by running the code below. 
+```{r, eval = FALSE, echo = TRUE}
+l_params_all <- load_all_params()
+```
+For the Sick-Sicker model we do not have to estimate parameters, but we do have three parameters that need to be estimated via model calibration. In this stage of the framework, we simply set these parameters to valid “dummy” values that are compatible with the next phase of the analysis, model implementation, but are ultimately just placeholder values until we conduct the calibration phase. This means that these values will be replaced by the best-fitted calibrated values after we performed the calibration in component 3. 
+
+Using a function to create a list of base-case parameters to have all model parameters in a single object is very useful, because this object will have to be updated for the calibration and the different sensitivity analyses in components 3 and 5 of the framework, respectively. Below, we guide you through the components of the function. 

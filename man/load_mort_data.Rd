@@ -4,10 +4,11 @@
 \alias{load_mort_data}
 \title{Load mortality data}
 \usage{
-load_mort_data(file = "data/01_all_cause_mortality.csv")
+load_mort_data(file = NULL)
 }
 \arguments{
-\item{file}{String with the location and name of the file with mortality data}
+\item{file}{String with the location and name of the file with mortality 
+data. If \code{NULL}, \code{v_r_mort_by_age} will be used as default}
 }
 \value{
 A vector with mortality by age.
