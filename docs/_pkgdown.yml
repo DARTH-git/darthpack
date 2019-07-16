@@ -1,0 +1,44 @@
+pandoc: 1.19.2.1
+pkgdown: 1.3.0
+pkgdown_sha: ~
+articles:
+  aa-introduction: aa-introduction.html
+  bb-model: bb-model.html
+pandoc: 1.19.2.1
+pkgdown: 1.3.0
+pkgdown_sha: ~
+articles:
+  aa-introduction: aa-introduction.html
+  bb-model: bb-model.html
+reference:
+- title: "All functions"
+  desc: ~
+  contents:
+  - '`calculate_ce_out`'
+  - '`calibration_out`'
+  - '`check_transition_array`'
+  - '`data_summary`'
+  - '`decision_model`'
+  - '`generate_psa_params`'
+  - '`l_psa`'
+  - '`likelihood`'
+  - '`load_all_params`'
+  - '`load_mort_data`'
+  - '`log_lik`'
+  - '`log_post`'
+  - '`log_prior`'
+  - '`open_guide`'
+  - '`owsa_det`'
+  - '`posterior`'
+  - '`prior`'
+  - '`sample.prior`'
+  - '`twsa_det`'
+  - '`update_param_list`'
+- title: "Data"
+  desc: ~
+  contents:
+  - '`SickSicker_targets`'
+  - '`all_cause_mortality`'  
+  - '`df_params_init`'  
+  - '`m_calib_post`'
+  - '`v_calib_post_map`'      
