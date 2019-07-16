@@ -12,6 +12,15 @@
 decision_model <- function(l_params_all = load_all_params(), 
                            verbose = FALSE){ # User defined
   with(as.list(l_params_all), {
+    #### Error checking ####
+    if ((n_t + n_age_init) > nrow(v_r_mort_by_age)) {
+      stop("Not all the age in the age range have a corresponding mortality rate")
+    }
+    
+    if ((sum(v_s_init) != 1) | !all(v_s_init >= 0)) {
+      stop("vector of initial states (v_s_init) is not valid")
+    }
+    
     #### Age-specific transition probabilities ####
     # Mortality for healthy individuals
     p_HDage  <- 1 - exp(-v_r_mort_by_age[(n_age_init + 1) + 0:(n_t - 1)])        
@@ -70,6 +79,8 @@ decision_model <- function(l_params_all = load_all_params(),
 #' @param a_P A transition probability array.
 #' @param n_states Number of health states.
 #' @param n_t Number of cycles.
+#' @param err_stop Logical variable to indicate stop process if error is found. 
+#' Default = TRUE
 #' @param verbose Logical variable to indicate print out of messages. 
 #' Default = TRUE
 #'
@@ -80,10 +91,11 @@ decision_model <- function(l_params_all = load_all_params(),
 check_transition_array <- function(a_P, 
                                    n_states,
                                    n_t,
-                                   verbose = TRUE){
+                                   err_stop = FALSE,
+                                   verbose = FALSE){
   m_indices_notvalid <- arrayInd(which(a_P < 0 | a_P > 1), 
                                  dim(a_P))
-  try(
+  # try(
     if(dim(m_indices_notvalid)[1] != 0){
       v_rows_notval   <- rownames(a_P)[m_indices_notvalid[, 1]]
       v_cols_notval   <- colnames(a_P)[m_indices_notvalid[, 2]]
@@ -95,17 +107,23 @@ check_transition_array <- function(a_P,
                                                 v_cycles_notval), ncol = 1), 
                                 check.names = FALSE)
       if(verbose){
-        message("Not valid transition probabilities")
-        # print(df_notvalid)
-        stop(print(df_notvalid), call. = FALSE)
-      } #else stop()
+        warning("Not valid transition probabilities\n",
+             paste(capture.output(df_notvalid), collapse = "\n"))
+      } 
+      if(err_stop){
+        stop("Not valid transition probabilities\n",
+                paste(capture.output(df_notvalid), collapse = "\n"))
+      }
     }
-  )
+  # )
   
   # Check if transition probability array is valid
   valid <- apply(a_P, 3, function(x) all.equal(sum(rowSums(x)), n_states))
   if (!isTRUE(dplyr::all_equal(as.numeric(sum(valid)), as.numeric(n_t)))) {
     if(verbose){
+      warning("This is not a valid transition Matrix")
+    } 
+    if(err_stop){
       stop("This is not a valid transition Matrix")
     } #else stop()
   }

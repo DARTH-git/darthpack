@@ -4,7 +4,8 @@
 \alias{check_transition_array}
 \title{Check if transition array is valid}
 \usage{
-check_transition_array(a_P, n_states, n_t, verbose = TRUE)
+check_transition_array(a_P, n_states, n_t, err_stop = FALSE,
+  verbose = FALSE)
 }
 \arguments{
 \item{a_P}{A transition probability array.}
@@ -12,6 +13,9 @@ check_transition_array(a_P, n_states, n_t, verbose = TRUE)
 \item{n_states}{Number of health states.}
 
 \item{n_t}{Number of cycles.}
+
+\item{err_stop}{Logical variable to indicate stop process if error is found. 
+Default = TRUE}
 
 \item{verbose}{Logical variable to indicate print out of messages. 
 Default = TRUE}
