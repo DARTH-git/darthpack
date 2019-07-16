@@ -5,7 +5,7 @@ articles:
   aa-introduction: aa-introduction.html
   bb-model: bb-model.html
 reference:
-- title: All functions
+- title: "All functions"
   desc: ~
   contents:
   - '`calculate_ce_out`'
@@ -28,7 +28,7 @@ reference:
   - '`sample.prior`'
   - '`twsa_det`'
   - '`update_param_list`'
-- title: Data
+- title: "Data"
   desc: ~
   contents:
   - '`SickSicker_targets`'
