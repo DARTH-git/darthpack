@@ -1,0 +1,50 @@
+reference:
+- title: "Model inputs"
+  desc: ~
+  contents:
+  - '`load_mort_data`'  
+  - '`load_all_params`'
+- title: "Decision model"
+  desc: ~
+  contents:
+  - '`decision_model`'
+  - '`check_transition_array`'
+- title: "Calibration"
+  desc: ~
+  contents:
+  - '`calibration_out`'  
+  - '`likelihood`'
+  - '`log_lik`'
+  - '`log_post`'
+  - '`log_prior`'
+  - '`posterior`'
+  - '`prior`'
+  - '`sample.prior`'
+- title: "Validation"
+  desc: ~
+  contents:
+  - '`data_summary`'
+- title: "Deterministic analysis"
+  desc: ~
+  contents:
+  - '`calculate_ce_out`'
+  - '`owsa_det`'
+  - '`twsa_det`'
+- title: "Probabilistic analysis"
+  desc: ~
+  contents:
+  - '`generate_psa_params`'
+- title: "General"
+  desc: ~
+  contents:
+  - '`open_guide`'
+  - '`update_param_list`'  
+- title: "Data"
+  desc: ~
+  contents:
+  - '`SickSicker_targets`'
+  - '`all_cause_mortality`'  
+  - '`df_params_init`'  
+  - '`m_calib_post`'
+  - '`v_calib_post_map`'
+  - '`l_psa`'  
