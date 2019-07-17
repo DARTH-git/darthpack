@@ -96,6 +96,4 @@ test_that("correct outputs", {
                c(l_params_all$n_t + 1, l_params_all$n_states))
   expect_true(all(round(rowSums(output[[2]]) * 100) / 100 == 1))
   expect_true(all(output[[2]] >= 0))
-  
-  output <- decision_model(l_params_all, err_stop = T, verbose = F)
 })

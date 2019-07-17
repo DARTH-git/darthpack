@@ -56,16 +56,13 @@ context("testing 02_simulation_model_functions.R")
 l_params_all <- load_all_params()
 
 # tests
-test_that("invalid number of cycles", {
-  # modify n_t to get error message
+test_that("invalid inputs", {
   l_params_all$n_t <- 90
   
   expect_error(decision_model(l_params_all), 
                "Not all the age in the age range have a corresponding mortality rate")
-})
-
-test_that("invalid initial states", {
-  # modify v_s_init to get error message
+  
+  l_params_all$n_t <- 75
   l_params_all$v_s_init <- c(H = -1, S1 = 0, S2 = 0, D = 0)
   
   expect_error(decision_model(l_params_all), 
@@ -73,7 +70,34 @@ test_that("invalid initial states", {
 })
 ```
 
-To perform tests for `decision_model`, we need to get input data passing into the function. We get the data by loading the parameter data. In the tests, we test different error message in different tests. 
+To test invalid inputs for `decision_model`, we need to get input data passing into the function by loading the parameters. In the tests, we modify the input parameters that are expected to generate error message. Because we expect an error would occur, we use `expect_error` to assert whether `decision_model(l_params_all)` generates the same error message as specified. Because the expections are met by generating errors, one can run the code without raising any error. 
+
+Here are another group of tests checking on the output of `decision_model`. We use more different `expect` functions to check different aspects of the outputs, including the number of components, the naming, the values, etc. 
+
+```{r}
+test_that("correct outputs", {
+  # generate data
+  output <- decision_model(l_params_all, err_stop = F, verbose = F)
+  
+  # checking overall outputs
+  expect_equal(length(output), 2) 
+  expect_true(all(unlist(lapply(output, is.array)))) 
+  expect_identical(names(output), c("a_P", "m_M"))
+  
+  # checking output 1: transition matrix a_P
+  expect_equal(dim(output[[1]]), 
+               c(l_params_all$n_states, l_params_all$n_states, l_params_all$n_t))
+  expect_true(all(output[[1]] >= 0) | all(output[[1]] <= 1))
+  expect_true(all(round(apply(output[[1]], c(1, 3), function(x) sum(x)) * 100) / 100 == 1))
+  
+  # checking output 2: cohort trace m_M
+  expect_equal(dim(output[[2]]), 
+               c(l_params_all$n_t + 1, l_params_all$n_states))
+  expect_true(all(round(rowSums(output[[2]]) * 100) / 100 == 1))
+  expect_true(all(output[[2]] >= 0))
+})
+```
+
 
 
 
