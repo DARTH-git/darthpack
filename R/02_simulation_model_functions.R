@@ -90,6 +90,7 @@ decision_model <- function(l_params_all, err_stop = FALSE, verbose = FALSE){ # U
 #' @return
 #' This function stops if transition probability array is not valid and shows 
 #' what are the entries that are not valid
+#' @import utils
 #' @export
 check_transition_probability <- function(a_P,
                                          err_stop = FALSE, 
@@ -133,9 +134,9 @@ check_transition_probability <- function(a_P,
 #' @param err_stop Logical variable to stop model run if set up as TRUE. Default = FALSE.
 #' @param verbose Logical variable to indicate print out of messages. 
 #' Default = FALSE
-#' 
 #' @return 
 #' The transition probability array and the cohort trace matrix.
+#' @import dplyr
 #' @export
 check_sum_of_transition_array <- function(a_P,
                                           n_states,
@@ -144,7 +145,7 @@ check_sum_of_transition_array <- function(a_P,
                                           verbose = FALSE) {
   
   valid <- (apply(a_P, 3, function(x) sum(rowSums(x))) == n_states)
-  if (!isTRUE(dplyr::all_equal(as.numeric(sum(valid)), as.numeric(n_t)))) {
+  if (!isTRUE(all_equal(as.numeric(sum(valid)), as.numeric(n_t)))) {
     if(err_stop) {
       stop("This is not a valid transition Matrix")
     }
