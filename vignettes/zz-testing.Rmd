@@ -22,7 +22,7 @@ library(testthat)
 
 In this section, we use `testthat` package to demonstrate unit testing. We first show the test structure used in the `testthat` package. We then demonstrate some unit tests for the functions in `02_simulation_model_functions.R` and processes in `05a_deterministic_analysis.R`. 
 
-## Test structure
+# Test structure
 
 A test file is a `.R` script and is normally stored separately from the source code. In the developement of the Sick-Sicker project, we create a `tests` folder for all the test files. In practice, a developer often creates a test file corresponding to a file of source code. Because the functionalities in a file of R script are usually related, the tests in the corresponding test file natually go together. A test file consists of three components from the lowest to the highest levels: *expectation*, *test* and *context*. 
 
@@ -71,7 +71,7 @@ test_that("MIB's real name", {
 
 The text in the `context` function provides the name of the group of tests. By convention, one test file contains one context function, but the file can include more than one context function. Similarly, the text in the `test_that` function incidates which groups of expectations are being executed. After running the test files in the `R` console, the console would display whether the group of tests are passed or not. These texts in `context` and `test_that` would appear, allowing developers to quickly find where the tests go wrong. 
 
-## Testing functions
+# Testing functions
 
 The file `02_simulation_model_functions.R` includes function `decision_model`, which is the core code of the Markov model in the Sick-Sicker study. We show some example tests for `decision_model` here. In the following code, we test whether invalid input data evokes certain error message. 
 
@@ -132,17 +132,23 @@ test_that("correct outputs", {
 
 In the test file, we also include tests for the other two functions `check_transition_probability` and `check_sum_of_transition_array`. 
 
-## Testing processes
+# Testing processes
 
 While it is not always necessary, we can conduct unit tests for a process. Here we show an example of testing some processes in an analysis file, `05a_deterministic_analysis.R`. In the analysis file, we compute an ICER table `df_cea_det`, one-way sensitivity analysis `owsa_nmb`, and two-way sensitivity analysis `twsa_nmb`. We can check whether we have the expected output in the table generated from the process. The testing file is named as `test_05_deterministic_analysis.R` and is stored in the `tests` folder. 
 
-Here are the example tests for the results of one-way sensitivity analysis. 
+Here are the example tests for the results of one-way sensitivity analysis. We test the number of sample, the parameters included, the range of parameters, the strategy names, and the expected type of output data. 
 
 ```{r}
 library(dampack) # the package required for calculating CEA outcomes. 
 
+# generate input parameters
+l_params_all <- load_all_params()
+v_names_str <- l_params_all$v_names_str
+n_str <- length(v_names_str)
+l_params_basecase <- update_param_list(l_params_all, v_calib_post_map) 
+
 test_that("check one-way sensitivity output", {
-  # assign input argument 
+  # generate input parameters in owsa_det()
   parms <- c("c_Trt", "p_HS1", "u_S1", "u_Trt")
   ranges <- list("c_Trt" = c(6000, 13000),
                  "p_HS1" = c(0.01, 0.50),
@@ -196,8 +202,20 @@ test_that("check one-way sensitivity output", {
 })
 ```
 
+# Run tests
 
+There are multiple ways to run test files with `testthat` in R. 
 
+## Run each file directly
 
+In this case, the library `testthat` should be attached before running a test file. If all tests in the file pass (that is all expectations are met), no error messages are raised in the console. However, sometimes the developer might loss count of the number of tests or loss track of the tests. This way is not informative in informing how many tests passed, and where the error occurs if tests failed. 
 
+## Run tests files at once for an R project / package
 
+For an R package, the developer can run all the test files using shortcut `Ctrl/Cmd+Shift+T` or type R command `testthat::test_dir("path/to/the/tests/folder")` in the console. The shortcut does not work for an R project. RStudio will then provide a summary of passed or failed tests. 
+
+![](../vignettes/test_summary.png){width=500px}
+
+We could see tests are grouped by context, and all our 39 tests passed. 
+
+# References {-}
