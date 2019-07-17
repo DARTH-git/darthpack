@@ -16,7 +16,8 @@
 
 #### 05a.1 Load packages and functions ####
 #### 05a.1.1 Load packages ####
-library(dampack)
+# devtools::install_github("DARTH-git/dampack") # Uncomment if dampack not installed
+library(dampack) 
 
 #### 05a.1.2 Load inputs ####
 l_params_all <- load_all_params() # function in darthpack
