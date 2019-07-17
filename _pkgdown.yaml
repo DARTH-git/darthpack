@@ -49,3 +49,9 @@ reference:
   - '`m_calib_post`'
   - '`v_calib_post_map`'
   - '`l_psa`'  
+
+navbar:
+  right:
+    - icon: fa-github fa-lg
+      text: "github"
+      href: https://github.com/DARTH-git/darthpack
