@@ -17,7 +17,6 @@ knitr::opts_chunk$set(
 ```{r setup, message = FALSE, echo=FALSE}
 library(darthpack)
 library(dplyr)
-library(dampack)
 library(testthat)
 ```
 
@@ -135,7 +134,67 @@ In the test file, we also include tests for the other two functions `check_trans
 
 ## Testing processes
 
-While it is not always necessary, we can conduct unit tests for a process. Here we show an example of testing some processes in an analysis file, `05a_deterministic_analysis.R`. In the analysis, file, we 
+While it is not always necessary, we can conduct unit tests for a process. Here we show an example of testing some processes in an analysis file, `05a_deterministic_analysis.R`. In the analysis file, we compute an ICER table `df_cea_det`, one-way sensitivity analysis `owsa_nmb`, and two-way sensitivity analysis `twsa_nmb`. We can check whether we have the expected output in the table generated from the process. The testing file is named as `test_05_deterministic_analysis.R` and is stored in the `tests` folder. 
+
+Here are the example tests for the results of one-way sensitivity analysis. 
+
+```{r}
+library(dampack) # the package required for calculating CEA outcomes. 
+
+test_that("check one-way sensitivity output", {
+  # assign input argument 
+  parms <- c("c_Trt", "p_HS1", "u_S1", "u_Trt")
+  ranges <- list("c_Trt" = c(6000, 13000),
+                 "p_HS1" = c(0.01, 0.50),
+                 "u_S1"  = c(0.75, 0.95),
+                 "u_Trt" = c(0.75, 0.95))
+  nsamps <- 100
+  n_wtp <- 150000
+  
+  # generate one-way sensitivity analysis results
+  owsa_nmb <- owsa_det(parms = parms, # parameter names
+                       ranges = ranges,
+                       nsamps = nsamps, # number of values  
+                       FUN = calculate_ce_out, # Function to compute outputs 
+                       params_basecase = l_params_basecase, # List with base-case parameters
+                       outcome = "NMB",      # Output to do the OWSA on
+                       strategies = v_names_str, # Names of strategies
+                       n_wtp = n_wtp       # Extra argument to pass to FUN
+  )
+  
+  # check # of rows of owsa_nmb is the same as the expected number of total samples
+  expect_equal(nrow(owsa_nmb), length(parms) * length(v_names_str) * nsamps)
+  
+  # check whether the output has all the parameters specified
+  expect_true(all(unique(as.character(owsa_nmb$parameter)) %in% parms))
+  expect_equal(length(unique(as.character(owsa_nmb$parameter))), 4)
+  
+  # check whether the ranges of the output parameters are the same as the range specified
+  param_range <- owsa_nmb %>% 
+    select(parameter, param_val) %>% 
+    group_by(parameter) %>% 
+    summarize(range_min = min(param_val, na.rm = T), 
+              range_max = max(param_val, na.rm = T)) %>%
+    ungroup() %>% 
+    mutate(parameter = as.character(parameter))
+  
+  range_df <- do.call(rbind, ranges)
+  colnames(range_df) <- c("min", "max")
+  range_df <- as.data.frame(range_df)
+  range_df <- range_df[match(rownames(range_df), param_range$parameter), ]
+  
+  expect_true(all(range_df$max == param_range$range_max))
+  expect_true(all(range_df$min == param_range$range_min))
+  
+  # check owsa_nmb strategies
+  stgy_set <- unique(as.character(owsa_nmb$strategy))
+  expect_true(all(stgy_set %in% v_names_str))
+  
+  # check outcome_val
+  expect_true(all(is.numeric(owsa_nmb$outcome_val)))
+  expect_false(any(is.na(owsa_nmb$outcome_val)))
+})
+```
 
 
 
