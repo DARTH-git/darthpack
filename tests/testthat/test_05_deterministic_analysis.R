@@ -1,7 +1,5 @@
 context("testing 05a_deterministic_analysis.R")
 
-library(testthat)
-
 library(reshape2)
 library(dampack)
 library(dplyr)

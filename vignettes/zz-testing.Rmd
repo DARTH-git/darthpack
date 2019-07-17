@@ -1,0 +1,23 @@
+---
+title: "Testing"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{zz-testing}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Why testing? 
+While devloping your cost-effectiveness analysis project, it is recommended to do testing for the functions (or even results) alongside the development process. Unit testing is the most common testing method 
+
+# Testing package
+
+# Unit tests in practice
+

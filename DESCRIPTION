@@ -53,6 +53,7 @@ Imports:
 Suggests: 
     knitr,
     rmarkdown,
+    dampack,
     testthat
 VignetteBuilder: 
     knitr
