@@ -27,7 +27,7 @@ test_that("check icer table", {
 
 
 test_that("check one-way sensitivity output", {
-  # generate testing data
+  # assign input argument 
   parms <- c("c_Trt", "p_HS1", "u_S1", "u_Trt")
   ranges <- list("c_Trt" = c(6000, 13000),
                  "p_HS1" = c(0.01, 0.50),
@@ -36,6 +36,7 @@ test_that("check one-way sensitivity output", {
   nsamps <- 100
   n_wtp <- 150000
   
+  # generate one-way sensitivity analysis results
   owsa_nmb <- owsa_det(parms = parms, # parameter names
                        ranges = ranges,
                        nsamps = nsamps, # number of values  
@@ -46,7 +47,7 @@ test_that("check one-way sensitivity output", {
                        n_wtp = n_wtp       # Extra argument to pass to FUN
   )
   
-  # check samples 
+  # check # of rows of owsa_nmb is the same as the expected number of total samples
   expect_equal(nrow(owsa_nmb), length(parms) * length(v_names_str) * nsamps)
   
   # check whether the output has all the parameters specified
@@ -81,12 +82,14 @@ test_that("check one-way sensitivity output", {
 
 
 test_that("check two-way sensitivity output", {
-  # generate testing data
+  # assign input argument 
   parm1 <- "u_S1"
   parm2 <- "u_Trt"
   ranges <- list("u_S1"  = c(0.70, 0.80),
                  "u_Trt" = c(0.90, 1.00))
   nsamps <- 40
+  
+  # generate two-way sensitivity analysis results
   twsa_nmb <- twsa_det(parm1 = parm1,  # parameter 1 name
                        parm2 = parm2, # parameter 2 name
                        ranges = ranges,
@@ -98,7 +101,7 @@ test_that("check two-way sensitivity output", {
                        n_wtp = 150000        # Extra argument to pass to FUN
   )
     
-  # check samples
+  # check # of rows of twsa_nmb is the same as the expected number of total samples
   expect_equal(nrow(twsa_nmb), nsamps * nsamps * length(v_names_str))
   
   # check ranges
@@ -116,7 +119,3 @@ test_that("check two-way sensitivity output", {
   expect_true(all(is.numeric(twsa_nmb$outcome_val)))
   expect_false(any(is.na(twsa_nmb$outcome_val)))
 })
-
-
-
-
