@@ -3,7 +3,7 @@
 ![**UNDER CONSTRUCTION!!!**](dev/under_const.jpeg)
 
 
-An R package that showcases the DARTH coding framework to implement model-based coste-effectiveness analysis.
+An R package that showcases the DARTH coding framework to implement model-based cost-effectiveness analysis.
 
 The main website of the package could be found in: https://darth-git.github.io/darthpack/
 
