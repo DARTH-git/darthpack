@@ -25,21 +25,48 @@ In this section, we use `testthat` package to demonstrate unit testing. We first
 
 ## Test structure
 
-A test file is a `.R` script and is normally stored separately from the source code. In the developement of the Sick-Sicker project, we create a `tests` folder for all the test files. In practice, a developer often creates a test file corresponding to a file of source code. Because the functionalities in a file of R script are usually related, the tests in the corresponding test file natually go together. A test file consists of three components: *expectation*, *test* and *context*. In general, an expectation, the smallest component in unit testing, is to verify whether or not part of a function or a process works as expected. A test, consisting of a collection of expections, specifies which function or which part of a function is tested. A context groups tests for related functionalities. 
+A test file is a `.R` script and is normally stored separately from the source code. In the developement of the Sick-Sicker project, we create a `tests` folder for all the test files. In practice, a developer often creates a test file corresponding to a file of source code. Because the functionalities in a file of R script are usually related, the tests in the corresponding test file natually go together. A test file consists of three components from the lowest to the highest levels: *expectation*, *test* and *context*. 
 
-A general structure of a test file might follow: 
+* In general, an expectation is to verify whether or not part of a function or a process works as expected. 
+* A test, consisting of a collection of expections, specifies which function or which part of a function is tested. 
+* A context groups tests for related functionalities. 
+
+An expectation is where the developer checks the expected behavior of the function or process of interest. For each expectation, we follow this coding flow: 
+  
+* Generate the test data for/from the function or process of interest. 
+* Hypothesize an expected effect of the function or process of interest. 
+* Use `expect_` functions to verify whether the test data is as expected. 
+
+The following coding structure is a general structure in a test file: 
 
 ```
 context("testing whether the man in black (MIB) is a robot")
 
-test_that("# of times in Westworld", {
-  expect_that(a, b)
-  expect_that(c, d)
+## 1st test
+test_that("# of times MIB visited the Westworld", {
+  # Generate test data "a". This might be a results from a function or a process. 
+  a <- number_of_time_from_MIB_memory()
+  # Assign an expected effect / value from the code that is tested. 
+  b1 <- 1000
+  expect_that(a, equals(b1)) # this is equivalent to expect_equal() in testthat
+  
+  # Assign a different expected effect / value from the code that is tested. 
+  b2 <- number_of_time_dolores_met_MIB_in_the_park()
+  expect_true(a >= b2) 
 })
 
-test_that("# of hosts he killed", {
-  expect_that(a, b)
-  expect_that(c, d)
+## 2nd test
+test_that("# of hosts MIB killed", {
+  # Generate test data "a" 
+  a <- record_in_MIB_memory()
+  # Value record from the Westworld management
+  b <- record_store_in_Westworld()
+  expect_equal(a, b)
+})
+
+## 3rd test
+test_that("MIB's real name", {
+  ...
 })
 ```
 
@@ -47,21 +74,27 @@ The text in the `context` function provides the name of the group of tests. By c
 
 ## Testing functions
 
-The file `02_simulation_model_functions.R` includes function`decision_model`, which is the core code of the Markov model in the Sick-Sicker study. We show some example tests for `decision_model` here. In the following code, we test whether invalid input data evokes certain error message. 
+The file `02_simulation_model_functions.R` includes function `decision_model`, which is the core code of the Markov model in the Sick-Sicker study. We show some example tests for `decision_model` here. In the following code, we test whether invalid input data evokes certain error message. 
 
 ```{r}
 context("testing 02_simulation_model_functions.R")
 
-# get data for model input
+# get data for the input of decision_model()
 l_params_all <- load_all_params()
 
 # tests
 test_that("invalid inputs", {
+  # assign an invalid value that results in the expected error message. 
   l_params_all$n_t <- 90
+  # expected error message
+  error_message <- "Not all the age in the age range have a corresponding mortality rate"
+  expect_error(decision_model(l_params_all), error_message)
   
+  # Or we can directly copy the error message to the second argument of the expect_error()
   expect_error(decision_model(l_params_all), 
                "Not all the age in the age range have a corresponding mortality rate")
   
+  # A similar structure for the second error, invalid initial states. 
   l_params_all$n_t <- 75
   l_params_all$v_s_init <- c(H = -1, S1 = 0, S2 = 0, D = 0)
   
@@ -70,9 +103,9 @@ test_that("invalid inputs", {
 })
 ```
 
-To test invalid inputs for `decision_model`, we need to get input data passing into the function by loading the parameters. In the tests, we modify the input parameters that are expected to generate error message. Because we expect an error would occur, we use `expect_error` to assert whether `decision_model(l_params_all)` generates the same error message as specified. Because the expections are met by generating errors, one can run the code without raising any error. 
+To test invalid inputs for `decision_model`, we need to get input data passing into the function by loading the parameters. In the tests, we modify the input parameters that are expected to generate error message. Because we expect an error to occur, we use `expect_error` to assert whether `decision_model(l_params_all)` generates the same error message as expected. Because the expections are met by generating errors, one can run the code without raising any error. 
 
-Here are another group of tests checking on the output of `decision_model`. We use more different `expect` functions to check different aspects of the outputs, including the number of components, the naming, the values, etc. 
+Here is another group of tests checking on the output of `decision_model`. We use more `expect_` functions to check different aspects of the outputs, including the number of components, the naming, the values, etc. 
 
 ```{r}
 test_that("correct outputs", {
@@ -98,7 +131,11 @@ test_that("correct outputs", {
 })
 ```
 
+In the test file, we also include tests for the other two functions `check_transition_probability` and `check_sum_of_transition_array`. 
 
+## Testing processes
+
+While it is not always necessary, we can conduct unit tests for a process. Here we show an example of testing some processes in an analysis file, `05a_deterministic_analysis.R`. In the analysis, file, we 
 
 
 
