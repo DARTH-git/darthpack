@@ -14,10 +14,70 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Why testing? 
-While devloping your cost-effectiveness analysis project, it is recommended to do testing for the functions (or even results) alongside the development process. Unit testing is the most common testing method 
+```{r setup, message = FALSE, echo=FALSE}
+library(darthpack)
+library(dplyr)
+library(dampack)
+library(testthat)
+```
 
-# Testing package
+In this section, we use `testthat` package to demonstrate unit testing. We first show the test structure used in the `testthat` package. We then demonstrate some unit tests for the functions in `02_simulation_model_functions.R` and processes in `05a_deterministic_analysis.R`. 
 
-# Unit tests in practice
+## Test structure
+
+A test file is a `.R` script and is normally stored separately from the source code. In the developement of the Sick-Sicker project, we create a `tests` folder for all the test files. In practice, a developer often creates a test file corresponding to a file of source code. Because the functionalities in a file of R script are usually related, the tests in the corresponding test file natually go together. A test file consists of three components: *expectation*, *test* and *context*. In general, an expectation, the smallest component in unit testing, is to verify whether or not part of a function or a process works as expected. A test, consisting of a collection of expections, specifies which function or which part of a function is tested. A context groups tests for related functionalities. 
+
+A general structure of a test file might follow: 
+
+```
+context("testing whether the man in black (MIB) is a robot")
+
+test_that("# of times in Westworld", {
+  expect_that(a, b)
+  expect_that(c, d)
+})
+
+test_that("# of hosts he killed", {
+  expect_that(a, b)
+  expect_that(c, d)
+})
+```
+
+The text in the `context` function provides the name of the group of tests. By convention, one test file contains one context function, but the file can include more than one context function. Similarly, the text in the `test_that` function incidates which groups of expectations are being executed. After running the test files in the `R` console, the console would display whether the group of tests are passed or not. These texts in `context` and `test_that` would appear, allowing developers to quickly find where the tests go wrong. 
+
+## Testing functions
+
+The file `02_simulation_model_functions.R` includes function`decision_model`, which is the core code of the Markov model in the Sick-Sicker study. We show some example tests for `decision_model` here. In the following code, we test whether invalid input data evokes certain error message. 
+
+```{r}
+context("testing 02_simulation_model_functions.R")
+
+# get data for model input
+l_params_all <- load_all_params()
+
+# tests
+test_that("invalid number of cycles", {
+  # modify n_t to get error message
+  l_params_all$n_t <- 90
+  
+  expect_error(decision_model(l_params_all), 
+               "Not all the age in the age range have a corresponding mortality rate")
+})
+
+test_that("invalid initial states", {
+  # modify v_s_init to get error message
+  l_params_all$v_s_init <- c(H = -1, S1 = 0, S2 = 0, D = 0)
+  
+  expect_error(decision_model(l_params_all), 
+               "vector of initial states \\(v_s_init\\) is not valid")
+})
+```
+
+To perform tests for `decision_model`, we need to get input data passing into the function. We get the data by loading the parameter data. In the tests, we test different error message in different tests. 
+
+
+
+
+
+
 
