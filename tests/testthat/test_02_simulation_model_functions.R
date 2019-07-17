@@ -1,6 +1,5 @@
 context("testing 02_simulation_model_functions.R")
 
-library(testthat)
 library(dplyr)    # For data manipulation
 library(darthpack)
 
