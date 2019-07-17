@@ -95,18 +95,17 @@ v_calib_post_mean <- colMeans(m_calib_post)
 m_calib_post_95cr <- matrixStats::colQuantiles(m_calib_post, 
                                                probs = c(0.025, 0.5, 0.975))
 
-### Compute maximum-a-posteriori (MAP) as the mode of the sampled values
-v_calib_post_map  <- m_calib_post[which.max(v_calib_post), ]
-
 ### Compute posterior values for draw
 v_calib_post      <- exp(log_post(m_calib_post))
+
+### Compute maximum-a-posteriori (MAP) as the mode of the sampled values
+v_calib_post_map  <- m_calib_post[which.max(v_calib_post), ]
 
 # Summary statistics
 df_posterior_summ <- data.frame(
   Parameter = v_param_names,
   Mean      = v_calib_post_mean,
   m_calib_post_95cr,
-  Mode      = v_calib_post_mode,
   MAP       = v_calib_post_map,
   check.names = FALSE)
 df_posterior_summ
