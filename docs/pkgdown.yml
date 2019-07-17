@@ -4,4 +4,5 @@ pkgdown_sha: ~
 articles:
   aa-introduction: aa-introduction.html
   bb-model: bb-model.html
+  zz-testing: zz-testing.html
 
