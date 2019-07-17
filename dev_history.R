@@ -7,6 +7,7 @@ usethis::use_build_ignore("dev_history.R")
 usethis::use_code_of_conduct()
 
 # Add a vignette
+usethis::use_vignette("my_package")
 usethis::use_vignette("aa-introduction")
 usethis::use_vignette("bb-model")
 

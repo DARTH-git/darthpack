@@ -1,19 +1,16 @@
-title: darthpack
-url: https://darth-git.github.io/darthpack
-
 reference:
-- title: "Model inputs"
+- title: "01 Model inputs"
   desc: ~
   contents:
   - '`load_mort_data`'  
   - '`load_all_params`'
-- title: "Decision model"
+- title: "02 Decision model"
   desc: ~
   contents:
   - '`decision_model`'
-  - '`check_transition_array`'
+  - '`check_sum_of_transition_array`'
   - '`check_transition_probability`'
-- title: "Calibration"
+- title: "03 Calibration"
   desc: ~
   contents:
   - '`calibration_out`'  
@@ -24,17 +21,17 @@ reference:
   - '`posterior`'
   - '`prior`'
   - '`sample.prior`'
-- title: "Validation"
+- title: "04 Validation"
   desc: ~
   contents:
   - '`data_summary`'
-- title: "Deterministic analysis"
+- title: "05a Deterministic analysis"
   desc: ~
   contents:
   - '`calculate_ce_out`'
   - '`owsa_det`'
   - '`twsa_det`'
-- title: "Probabilistic analysis"
+- title: "05b Probabilistic analysis"
   desc: ~
   contents:
   - '`generate_psa_params`'

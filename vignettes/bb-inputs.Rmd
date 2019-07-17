@@ -1,5 +1,5 @@
 ---
-title: "Decision model"
+title: "01 Model inputs"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{bb-model}
@@ -19,7 +19,7 @@ library(darthpack)
 l_params_all <- load_all_params()
 ```
 
-# Define model inputs {#model}
+# Define model inputs {#inputs}
 
 As described in the main manuscript, in this first component we declare all model input variables and set their values. The `R` script running the analysis of this component is the *01_model-inputs.R* file in the `R` directory. 
 
