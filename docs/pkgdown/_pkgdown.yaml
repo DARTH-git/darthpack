@@ -1,3 +1,6 @@
+title: darthpack
+url: https://darth-git.github.io/darthpack
+
 reference:
 - title: "Model inputs"
   desc: ~
@@ -43,9 +46,9 @@ reference:
 - title: "Data"
   desc: ~
   contents:
-  - '`SickSicker_targets`'
-  - '`all_cause_mortality`'  
+  - '`all_cause_mortality`'
   - '`df_params_init`'  
+  - '`SickSicker_targets`'
   - '`m_calib_post`'
   - '`v_calib_post_map`'
   - '`l_psa`'  
