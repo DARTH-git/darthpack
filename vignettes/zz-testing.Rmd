@@ -14,10 +14,208 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Why testing? 
-While devloping your cost-effectiveness analysis project, it is recommended to do testing for the functions (or even results) alongside the development process. Unit testing is the most common testing method 
+```{r setup, message = FALSE, echo=FALSE}
+library(darthpack)
+library(dplyr)
+library(testthat)
+```
 
-# Testing package
+In this section, we use `testthat` package to demonstrate unit testing. We first show the test structure used in the `testthat` package. We then demonstrate some unit tests for the functions in `02_simulation_model_functions.R` and processes in `05a_deterministic_analysis.R`. 
 
-# Unit tests in practice
+# Test structure
 
+A test file is a `.R` script and is normally stored separately from the source code. In the developement of the Sick-Sicker project, we create a `tests` folder for all the test files. In practice, a developer often creates a test file corresponding to a file of source code. Because the functionalities in a file of R script are usually related, the tests in the corresponding test file natually go together. A test file consists of three components from the lowest to the highest levels: *expectation*, *test* and *context*. 
+
+* In general, an expectation is to verify whether or not part of a function or a process works as expected. 
+* A test, consisting of a collection of expections, specifies which function or which part of a function is tested. 
+* A context groups tests for related functionalities. 
+
+An expectation is where the developer checks the expected behavior of the function or process of interest. For each expectation, we follow this coding flow: 
+  
+* Generate the test data for/from the function or process of interest. 
+* Hypothesize an expected effect of the function or process of interest. 
+* Use `expect_` functions to verify whether the test data is as expected. 
+
+The following coding structure is a general structure in a test file: 
+
+```
+context("testing whether the man in black (MIB) is a robot")
+
+## 1st test
+test_that("# of times MIB visited the Westworld", {
+  # Generate test data "a". This might be a results from a function or a process. 
+  a <- number_of_time_from_MIB_memory()
+  # Assign an expected effect / value from the code that is tested. 
+  b1 <- 1000
+  expect_that(a, equals(b1)) # this is equivalent to expect_equal() in testthat
+  
+  # Assign a different expected effect / value from the code that is tested. 
+  b2 <- number_of_time_dolores_met_MIB_in_the_park()
+  expect_true(a >= b2) 
+})
+
+## 2nd test
+test_that("# of hosts MIB killed", {
+  # Generate test data "a" 
+  a <- record_in_MIB_memory()
+  # Value record from the Westworld management
+  b <- record_store_in_Westworld()
+  expect_equal(a, b)
+})
+
+## 3rd test
+test_that("MIB's real name", {
+  ...
+})
+```
+
+The text in the `context` function provides the name of the group of tests. By convention, one test file contains one context function, but the file can include more than one context function. Similarly, the text in the `test_that` function incidates which groups of expectations are being executed. After running the test files in the `R` console, the console would display whether the group of tests are passed or not. These texts in `context` and `test_that` would appear, allowing developers to quickly find where the tests go wrong. 
+
+# Testing functions
+
+The file `02_simulation_model_functions.R` includes function `decision_model`, which is the core code of the Markov model in the Sick-Sicker study. We show some example tests for `decision_model` here. In the following code, we test whether invalid input data evokes certain error message. 
+
+```{r}
+context("testing 02_simulation_model_functions.R")
+
+# get data for the input of decision_model()
+l_params_all <- load_all_params()
+
+# tests
+test_that("invalid inputs", {
+  # assign an invalid value that results in the expected error message. 
+  l_params_all$n_t <- 90
+  # expected error message
+  error_message <- "Not all the age in the age range have a corresponding mortality rate"
+  expect_error(decision_model(l_params_all), error_message)
+  
+  # Or we can directly copy the error message to the second argument of the expect_error()
+  expect_error(decision_model(l_params_all), 
+               "Not all the age in the age range have a corresponding mortality rate")
+  
+  # A similar structure for the second error, invalid initial states. 
+  l_params_all$n_t <- 75
+  l_params_all$v_s_init <- c(H = -1, S1 = 0, S2 = 0, D = 0)
+  
+  expect_error(decision_model(l_params_all), 
+               "vector of initial states \\(v_s_init\\) is not valid")
+})
+```
+
+To test invalid inputs for `decision_model`, we need to get input data passing into the function by loading the parameters. In the tests, we modify the input parameters that are expected to generate error message. Because we expect an error to occur, we use `expect_error` to assert whether `decision_model(l_params_all)` generates the same error message as expected. Because the expections are met by generating errors, one can run the code without raising any error. 
+
+Here is another group of tests checking on the output of `decision_model`. We use more `expect_` functions to check different aspects of the outputs, including the number of components, the naming, the values, etc. 
+
+```{r}
+test_that("correct outputs", {
+  # generate data
+  output <- decision_model(l_params_all, err_stop = F, verbose = F)
+  
+  # checking overall outputs
+  expect_equal(length(output), 2) 
+  expect_true(all(unlist(lapply(output, is.array)))) 
+  expect_identical(names(output), c("a_P", "m_M"))
+  
+  # checking output 1: transition matrix a_P
+  expect_equal(dim(output[[1]]), 
+               c(l_params_all$n_states, l_params_all$n_states, l_params_all$n_t))
+  expect_true(all(output[[1]] >= 0) | all(output[[1]] <= 1))
+  expect_true(all(round(apply(output[[1]], c(1, 3), function(x) sum(x)) * 100) / 100 == 1))
+  
+  # checking output 2: cohort trace m_M
+  expect_equal(dim(output[[2]]), 
+               c(l_params_all$n_t + 1, l_params_all$n_states))
+  expect_true(all(round(rowSums(output[[2]]) * 100) / 100 == 1))
+  expect_true(all(output[[2]] >= 0))
+})
+```
+
+In the test file, we also include tests for the other two functions `check_transition_probability` and `check_sum_of_transition_array`. 
+
+# Testing processes
+
+While it is not always necessary, we can conduct unit tests for a process. Here we show an example of testing some processes in an analysis file, `05a_deterministic_analysis.R`. In the analysis file, we compute an ICER table `df_cea_det`, one-way sensitivity analysis `owsa_nmb`, and two-way sensitivity analysis `twsa_nmb`. We can check whether we have the expected output in the table generated from the process. The testing file is named as `test_05_deterministic_analysis.R` and is stored in the `tests` folder. 
+
+Here are the example tests for the results of one-way sensitivity analysis. We test the number of sample, the parameters included, the range of parameters, the strategy names, and the expected type of output data. 
+
+```{r}
+library(dampack) # the package required for calculating CEA outcomes. 
+
+# generate input parameters
+l_params_all <- load_all_params()
+v_names_str <- l_params_all$v_names_str
+n_str <- length(v_names_str)
+l_params_basecase <- update_param_list(l_params_all, v_calib_post_map) 
+
+test_that("check one-way sensitivity output", {
+  # generate input parameters in owsa_det()
+  parms <- c("c_Trt", "p_HS1", "u_S1", "u_Trt")
+  ranges <- list("c_Trt" = c(6000, 13000),
+                 "p_HS1" = c(0.01, 0.50),
+                 "u_S1"  = c(0.75, 0.95),
+                 "u_Trt" = c(0.75, 0.95))
+  nsamps <- 100
+  n_wtp <- 150000
+  
+  # generate one-way sensitivity analysis results
+  owsa_nmb <- owsa_det(parms = parms, # parameter names
+                       ranges = ranges,
+                       nsamps = nsamps, # number of values  
+                       FUN = calculate_ce_out, # Function to compute outputs 
+                       params_basecase = l_params_basecase, # List with base-case parameters
+                       outcome = "NMB",      # Output to do the OWSA on
+                       strategies = v_names_str, # Names of strategies
+                       n_wtp = n_wtp       # Extra argument to pass to FUN
+  )
+  
+  # check # of rows of owsa_nmb is the same as the expected number of total samples
+  expect_equal(nrow(owsa_nmb), length(parms) * length(v_names_str) * nsamps)
+  
+  # check whether the output has all the parameters specified
+  expect_true(all(unique(as.character(owsa_nmb$parameter)) %in% parms))
+  expect_equal(length(unique(as.character(owsa_nmb$parameter))), 4)
+  
+  # check whether the ranges of the output parameters are the same as the range specified
+  param_range <- owsa_nmb %>% 
+    select(parameter, param_val) %>% 
+    group_by(parameter) %>% 
+    summarize(range_min = min(param_val, na.rm = T), 
+              range_max = max(param_val, na.rm = T)) %>%
+    ungroup() %>% 
+    mutate(parameter = as.character(parameter))
+  
+  range_df <- do.call(rbind, ranges)
+  colnames(range_df) <- c("min", "max")
+  range_df <- as.data.frame(range_df)
+  range_df <- range_df[match(rownames(range_df), param_range$parameter), ]
+  
+  expect_true(all(range_df$max == param_range$range_max))
+  expect_true(all(range_df$min == param_range$range_min))
+  
+  # check owsa_nmb strategies
+  stgy_set <- unique(as.character(owsa_nmb$strategy))
+  expect_true(all(stgy_set %in% v_names_str))
+  
+  # check outcome_val
+  expect_true(all(is.numeric(owsa_nmb$outcome_val)))
+  expect_false(any(is.na(owsa_nmb$outcome_val)))
+})
+```
+
+# Run tests
+
+There are multiple ways to run test files with `testthat` in R. 
+
+## Run each file directly
+
+In this case, the library `testthat` should be attached before running a test file. If all tests in the file pass (that is all expectations are met), no error messages are raised in the console. However, sometimes the developer might loss count of the number of tests or loss track of the tests. This way is not informative in informing how many tests passed, and where the error occurs if tests failed. 
+
+## Run tests files at once for an R project / package
+
+For an R package, the developer can run all the test files using shortcut `Ctrl/Cmd+Shift+T` or type R command `testthat::test_dir("path/to/the/tests/folder")` in the console. The shortcut does not work for an R project. RStudio will then provide a summary of passed or failed tests. 
+
+![](../vignettes/test_summary.png){width=500px}
+
+We could see tests are grouped by context, and all our 39 tests passed. 
+
+# References {-}

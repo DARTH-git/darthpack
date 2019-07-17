@@ -54,6 +54,7 @@ Suggests:
     knitr,
     rmarkdown,
     dampack,
+    ggplot2, 
     testthat
 VignetteBuilder: 
     knitr

@@ -7,17 +7,16 @@ library(darthpack)
 l_params_all <- load_all_params()
 
 #### Unit tests start ####
-test_that("invalid number of cycles", {
+test_that("invalid inputs", {
   l_params_all$n_t <- 90
   
-  expect_error(decision_model(l_params_all, verbose = F), 
+  expect_error(decision_model(l_params_all), 
                "Not all the age in the age range have a corresponding mortality rate")
-})
-
-test_that("invalid initial states", {
+  
+  l_params_all$n_t <- 75
   l_params_all$v_s_init <- c(H = -1, S1 = 0, S2 = 0, D = 0)
   
-  expect_error(decision_model(l_params_all, verbose = F), 
+  expect_error(decision_model(l_params_all), 
                "vector of initial states \\(v_s_init\\) is not valid")
 })
 
@@ -97,6 +96,4 @@ test_that("correct outputs", {
                c(l_params_all$n_t + 1, l_params_all$n_states))
   expect_true(all(round(rowSums(output[[2]]) * 100) / 100 == 1))
   expect_true(all(output[[2]] >= 0))
-  
-  output <- decision_model(l_params_all, err_stop = T, verbose = F)
 })
