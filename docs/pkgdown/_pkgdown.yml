@@ -9,6 +9,7 @@ reference:
   contents:
   - '`decision_model`'
   - '`check_transition_array`'
+  - '`check_transition_probability`'
 - title: "Calibration"
   desc: ~
   contents:

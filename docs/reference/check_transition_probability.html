@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Decision Model — decision_model • darthpack</title>
+<title>Check if transition array is valid — check_transition_probability • darthpack</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Decision Model — decision_model" />
+<meta property="og:title" content="Check if transition array is valid — check_transition_probability" />
 
-<meta property="og:description" content="decision_model implements the decision model used." />
+<meta property="og:description" content="check_transition_probability checks if transition probabilities are in \[0, 1\]." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -109,25 +109,25 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Decision Model</h1>
+    <h1>Check if transition array is valid</h1>
     
-    <div class="hidden name"><code>decision_model.Rd</code></div>
+    <div class="hidden name"><code>check_transition_probability.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p><code>decision_model</code> implements the decision model used.</p>
+    <p><code>check_transition_probability</code> checks if transition probabilities are in \[0, 1\].</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>decision_model</span>(<span class='no'>l_params_all</span>, <span class='kw'>err_stop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>check_transition_probability</span>(<span class='no'>a_P</span>, <span class='kw'>err_stop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>l_params_all</th>
-      <td><p>List with all parameters of decision model</p></td>
+      <th>a_P</th>
+      <td><p>A transition probability array.</p></td>
     </tr>
     <tr>
       <th>err_stop</th>
@@ -135,13 +135,15 @@
     </tr>
     <tr>
       <th>verbose</th>
-      <td><p>Logical variable to indicate print out of messages. Default = FALSE</p></td>
+      <td><p>Logical variable to indicate print out of messages. 
+Default = FALSE</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The transition probability array and the cohort trace matrix.</p>
+    <p>This function stops if transition probability array is not valid and shows 
+what are the entries that are not valid</p>
     
 
   </div>

@@ -235,7 +235,7 @@
 <span class="co">#&gt;   </span>
 <span class="co">#&gt;   return(v_r_mort_by_age)</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x7fb43d206438&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x7fe0a1220040&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:darthpack&gt;</span></code></pre></div>
 <p>Another function in the <em>01_model-inputs_functions.R</em> script, is the <code>load_all_parms</code> function. This function, which is actually using the <code>load_mort_data</code> function, loads all parameters for the decision model from multiple sources and creates a list that contains all parameters and their values.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print.function</a></span>(load_all_params)  <span class="co"># print the function</span>
@@ -279,7 +279,7 @@
 <span class="co">#&gt;   l_params_all &lt;- c(l_params_all, </span>
 <span class="co">#&gt;                     df_params_init) # Add initial set of parameters</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x7fb43d24f0c8&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x7fe0a1268158&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:darthpack&gt;</span></code></pre></div>
 <p>The <code>load_all_params</code> function is informed by the arguments <code>file.init</code> and <code>file.mort</code>. The <code>file.init</code> argument is a string with the location and name of the file with initial set of parameters. The initial parameter values for our case-study are stored in the <em>01_init-params.csv</em> file located in the <em>data</em> directory. The <code>load_all_params</code> function read this .csv file into the function environment as a dataframe called, <code>df_params_init</code>.</p>
 <p>The <code>file.mort</code> argument is a string with the location and name of the file with mortality data. As described before, in our case-study this is the <em>01_all-cause-mortality.csv</em> file. Within the <code>load_all_parms</code> function, the <code>load_mort_data</code> function is used to create a vector with mortality rates from the .csv data.</p>
