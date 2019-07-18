@@ -6,16 +6,16 @@
 An R package that showcases the the [Decision Analysis in R for Technologies in Health (DARTH)](darthworkgroup.com) coding framework to construct model-based cost-effectiveness analysis in R.
 
 This package could be used in at least three different ways:
-1. [As a GitHub coding template](#github-coding-template)
-2. [As a regular coding template](#coding-template)
-3. [As an R package](#Rpackage)
+1. [As a GitHub coding template](#markdown-header-use-repository-as-coding-template)
+2. [As a regular coding template](#markdown-header-use-repository-as-coding-template)
+3. [As an R package](#markdown-header-installation-as-a-package)
 
 The main website of the package could be found in: https://darth-git.github.io/darthpack/
 
 # Usage and installation 
 To use or install 'darthpack'
 
-## Use repository as a GitHub coding template {#coding-template}
+## Use repository as a GitHub coding template
 1. Sign in to GitHub. You need to sign in to use this repository as a template.
 2. On the `darthpack` GitHub repository, navigate to the main page of the repository (https://github.com/DARTH-git/darthpack).
 3. Above the file list, click **Use this template**.
@@ -28,10 +28,12 @@ To use or install 'darthpack'
 10. In RStudio, load all the functions from the repository by typing `devtools::load_all(".")`
 11. Run all the decision modeling modules in the analysis folder.
 
-## Use repository as coding template{#coding-template}
+## Use repository as coding template
 
-## Installation as a package{#Rpackage}
+## Installation as a package
 You can install the development version from [GitHub](https://github.com) with:
 
-`# install.packages("devtools")`
-`devtools::install_github("DARTH-git/darthpack")`
+```r
+# install.packages("devtools")
+devtools::install_github("DARTH-git/darthpack")
+```
