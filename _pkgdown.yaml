@@ -4,6 +4,7 @@ reference:
   contents:
   - '`load_mort_data`'  
   - '`load_all_params`'
+  - '`update_param_list`'  
 - title: "02 Decision model"
   desc: ~
   contents:
@@ -39,7 +40,6 @@ reference:
   desc: ~
   contents:
   - '`open_guide`'
-  - '`update_param_list`'  
 - title: "Data"
   desc: ~
   contents:
