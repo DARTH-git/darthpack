@@ -86,20 +86,18 @@ l_params_all <- load_all_params()
 
 # tests
 test_that("invalid inputs", {
-  # assign an invalid value that results in the expected error message. 
+
+  # We use an inaccurate input to raise a specific error message 
+  # "Not all the age in the age range have a corresponding mortality rate" 
   l_params_all$n_t <- 90
-  # expected error message
-  error_message <- "Not all the age in the age range have a corresponding mortality rate"
-  expect_error(decision_model(l_params_all), error_message)
-  
-  # Or we can directly copy the error message to the second argument of the expect_error()
   expect_error(decision_model(l_params_all), 
                "Not all the age in the age range have a corresponding mortality rate")
   
-  # A similar structure for the second error, invalid initial states. 
+  
+  # We use an inaccurate input to raise a specific error message 
+  # "vector of initial states (v_s_init) is not valid" 
   l_params_all$n_t <- 75
   l_params_all$v_s_init <- c(H = -1, S1 = 0, S2 = 0, D = 0)
-  
   expect_error(decision_model(l_params_all), 
                "vector of initial states \\(v_s_init\\) is not valid")
 })
@@ -111,25 +109,39 @@ Here is another group of tests checking on the output of `decision_model`. We us
 
 ```{r}
 test_that("correct outputs", {
-  # generate data
+  ## generate output data from decision_model
   output <- decision_model(l_params_all, err_stop = F, verbose = F)
   
-  # checking overall outputs
-  expect_equal(length(output), 2) 
-  expect_true(all(unlist(lapply(output, is.array)))) 
+  ## checking overall outputs
+  # check the number of elements in the output
+  expect_equal(length(output), 2)
+  # check whether both the outputs are array type
+  expect_true(all(unlist(lapply(output, is.array))))
+  # check whether the output names are identical as expected 
   expect_identical(names(output), c("a_P", "m_M"))
   
-  # checking output 1: transition matrix a_P
+  ## checking output 1: a_P (the transition probability array)
+  # check whether the dimension of a_P is as expected
   expect_equal(dim(output[[1]]), 
                c(l_params_all$n_states, l_params_all$n_states, l_params_all$n_t))
+  # check whether all the transition probability is between 0 and 1
   expect_true(all(output[[1]] >= 0) | all(output[[1]] <= 1))
-  expect_true(all(round(apply(output[[1]], c(1, 3), function(x) sum(x)) * 100) / 100 == 1))
+  # check whether all rows of each transition matrix sum up to 1 (sum_to_1)
+  # because the sums are not numerically equal to 1, we made some adjustment (correct_small_digits)
+  sum_to_1 <- apply(output[[1]], c(1, 3), function(x) sum(x)) 
+  correct_small_digits <- round(sum_to_1 * 100) / 100
+  expect_true(all(correct_small_digits == 1))
   
-  # checking output 2: cohort trace m_M
+  ## checking output 2: m_M (trace matrix)
+  # check whether the dimension of m_M is as expected
   expect_equal(dim(output[[2]]), 
                c(l_params_all$n_t + 1, l_params_all$n_states))
-  expect_true(all(round(rowSums(output[[2]]) * 100) / 100 == 1))
-  expect_true(all(output[[2]] >= 0))
+  # check whether each row in m_M sums up to 1 (sum_to_1)
+  # because the sumes are not numerically equal to 1, we made some adjustment (correct_small_digits)
+  sum_to_1 <- rowSums(output[[2]])
+  correct_small_digits <- round(sum_to_1 * 100) / 100
+  expect_true(all(correct_small_digits == 1))
+  expect_true(all(output[[2]] >= 0 & output[[2]] <= 1))
 })
 ```
 
