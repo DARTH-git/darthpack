@@ -23,11 +23,11 @@ library(dplyr)
 library(testthat)
 ```
 
-In this section, we use `testthat` package to demonstrate unit testing. We first show the test structure used in the `testthat` package. We then demonstrate some unit tests for the functions in `02_simulation_model_functions.R`. 
+In this section, we use `testthat` package to demonstrate unit testing [@testthat]. We first show the test structure used in the `testthat` package. We then demonstrate some unit tests for the functions in `02_simulation_model_functions.R`. 
 
 # Test structure
 
-A test file is a `.R` script and is normally stored separately from the source code. In the developement of the Sick-Sicker project, we create a `tests` folder for all the test files. In practice, a developer often creates a test file corresponding to a file of source code. Because the functionalities in an R script are usually related, the tests in the corresponding test file natually go together. A test file consists of three components from the lowest to the highest levels: <span style="color:blue">expectation</span>, <span style="color:blue">test</span> and <span style="color:blue">context</span>. 
+A test file is a `.R` script and is normally stored separately from the source code. In the developement of the Sick-Sicker project, we create a `tests` folder for all the test files. In practice, a developer often creates a test file corresponding to a file of source code. Because the functionalities in an R script are usually related, the tests in the corresponding test file natually go together. A test file consists of three components from the lowest to the highest levels: <span style="color:blue">expectation</span>, <span style="color:blue">test</span> and <span style="color:blue">context</span> [@testthat]. 
 
 * In general, an expectation is to verify whether or not part of a function or a process works as expected. 
 * A test, consisting of a collection of expections, specifies which function or which part of a function is tested. 
