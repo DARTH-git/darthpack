@@ -6,9 +6,9 @@
 An R package that showcases the the [Decision Analysis in R for Technologies in Health (DARTH)](darthworkgroup.com) coding framework to construct model-based cost-effectiveness analysis in R.
 
 This package could be used in at least three different ways:
-1. [As a GitHub coding template](#markdown-header-use-repository-as-coding-template)
-2. [As a regular coding template](#markdown-header-use-repository-as-coding-template)
-3. [As an R package](#markdown-header-installation-as-a-package)
+1. [As a GitHub coding template](#use-repository-as-coding-template)
+2. [As a regular coding template](#use-repository-as-coding-template)
+3. [As an R package](#installation-as-a-package)
 
 The main website of the package could be found in: https://darth-git.github.io/darthpack/
 
