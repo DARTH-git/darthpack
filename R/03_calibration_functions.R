@@ -39,6 +39,9 @@ calibration_out <- function(v_params_calib, l_params_all){ # User defined
 #' \code{sample.prior} generates a sample of parameter sets from their prior 
 #' distribution.
 #' @param n_samp Number of samples.
+#' @param v_param_names Vector with parameter names.
+#' @param v_ub Vector with lower bounds for each parameter.
+#' @param v_lb Vector with upper bounds for each parameter.
 #' @return 
 #' A matrix with 3 rows and \code{n_samp} rows. Each row corresponds to a 
 #' parameter set sampled from their prior distributions
@@ -49,7 +52,11 @@ calibration_out <- function(v_params_calib, l_params_all){ # User defined
 #' v_ub <- c(p_S1S2 = 0.50, hr_S1 = 4.5, hr_S2 = 15) # upper bound
 #' sample.prior(2)
 #' @export
-sample.prior <- function(n_samp){
+sample.prior <- function(n_samp,
+                         v_param_names = c("p_S1S2", "hr_S1", "hr_S2"),
+                         v_lb = c(p_S1S2 = 0.01, hr_S1 = 1.0, hr_S2 = 5),
+                         v_ub = c(p_S1S2 = 0.50, hr_S1 = 4.5, hr_S2 = 15)){
+  n_param <- length(v_param_names)
   m_lhs_unit   <- lhs::randomLHS(n = n_samp, k = n_param)
   m_param_samp <- matrix(nrow = n_samp, ncol = n_param)
   colnames(m_param_samp) <- v_param_names
@@ -126,6 +133,7 @@ prior <- function(v_params) {
 #' @param v_params Vector (or matrix) of model parameters. 
 #' @return 
 #' A scalar (or vector) with log-likelihood values.
+#' @importFrom stats dnorm dunif quantile qunif rbeta rgamma sd
 #' @examples 
 #' v_param_names  <- c("p_S1S2", "hr_S1", "hr_S2")
 #' n_param        <- length(v_param_names)

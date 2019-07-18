@@ -97,13 +97,11 @@
 
     
     
-<pre><code>#&gt; Warning: package 'dplyr' was built under R version 3.5.2
-#&gt; Warning: package 'testthat' was built under R version 3.5.2</code></pre>
-<p>In this section, we use <code>testthat</code> package to demonstrate unit testing. We first show the test structure used in the <code>testthat</code> package. We then demonstrate some unit tests for the functions in <code>02_simulation_model_functions.R</code> and processes in <code>05a_deterministic_analysis.R</code>.</p>
+<p>In this section, we use <code>testthat</code> package to demonstrate unit testing. We first show the test structure used in the <code>testthat</code> package. We then demonstrate some unit tests for the functions in <code>02_simulation_model_functions.R</code>.</p>
 <div id="test-structure" class="section level1">
 <h1 class="hasAnchor">
 <a href="#test-structure" class="anchor"></a>Test structure</h1>
-<p>A test file is a <code>.R</code> script and is normally stored separately from the source code. In the developement of the Sick-Sicker project, we create a <code>tests</code> folder for all the test files. In practice, a developer often creates a test file corresponding to a file of source code. Because the functionalities in a file of R script are usually related, the tests in the corresponding test file natually go together. A test file consists of three components from the lowest to the highest levels: <em>expectation</em>, <em>test</em> and <em>context</em>.</p>
+<p>A test file is a <code>.R</code> script and is normally stored separately from the source code. In the developement of the Sick-Sicker project, we create a <code>tests</code> folder for all the test files. In practice, a developer often creates a test file corresponding to a file of source code. Because the functionalities in an R script are usually related, the tests in the corresponding test file natually go together. A test file consists of three components from the lowest to the highest levels: <span style="color:blue">expectation</span>, <span style="color:blue">test</span> and <span style="color:blue">context</span>.</p>
 <ul>
 <li>In general, an expectation is to verify whether or not part of a function or a process works as expected.</li>
 <li>A test, consisting of a collection of expections, specifies which function or which part of a function is tested.</li>
@@ -120,22 +118,22 @@
 
 ## 1st test
 test_that("# of times MIB visited the Westworld", {
-  # Generate test data "a". This might be a results from a function or a process. 
+  # Generate test data. This might be a result from a function or a process. 
   a &lt;- number_of_time_from_MIB_memory()
-  # Assign an expected effect / value from the code that is tested. 
+  # An expected effect / value that might generated from the code that is under testing. 
   b1 &lt;- 1000
   expect_that(a, equals(b1)) # this is equivalent to expect_equal() in testthat
   
-  # Assign a different expected effect / value from the code that is tested. 
+  # Use a different expected effect / value from the code that is tested. 
   b2 &lt;- number_of_time_dolores_met_MIB_in_the_park()
   expect_true(a &gt;= b2) 
 })
 
 ## 2nd test
 test_that("# of hosts MIB killed", {
-  # Generate test data "a" 
+  # Generate test data
   a &lt;- record_in_MIB_memory()
-  # Value record from the Westworld management
+  # Get the expected value from a different function 
   b &lt;- record_store_in_Westworld()
   expect_equal(a, b)
 })
@@ -144,11 +142,11 @@ test_that("# of hosts MIB killed", {
 test_that("MIB's real name", {
   ...
 })</code></pre>
-<p>The text in the <code>context</code> function provides the name of the group of tests. By convention, one test file contains one context function, but the file can include more than one context function. Similarly, the text in the <code>test_that</code> function incidates which groups of expectations are being executed. After running the test files in the <code>R</code> console, the console would display whether the group of tests are passed or not. These texts in <code>context</code> and <code>test_that</code> would appear, allowing developers to quickly find where the tests go wrong.</p>
+<p>The text in the <code>context</code> function provides the name of the group of tests. By convention, one test file contains one <code>context()</code>, but the file can include more than one <code>context()</code>. Similarly, the text in the <code>test_that</code> function incidates which groups of expectations are being executed. After running the test files in the <code>R</code> console, the console would display whether the group of tests passed or failed. These texts in <code>context</code> and <code>test_that</code> would appear, allowing developers to quickly locate where the tests go wrong.</p>
 </div>
-<div id="testing-functions" class="section level1">
+<div id="example" class="section level1">
 <h1 class="hasAnchor">
-<a href="#testing-functions" class="anchor"></a>Testing functions</h1>
+<a href="#example" class="anchor"></a>Example</h1>
 <p>The file <code>02_simulation_model_functions.R</code> includes function <code>decision_model</code>, which is the core code of the Markov model in the Sick-Sicker study. We show some example tests for <code>decision_model</code> here. In the following code, we test whether invalid input data evokes certain error message.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">context</span>(<span class="st">"testing 02_simulation_model_functions.R"</span>)
 
@@ -174,7 +172,7 @@ l_params_all &lt;-<span class="st"> </span><span class="kw"><a href="../referenc
   <span class="kw">expect_error</span>(<span class="kw"><a href="../reference/decision_model.html">decision_model</a></span>(l_params_all), 
                <span class="st">"vector of initial states </span><span class="ch">\\</span><span class="st">(v_s_init</span><span class="ch">\\</span><span class="st">) is not valid"</span>)
 })</code></pre></div>
-<p>To test invalid inputs for <code>decision_model</code>, we need to get input data passing into the function by loading the parameters. In the tests, we modify the input parameters that are expected to generate error message. Because we expect an error to occur, we use <code>expect_error</code> to assert whether <code><a href="../reference/decision_model.html">decision_model(l_params_all)</a></code> generates the same error message as expected. Because the expections are met by generating errors, one can run the code without raising any error.</p>
+<p>To test invalid inputs for <code>decision_model</code>, we need to pass the input data to the function by loading the parameters. In the tests, we use invalid value for an input parameter that guarantees an error message. Because we expect an error to occur, we use <code>expect_error</code> to assert whether <code><a href="../reference/decision_model.html">decision_model(l_params_all)</a></code> generates the same error message as expected. Because we create invalid inputs to meet these expectation of error message, running this block of code will not raise any error in the console.</p>
 <p>Here is another group of tests checking on the output of <code>decision_model</code>. We use more <code>expect_</code> functions to check different aspects of the outputs, including the number of components, the naming, the values, etc.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">test_that</span>(<span class="st">"correct outputs"</span>, {
   <span class="co"># generate data</span>
@@ -197,76 +195,7 @@ l_params_all &lt;-<span class="st"> </span><span class="kw"><a href="../referenc
   <span class="kw">expect_true</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/all">all</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Round">round</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/colSums">rowSums</a></span>(output[[<span class="dv">2</span>]]) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>) <span class="op">/</span><span class="st"> </span><span class="dv">100</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span>))
   <span class="kw">expect_true</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/all">all</a></span>(output[[<span class="dv">2</span>]] <span class="op">&gt;=</span><span class="st"> </span><span class="dv">0</span>))
 })</code></pre></div>
-<p>In the test file, we also include tests for the other two functions <code>check_transition_probability</code> and <code>check_sum_of_transition_array</code>.</p>
-</div>
-<div id="testing-processes" class="section level1">
-<h1 class="hasAnchor">
-<a href="#testing-processes" class="anchor"></a>Testing processes</h1>
-<p>While it is not always necessary, we can conduct unit tests for a process. Here we show an example of testing some processes in an analysis file, <code>05a_deterministic_analysis.R</code>. In the analysis file, we compute an ICER table <code>df_cea_det</code>, one-way sensitivity analysis <code>owsa_nmb</code>, and two-way sensitivity analysis <code>twsa_nmb</code>. We can check whether we have the expected output in the table generated from the process. The testing file is named as <code>test_05_deterministic_analysis.R</code> and is stored in the <code>tests</code> folder.</p>
-<p>Here are the example tests for the results of one-way sensitivity analysis. We test the number of sample, the parameters included, the range of parameters, the strategy names, and the expected type of output data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dampack) <span class="co"># the package required for calculating CEA outcomes. </span>
-<span class="co">#&gt; Loading required package: ggplot2</span>
-<span class="co">#&gt; Warning: package 'ggplot2' was built under R version 3.5.2</span>
-
-<span class="co"># generate input parameters</span>
-l_params_all &lt;-<span class="st"> </span><span class="kw"><a href="../reference/load_all_params.html">load_all_params</a></span>()
-v_names_str &lt;-<span class="st"> </span>l_params_all<span class="op">$</span>v_names_str
-n_str &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(v_names_str)
-l_params_basecase &lt;-<span class="st"> </span><span class="kw"><a href="../reference/update_param_list.html">update_param_list</a></span>(l_params_all, v_calib_post_map) 
-
-<span class="kw">test_that</span>(<span class="st">"check one-way sensitivity output"</span>, {
-  <span class="co"># generate input parameters in owsa_det()</span>
-  parms &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"c_Trt"</span>, <span class="st">"p_HS1"</span>, <span class="st">"u_S1"</span>, <span class="st">"u_Trt"</span>)
-  ranges &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="st">"c_Trt"</span> =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">6000</span>, <span class="dv">13000</span>),
-                 <span class="st">"p_HS1"</span> =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.01</span>, <span class="fl">0.50</span>),
-                 <span class="st">"u_S1"</span>  =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.75</span>, <span class="fl">0.95</span>),
-                 <span class="st">"u_Trt"</span> =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.75</span>, <span class="fl">0.95</span>))
-  nsamps &lt;-<span class="st"> </span><span class="dv">100</span>
-  n_wtp &lt;-<span class="st"> </span><span class="dv">150000</span>
-  
-  <span class="co"># generate one-way sensitivity analysis results</span>
-  owsa_nmb &lt;-<span class="st"> </span><span class="kw"><a href="../reference/owsa_det.html">owsa_det</a></span>(<span class="dt">parms =</span> parms, <span class="co"># parameter names</span>
-                       <span class="dt">ranges =</span> ranges,
-                       <span class="dt">nsamps =</span> nsamps, <span class="co"># number of values  </span>
-                       <span class="dt">FUN =</span> calculate_ce_out, <span class="co"># Function to compute outputs </span>
-                       <span class="dt">params_basecase =</span> l_params_basecase, <span class="co"># List with base-case parameters</span>
-                       <span class="dt">outcome =</span> <span class="st">"NMB"</span>,      <span class="co"># Output to do the OWSA on</span>
-                       <span class="dt">strategies =</span> v_names_str, <span class="co"># Names of strategies</span>
-                       <span class="dt">n_wtp =</span> n_wtp       <span class="co"># Extra argument to pass to FUN</span>
-  )
-  
-  <span class="co"># check # of rows of owsa_nmb is the same as the expected number of total samples</span>
-  <span class="kw">expect_equal</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(owsa_nmb), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(parms) <span class="op">*</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(v_names_str) <span class="op">*</span><span class="st"> </span>nsamps)
-  
-  <span class="co"># check whether the output has all the parameters specified</span>
-  <span class="kw">expect_true</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/all">all</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/unique">unique</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/character">as.character</a></span>(owsa_nmb<span class="op">$</span>parameter)) <span class="op">%in%</span><span class="st"> </span>parms))
-  <span class="kw">expect_equal</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/unique">unique</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/character">as.character</a></span>(owsa_nmb<span class="op">$</span>parameter))), <span class="dv">4</span>)
-  
-  <span class="co"># check whether the ranges of the output parameters are the same as the range specified</span>
-  param_range &lt;-<span class="st"> </span>owsa_nmb <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">select</span>(parameter, param_val) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">group_by</span>(parameter) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">range_min =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Extremes">min</a></span>(param_val, <span class="dt">na.rm =</span> T), 
-              <span class="dt">range_max =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Extremes">max</a></span>(param_val, <span class="dt">na.rm =</span> T)) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">parameter =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/character">as.character</a></span>(parameter))
-  
-  range_df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/do.call">do.call</a></span>(rbind, ranges)
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/colnames">colnames</a></span>(range_df) &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"min"</span>, <span class="st">"max"</span>)
-  range_df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">as.data.frame</a></span>(range_df)
-  range_df &lt;-<span class="st"> </span>range_df[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/match">match</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/colnames">rownames</a></span>(range_df), param_range<span class="op">$</span>parameter), ]
-  
-  <span class="kw">expect_true</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/all">all</a></span>(range_df<span class="op">$</span>max <span class="op">==</span><span class="st"> </span>param_range<span class="op">$</span>range_max))
-  <span class="kw">expect_true</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/all">all</a></span>(range_df<span class="op">$</span>min <span class="op">==</span><span class="st"> </span>param_range<span class="op">$</span>range_min))
-  
-  <span class="co"># check owsa_nmb strategies</span>
-  stgy_set &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/unique">unique</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/character">as.character</a></span>(owsa_nmb<span class="op">$</span>strategy))
-  <span class="kw">expect_true</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/all">all</a></span>(stgy_set <span class="op">%in%</span><span class="st"> </span>v_names_str))
-  
-  <span class="co"># check outcome_val</span>
-  <span class="kw">expect_true</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/all">all</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/numeric">is.numeric</a></span>(owsa_nmb<span class="op">$</span>outcome_val)))
-  <span class="kw">expect_false</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/any">any</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(owsa_nmb<span class="op">$</span>outcome_val)))
-})</code></pre></div>
+<p>In the test file, we also include tests for the other two functions <code>check_transition_probability</code> and <code>check_sum_of_transition_array</code>. In addition, we made another testing file <code>test_05a_deterministic_analysis_functions.R</code> for function <code>calculate_ce_out</code>.</p>
 </div>
 <div id="run-tests" class="section level1">
 <h1 class="hasAnchor">
@@ -275,12 +204,12 @@ l_params_basecase &lt;-<span class="st"> </span><span class="kw"><a href="../ref
 <div id="run-each-file-directly" class="section level2">
 <h2 class="hasAnchor">
 <a href="#run-each-file-directly" class="anchor"></a>Run each file directly</h2>
-<p>In this case, the library <code>testthat</code> should be attached before running a test file. If all tests in the file pass (that is all expectations are met), no error messages are raised in the console. However, sometimes the developer might loss count of the number of tests or loss track of the tests. This way is not informative in informing how many tests passed, and where the error occurs if tests failed.</p>
+<p>In this case, the library <code>testthat</code> should be attached before running a test file. If all tests in the file passed (that is, all expectations are met), no error messages are raised in the console. However, sometimes the developer might loss count of the number of tests or loss track of the type of tests. This method is not informative in informing how many tests passed, and where the error occurs if tests failed.</p>
 </div>
 <div id="run-tests-files-at-once-for-an-r-project-package" class="section level2">
 <h2 class="hasAnchor">
 <a href="#run-tests-files-at-once-for-an-r-project-package" class="anchor"></a>Run tests files at once for an R project / package</h2>
-<p>For an R package, the developer can run all the test files using shortcut <code>Ctrl/Cmd+Shift+T</code> or type R command <code><a href="https://www.rdocumentation.org/packages/testthat/topics/test_dir">testthat::test_dir("path/to/the/tests/folder")</a></code> in the console. The shortcut does not work for an R project. RStudio will then provide a summary of passed or failed tests.</p>
+<p>For an R package, the developer can run all the test files using shortcut <code>Ctrl/Cmd+Shift+T</code> or type R command <code><a href="https://www.rdocumentation.org/packages/testthat/topics/test_dir">testthat::test_dir("path/to/the/tests/folder")</a></code> in the console. The shortcut does not work for an R project. RStudio will then provide a summary of passed, failed, and skipped tests.</p>
 <div class="figure">
 <img src="../vignettes/test_summary.png" width="500">
 </div>
@@ -299,8 +228,7 @@ l_params_basecase &lt;-<span class="st"> </span><span class="kw"><a href="../ref
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#test-structure">Test structure</a></li>
-      <li><a href="#testing-functions">Testing functions</a></li>
-      <li><a href="#testing-processes">Testing processes</a></li>
+      <li><a href="#example">Example</a></li>
       <li>
 <a href="#run-tests">Run tests</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#run-each-file-directly">Run each file directly</a></li>

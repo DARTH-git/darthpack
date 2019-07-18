@@ -5,6 +5,9 @@ vignette: >
   %\VignetteIndexEntry{zz-testing}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+bibliography:
+- book.bib
+- packages.bib  
 ---
 
 ```{r, include = FALSE}
@@ -14,7 +17,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r, message = FALSE, echo=FALSE}
+```{r, message=FALSE, echo=FALSE, warning=FALSE}
 library(darthpack)
 library(dplyr)
 library(testthat)
