@@ -20,11 +20,11 @@ library(dplyr)
 library(testthat)
 ```
 
-In this section, we use `testthat` package to demonstrate unit testing. We first show the test structure used in the `testthat` package. We then demonstrate some unit tests for the functions in `02_simulation_model_functions.R` and processes in `05a_deterministic_analysis.R`. 
+In this section, we use `testthat` package to demonstrate unit testing. We first show the test structure used in the `testthat` package. We then demonstrate some unit tests for the functions in `02_simulation_model_functions.R`. 
 
 # Test structure
 
-A test file is a `.R` script and is normally stored separately from the source code. In the developement of the Sick-Sicker project, we create a `tests` folder for all the test files. In practice, a developer often creates a test file corresponding to a file of source code. Because the functionalities in an R script are usually related, the tests in the corresponding test file natually go together. A test file consists of three components from the lowest to the highest levels: *expectation*, *test* and *context*. 
+A test file is a `.R` script and is normally stored separately from the source code. In the developement of the Sick-Sicker project, we create a `tests` folder for all the test files. In practice, a developer often creates a test file corresponding to a file of source code. Because the functionalities in an R script are usually related, the tests in the corresponding test file natually go together. A test file consists of three components from the lowest to the highest levels: <span style="color:blue">expectation</span>, <span style="color:blue">test</span> and <span style="color:blue">context</span>. 
 
 * In general, an expectation is to verify whether or not part of a function or a process works as expected. 
 * A test, consisting of a collection of expections, specifies which function or which part of a function is tested. 
@@ -71,7 +71,7 @@ test_that("MIB's real name", {
 
 The text in the `context` function provides the name of the group of tests. By convention, one test file contains one `context()`, but the file can include more than one `context()`. Similarly, the text in the `test_that` function incidates which groups of expectations are being executed. After running the test files in the `R` console, the console would display whether the group of tests passed or failed. These texts in `context` and `test_that` would appear, allowing developers to quickly locate where the tests go wrong. 
 
-# Testing functions
+# Example
 
 The file `02_simulation_model_functions.R` includes function `decision_model`, which is the core code of the Markov model in the Sick-Sicker study. We show some example tests for `decision_model` here. In the following code, we test whether invalid input data evokes certain error message. 
 
@@ -130,77 +130,8 @@ test_that("correct outputs", {
 })
 ```
 
-In the test file, we also include tests for the other two functions `check_transition_probability` and `check_sum_of_transition_array`. 
+In the test file, we also include tests for the other two functions `check_transition_probability` and `check_sum_of_transition_array`. In addition, we made another testing file `test_05a_deterministic_analysis_functions.R` for function `calculate_ce_out`. 
 
-# Testing processes
-
-While it is not always necessary, we can conduct unit tests for a process. Here we show an example of testing some processes in an analysis file, `05a_deterministic_analysis.R`. In the analysis file, we compute an ICER table `df_cea_det`, one-way sensitivity analysis `owsa_nmb`, and two-way sensitivity analysis `twsa_nmb`. We can check whether we have the expected output in the table generated from the process. The testing file is named as `test_05_deterministic_analysis.R` and is stored in the `tests` folder. 
-
-Here are the example tests for the results of one-way sensitivity analysis. We test the number of sample, the parameters included, the range of parameters, the strategy names, and the expected type of output data. 
-
-```{r}
-library(dampack) # the package required for calculating CEA outcomes. 
-
-# generate input parameters
-l_params_all <- load_all_params()
-v_names_str <- l_params_all$v_names_str
-n_str <- length(v_names_str)
-l_params_basecase <- update_param_list(l_params_all, v_calib_post_map) 
-
-test_that("check one-way sensitivity output", {
-  # generate input parameters in owsa_det()
-  parms <- c("c_Trt", "p_HS1", "u_S1", "u_Trt")
-  ranges <- list("c_Trt" = c(6000, 13000),
-                 "p_HS1" = c(0.01, 0.50),
-                 "u_S1"  = c(0.75, 0.95),
-                 "u_Trt" = c(0.75, 0.95))
-  nsamps <- 100
-  n_wtp <- 150000
-  
-  # generate one-way sensitivity analysis results
-  owsa_nmb <- owsa_det(parms = parms, # parameter names
-                       ranges = ranges,
-                       nsamps = nsamps, # number of values  
-                       FUN = calculate_ce_out, # Function to compute outputs 
-                       params_basecase = l_params_basecase, # List with base-case parameters
-                       outcome = "NMB",      # Output to do the OWSA on
-                       strategies = v_names_str, # Names of strategies
-                       n_wtp = n_wtp       # Extra argument to pass to FUN
-  )
-  
-  # check # of rows of owsa_nmb is the same as the expected number of total samples
-  expect_equal(nrow(owsa_nmb), length(parms) * length(v_names_str) * nsamps)
-  
-  # check whether the output has all the parameters specified
-  expect_true(all(unique(as.character(owsa_nmb$parameter)) %in% parms))
-  expect_equal(length(unique(as.character(owsa_nmb$parameter))), 4)
-  
-  # check whether the ranges of the output parameters are the same as the range specified
-  param_range <- owsa_nmb %>% 
-    select(parameter, param_val) %>% 
-    group_by(parameter) %>% 
-    summarize(range_min = min(param_val, na.rm = T), 
-              range_max = max(param_val, na.rm = T)) %>%
-    ungroup() %>% 
-    mutate(parameter = as.character(parameter))
-  
-  range_df <- do.call(rbind, ranges)
-  colnames(range_df) <- c("min", "max")
-  range_df <- as.data.frame(range_df)
-  range_df <- range_df[match(rownames(range_df), param_range$parameter), ]
-  
-  expect_true(all(range_df$max == param_range$range_max))
-  expect_true(all(range_df$min == param_range$range_min))
-  
-  # check owsa_nmb strategies
-  stgy_set <- unique(as.character(owsa_nmb$strategy))
-  expect_true(all(stgy_set %in% v_names_str))
-  
-  # check outcome_val
-  expect_true(all(is.numeric(owsa_nmb$outcome_val)))
-  expect_false(any(is.na(owsa_nmb$outcome_val)))
-})
-```
 
 # Run tests
 
