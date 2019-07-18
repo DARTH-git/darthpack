@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup, message = FALSE, echo=FALSE}
+```{r, message = FALSE, echo=FALSE}
 library(darthpack)
 library(dplyr)
 library(testthat)
@@ -24,7 +24,7 @@ In this section, we use `testthat` package to demonstrate unit testing. We first
 
 # Test structure
 
-A test file is a `.R` script and is normally stored separately from the source code. In the developement of the Sick-Sicker project, we create a `tests` folder for all the test files. In practice, a developer often creates a test file corresponding to a file of source code. Because the functionalities in a file of R script are usually related, the tests in the corresponding test file natually go together. A test file consists of three components from the lowest to the highest levels: *expectation*, *test* and *context*. 
+A test file is a `.R` script and is normally stored separately from the source code. In the developement of the Sick-Sicker project, we create a `tests` folder for all the test files. In practice, a developer often creates a test file corresponding to a file of source code. Because the functionalities in an R script are usually related, the tests in the corresponding test file natually go together. A test file consists of three components from the lowest to the highest levels: *expectation*, *test* and *context*. 
 
 * In general, an expectation is to verify whether or not part of a function or a process works as expected. 
 * A test, consisting of a collection of expections, specifies which function or which part of a function is tested. 
@@ -43,22 +43,22 @@ context("testing whether the man in black (MIB) is a robot")
 
 ## 1st test
 test_that("# of times MIB visited the Westworld", {
-  # Generate test data "a". This might be a results from a function or a process. 
+  # Generate test data. This might be a result from a function or a process. 
   a <- number_of_time_from_MIB_memory()
-  # Assign an expected effect / value from the code that is tested. 
+  # An expected effect / value that might generated from the code that is under testing. 
   b1 <- 1000
   expect_that(a, equals(b1)) # this is equivalent to expect_equal() in testthat
   
-  # Assign a different expected effect / value from the code that is tested. 
+  # Use a different expected effect / value from the code that is tested. 
   b2 <- number_of_time_dolores_met_MIB_in_the_park()
   expect_true(a >= b2) 
 })
 
 ## 2nd test
 test_that("# of hosts MIB killed", {
-  # Generate test data "a" 
+  # Generate test data
   a <- record_in_MIB_memory()
-  # Value record from the Westworld management
+  # Get the expected value from a different function 
   b <- record_store_in_Westworld()
   expect_equal(a, b)
 })
@@ -69,7 +69,7 @@ test_that("MIB's real name", {
 })
 ```
 
-The text in the `context` function provides the name of the group of tests. By convention, one test file contains one context function, but the file can include more than one context function. Similarly, the text in the `test_that` function incidates which groups of expectations are being executed. After running the test files in the `R` console, the console would display whether the group of tests are passed or not. These texts in `context` and `test_that` would appear, allowing developers to quickly find where the tests go wrong. 
+The text in the `context` function provides the name of the group of tests. By convention, one test file contains one `context()`, but the file can include more than one `context()`. Similarly, the text in the `test_that` function incidates which groups of expectations are being executed. After running the test files in the `R` console, the console would display whether the group of tests passed or failed. These texts in `context` and `test_that` would appear, allowing developers to quickly locate where the tests go wrong. 
 
 # Testing functions
 
@@ -102,7 +102,7 @@ test_that("invalid inputs", {
 })
 ```
 
-To test invalid inputs for `decision_model`, we need to get input data passing into the function by loading the parameters. In the tests, we modify the input parameters that are expected to generate error message. Because we expect an error to occur, we use `expect_error` to assert whether `decision_model(l_params_all)` generates the same error message as expected. Because the expections are met by generating errors, one can run the code without raising any error. 
+To test invalid inputs for `decision_model`, we need to pass the input data to the function by loading the parameters. In the tests, we use invalid value for an input parameter that guarantees an error message. Because we expect an error to occur, we use `expect_error` to assert whether `decision_model(l_params_all)` generates the same error message as expected. Because we create invalid inputs to meet these expectation of error message, running this block of code will not raise any error in the console. 
 
 Here is another group of tests checking on the output of `decision_model`. We use more `expect_` functions to check different aspects of the outputs, including the number of components, the naming, the values, etc. 
 
@@ -208,11 +208,11 @@ There are multiple ways to run test files with `testthat` in R.
 
 ## Run each file directly
 
-In this case, the library `testthat` should be attached before running a test file. If all tests in the file pass (that is all expectations are met), no error messages are raised in the console. However, sometimes the developer might loss count of the number of tests or loss track of the tests. This way is not informative in informing how many tests passed, and where the error occurs if tests failed. 
+In this case, the library `testthat` should be attached before running a test file. If all tests in the file passed (that is, all expectations are met), no error messages are raised in the console. However, sometimes the developer might loss count of the number of tests or loss track of the type of tests. This method is not informative in informing how many tests passed, and where the error occurs if tests failed. 
 
 ## Run tests files at once for an R project / package
 
-For an R package, the developer can run all the test files using shortcut `Ctrl/Cmd+Shift+T` or type R command `testthat::test_dir("path/to/the/tests/folder")` in the console. The shortcut does not work for an R project. RStudio will then provide a summary of passed or failed tests. 
+For an R package, the developer can run all the test files using shortcut `Ctrl/Cmd+Shift+T` or type R command `testthat::test_dir("path/to/the/tests/folder")` in the console. The shortcut does not work for an R project. RStudio will then provide a summary of passed, failed, and skipped tests. 
 
 ![](../vignettes/test_summary.png){width=500px}
 
