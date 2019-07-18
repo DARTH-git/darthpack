@@ -36,3 +36,6 @@ vignettes/*.pdf
 rsconnect/
 .Rproj.user
 inst/doc
+
+# Developer history
+dev_history.R

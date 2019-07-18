@@ -1,12 +1,13 @@
 ### Closely following: https://rtask.thinkr.fr/blog/rmd-first-when-development-starts-with-documentation/
 
-# Ignore this file for the git syncing
+## Ignore this file for the build and git syncing
 usethis::use_build_ignore("dev_history.R")
+usethis::use_git_ignore("dev_history.R")
 
-# Add code fo conduct
+## Add code fo conduct
 usethis::use_code_of_conduct()
 
-# Add a vignette
+## Add a vignette
 usethis::use_vignette("my_package")
 usethis::use_vignette("aa-introduction")
 usethis::use_vignette("bb-model")
@@ -31,7 +32,18 @@ usethis::use_test("test_filters")
 # Document functions and dependencies
 attachment::att_to_description()
 
-# Check the package
+## Add the "Non-standard files/directories found at top level" to the .Rbuildignore file:
+# ^dev_history\.R$
+# ^CODE_OF_CONDUCT\.md$
+# ^docs$
+# ^_pkgdown\.yaml$
+# ^analysis$
+# ^dev$
+# ^figs$
+# ^output$
+# ^tables$
+
+## Check the package
 devtools::check()
 
 ## Install chameleon package
@@ -41,12 +53,11 @@ devtools::check()
 template <- system.file("rstudio/templates/project/resources", package = "bookdown")
 chameleon::create_book(path = "inst/report/", clean = TRUE,
             template = template)
-chameleon::open_guide_function(path = "inst/report/")
-# Create documentation of package on line
-chameleon::build_pkgdown()
+# chameleon::open_guide_function(path = "inst/report/")
+# # Create documentation of package on line
+# chameleon::build_pkgdown()
 
-# Open `darthpack` pkgdown
-library(chameleon)
+## Open `darthpack` pkgdown
 darthpack::open_guide()
 
 ## Build documentation to generate a website for the package

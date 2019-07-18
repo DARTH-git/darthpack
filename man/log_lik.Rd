@@ -13,7 +13,7 @@ log_lik(v_params)
 A scalar (or vector) with log-likelihood values.
 }
 \description{
-\code{log_lik} computes a log-likelihood value for one (or multiple) 
+\code{log_lik} computes a log-likelihood value for one (or multiple)
 parameter set(s).
 }
 \examples{

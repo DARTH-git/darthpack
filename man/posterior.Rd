@@ -13,7 +13,7 @@ posterior(v_params)
 A scalar (or vector) with posterior values.
 }
 \description{
-\code{posterior} computes a posterior value for one (or multiple) parameter 
+\code{posterior} computes a posterior value for one (or multiple) parameter
 set(s).
 }
 \examples{

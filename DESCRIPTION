@@ -39,8 +39,13 @@ Authors@R:
              email = "eenns@umn.edu",
              comment = c(ORCID = "0000-0003-0693-7358")))
 Maintainer: Fernando Alarid-Escudero <fernando.alarid@cide.edu>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: A collection of functions that implements the Decision Analysis in R for 
+  Technologies in Health (DARTH) coding framework to construct model-based 
+  cost-effectiveness analysis in R. This repository is part of the following 
+  working paper submitted for publication: Alarid-Escudero F, Krijkamp E, 
+  Pechlivanoglou P, Jalal H, Kao SY, Yang A, Enns EA. "A need for change! A 
+  coding framework for improving transparency in decision modeling". (2019). 
+  Under revision.
 License: file LICENSE
 Depends:
     R (>= 3.5.0)
@@ -62,3 +67,6 @@ VignetteBuilder:
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
+Roxygen: list(markdown = TRUE)
+URL: https://github.com/DARTH-git/darthpack
+BugReports: https://github.com/DARTH-git/darthpack/issues

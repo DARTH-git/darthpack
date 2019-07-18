@@ -13,7 +13,7 @@ log_prior(v_params)
 A scalar (or vector) with log-prior values.
 }
 \description{
-\code{log_prior} computes a log-prior value for one (or multiple) parameter 
+\code{log_prior} computes a log-prior value for one (or multiple) parameter
 set(s) based on their prior distributions.
 }
 \examples{

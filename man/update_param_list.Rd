@@ -15,6 +15,6 @@ update_param_list(l_params_all, params_updated)
 A list with all parameters updated.
 }
 \description{
-\code{update_param_list} is used to update list of all parameters with new 
+\code{update_param_list} is used to update list of all parameters with new
 values for specific parameters.
 }

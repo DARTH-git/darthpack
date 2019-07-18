@@ -13,8 +13,8 @@ log_post(v_params)
 A scalar (or vector) with log-posterior values.
 }
 \description{
-\code{log_post} Computes a log-posterior value for one (or multiple) 
-parameter set(s) based on the simulation model, likelihood functions and 
+\code{log_post} Computes a log-posterior value for one (or multiple)
+parameter set(s) based on the simulation model, likelihood functions and
 prior distributions.
 }
 \examples{

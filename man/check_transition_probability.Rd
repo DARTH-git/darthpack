@@ -11,13 +11,13 @@ check_transition_probability(a_P, err_stop = FALSE, verbose = FALSE)
 
 \item{err_stop}{Logical variable to stop model run if set up as TRUE. Default = FALSE.}
 
-\item{verbose}{Logical variable to indicate print out of messages. 
+\item{verbose}{Logical variable to indicate print out of messages.
 Default = FALSE}
 }
 \value{
-This function stops if transition probability array is not valid and shows 
+This function stops if transition probability array is not valid and shows
 what are the entries that are not valid
 }
 \description{
-\code{check_transition_probability} checks if transition probabilities are in \[0, 1\].
+\code{check_transition_probability} checks if transition probabilities are in [0, 1].
 }

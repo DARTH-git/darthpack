@@ -16,13 +16,13 @@ check_sum_of_transition_array(a_P, n_states, n_t, err_stop = FALSE,
 
 \item{err_stop}{Logical variable to stop model run if set up as TRUE. Default = FALSE.}
 
-\item{verbose}{Logical variable to indicate print out of messages. 
+\item{verbose}{Logical variable to indicate print out of messages.
 Default = FALSE}
 }
 \value{
 The transition probability array and the cohort trace matrix.
 }
 \description{
-\code{check_sum_of_transition_array} checks if each of the rows of the 
+\code{check_sum_of_transition_array} checks if each of the rows of the
 transition matrices sum to one.
 }

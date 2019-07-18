@@ -18,11 +18,11 @@ sample.prior(n_samp, v_param_names = c("p_S1S2", "hr_S1", "hr_S2"),
 \item{v_ub}{Vector with lower bounds for each parameter.}
 }
 \value{
-A matrix with 3 rows and \code{n_samp} rows. Each row corresponds to a 
+A matrix with 3 rows and \code{n_samp} rows. Each row corresponds to a
 parameter set sampled from their prior distributions
 }
 \description{
-\code{sample.prior} generates a sample of parameter sets from their prior 
+\code{sample.prior} generates a sample of parameter sets from their prior
 distribution.
 }
 \examples{

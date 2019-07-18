@@ -15,7 +15,7 @@ calculate_ce_out(l_params_all = load_all_params(), n_wtp = 1e+05)
 A data frame with discounted costs, effectiveness and NMB for each strategy.
 }
 \description{
-\code{calculate_ce_out} calculates costs and effects for a given vector of 
-parameters using a decision model. This function needs to be modifed by the 
+\code{calculate_ce_out} calculates costs and effects for a given vector of
+parameters using a decision model. This function needs to be modifed by the
 users to fit their needs
 }

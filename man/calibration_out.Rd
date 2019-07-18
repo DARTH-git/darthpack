@@ -12,10 +12,10 @@ calibration_out(v_params_calib, l_params_all)
 \item{l_params_all}{List with all parameters of the decision model.}
 }
 \value{
-A list with Survival (Surv), Prevalence of Sick and Sicker (Prev), and 
+A list with Survival (Surv), Prevalence of Sick and Sicker (Prev), and
 proportion of Sicker (PropSicker) out of all sick (Sick+Sicker) individuals.
 }
 \description{
-\code{calibration_out} computes model outputs to be used for calibration 
+\code{calibration_out} computes model outputs to be used for calibration
 routines.
 }

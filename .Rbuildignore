@@ -3,3 +3,8 @@
 ^dev_history\.R$
 ^CODE_OF_CONDUCT\.md$
 ^docs$
+^_pkgdown\.yaml$
+^analysis$
+^dev$
+^output$
+^tables$

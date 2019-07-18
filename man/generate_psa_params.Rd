@@ -12,12 +12,12 @@ generate_psa_params(n_sim = 1000, seed = 20190220)
 \item{seed}{Seed for reproducibility of Monte Carlo sampling.}
 }
 \value{
-A data frame with \code{n_sim} rows and 15 columns of parameters for PSA. 
-Each row is a parameter set sampled from distributions that characterize 
+A data frame with \code{n_sim} rows and 15 columns of parameters for PSA.
+Each row is a parameter set sampled from distributions that characterize
 their uncertainty
 }
 \description{
-\code{generate_psa_params} generates PSA input dataset by sampling decision 
+\code{generate_psa_params} generates PSA input dataset by sampling decision
 model parameters from their distributions. The sample of the calibrated
 parameters is a draw from their posterior distribution obtained with the
 IMIS algorithm.

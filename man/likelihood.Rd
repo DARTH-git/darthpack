@@ -13,7 +13,7 @@ likelihood(v_params)
 A scalar (or vector) with likelihood values.
 }
 \description{
-\code{likelihood} computes a likelihood value for one (or multiple) 
+\code{likelihood} computes a likelihood value for one (or multiple)
 parameter set(s).
 }
 \examples{
