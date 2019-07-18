@@ -156,12 +156,12 @@ There are multiple ways to run test files with `testthat` in R.
 
 In this case, the library `testthat` should be attached before running a test file. If all tests in the file passed (that is, all expectations are met), no error messages are raised in the console. However, sometimes the developer might loss count of the number of tests or loss track of the type of tests. This method is not informative in informing how many tests passed, and where the error occurs if tests failed. 
 
-## Run tests files at once for an R project / package
+## Run test files at once for an R project / package
 
 For an R package, the developer can run all the test files using shortcut `Ctrl/Cmd+Shift+T` or type R command `testthat::test_dir("path/to/the/tests/folder")` in the console. The shortcut does not work for an R project. RStudio will then provide a summary of passed, failed, and skipped tests. 
 
 ![](../vignettes/test_summary.png){width=500px}
 
-We could see tests are grouped by context, and all our 39 tests passed. 
+We could see tests are grouped by context, and all our 27 tests passed. 
 
 # References {-}
