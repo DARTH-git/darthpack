@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Analysis | darthpack: An R package with DARTH’s decision modeling coding framework</title>
+  <meta name="description" content="This is a minimal description of a report of a model-based cost-effectiveness analysis of a health technology example of using the bookdown package to write a book." />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Analysis | darthpack: An R package with DARTH’s decision modeling coding framework" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal description of a report of a model-based cost-effectiveness analysis of a health technology example of using the bookdown package to write a book." />
+  <meta name="github-repo" content="DARTH-git/darthpack/report" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Analysis | darthpack: An R package with DARTH’s decision modeling coding framework" />
+  
+  <meta name="twitter:description" content="This is a minimal description of a report of a model-based cost-effectiveness analysis of a health technology example of using the bookdown package to write a book." />
+  
+
+<meta name="author" content="DARTH" />
+
+
+<meta name="date" content="2019-07-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="validation.html">
+<link rel="next" href="references.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">darthpack</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The Sick-Sicker model</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#set-up"><i class="fa fa-check"></i>Set-up</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="inputs.html"><a href="inputs.html"><i class="fa fa-check"></i><b>1</b> Define model inputs</a></li>
+<li class="chapter" data-level="2" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i><b>2</b> Decision model</a></li>
+<li class="chapter" data-level="3" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>3</b> Model calibration</a></li>
+<li class="chapter" data-level="4" data-path="validation.html"><a href="validation.html"><i class="fa fa-check"></i><b>4</b> Validation</a></li>
+<li class="chapter" data-level="5" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>5</b> Analysis</a><ul>
+<li class="chapter" data-level="5.1" data-path="analysis.html"><a href="analysis.html#a-deterministic-analysis-05a-deterministic-analysis"><i class="fa fa-check"></i><b>5.1</b> 05a Deterministic analysis {#05a-Deterministic-analysis}</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">darthpack: An R package with DARTH’s decision modeling coding framework</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="analysis" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Analysis</h1>
+<p>The analysis component is where the elements in components 1-4 are combined to answer the question(s) of interest given current information and to quantify the value of potential further research. Our framework separates the analysis in three subcomponents: <em>05a Deterministic analysis</em>, <em>05b Uncertainty analysis</em> and <em>05c Value of information analysis</em>. For the Sick-Sicker case-study, we use all three subcomponents to conduct the CEA and to quantify the uncertainty of our decision. For procedures in the CEA, we rely on the <code>R</code> package <code>dampack</code>, which is available here: <a href="https://github.com/DARTH-git/dampack" class="uri">https://github.com/DARTH-git/dampack</a>. Instructions for installing <code>dampack</code> are described in Appendix 0 provided in the <em>app0_packages_setup.R</em> script of the <em>analysis</em> folder.</p>
+<div id="a-deterministic-analysis-05a-deterministic-analysis" class="section level2">
+<h2><span class="header-section-number">5.1</span> 05a Deterministic analysis {#05a-Deterministic-analysis}</h2>
+<p>In this subcomponent, we perform a deterministic CEA, followed by some deterministic sensitivity analysis, including one-way, two-way and tornado sensitivity analyses. The function script of this subcomponent, <em>05a_deterministic_analysis_function.R</em>, contains the function <code>calculate_ce_out</code>. This function calculates costs and effects for a given vector of parameters using a simulation model. We need to run our simulation model using the calibrated parameter values, but the list we created in component 01 <a href="inputs.html#inputs">1</a> still contain the placeholder values for the calibrated parameters. This means we need to update these values by the calibrated values stored in the vector <code>v_calib_post_map</code>. The function <code>update_param_list</code> updates the list of parameters with new values for some specific parameters.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print.function</span>(update_param_list)</code></pre></div>
+<pre><code>## function(l_params_all, params_updated){
+## 
+##   if (typeof(params_updated)!=&quot;list&quot;){
+##     params_updated &lt;- split(unname(params_updated),names(params_updated)) #converte the named vector to a list
+##   }
+##   l_params_all &lt;- modifyList(l_params_all, params_updated) #update the values
+##   return(l_params_all)
+## }
+## &lt;bytecode: 0x7fa64e4dd350&gt;
+## &lt;environment: namespace:darthpack&gt;</code></pre>
+<p>The first argument of the function, called <code>l_params_all</code>, is a list with all the parameters of decision model. The second argument, <code>params_updated</code>, is an object with parameters for which values need to be updated. The function returns the list <code>l_params_all</code> with updated values.</p>
+<p>In the <em>05a_deterministic_analysis.R</em> script we execute the <code>update_param_list</code> function for our case-study, resulting in the list <code>l_params_basecase</code> where the placeholder values for <code>p_S1S2</code>, <code>hr_S1</code> and <code>hr_S2</code> are replaced by the calibration estimates.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l_params_basecase &lt;-<span class="st"> </span><span class="kw">update_param_list</span>(l_params_all, v_calib_post_map) </code></pre></div>
+<p>We use this new list as an argument in the <code>calculate_ce_out</code> function. In addition, we specify the willingness-to-pay (WTP) threshold value using the <code>n_wtp</code> argument of this function. This WTP value is used to compute a net monetary benefit (NMB) value. If the user does not specify the WTP, a default value of $100,000/QALY will be used by the function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_out_ce &lt;-<span class="st"> </span><span class="kw">calculate_ce_out</span>(<span class="dt">l_params_all =</span> l_params_basecase, 
+                                <span class="dt">n_wtp =</span> <span class="dv">150000</span>)
+<span class="kw">print.function</span>(calculate_ce_out) <span class="co"># print the function</span></code></pre></div>
+<pre><code>## function(l_params_all = load_all_params(), 
+##                              n_wtp = 100000){ # User defined
+##   with(as.list(l_params_all), {
+##     ## Create discounting vectors
+##     v_dwc &lt;- 1 / ((1 + d_e) ^ (0:(n_t))) # vector with discount weights for costs
+##     v_dwe &lt;- 1 / ((1 + d_c) ^ (0:(n_t))) # vector with discount weights for QALYs
+##     
+##     ## Run STM model at a parameter set for each intervention
+##     l_model_out_no_trt &lt;- decision_model(l_params_all = l_params_all)
+##     l_model_out_trt    &lt;- decision_model(l_params_all = l_params_all)
+##     
+##     ## Cohort trace by treatment
+##     m_M_no_trt &lt;- l_model_out_no_trt$m_M # No treatment
+##     m_M_trt    &lt;- l_model_out_trt$m_M    # Treatment
+##     
+##     ## Vectors with costs and utilities by treatment
+##     v_u_no_trt &lt;- c(u_H, u_S1, u_S2, u_D)
+##     v_u_trt    &lt;- c(u_H, u_Trt, u_S2, u_D)
+##     
+##     v_c_no_trt &lt;- c(c_H, c_S1, c_S2, c_D)
+##     v_c_trt    &lt;- c(c_H, c_S1 + c_Trt, c_S2 + c_Trt, c_D)
+##     
+##     ## Mean Costs and QALYs for Treatment and NO Treatment
+##     v_tu_no_trt &lt;- m_M_no_trt %*% v_u_no_trt
+##     v_tu_trt    &lt;- m_M_trt %*% v_u_trt
+##     
+##     v_tc_no_trt &lt;- m_M_no_trt %*% v_c_no_trt
+##     v_tc_trt    &lt;- m_M_trt %*% v_c_trt
+##     
+##     ## Total discounted mean Costs and QALYs
+##     tu_d_no_trt &lt;- t(v_tu_no_trt) %*% v_dwe 
+##     tu_d_trt    &lt;- t(v_tu_trt) %*% v_dwe
+##     
+##     tc_d_no_trt &lt;- t(v_tc_no_trt) %*% v_dwc
+##     tc_d_trt    &lt;- t(v_tc_trt)    %*% v_dwc
+##     
+##     ## Vector with total discounted mean Costs and QALYs
+##     v_tc_d &lt;- c(tc_d_no_trt, tc_d_trt)
+##     v_tu_d &lt;- c(tu_d_no_trt, tu_d_trt)
+##     
+##     ## Vector with discounted net monetary benefits (NMB)
+##     v_nmb_d &lt;- v_tu_d * n_wtp - v_tc_d
+##     
+##     ## Dataframe with discounted costs, effectiveness and NMB
+##     df_ce &lt;- data.frame(Strategy = v_names_str,
+##                         Cost     = v_tc_d,
+##                         Effect   = v_tu_d,
+##                         NMB      = v_nmb_d)
+##     
+##     return(df_ce)
+##   }
+##   )
+## }
+## &lt;bytecode: 0x7fa6511818f8&gt;
+## &lt;environment: namespace:darthpack&gt;</code></pre>
+<p>After calculating the discount weights, this function runs the simulation model using the previously described function <code>decision_model</code> in the <em>02_simulatiomn_model_function.R</em> script. Inside the function <code>calculate_ce_out</code>, the simulation model is run for both the treatment, <code>l_model_out_trt</code>, and no treatment, <code>l_model_out_no_trt</code>, strategies of the Sick-Sicker model. Running it for both treatment strategies is done for illustration purposes. In this case-study, the resulting cohort traces are identical and we could have executed it only once.</p>
+<p>In the second part of the function we create multiple vectors for both the cost and effects of both strategies. These vectors multiply the cohort trace to compute the cycle-specific rewards. This results in vectors of total costs (<code>v_tc</code>) and total effects (<code>v_tu</code>) per cycle. By multiplying these vectors with the vectors with the discount weights for costs (<code>v_dwc</code>) and effects (<code>v_dwe</code>) we get the total discounted mean costs (<code>tc_d_no_trt</code> and <code>tc_d_trt</code>) and QALYs (<code>tu_d_no_trt</code> and <code>tu_d_trt</code>) for both strategies. These values are used in the calculation of the NMB. Finally, the total discounted costs, effectiveness and NMB are combined in the dataframe <code>df_ce</code>. The results for our case-study are shown below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_out_ce <span class="co"># print the dataframe </span></code></pre></div>
+<pre><code>##       Strategy     Cost   Effect     NMB
+## 1 No Treatment 115239.8 20.02366 2888309
+## 2    Treatment 214157.6 20.72299 2894291</code></pre>
+<p>This dataframe of CE results can be used as an argument in the <code>calculate_icers</code> function from the <code>dampack</code> package to calculate the incremental cost-effectiveness ratios (ICERs) and noting which strategies are weakly and strongly dominated. Table <a href="analysis.html#tab:df-cea-det">5.1</a> shows the result of the deterministic CEA.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_cea_det &lt;-<span class="st"> </span><span class="kw">calculate_icers</span>(<span class="dt">cost =</span> df_out_ce<span class="op">$</span>Cost, 
+                              <span class="dt">effect =</span> df_out_ce<span class="op">$</span>Effect, 
+                              <span class="dt">strategies =</span> l_params_basecase<span class="op">$</span>v_names_str)</code></pre></div>
+<table>
+<caption>
+<span id="tab:df-cea-det">Table 5.1: </span>Deterministic cost-effectiveness analysis results of the Sick-Sicker model comparing no treatment with treatment.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Strategy
+</th>
+<th style="text-align:right;">
+Cost
+</th>
+<th style="text-align:right;">
+Effect
+</th>
+<th style="text-align:right;">
+Inc_Cost
+</th>
+<th style="text-align:right;">
+Inc_Effect
+</th>
+<th style="text-align:right;">
+ICER
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+No Treatment
+</td>
+<td style="text-align:right;">
+115239.8
+</td>
+<td style="text-align:right;">
+20.02366
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Treatment
+</td>
+<td style="text-align:right;">
+214157.6
+</td>
+<td style="text-align:right;">
+20.72299
+</td>
+<td style="text-align:right;">
+98917.83
+</td>
+<td style="text-align:right;">
+0.6993333
+</td>
+<td style="text-align:right;">
+141445.9
+</td>
+</tr>
+</tbody>
+</table>
+<p>Finally, Figure <a href="analysis.html#fig:05a-CEA-frontier">5.1</a> shows the cost-effectiveness frontier of the CEA.</p>
+<div class="figure"><span id="fig:05a-CEA-frontier"></span>
+<img src="../figs/05a_cea_frontier.png" alt="Cost-effectiveness frontier." width="1200" />
+<p class="caption">
+Figure 5.1: Cost-effectiveness frontier.
+</p>
+</div>
+<p>We then conduct a series of deterministic sensitivity analysis. First, we conduct a one-way sensitivity analysis (OWSA) on the variables <code>c_Trt</code>, <code>p_HS1</code>, <code>u_S1</code> and <code>u_Trt</code> and a two-way sensitivity analysis (TWSA) using the owsa_det and twsa_det functions. We use the output of these functions to produce different SA plots, such as OWSA tornado, one-way optimal strategy and TWSA plots (Figures <a href="analysis.html#fig:05a-owsa-nmb">5.2</a> - <a href="#fig:05a-twsa-uS1-uTrt-nmb"><strong>??</strong></a>).</p>
+<div class="figure"><span id="fig:05a-owsa-nmb"></span>
+<img src="../figs/05a_owsa_nmb.png" alt="One-way sensitivity analysis results" width="1500" />
+<p class="caption">
+Figure 5.2: One-way sensitivity analysis results
+</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="validation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["report.pdf", "report.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

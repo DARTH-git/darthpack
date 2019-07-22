@@ -17,6 +17,18 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r include=FALSE, warning=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'dplyr', 'truncnorm', 
+                           'lhs', 'IMIS', 'matrixStats',
+                           'plotrix', 'psych', "survival",
+                           "scatterplot3d", "reshape2",
+                           "BiocManager", "devtools",
+                           "shiny", "rstudioapi", 'nlme'
+), 'packages.bib')
+```
+
 ```{r setup}
 library(darthpack)
 l_params_all <- load_all_params()
@@ -34,7 +46,7 @@ We assume that most of the parameters of the Sick-Sicker model and their uncerta
 As part of the CEA, we conducted different deterministic sensitivity analysis (SA), including one-way and two-way SA, and tornado plots. To quantify the effect of parameter uncertainty on decision uncertainty, we conducted a probabilistic sensitivity analysis (PSA) and reported our uncertainty analysis results with a cost-effectiveness acceptability curve (CEAC), cost-effectiveness acceptability frontier (CEAF) and expected loss curves (ELC) [@Alarid-Escudero2019]. We also conducted a value of information (VOI) analysis to determine whether potential future research is needed to reduce parameter uncertainty. All steps of the CEA will be described using the different components of the framework. 
 
 ## Set-up {-}
-This report is a supplementary material meant to guide you through the `R` code of a fully functional decision model to showcase the framework described by the [Decision Analysis in R for Technologies in Health (DARTH) workgroup](http://darthworkgroup.com/) in the manuscript *A need for change! A coding framework for improving transparency in decision modeling*. The code of this analysis can be downloaded from GitHub (https://github.com/DARTH-git/Decision-Modeling-Framework). We recommend downloading the case-study files as a single .zip file containing all directories. Unzip the folder and save to your desired directory. The framework is divided into different directories, described in Table 1, that could be accessed from the RStudio project *Decision-Modeling-Framework.Rproj*. In this framework, you will find multiple directories as described in Table 1 of the main manuscript. We refer to the directory names of this framework and scripts stored in these directories using *italic* style. This report is created with Markdown and is located in the *reports* directory of the framework. The figures for the case-study can be found in the *figs* directory, data required to conduct some of the analyses of the different components are in the *data* directory and the `R` scripts with functions, are located in the *R* directory. The main `R` scripts that conduct the analyses of the different components of the framework are stored in the `R` directory. In this document we do not show all the `R` code we refer to. Therefore, it is important to follow along while reading this document. To make sure you have all the required packages needed to run all the code, first install all the required packages by running the *00_general-setup.R* script in the `R` directory.
+This report is a supplementary material meant to guide you through the `R` code of a fully functional decision model to showcase the framework described by the [Decision Analysis in R for Technologies in Health (DARTH) workgroup](http://darthworkgroup.com/) in the manuscript *A need for change! A coding framework for improving transparency in decision modeling*. The code of this analysis can be downloaded from GitHub (https://github.com/DARTH-git/darthpack). We recommend downloading the case-study files as a single .zip file containing all directories. Unzip the folder and save to your desired directory. The framework is divided into different directories, described in Table 1, that could be accessed from the RStudio project *darthpack.Rproj*. In this framework, you will find multiple directories as described in Table 1 of the main manuscript. We refer to the directory names of this framework and scripts stored in these directories using *italic* style. This report is created with Markdown and is located in the *reports* directory of the framework. The figures for the case-study can be found in the *figs* directory, data required to conduct some of the analyses of the different components are in the *data* directory and the `R` scripts with functions, are located in the *R* directory. The main `R` scripts that conduct the analyses of the different components of the framework are stored in the `analysis` directory. In this document we do not show all the `R` code we refer to. Therefore, it is important to follow along while reading this document. To make sure you have all the required packages needed to run all the code, first install all the required packages by running the *00_general-setup.R* script in the `R` directory.
 
 ## Prerequisites general{-}
 
@@ -47,17 +59,5 @@ install.packages("bookdown")
 ```
 
 To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.name/tinytex/>.
-
-```{r include=TRUE, warning=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'dplyr', 'truncnorm', 
-                           'lhs', 'IMIS', 'matrixStats',
-                           'plotrix', 'psych', "survival",
-                           "scatterplot3d", "reshape2",
-                           "BiocManager", "devtools",
-                           "shiny", "rstudioapi", 'nlme'
-), 'packages.bib')
-```
 
 # References {-}

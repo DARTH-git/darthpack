@@ -218,14 +218,14 @@ l_params_all &lt;-<span class="st"> </span><span class="kw"><a href="../referenc
 <a href="#run-each-file-directly" class="anchor"></a>Run each file directly</h2>
 <p>In this case, the library <code>testthat</code> should be attached before running a test file. If all tests in the file passed (that is, all expectations are met), no error messages are raised in the console. However, sometimes the developer might loss count of the number of tests or loss track of the type of tests. This method is not informative in informing how many tests passed, and where the error occurs if tests failed.</p>
 </div>
-<div id="run-tests-files-at-once-for-an-r-project-package" class="section level2">
+<div id="run-test-files-at-once-for-an-r-project-package" class="section level2">
 <h2 class="hasAnchor">
-<a href="#run-tests-files-at-once-for-an-r-project-package" class="anchor"></a>Run tests files at once for an R project / package</h2>
+<a href="#run-test-files-at-once-for-an-r-project-package" class="anchor"></a>Run test files at once for an R project / package</h2>
 <p>For an R package, the developer can run all the test files using shortcut <code>Ctrl/Cmd+Shift+T</code> or type R command <code><a href="https://www.rdocumentation.org/packages/testthat/topics/test_dir">testthat::test_dir("path/to/the/tests/folder")</a></code> in the console. The shortcut does not work for an R project. RStudio will then provide a summary of passed, failed, and skipped tests.</p>
 <div class="figure">
 <img src="../vignettes/test_summary.png" width="500">
 </div>
-<p>We could see tests are grouped by context, and all our 39 tests passed.</p>
+<p>We could see tests are grouped by context, and all our 27 tests passed.</p>
 </div>
 </div>
 <div id="references" class="section level1 unnumbered">
@@ -244,7 +244,7 @@ l_params_all &lt;-<span class="st"> </span><span class="kw"><a href="../referenc
       <li>
 <a href="#run-tests">Run tests</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#run-each-file-directly">Run each file directly</a></li>
-      <li><a href="#run-tests-files-at-once-for-an-r-project-package">Run tests files at once for an R project / package</a></li>
+      <li><a href="#run-test-files-at-once-for-an-r-project-package">Run test files at once for an R project / package</a></li>
       </ul>
 </li>
       <li><a href="#references">References</a></li>

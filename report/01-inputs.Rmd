@@ -1,28 +1,26 @@
 ```{r, include = FALSE, warning = FALSE}
+# all the figures will be 6.5 x 4 inches and centered in the text.
+knitr::opts_chunk$set(fig.width=6.5, 
+                      fig.height=4, 
+                      fig.align="center"
+                      # fig.path="../figs/", 
+                      )
+## Set path to working directory
+# knitr::opts_knit$set(root.dir = '../') 
 # load packages
-library(knitr)
-# https://haozhu233.github.io/kableExtra/awesome_table_in_html.html
-library(kableExtra)
 library(darthpack)
 l_params_all <- load_all_params()
 ```
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-# Set working directory via relative path to root from Rmd
-# to avoid issue with the Markdown 
-# http://pbahr.github.io/tips/2016/04/16/fix_rmarkdown_working_directory_issue
-```
+# Define model inputs {#inputs}
 
-# Define model inputs {#model}
-
-As described in the main manuscript, in this first component we declare all model input variables and set their values. The `R` script running the analysis of this component is the *01_model-inputs.R* file in the `R` directory. 
+As described in the main manuscript, in this first component we declare all model input variables and set their values. The `R` script running the analysis of this component is the *01_model-inputs.R* file in the `analysis` directory. 
 
 The input to inform the values is divided in three categories: external, estimated, and calibrated. The majority of the Sick-Sicker model parameters are informed by external data. Only three parameter values need to be estimated using model calibration. 
 
-In this component, we start with the general setup of the model, specifying among others the time horizon, name and number of health states, proportion of the cohort in each of the different health states at the start of the simulation and discount rates. The next step is to specify the external parameters. The initial model parameter values and `R` variable names are presented in Table \ref{tab:parameters}. 
+In this component, we start with the general setup of the model, specifying among others the time horizon, name and number of health states, proportion of the cohort in each of the different health states at the start of the simulation and discount rates. The next step is to specify the external parameters. The initial model parameter values and `R` variable names are presented in Table \@ref(tab:parameters). 
 
-Table: \label{tab:parameters} Description of the initial parameters with their `R` name and value of the Sick-Sicker model.
+Table: (\#tab:parameters) Description of the initial parameters with their `R` name and value of the Sick-Sicker model.
 
 |           **Parameter**            |  **R name** |   **Value**   |
 |:-----------------------------------|:-----------:|:-------------:|

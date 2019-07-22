@@ -5,26 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Define model inputs | darthpack: An R package with DARTH’s decision modeling coding framework</title>
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="description" content="This is a minimal description of a report of a model-based cost-effectiveness analysis of a health technology example of using the bookdown package to write a book." />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 Define model inputs | darthpack: An R package with DARTH’s decision modeling coding framework" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  
+  <meta property="og:description" content="This is a minimal description of a report of a model-based cost-effectiveness analysis of a health technology example of using the bookdown package to write a book." />
+  <meta name="github-repo" content="DARTH-git/darthpack/report" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 1 Define model inputs | darthpack: An R package with DARTH’s decision modeling coding framework" />
   
-  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="twitter:description" content="This is a minimal description of a report of a model-based cost-effectiveness analysis of a health technology example of using the bookdown package to write a book." />
   
 
 <meta name="author" content="DARTH" />
 
 
-<meta name="date" content="2019-07-15" />
+<meta name="date" content="2019-07-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="index.html">
-
+<link rel="next" href="simulation.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -100,14 +100,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">darthpack</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The Sick-Sicker model</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#set-up"><i class="fa fa-check"></i>Set-up</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#prerequisites-general"><i class="fa fa-check"></i>Prerequisites general</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="model.html"><a href="model.html"><i class="fa fa-check"></i><b>1</b> Define model inputs</a></li>
+<li class="chapter" data-level="1" data-path="inputs.html"><a href="inputs.html"><i class="fa fa-check"></i><b>1</b> Define model inputs</a></li>
+<li class="chapter" data-level="2" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i><b>2</b> Decision model</a></li>
+<li class="chapter" data-level="3" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>3</b> Model calibration</a></li>
+<li class="chapter" data-level="4" data-path="validation.html"><a href="validation.html"><i class="fa fa-check"></i><b>4</b> Validation</a></li>
+<li class="chapter" data-level="5" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>5</b> Analysis</a><ul>
+<li class="chapter" data-level="5.1" data-path="analysis.html"><a href="analysis.html#a-deterministic-analysis-05a-deterministic-analysis"><i class="fa fa-check"></i><b>5.1</b> 05a Deterministic analysis {#05a-Deterministic-analysis}</a></li>
+<li class="chapter" data-level="5.2" data-path="analysis.html"><a href="analysis.html#b-probabilistic-analysis05b-probabilistic-analysis"><i class="fa fa-check"></i><b>5.2</b> 05b Probabilistic analysis{05b-Probabilistic-analysis}</a></li>
+<li class="chapter" data-level="5.3" data-path="analysis.html"><a href="analysis.html#c-value-of-information"><i class="fa fa-check"></i><b>5.3</b> 05c Value of information</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -128,13 +136,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="model" class="section level1">
+<div id="inputs" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Define model inputs</h1>
-<p>As described in the main manuscript, in this first component we declare all model input variables and set their values. The <code>R</code> script running the analysis of this component is the <em>01_model-inputs.R</em> file in the <code>R</code> directory.</p>
+<p>As described in the main manuscript, in this first component we declare all model input variables and set their values. The <code>R</code> script running the analysis of this component is the <em>01_model-inputs.R</em> file in the <code>analysis</code> directory.</p>
 <p>The input to inform the values is divided in three categories: external, estimated, and calibrated. The majority of the Sick-Sicker model parameters are informed by external data. Only three parameter values need to be estimated using model calibration.</p>
-<p>In this component, we start with the general setup of the model, specifying among others the time horizon, name and number of health states, proportion of the cohort in each of the different health states at the start of the simulation and discount rates. The next step is to specify the external parameters. The initial model parameter values and <code>R</code> variable names are presented in Table .</p>
+<p>In this component, we start with the general setup of the model, specifying among others the time horizon, name and number of health states, proportion of the cohort in each of the different health states at the start of the simulation and discount rates. The next step is to specify the external parameters. The initial model parameter values and <code>R</code> variable names are presented in Table <a href="inputs.html#tab:parameters">1.1</a>.</p>
 <table>
-<caption> Description of the initial parameters with their <code>R</code> name and value of the Sick-Sicker model.</caption>
+<caption><span id="tab:parameters">Table 1.1: </span> Description of the initial parameters with their <code>R</code> name and value of the Sick-Sicker model.</caption>
 <thead>
 <tr class="header">
 <th align="left"><strong>Parameter</strong></th>
@@ -267,22 +275,30 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </table>
 <p>Age-specific background mortality for healthy individuals is represented by the US population in 2015 and obtained from the <a href="https://www.mortality.org">Human Mortality database</a>. This information is stored in the <em>01_all-cause-mortality.csv</em> file in the <em>data</em> directory. Based on this .csv file a vector with mortality rates by age is created using the <code>load_mort_data</code> function in the <em>01_model-inputs_functions.R</em> script. This function gives us the flexibility to easily import data from other countries or years.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print.function</span>(load_mort_data) <span class="co"># print the function</span></code></pre></div>
-<pre><code>## function(file = all_cause_mortality){
-##   # Load mortality data
-##   df_r_mort_by_age &lt;- file# read.csv(file = file)
+<pre><code>## function(file = NULL){
+##   # Load mortality data from file
+##   if(!is.null(file)) {
+##     df_r_mort_by_age &lt;- read.csv(file = file)}
+##   else{
+##     df_r_mort_by_age &lt;- all_cause_mortality
+##   }
 ##   # Vector with mortality rates
 ##   v_r_mort_by_age  &lt;- as.matrix(dplyr::select(df_r_mort_by_age, Total))
 ##   
 ##   return(v_r_mort_by_age)
 ## }
-## &lt;bytecode: 0x7ffe07359000&gt;
+## &lt;bytecode: 0x7f89d40c3540&gt;
 ## &lt;environment: namespace:darthpack&gt;</code></pre>
 <p>Another function in the <em>01_model-inputs_functions.R</em> script, is the <code>load_all_parms</code> function. This function, which is actually using the <code>load_mort_data</code> function, loads all parameters for the decision model from multiple sources and creates a list that contains all parameters and their values.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print.function</span>(load_all_params)  <span class="co"># print the function</span></code></pre></div>
-<pre><code>## function(file.init = df_params_init,
-##                             file.mort = all_cause_mortality){ # User defined
+<pre><code>## function(file.init = NULL,
+##                             file.mort = NULL){ # User defined
 ##   #### Load initial set of initial parameters form .csv file ####
-##   df_params_init  &lt;- file.init #read.csv(file = file.init, stringsAsFactors = F)
+##   if(!is.null(file.init)) {
+##     df_params_init &lt;- read.csv(file = file)
+##   } else{
+##     df_params_init &lt;- df_params_init
+##   }
 ##   
 ##   #### All-cause age-specific mortality from .csv file ####
 ##   v_r_mort_by_age &lt;- load_mort_data(file = file.mort)
@@ -315,7 +331,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##   l_params_all &lt;- c(l_params_all, 
 ##                     df_params_init) # Add initial set of parameters
 ## }
-## &lt;bytecode: 0x7ffe07348200&gt;
+## &lt;bytecode: 0x7f89d682cc60&gt;
 ## &lt;environment: namespace:darthpack&gt;</code></pre>
 <p>The <code>load_all_params</code> function is informed by the arguments <code>file.init</code> and <code>file.mort</code>. The <code>file.init</code> argument is a string with the location and name of the file with initial set of parameters. The initial parameter values for our case-study are stored in the <em>01_init-params.csv</em> file located in the <em>data</em> directory. The <code>load_all_params</code> function read this .csv file into the function environment as a dataframe called, <code>df_params_init</code>.</p>
 <p>The <code>file.mort</code> argument is a string with the location and name of the file with mortality data. As described before, in our case-study this is the <em>01_all-cause-mortality.csv</em> file. Within the <code>load_all_parms</code> function, the <code>load_mort_data</code> function is used to create a vector with mortality rates from the .csv data.</p>
@@ -330,8 +346,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="simulation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -368,7 +384,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["_main.pdf", "_main.epub"],
+"download": ["report.pdf", "report.epub"],
 "toc": {
 "collapse": "subsection"
 }

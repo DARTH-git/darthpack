@@ -1,0 +1,55 @@
+```{r, include = FALSE, warning = FALSE}
+library(reshape2)
+library(ggplot2)
+library(darthpack)
+### Load parameters
+l_params_all <- load_all_params()
+```
+
+# Decision model {#simulation}
+
+In this second component, we build the backbone of the decision analysis: the implementation of the model. This component is performed by the *02_simulation_model.R* script. This file itself is not very large. It simply loads some packages and sources the input from component 01 and in addition it runs the `decision_model` function that is used to caputre the dynamic process of the Sick-Sicker example and stores the output. The output of the model is the traditional cohort trace. The trace describes how the cohort is distributed among the different health states over time and is plotted at the end of this script.
+
+The function `decision_model` is defined in the *02_simulation_model_functions.R* file in the `R` folder. As described in the paper, constructing a model as a function at this stage facilitates subsequent stages of the model development and analysis. This since these processes will all call the same model function, but pass different parameter values and/or calculate different final outcomes based on the model outputs. In the next part, we will describe the code within the function.
+
+```{r}
+print.function(decision_model) # print the code of the function
+```
+
+The `decision_model` function is informed by the argument `l_params_all`. Via this argument we give the function a list with all parameters of the decision model. For the Sick-Sicker model, these parameters are stored in the list `l_params_all`, which we passed into the function as shown below. 
+
+```{r, eval = TRUE, echo = TRUE}
+l_out_stm <- decision_model(l_params_all = l_params_all) # run the function
+```
+
+This function itself has all the mathematical equations of the decision models coded inside. It starts by calculating the age-specific transition probabilities from all non-dead states based on the vector of age-specific mortality rates `v_r_mort_by_age`. These parameters will become vectors of length `n_t`, describing the probability to die for all ages from all non-dead states. 
+
+The next part of the function, creates an array that stores age-specific transition probability matrices in each of the third dimension. The transition probability matrix is a core component of a state-transition cohort model [@Iskandar2018]. This matrix contains the probabilities of transitioning from the current health state, indicated by the rows, to the other health states, specified by the columns. Since we have age-specific transition probabilities, the transition probability matrix is different each cycle. These probabilities are only depending on the age of the cohort, and not on other events; therefore, we can generate all matrices at the start of the model. This results in `n_t` different age-specific matrices that are stored in an array, called `a_P`, of dimensions `n_states` x `n_states` x `n_t`. After initializing the array, it is filled with the transition probability stored in the list. When running the model, we can index the correct transition probability matrix corresponding with the current age of the cohort. We then added some sanity checks to make sure that the transition matrices and the transition probabilities are valid. The first three and last cycles of the transition probability matrices stored in the array `a.P` are shown below. 
+
+```{r, echo = TRUE, eval = TRUE}
+l_out_stm$a_P[, , 1:3] # show the first three time-points of a_P
+l_out_stm$a_P[, , l_params_all$n_t] # show it for the last cycle
+```
+By comparing these probability matrices, we observe an increase in the probabilities of transitioning to death from all health states. 
+
+After the array is filled, the cohort trace matrix, `m_M`, of dimensions `n_t` x `n_states` is initialized. This matrix will store the state occupation at each point in time. The first row of the matrix is informed by the initial state vector `v_s_init`. For the remaining points in time, we iteratively multiply the cohort trace with the age-specific transition probability matrix corresponding to the specific cycle obtained by indexing the array `a_P` appropriately. All the outputs and relevant elements of the decision model are stored in a list, called `l_out_stm`. This list contains the array of the transition probability matrix for all cycles `t` and the cohort trace `m_M`. 
+
+```{r, eval = TRUE, echo = TRUE}
+head(l_out_stm$m_M)    # show the top part of the cohort trace
+tail(l_out_stm$m_M)    # show the bottom part of the cohort trace
+```
+
+Using the code below, we can graphically show the model dynamics by plotting the cohort trace. Figure \@ref(fig:Sick-Sicker-Trace) shows the distribution of the cohort among the different health states at each time point. 
+
+```{r Sick-Sicker-Trace, echo = FALSE, fig.cap = 'Cohort trace of the Sick-Sicker cohort model', message = FALSE, warning = FALSE, fig.pos = "H"} 
+ggplot(melt(l_out_stm$m_M), aes(x = Var1, y = value, color = Var2, linetype = Var2)) +
+  geom_line(size = 1.3) +
+  scale_color_discrete(l = 50, name = "Health state") +
+  scale_linetype_discrete(name = "Health state") +
+  xlab("Cycle") +
+  ylab("Proportion of the cohort") +
+  theme_bw(base_size = 16) +
+  theme()
+# matplot(m_M, pch = v.n)
+```
+
