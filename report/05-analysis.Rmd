@@ -15,7 +15,7 @@ l_params_all <- load_all_params()
 # Analysis {#analysis}
 The analysis component is where the elements in components 1-4 are combined to answer the question(s) of interest given current information and to quantify the value of potential further research. Our framework separates the analysis in three subcomponents: _05a Deterministic analysis_, _05b Uncertainty analysis_ and _05c Value of information analysis_. For the Sick-Sicker case-study, we use all three subcomponents to conduct the CEA and to quantify the uncertainty of our decision. For procedures in the CEA, we rely on the `R` package `dampack`, which is available here: <https://github.com/DARTH-git/dampack>. Instructions for installing `dampack` are described in Appendix 0 provided in the *app0_packages_setup.R* script of the *analysis* folder.
 
-## 05a Deterministic analysis {#05a-Deterministic-analysis}
+## 05a Deterministic analysis {#Deterministic-analysis}
 In this subcomponent, we perform a deterministic CEA, followed by some deterministic sensitivity analysis, including one-way, two-way and tornado sensitivity analyses. The function script of this subcomponent, *05a_deterministic_analysis_function.R*, contains the function `calculate_ce_out`. This function calculates costs and effects for a given vector of parameters using a simulation model. We need to run our simulation model using the calibrated parameter values, but the list we created in component 01 \@ref(inputs) still contain the placeholder values for the calibrated parameters. This means we need to update these values by the calibrated values stored in the vector `v_calib_post_map`. The function `update_param_list` updates the list of parameters with new values for some specific parameters. 
 
 ```{r}
@@ -83,7 +83,7 @@ knitr::include_graphics("../figs/05a_twsa_uS1_uTrt_nmb.png")
 ```
 
 
-## 05b Probabilistic analysis{05b-Probabilistic-analysis} 
+## 05b Probabilistic analysis {#Probabilistic-analysis} 
 In this subcomponent, we evaluate decision uncertainty by propagating the uncertainty through the CEA using probabilistic sensitivity analysis (PSA). Until now we used the parameter values as described in Table \@ref(tab:parameters). However, we are uncertain about these values. Most of these input parameters are defined by probability distribution as described in Table \@ref(tab:parameters-PSA). 
 
 Table: (\#tab:parameters-PSA) Description of parameters with their R name and distribution.
@@ -174,7 +174,7 @@ knitr::opts_knit$set(root.dir = '..')
 knitr::include_graphics("../figs/05b_twsa_lrm_uS1_uTrt_nmb.png")
 ```
 
-## 05c Value of information
+## 05c Value of information {#voi}
 In the VOI component, the results from the PSA generated in the probabilistic analysis subcomponent are used to determine whether further potential research is needed. We use the `calc_evpi` function from the `dampack` package to calculate the expected value of perfect information (EVPI). Figure \@ref(fig:05c-evpi) shows the EVPI for the different WTP values.
 
 ```{r, eval = FALSE, echo = TRUE}

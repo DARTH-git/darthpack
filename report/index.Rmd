@@ -4,9 +4,11 @@ author: "DARTH"
 date: "`r Sys.Date()`"
 output: 
   pdf_document:
-    fig_width: 6.5
+    fig_width: 6
     fig_height: 4
     fig_caption: true
+    includes:
+      in_header: preamble.tex
 description: This is a minimal description of a report of a model-based cost-effectiveness
   analysis of a health technology example of using the bookdown package to write a
   book.
