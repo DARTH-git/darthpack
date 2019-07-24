@@ -1,12 +1,29 @@
 reference:
 - title: "01 Model inputs"
-  desc: ~
+  desc: >
+    In this component, all model input variables are declared and values are set.
+    The point of this component is to group input variables together and organize 
+    them in a logical fashion that can be easily communicated to a user.
   contents:
   - '`load_mort_data`'  
   - '`load_all_params`'
   - '`update_param_list`'  
 - title: "02 Decision model"
-  desc: ~
+  desc: >
+    This component is the heart of the decision analysis: the implementation of 
+    the decision model. In this section of the framework, a function is created 
+    that maps model inputs to outputs, via the dynamic and/or stochastic 
+    processes that the decision model represents. The model itself could be a 
+    decision tree, Markov model, stochastic simulation, and so on. The output 
+    stored from the model at this stage should be sufficiently general and 
+    comprehensive to accommodate calibration, validation, and the main policy 
+    analysis. Constructing the model as a function at this stage facilitates 
+    subsequent components of model development and analysis, as these processes 
+    will all call the same model function but pass different parameter values 
+    and/or calculate different final outcomes from the model outputs. The model 
+    function also facilitates the use of parallel computing efforts for 
+    computationally intensive tasks, such as calibration and probabilistic 
+    sensitivity analysis (PSA).
   contents:
   - '`decision_model`'
   - '`check_sum_of_transition_array`'
@@ -26,16 +43,16 @@ reference:
   desc: ~
   contents:
   - '`data_summary`'
-- title: "05a Deterministic analysis"
+- title: "05a Probabilistic analysis"
+  desc: ~
+  contents:
+  - '`generate_psa_params`'
+- title: "05b Deterministic analysis"
   desc: ~
   contents:
   - '`calculate_ce_out`'
   - '`owsa_det`'
   - '`twsa_det`'
-- title: "05b Probabilistic analysis"
-  desc: ~
-  contents:
-  - '`generate_psa_params`'
 - title: "General"
   desc: ~
   contents:

@@ -133,7 +133,7 @@
       <tr>
         <th colspan="2">
           <h2 id="section--model-inputs" class="hasAnchor"><a href="#section--model-inputs" class="anchor"></a>01 Model inputs</h2>
-          <p class="section-desc"></p>
+          <p class="section-desc"><p>In this component, all model input variables are declared and values are set. The point of this component is to group input variables together and organize them in a logical fashion that can be easily communicated to a user.</p></p>
         </th>
       </tr>
       <tr>
@@ -159,7 +159,7 @@
       <tr>
         <th colspan="2">
           <h2 id="section--decision-model" class="hasAnchor"><a href="#section--decision-model" class="anchor"></a>02 Decision model</h2>
-          <p class="section-desc"></p>
+          <p class="section-desc"><p>This component is the heart of the decision analysis: the implementation of the decision model. In this section of the framework, a function is created that maps model inputs to outputs, via the dynamic and/or stochastic processes that the decision model represents. The model itself could be a decision tree, Markov model, stochastic simulation, and so on. The output stored from the model at this stage should be sufficiently general and comprehensive to accommodate calibration, validation, and the main policy analysis. Constructing the model as a function at this stage facilitates subsequent components of model development and analysis, as these processes will all call the same model function but pass different parameter values and/or calculate different final outcomes from the model outputs. The model function also facilitates the use of parallel computing efforts for computationally intensive tasks, such as calibration and probabilistic sensitivity analysis (PSA).</p></p>
         </th>
       </tr>
       <tr>
@@ -254,7 +254,21 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section--a-deterministic-analysis" class="hasAnchor"><a href="#section--a-deterministic-analysis" class="anchor"></a>05a Deterministic analysis</h2>
+          <h2 id="section--a-probabilistic-analysis" class="hasAnchor"><a href="#section--a-probabilistic-analysis" class="anchor"></a>05a Probabilistic analysis</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="generate_psa_params.html">generate_psa_params()</a></code> </p>
+        </td>
+        <td><p>Generate PSA dataset of CEA parameters</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section--b-deterministic-analysis" class="hasAnchor"><a href="#section--b-deterministic-analysis" class="anchor"></a>05b Deterministic analysis</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -276,20 +290,6 @@
           <p><code><a href="twsa_det.html">twsa_det()</a></code> </p>
         </td>
         <td><p>Two-way sensitivity analysis (TWSA)</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section--b-probabilistic-analysis" class="hasAnchor"><a href="#section--b-probabilistic-analysis" class="anchor"></a>05b Probabilistic analysis</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="generate_psa_params.html">generate_psa_params()</a></code> </p>
-        </td>
-        <td><p>Generate PSA dataset of CEA parameters</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -360,8 +360,8 @@
       <li><a href="#section--decision-model">02 Decision model</a></li>
       <li><a href="#section--calibration">03 Calibration</a></li>
       <li><a href="#section--validation">04 Validation</a></li>
-      <li><a href="#section--a-deterministic-analysis">05a Deterministic analysis</a></li>
-      <li><a href="#section--b-probabilistic-analysis">05b Probabilistic analysis</a></li>
+      <li><a href="#section--a-probabilistic-analysis">05a Probabilistic analysis</a></li>
+      <li><a href="#section--b-deterministic-analysis">05b Deterministic analysis</a></li>
       <li><a href="#section-general">General</a></li>
       <li><a href="#section-data">Data</a></li>
     </ul>

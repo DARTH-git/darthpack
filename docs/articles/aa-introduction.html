@@ -122,15 +122,6 @@ l_params_all &lt;-<span class="st"> </span><span class="kw"><a href="../referenc
 <span class="co"># or the development version</span>
 <span class="co"># devtools::install_github("rstudio/bookdown")</span></code></pre></div>
 <p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.name/tinytex/" class="uri">https://yihui.name/tinytex/</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># automatically create a bib database for R packages</span>
-knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/write_bib">write_bib</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/zpackages">.packages</a></span>(), <span class="st">'bookdown'</span>, <span class="st">'knitr'</span>, <span class="st">'rmarkdown'</span>, <span class="st">'dplyr'</span>, <span class="st">'truncnorm'</span>, 
-                           <span class="st">'lhs'</span>, <span class="st">'IMIS'</span>, <span class="st">'matrixStats'</span>,
-                           <span class="st">'plotrix'</span>, <span class="st">'psych'</span>, <span class="st">"survival"</span>,
-                           <span class="st">"scatterplot3d"</span>, <span class="st">"reshape2"</span>,
-                           <span class="st">"BiocManager"</span>, <span class="st">"devtools"</span>,
-                           <span class="st">"shiny"</span>, <span class="st">"rstudioapi"</span>, <span class="st">'nlme'</span>
-), <span class="st">'packages.bib'</span>)</code></pre></div>
 </div>
 </div>
 <div id="references" class="section level1 unnumbered">
