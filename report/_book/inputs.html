@@ -24,7 +24,7 @@
 <meta name="author" content="DARTH" />
 
 
-<meta name="date" content="2019-07-21" />
+<meta name="date" content="2019-07-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -111,13 +111,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>3</b> Model calibration</a></li>
 <li class="chapter" data-level="4" data-path="validation.html"><a href="validation.html"><i class="fa fa-check"></i><b>4</b> Validation</a></li>
 <li class="chapter" data-level="5" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>5</b> Analysis</a><ul>
-<li class="chapter" data-level="5.1" data-path="analysis.html"><a href="analysis.html#a-deterministic-analysis-05a-deterministic-analysis"><i class="fa fa-check"></i><b>5.1</b> 05a Deterministic analysis {#05a-Deterministic-analysis}</a></li>
-<li class="chapter" data-level="5.2" data-path="analysis.html"><a href="analysis.html#b-probabilistic-analysis05b-probabilistic-analysis"><i class="fa fa-check"></i><b>5.2</b> 05b Probabilistic analysis{05b-Probabilistic-analysis}</a></li>
-<li class="chapter" data-level="5.3" data-path="analysis.html"><a href="analysis.html#c-value-of-information"><i class="fa fa-check"></i><b>5.3</b> 05c Value of information</a></li>
+<li class="chapter" data-level="5.1" data-path="analysis.html"><a href="analysis.html#Deterministic-analysis"><i class="fa fa-check"></i><b>5.1</b> 05a Deterministic analysis</a></li>
+<li class="chapter" data-level="5.2" data-path="analysis.html"><a href="analysis.html#Probabilistic-analysis"><i class="fa fa-check"></i><b>5.2</b> 05b Probabilistic analysis</a></li>
+<li class="chapter" data-level="5.3" data-path="analysis.html"><a href="analysis.html#voi"><i class="fa fa-check"></i><b>5.3</b> 05c Value of information</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/DARTH-git/darthpack" target="blank">darthpack GitHub repository</a></li>
 
 </ul>
 
@@ -287,7 +287,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##   
 ##   return(v_r_mort_by_age)
 ## }
-## &lt;bytecode: 0x7f89d40c3540&gt;
+## &lt;bytecode: 0x7fb90eae5120&gt;
 ## &lt;environment: namespace:darthpack&gt;</code></pre>
 <p>Another function in the <em>01_model-inputs_functions.R</em> script, is the <code>load_all_parms</code> function. This function, which is actually using the <code>load_mort_data</code> function, loads all parameters for the decision model from multiple sources and creates a list that contains all parameters and their values.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print.function</span>(load_all_params)  <span class="co"># print the function</span></code></pre></div>
@@ -331,7 +331,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##   l_params_all &lt;- c(l_params_all, 
 ##                     df_params_init) # Add initial set of parameters
 ## }
-## &lt;bytecode: 0x7f89d682cc60&gt;
+## &lt;bytecode: 0x7fb90df61f70&gt;
 ## &lt;environment: namespace:darthpack&gt;</code></pre>
 <p>The <code>load_all_params</code> function is informed by the arguments <code>file.init</code> and <code>file.mort</code>. The <code>file.init</code> argument is a string with the location and name of the file with initial set of parameters. The initial parameter values for our case-study are stored in the <em>01_init-params.csv</em> file located in the <em>data</em> directory. The <code>load_all_params</code> function read this .csv file into the function environment as a dataframe called, <code>df_params_init</code>.</p>
 <p>The <code>file.mort</code> argument is a string with the location and name of the file with mortality data. As described before, in our case-study this is the <em>01_all-cause-mortality.csv</em> file. Within the <code>load_all_parms</code> function, the <code>load_mort_data</code> function is used to create a vector with mortality rates from the .csv data.</p>

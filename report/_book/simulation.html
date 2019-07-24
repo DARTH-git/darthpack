@@ -24,7 +24,7 @@
 <meta name="author" content="DARTH" />
 
 
-<meta name="date" content="2019-07-21" />
+<meta name="date" content="2019-07-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -210,7 +210,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##   }
 ##   )
 ## }
-## &lt;bytecode: 0x7f8ac6b72238&gt;
+## &lt;bytecode: 0x7fb913be7c98&gt;
 ## &lt;environment: namespace:darthpack&gt;</code></pre>
 <p>The <code>decision_model</code> function is informed by the argument <code>l_params_all</code>. Via this argument we give the function a list with all parameters of the decision model. For the Sick-Sicker model, these parameters are stored in the list <code>l_params_all</code>, which we passed into the function as shown below.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l_out_stm &lt;-<span class="st"> </span><span class="kw">decision_model</span>(<span class="dt">l_params_all =</span> l_params_all) <span class="co"># run the function</span></code></pre></div>
@@ -265,8 +265,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 74 0.002289594 0.0004937081 3.298632e-05 0.9971837
 ## 75 0.001475636 0.0003151589 1.985106e-05 0.9981894</code></pre>
 <p>Using the code below, we can graphically show the model dynamics by plotting the cohort trace. Figure <a href="simulation.html#fig:Sick-Sicker-Trace">2.1</a> shows the distribution of the cohort among the different health states at each time point.</p>
-<div class="figure"><span id="fig:Sick-Sicker-Trace"></span>
-<img src="report_files/figure-html/Sick-Sicker-Trace-1.png" alt="Cohort trace of the Sick-Sicker cohort model" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:Sick-Sicker-Trace"></span>
+<img src="report_files/figure-html/Sick-Sicker-Trace-1.png" alt="Cohort trace of the Sick-Sicker cohort model" width="624" />
 <p class="caption">
 Figure 2.1: Cohort trace of the Sick-Sicker cohort model
 </p>
@@ -330,6 +330,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

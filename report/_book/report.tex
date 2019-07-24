@@ -126,7 +126,7 @@ improving transparency in decision modeling''}
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-07-21}
+    \date{2019-07-24}
 
 \usepackage{booktabs}
 \usepackage{float}
@@ -340,7 +340,7 @@ countries or years.
 ##   
 ##   return(v_r_mort_by_age)
 ## }
-## <bytecode: 0x10d1d43f8>
+## <bytecode: 0x7fb90eae5120>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -397,7 +397,7 @@ contains all parameters and their values.
 ##   l_params_all <- c(l_params_all, 
 ##                     df_params_init) # Add initial set of parameters
 ## }
-## <bytecode: 0x10d1c3118>
+## <bytecode: 0x7fb90df61f70>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -545,7 +545,7 @@ describe the code within the function.
 ##   }
 ##   )
 ## }
-## <bytecode: 0x109a97998>
+## <bytecode: 0x7fb913be7c98>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -755,7 +755,7 @@ routines.
 ##                 PropSicker = v_prop_S2[c(11, 21, 31)])
 ##   return(l_out)
 ## }
-## <bytecode: 0x10d3bb690>
+## <bytecode: 0x7fb913c64600>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -810,22 +810,61 @@ combined in a dataframe called \texttt{df\_posterior\_summ}. Table
 \ref{tab:SummaryCal} shows the summary statistics of the posterior
 distribution.
 
-\begin{table}[t]
+\label{tab:SummaryCal}Summary statistics of the posterior distribution
 
-\caption{\label{tab:SummaryCal}Summary statistics of the posterior distribution}
-\centering
-\begin{tabular}{l|r|r|r|r|r|r}
-\hline
-  & Mean & 2.5\% & 50\% & 97.5\% & Mode & MAP\\
-\hline
-p\_S1S2 & 0.1076687 & 0.0964559 & 0.1073187 & 0.1196543 & 0.1067639 & 0.107841\\
-\hline
-hr\_S1 & 2.7261594 & 1.1010910 & 2.6790446 & 4.4020812 & 2.2857230 & 2.297053\\
-\hline
-hr\_S2 & 9.6232710 & 7.3427361 & 9.6461532 & 11.9533402 & 9.4629634 & 9.886776\\
-\hline
-\end{tabular}
-\end{table}
+Mean
+
+2.5\%
+
+50\%
+
+97.5\%
+
+Mode
+
+MAP
+
+p\_S1S2
+
+0.1076687
+
+0.0964559
+
+0.1073187
+
+0.1196543
+
+0.1067639
+
+0.107841
+
+hr\_S1
+
+2.7261594
+
+1.1010910
+
+2.6790446
+
+4.4020812
+
+2.2857230
+
+2.297053
+
+hr\_S2
+
+9.6232710
+
+7.3427361
+
+9.6461532
+
+11.9533402
+
+9.4629634
+
+9.886776
 
 In section \emph{03.4.2 Visualization of posterior distribution}, we
 generate a pairwise scatter plot of the calibrated parameters (Figure
@@ -892,7 +931,7 @@ outputs into different summary statistics.
 ##   data_sum <- plyr::rename(data_sum, c("mean" = varname))
 ##   return(data_sum)
 ## }
-## <bytecode: 0x10d41ca58>
+## <bytecode: 0x7fb91272b0f8>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -985,7 +1024,7 @@ parameters.
 ##   l_params_all <- modifyList(l_params_all, params_updated) #update the values
 ##   return(l_params_all)
 ## }
-## <bytecode: 0x112beee78>
+## <bytecode: 0x7fb9195bd9a0>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -1076,7 +1115,7 @@ by the function.
 ##   }
 ##   )
 ## }
-## <bytecode: 0x11b382670>
+## <bytecode: 0x7fb918312af8>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -1130,20 +1169,44 @@ which strategies are weakly and strongly dominated. Table
 \end{Highlighting}
 \end{Shaded}
 
-\begin{table}[t]
+\label{tab:df-cea-det}Deterministic cost-effectiveness analysis results of
+the Sick-Sicker model comparing no treatment with treatment.
 
-\caption{\label{tab:df-cea-det}Deterministic cost-effectiveness analysis results of the Sick-Sicker model comparing no treatment with treatment.}
-\centering
-\begin{tabular}{l|r|r|r|r|r}
-\hline
-Strategy & Cost & Effect & Inc\_Cost & Inc\_Effect & ICER\\
-\hline
-No Treatment & 115239.8 & 20.02366 & NA & NA & NA\\
-\hline
-Treatment & 214157.6 & 20.72299 & 98917.83 & 0.6993333 & 141445.9\\
-\hline
-\end{tabular}
-\end{table}
+Strategy
+
+Cost
+
+Effect
+
+Inc\_Cost
+
+Inc\_Effect
+
+ICER
+
+No Treatment
+
+115239.8
+
+20.02366
+
+NA
+
+NA
+
+NA
+
+Treatment
+
+214157.6
+
+20.72299
+
+98917.83
+
+0.6993333
+
+141445.9
 
 Finally, Figure \ref{fig:05a-CEA-frontier} shows the cost-effectiveness
 frontier of the CEA.
@@ -1378,7 +1441,7 @@ specifying a seed to allow reproducibility of the results.
 ##   )
 ##   return(df_psa_params)
 ## }
-## <bytecode: 0x1177ccb20>
+## <bytecode: 0x7fb917deb988>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -1426,20 +1489,44 @@ and their corresponding 95\% confidence ellipse.
 \caption{The cost-effectiveness plane graph showing the results of the probabilistic sensitivity analysis for the Sick-Sicker case-study.}\label{fig:05b-CEAplane}
 \end{figure}
 
-\begin{table}[t]
+\label{tab:df-cea-prob}Probabilistic cost-effectiveness analysis results of
+the Sick-Sicker model comparing no treatment with treatment
 
-\caption{\label{tab:df-cea-prob}Probabilistic cost-effectiveness analysis results of the Sick-Sicker model comparing no treatment with treatment}
-\centering
-\begin{tabular}{l|r|r|r|r|r}
-\hline
-Strategy & Cost & Effect & Inc\_Cost & Inc\_Effect & ICER\\
-\hline
-No.Treatment & 115538.9 & 19.95305 & NA & NA & NA\\
-\hline
-Treatment & 213755.8 & 20.63891 & 98216.84 & 0.6858646 & 143201.5\\
-\hline
-\end{tabular}
-\end{table}
+Strategy
+
+Cost
+
+Effect
+
+Inc\_Cost
+
+Inc\_Effect
+
+ICER
+
+No.Treatment
+
+115538.9
+
+19.95305
+
+NA
+
+NA
+
+NA
+
+Treatment
+
+213755.8
+
+20.63891
+
+98216.84
+
+0.6858646
+
+143201.5
 
 Next, we perform a CEA using the previously used
 \texttt{calculate\_icers} functions from \texttt{dampack}. Table
