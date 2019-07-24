@@ -96,18 +96,23 @@
 
     
     
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 <div id="darthpack" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#darthpack" class="anchor"></a>darthpack <img src="figs/under_const.jpeg" align="center" alt="" width="360">
 </h1></div>
 <p>An R package that showcases the the <a href="darthworkgroup.com">Decision Analysis in R for Technologies in Health (DARTH)</a> coding framework to construct model-based cost-effectiveness analysis in R.</p>
-<p>This package could be used in at least three different ways: 1. <a href="#use-repository-as-coding-template">As a GitHub coding template</a> 2. <a href="#use-repository-as-coding-template">As a regular coding template</a> 3. <a href="#installation-as-a-package">As an R package</a></p>
-<p>The main website of the package could be found in: <a href="https://darth-git.github.io/darthpack/" class="uri">https://darth-git.github.io/darthpack/</a></p>
 </div>
 <div id="usage-and-installation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#usage-and-installation" class="anchor"></a>Usage and installation</h1>
-<p>To use or install ‘darthpack’</p>
+<p>‘darthpack’ could be used in at least three different ways:</p>
+<ol style="list-style-type: decimal">
+<li><a href="#use-repository-as-coding-template">As a GitHub coding template</a></li>
+<li><a href="#use-repository-as-coding-template">As a regular coding template</a></li>
+<li><a href="#installation-as-a-package">As an R package</a></li>
+</ol>
+<p>The main website of the package could be found in: <a href="https://darth-git.github.io/darthpack/" class="uri">https://darth-git.github.io/darthpack/</a></p>
 <div id="use-repository-as-a-github-coding-template" class="section level2">
 <h2 class="hasAnchor">
 <a href="#use-repository-as-a-github-coding-template" class="anchor"></a>Use repository as a GitHub coding template</h2>
@@ -129,13 +134,34 @@
 <div id="use-repository-as-coding-template" class="section level2">
 <h2 class="hasAnchor">
 <a href="#use-repository-as-coding-template" class="anchor"></a>Use repository as coding template</h2>
+<ol style="list-style-type: decimal">
+<li>On the <code>darthpack</code> GitHub repository, navigate to the main page of the repository (<a href="https://github.com/DARTH-git/darthpack" class="uri">https://github.com/DARTH-git/darthpack</a>).</li>
+<li>Above the file list, click <strong>Clone or download</strong> and select either
+<ol style="list-style-type: lower-alpha">
+<li>
+<strong>Open in desktop</strong>, which requires the user to have a GitHub desktop installed, or</li>
+<li>
+<strong>Download zip</strong> that will ask the user to download the whole repository as a .zip file.</li>
+</ol>
+</li>
+<li>Open the RStudio project <code>darthpack.Rproj</code>.</li>
+<li>In RStudio, load all the functions from the repository by typing <code><a href="https://www.rdocumentation.org/packages/devtools/topics/load_all">devtools::load_all(".")</a></code>
+</li>
+<li>Run all the decision modeling modules in the analysis folder.</li>
+</ol>
 </div>
-<div id="installation-as-a-package" class="section level2">
+<div id="installation-as-an-r-package" class="section level2">
 <h2 class="hasAnchor">
-<a href="#installation-as-a-package" class="anchor"></a>Installation as a package</h2>
-<p>You can install the development version from <a href="https://github.com">GitHub</a> with:</p>
+<a href="#installation-as-an-r-package" class="anchor"></a>Installation as an R package</h2>
+<ol style="list-style-type: decimal">
+<li>Install the development version from <a href="https://github.com">GitHub</a> with:</li>
+</ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
 devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"DARTH-git/darthpack"</span>)</code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Load all the functions from the repository by typing</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(darthpack)</code></pre></div>
 </div>
 </div>
   </div>

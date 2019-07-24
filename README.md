@@ -1,17 +1,20 @@
 
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 darthpack <img src="docs/figs/under_const.jpeg" align="center" alt="" width="360" />
 ====================================================================================
 
 An R package that showcases the the [Decision Analysis in R for Technologies in Health (DARTH)](darthworkgroup.com) coding framework to construct model-based cost-effectiveness analysis in R.
 
-This package could be used in at least three different ways: 1. [As a GitHub coding template](#use-repository-as-coding-template) 2. [As a regular coding template](#use-repository-as-coding-template) 3. [As an R package](#installation-as-a-package)
-
-The main website of the package could be found in: <https://darth-git.github.io/darthpack/>
-
 Usage and installation
 ======================
 
-To use or install 'darthpack'
+'darthpack' could be used in at least three different ways:
+
+1.  [As a GitHub coding template](#use-repository-as-coding-template)
+2.  [As a regular coding template](#use-repository-as-coding-template)
+3.  [As an R package](#installation-as-a-package)
+
+The main website of the package could be found in: <https://darth-git.github.io/darthpack/>
 
 Use repository as a GitHub coding template
 ------------------------------------------
@@ -31,12 +34,26 @@ Use repository as a GitHub coding template
 Use repository as coding template
 ---------------------------------
 
-Installation as a package
--------------------------
+1.  On the `darthpack` GitHub repository, navigate to the main page of the repository (<https://github.com/DARTH-git/darthpack>).
+2.  Above the file list, click **Clone or download** and select either
+    1.  **Open in desktop**, which requires the user to have a GitHub desktop installed, or
+    2.  **Download zip** that will ask the user to download the whole repository as a .zip file.
+3.  Open the RStudio project `darthpack.Rproj`.
+4.  In RStudio, load all the functions from the repository by typing `devtools::load_all(".")`
+5.  Run all the decision modeling modules in the analysis folder.
 
-You can install the development version from [GitHub](https://github.com) with:
+Installation as an R package
+----------------------------
+
+1.  Install the development version from [GitHub](https://github.com) with:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("DARTH-git/darthpack")
+```
+
+1.  Load all the functions from the repository by typing
+
+``` r
+library(darthpack)
 ```
