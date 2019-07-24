@@ -29,7 +29,7 @@ Use repository as a GitHub coding template
 8.  Either download the repository or clone it.
 9.  Open the RStudio project `darthpack.Rproj`.
 10. In RStudio, load all the functions from the repository by typing `devtools::load_all(".")`
-11. Run all the decision modeling modules in the analysis folder.
+11. Run all the decision modeling modules in the 'analysis' folder.
 
 Use repository as coding template
 ---------------------------------
@@ -40,7 +40,7 @@ Use repository as coding template
     2.  **Download zip** that will ask the user to download the whole repository as a .zip file.
 3.  Open the RStudio project `darthpack.Rproj`.
 4.  In RStudio, load all the functions from the repository by typing `devtools::load_all(".")`
-5.  Run all the decision modeling modules in the analysis folder.
+5.  Run all the decision modeling modules in the 'analysis' folder.
 
 Installation as an R package
 ----------------------------
