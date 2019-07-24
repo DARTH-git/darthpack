@@ -72,3 +72,7 @@ navbar:
     - icon: fa-github fa-lg
       text: "github"
       href: https://github.com/DARTH-git/darthpack
+
+authors:
+  DARTH workgroup:
+    href: https://darthworkgroup.com
