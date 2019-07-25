@@ -8,3 +8,4 @@
 ^dev$
 ^output$
 ^tables$
+^data-raw$

@@ -7,6 +7,20 @@ An R package that showcases the the [Decision Analysis in R for Technologies in 
 
 -   Alarid-Escudero F, Krijkamp E, Pechlivanoglou P, Jalal H, Kao SY, Yang A, Enns EA. "A need for change! A coding framework for improving transparency in decision modeling". (2019) Under revision
 
+Preliminaries
+=============
+
+-   Install [Rstudio](https://www.rstudio.com/products/rstudio/download/)
+-   Install devtools
+
+``` r
+# Install release version from CRAN
+install.packages("devtools")
+
+# Install development version from GitHub
+devtools::install_github("r-lib/devtools")
+```
+
 Usage and installation
 ======================
 
