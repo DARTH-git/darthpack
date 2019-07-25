@@ -106,6 +106,20 @@
 <li>Alarid-Escudero F, Krijkamp E, Pechlivanoglou P, Jalal H, Kao SY, Yang A, Enns EA. “A need for change! A coding framework for improving transparency in decision modeling”. (2019) Under revision</li>
 </ul>
 </div>
+<div id="preliminaries" class="section level1">
+<h1 class="hasAnchor">
+<a href="#preliminaries" class="anchor"></a>Preliminaries</h1>
+<ul>
+<li>Install <a href="https://www.rstudio.com/products/rstudio/download/">Rstudio</a>
+</li>
+<li>Install devtools</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Install release version from CRAN</span>
+<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"devtools"</span>)
+
+<span class="co"># Install development version from GitHub</span>
+devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"r-lib/devtools"</span>)</code></pre></div>
+</div>
 <div id="usage-and-installation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#usage-and-installation" class="anchor"></a>Usage and installation</h1>
@@ -159,13 +173,19 @@
 <ol style="list-style-type: decimal">
 <li>Install the development version from <a href="https://github.com">GitHub</a> with:</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
-devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"DARTH-git/darthpack"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"DARTH-git/darthpack"</span>)</code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Load all the functions from the repository by typing</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(darthpack)</code></pre></div>
 </div>
+</div>
+<div id="release-your-udpated-framework" class="section level1">
+<h1 class="hasAnchor">
+<a href="#release-your-udpated-framework" class="anchor"></a>Release your udpated framework</h1>
+<p>Once the framework has been modified and updated to your specific needs, run pkgdown from the package directory each time you release your package:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pkgdown<span class="op">::</span><span class="kw"><a href="https://pkgdown.r-lib.org/reference/build_site.html">build_site</a></span>()</code></pre></div>
+<p>For a more detailed description on how to quickly and easily build a website for your package, please go to <a href="https://github.com/r-lib/pkgdown" class="uri">https://github.com/r-lib/pkgdown</a></p>
 </div>
   </div>
 

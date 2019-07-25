@@ -64,7 +64,6 @@ Installation as an R package
 1.  Install the development version from [GitHub](https://github.com) with:
 
 ``` r
-# install.packages("devtools")
 devtools::install_github("DARTH-git/darthpack")
 ```
 
@@ -73,3 +72,14 @@ devtools::install_github("DARTH-git/darthpack")
 ``` r
 library(darthpack)
 ```
+
+Release your udpated framework
+==============================
+
+Once the framework has been modified and updated to your specific needs, run pkgdown from the package directory each time you release your package:
+
+``` r
+pkgdown::build_site()
+```
+
+For a more detailed description on how to quickly and easily build a website for your package, please go to <https://github.com/r-lib/pkgdown>

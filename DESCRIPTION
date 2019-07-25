@@ -64,7 +64,8 @@ Suggests:
     rmarkdown,
     dampack,
     ggplot2, 
-    testthat
+    testthat,
+    pkgdown
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
