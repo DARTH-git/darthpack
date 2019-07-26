@@ -23,15 +23,15 @@ The computation of the model-predicted outputs using the MAP estimate is done by
 
 In sections _04.6 Internal validation: Model-predicted outputs vs. targets_, we check the internal validation by plotting the model-predicted outputs against the calibration targets (Figures \@ref(fig:04-surv)-\@ref(fig:04-proportion)). The generated plots are saved as .png files in the *fig* folder. These files can be used in reports without the need of re-running the code. 
 
-```{r 04-surv, fig.cap="Survival data: Model-predicted outputs vs targets.", echo = FALSE }
+```{r 04-surv, fig.cap="Survival data: Model-predicted outputs vs targets.", out.width='100%', echo = FALSE }
 knitr::include_graphics("../figs/04_posterior_vs_targets_survival.png")
 ```
 
-```{r 04-prevalence, fig.cap = "Prevalence data of sick individuals: Model-predicted output vs targets.", echo=FALSE}
+```{r 04-prevalence, fig.cap = "Prevalence data of sick individuals: Model-predicted output vs targets.",out.width='100%', echo=FALSE}
 knitr::include_graphics("../figs/04_posterior_vs_targets_prevalence.png")
 ```
 
-```{r 04-proportion, fig.cap="Proportion who are Sicker, among all those afflicted (Sick + Sicker): Model-predicted output.", echo = FALSE}
+```{r 04-proportion, fig.cap="Proportion who are Sicker, among all those afflicted (Sick + Sicker): Model-predicted output.", out.width='100%', echo = FALSE}
 knitr::include_graphics("../figs/04_posterior_vs_targets_proportion_sicker.png")
 ```
 

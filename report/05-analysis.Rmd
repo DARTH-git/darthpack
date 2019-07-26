@@ -60,25 +60,25 @@ knitr::kable(df_cea_det[, -7], caption = "Deterministic cost-effectiveness analy
 
 Finally, Figure  \@ref(fig:05a-CEA-frontier) shows the cost-effectiveness frontier of the CEA.
 
-```{r 05a-CEA-frontier, fig.cap="Cost-effectiveness frontier.", echo=FALSE}
+```{r 05a-CEA-frontier, fig.cap="Cost-effectiveness frontier.", out.width='100%', echo=FALSE}
 knitr::include_graphics("../figs/05a_cea_frontier.png")
 ```
 
 We then conduct a series of deterministic sensitivity analysis. First, we conduct a one-way sensitivity analysis (OWSA) on the variables `c_Trt`, `p_HS1`, `u_S1` and `u_Trt` and a two-way sensitivity analysis (TWSA) using the owsa_det and twsa_det functions. We use the output of these functions to produce different SA plots, such as OWSA tornado, one-way optimal strategy and TWSA plots (Figures \@ref(fig:05a-owsa-nmb) - \@ref(fig:05a-twsa-uS1-uTrt-nmb)).
 
-```{r 05a-owsa-nmb, fig.cap = "One-way sensitivity analysis results", echo = FALSE}
+```{r 05a-owsa-nmb, fig.cap = "One-way sensitivity analysis results", out.width='100%', echo = FALSE}
 knitr::include_graphics("../figs/05a_owsa_nmb.png")
 ```
 
-```{r 05a-optimal-owsa-nmb, fig.cap = "The optimal strategy with OWSA", echo=FALSE}
+```{r 05a-optimal-owsa-nmb, fig.cap = "The optimal strategy with OWSA", out.width='100%', echo=FALSE}
 knitr::include_graphics("../figs/05a_optimal_owsa_nmb.png")
 ```
 
-```{r 05a-tornado-Treatment-nmb, fig.cap = "The tornado plot", echo=FALSE}
+```{r 05a-tornado-Treatment-nmb, fig.cap = "The tornado plot", out.width='100%', echo=FALSE}
 knitr::include_graphics("../figs/05a_tornado_Treatment_nmb.png")
 ```
 
-```{r 05a-twsa-uS1-uTrt-nmb, fig.cap = "Two-way sensitivity results.", echo=FALSE}
+```{r 05a-twsa-uS1-uTrt-nmb, fig.cap = "Two-way sensitivity results.", out.width='100%', echo=FALSE}
 knitr::include_graphics("../figs/05a_twsa_uS1_uTrt_nmb.png")
 ```
 
@@ -128,7 +128,7 @@ for(i in 1:n_sim){
 
 We can plot the results using the `plot` function from `dampack`. Figure \@ref(fig:05b-CEAplane) shows the CE scatter plot with the joint distribution of costs and effects for each strategy and their corresponding 95% confidence ellipse. 
 
-```{r 05b-CEAplane, fig.cap="The cost-effectiveness plane graph showing the results of the probabilistic sensitivity analysis for the Sick-Sicker case-study.", echo=FALSE}
+```{r 05b-CEAplane, out.width='100%', fig.cap="The cost-effectiveness plane graph showing the results of the probabilistic sensitivity analysis for the Sick-Sicker case-study.", echo=FALSE}
 knitr::include_graphics("../figs/05b_cea_plane_scatter.png")
 ```
 
@@ -139,37 +139,37 @@ knitr::kable(df_cea_psa[, -7], caption = "Probabilistic cost-effectiveness analy
 ``` 
 Next, we perform a CEA using the previously used `calculate_icers` functions from `dampack`. Table \@ref(tab:df-cea-prob) shows the results of the probabilistic CEA. In addition, we plot a cost-effectiveness plane with the frontier, the cost-effectiveness acceptability curves (CEACs) and frontier (CEAF), expected Loss curves (ELCs) (Figure \@ref(fig:05b_cea_frontier_psa) - \@ref(fig:05b-elc)) [@Alarid-Escudero2019]. Followed by creating linear regression metamodeling sensitivity analysis graphs (Figure \@ref(fig:05b-owsa-lrm-nmb) - \@ref(fig:05b-twsa-lrm-uS1-uTrt_nmb))[@Jalal2013]. All generated figures are shown below and stored to the *figs* folder . 
 
-```{r 05b-cea-frontier-psa, fig.cap = "Cost-effectiveness frontier", echo = FALSE }
+```{r 05b-cea-frontier-psa, out.width='100%', fig.cap = "Cost-effectiveness frontier", echo = FALSE }
 knitr::opts_knit$set(root.dir = '..')
 knitr::include_graphics("../figs/05b_cea_frontier_psa.png")
 ```
 
-```{r 05b-ceac-ceaf, fig.cap= "Cost-effectiveness acceptability curves (CEACs) and frontier (CEAF).", echo = FALSE}
+```{r 05b-ceac-ceaf, out.width='100%', fig.cap= "Cost-effectiveness acceptability curves (CEACs) and frontier (CEAF).", echo = FALSE}
 knitr::opts_knit$set(root.dir = '..')
 knitr::include_graphics("../figs/05b_ceac_ceaf.png")
 ```
 
-```{r 05b-elc, fig.cap="Expected Loss Curves.", echo = FALSE}
+```{r 05b-elc, out.width='100%', fig.cap="Expected Loss Curves.", echo = FALSE}
 knitr::opts_knit$set(root.dir = '..')
 knitr::include_graphics("../figs/05b_elc.png")
 ```
 
-```{r 05b-owsa-lrm-nmb, fig.cap = "One-way sensitivity analysis (OWSA).", echo = FALSE}
+```{r 05b-owsa-lrm-nmb, out.width='100%', fig.cap = "One-way sensitivity analysis (OWSA).", echo = FALSE}
 knitr::opts_knit$set(root.dir = '..')
 knitr::include_graphics("../figs/05b_owsa_lrm_nmb.png")
 ```
 
-```{r 05b-optimal-owsa-lrm-nmb,fig.cap = "Optimal strategy with OWSA", echo=FALSE}
+```{r 05b-optimal-owsa-lrm-nmb, out.width='100%', fig.cap = "Optimal strategy with OWSA", echo=FALSE}
 knitr::opts_knit$set(root.dir = '..')
 knitr::include_graphics("../figs/05b_optimal_owsa_lrm_nmb.png")
 ```
 
-```{r 05b-tornado-lrm-Treatment-nmb, fig.cap="Tornado plot", echo=FALSE}
+```{r 05b-tornado-lrm-Treatment-nmb, out.width='100%', fig.cap="Tornado plot", echo=FALSE}
 knitr::opts_knit$set(root.dir = '..')
 knitr::include_graphics("../figs/05b_tornado_lrm_Treatment_nmb.png")
 ``` 
 
-```{r 05b-twsa-lrm-uS1-uTrt-nmb, fig.cap = "Two-way sensitivity analysis (TWSA).", echo=FALSE}
+```{r 05b-twsa-lrm-uS1-uTrt-nmb, out.width='100%', fig.cap = "Two-way sensitivity analysis (TWSA).", echo=FALSE}
 knitr::opts_knit$set(root.dir = '..')
 knitr::include_graphics("../figs/05b_twsa_lrm_uS1_uTrt_nmb.png")
 ```
@@ -181,7 +181,7 @@ In the VOI component, the results from the PSA generated in the probabilistic an
 evpi <- calc_evpi(wtp = v_wtp, psa = l_psa)
 ```
 
-```{r 05c-evpi, fig.cap="Expected value of perfect information", echo=FALSE}
+```{r 05c-evpi, fig.cap="Expected value of perfect information", out.width='100%', echo=FALSE}
 knitr::include_graphics("../figs/05c_evpi.png")
 ```
 

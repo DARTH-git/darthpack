@@ -4,9 +4,6 @@ author: "DARTH"
 date: "`r Sys.Date()`"
 output: 
   pdf_document:
-    fig_width: 6
-    fig_height: 4
-    fig_caption: true
     includes:
       in_header: preamble.tex
 description: This is a minimal description of a report of a model-based cost-effectiveness
@@ -23,7 +20,6 @@ subtitle: Supplementary Material to "A need for change! A coding framework for i
   transparency in decision modeling"
 biblio-style: apalike
 header-includes:
-- \usepackage{amsmath}
 - \usepackage{float}
 - \usepackage{setspace}\onehalfspacing
 - \usepackage[margin=1in]{geometry}
@@ -43,12 +39,12 @@ knitr::write_bib(c(
 # knitr::opts_knit$set(root.dir = '../') 
 ## Load packages
 library(png)
-library(darthpack)
+if(!require(darthpack)) devtools::install_github("DARTH-git/darthpack"); library(darthpack)
 # all the figures will be 6.5 x 4 inches and centered in the text.
-knitr::opts_chunk$set(fig.width=6.5, 
-                      fig.height=4, 
+knitr::opts_chunk$set(fig.width=6.5,
+                      fig.height=4,
                       fig.align="center"
-                      # fig.path="../figs/", 
+                      # fig.path="../figs/",
                       )
 ```
 
