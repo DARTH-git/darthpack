@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2019.7.18)  26 JUL 2019 11:48
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2019.7.18)  26 JUL 2019 14:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1290,10 +1290,10 @@ File: ../figs/05b_tornado_lrm_Treatment_nmb.png Graphic file (type bmp)
 <../figs/05b_tornado_lrm_Treatment_nmb.png>
 File: ../figs/05b_twsa_lrm_uS1_uTrt_nmb.png Graphic file (type bmp)
 <../figs/05b_twsa_lrm_uS1_uTrt_nmb.png>
-[36] [37] [38] [39] [40]
 
 Package xcolor Warning: Incompatible color definition on input line 1061.
 
+[36] [37] [38] [39] [40]
 
 Package xcolor Warning: Incompatible color definition on input line 1065.
 
@@ -1318,10 +1318,10 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 Here is how much of TeX's memory you used:
  25498 strings out of 494894
  472286 string characters out of 6175383
- 584787 words of memory out of 5000000
+ 583784 words of memory out of 5000000
  29136 multiletter control sequences out of 15000+600000
  545179 words of font info for 57 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 46i,9n,68p,2020b,452s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 46i,9n,68p,2020b,448s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on report.pdf (47 pages).

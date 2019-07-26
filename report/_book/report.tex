@@ -193,7 +193,7 @@ The input to inform the values is divided in three categories: external, estimat
 
 In this component, we start with the general setup of the model, specifying among others the time horizon, name and number of health states, proportion of the cohort in each of the different health states at the start of the simulation and discount rates. The next step is to specify the external parameters. The initial model parameter values and \texttt{R} variable names are presented in Table \ref{tab:parameters}.
 
-\begin{longtable}[]{@{}lcc@{}}
+\begin{longtable}[]{@{}lll@{}}
 \caption{\label{tab:parameters} Description of the initial parameters with their \texttt{R} name and value of the Sick-Sicker model.}\tabularnewline
 \toprule
 \textbf{Parameter} & \textbf{R name} & \textbf{Value}\tabularnewline
@@ -251,7 +251,7 @@ Age-specific background mortality for healthy individuals is represented by the 
 ##         Total))
 ##     return(v_r_mort_by_age)
 ## }
-## <bytecode: 0x00000000151d5890>
+## <bytecode: 0x00000000151b6110>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -288,7 +288,7 @@ Another function in the \emph{01\_model-inputs\_functions.R} script, is the \tex
 ##     })
 ##     l_params_all <- c(l_params_all, df_params_init)
 ## }
-## <bytecode: 0x00000000151d6b38>
+## <bytecode: 0x00000000151b73b8>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -363,7 +363,7 @@ The function \texttt{decision\_model} is defined in the \emph{02\_simulation\_mo
 ##         return(list(a_P = a_P, m_M = m_M))
 ##     })
 ## }
-## <bytecode: 0x000000001833d000>
+## <bytecode: 0x000000001831c1c0>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -499,7 +499,7 @@ In section \emph{03.3 Run calibration algorithms}, we set the parameters we need
 ##         21, 31)], PropSicker = v_prop_S2[c(11, 21, 31)])
 ##     return(l_out)
 ## }
-## <bytecode: 0x00000000191a62a8>
+## <bytecode: 0x0000000019185468>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -577,7 +577,7 @@ In section \emph{04.2 Compute model-predicted outputs}, we compute the model-pre
 ##     data_sum <- plyr::rename(data_sum, c(mean = varname))
 ##     return(data_sum)
 ## }
-## <bytecode: 0x0000000018b900f8>
+## <bytecode: 0x0000000018b6f2b8>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -639,7 +639,7 @@ In this subcomponent, we perform a deterministic CEA, followed by some determini
 ##     l_params_all <- modifyList(l_params_all, params_updated)
 ##     return(l_params_all)
 ## }
-## <bytecode: 0x000000001e401730>
+## <bytecode: 0x000000001dbe5d98>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -693,7 +693,7 @@ We use this new list as an argument in the \texttt{calculate\_ce\_out} function.
 ##         return(df_ce)
 ##     })
 ## }
-## <bytecode: 0x000000001eb23838>
+## <bytecode: 0x000000001e304070>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -792,124 +792,124 @@ We then conduct a series of deterministic sensitivity analysis. First, we conduc
 
 In this subcomponent, we evaluate decision uncertainty by propagating the uncertainty through the CEA using probabilistic sensitivity analysis (PSA). Until now we used the parameter values as described in Table \ref{tab:parameters}. However, we are uncertain about these values. Most of these input parameters are defined by probability distribution as described in Table \ref{tab:parameters-PSA}.
 
-\begin{longtable}[]{@{}lcc@{}}
+\begin{longtable}[]{@{}lll@{}}
 \caption{\label{tab:parameters-PSA} Description of parameters with their R name and distribution.}\tabularnewline
 \toprule
-\begin{minipage}[b]{0.49\columnwidth}\raggedright
+\begin{minipage}[b]{0.33\columnwidth}\raggedright
 \textbf{Parameter}\strut
-\end{minipage} & \begin{minipage}[b]{0.19\columnwidth}\centering
+\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\raggedright
 \textbf{R name}\strut
-\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\centering
+\end{minipage} & \begin{minipage}[b]{0.46\columnwidth}\raggedright
 \textbf{Distribution}\strut
 \end{minipage}\tabularnewline
 \midrule
 \endfirsthead
 \toprule
-\begin{minipage}[b]{0.49\columnwidth}\raggedright
+\begin{minipage}[b]{0.33\columnwidth}\raggedright
 \textbf{Parameter}\strut
-\end{minipage} & \begin{minipage}[b]{0.19\columnwidth}\centering
+\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\raggedright
 \textbf{R name}\strut
-\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\centering
+\end{minipage} & \begin{minipage}[b]{0.46\columnwidth}\raggedright
 \textbf{Distribution}\strut
 \end{minipage}\tabularnewline
 \midrule
 \endhead
-\begin{minipage}[t]{0.49\columnwidth}\raggedright
+\begin{minipage}[t]{0.33\columnwidth}\raggedright
 Annual transition probabilities\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
 \strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
 \strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.49\columnwidth}\raggedright
+\begin{minipage}[t]{0.33\columnwidth}\raggedright
 - Disease onset (H to S1)\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
 \texttt{p\_HS1}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
 \texttt{beta(30,\ 170)}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.49\columnwidth}\raggedright
+\begin{minipage}[t]{0.33\columnwidth}\raggedright
 - Recovery (S1 to H)\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
 \texttt{p\_S1H}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
 \texttt{beta(60,\ 60)}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.49\columnwidth}\raggedright
+\begin{minipage}[t]{0.33\columnwidth}\raggedright
 Annual costs\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
 \strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
 \strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.49\columnwidth}\raggedright
+\begin{minipage}[t]{0.33\columnwidth}\raggedright
 - Healthy individuals\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
 \texttt{c\_H}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
 \texttt{gamma(shape\ =\ 100,\ scale\ =\ 20)}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.49\columnwidth}\raggedright
+\begin{minipage}[t]{0.33\columnwidth}\raggedright
 - Sick individuals in S1\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
 \texttt{c\_S1}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
 \texttt{gamma(shape\ =\ 177.8,\ scale\ =\ 22.5)}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.49\columnwidth}\raggedright
+\begin{minipage}[t]{0.33\columnwidth}\raggedright
 - Sick individuals in S2\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
 \texttt{c\_S2}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
 \texttt{gamma(shape\ =\ 225,\ scale\ =\ 66.7)}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.49\columnwidth}\raggedright
+\begin{minipage}[t]{0.33\columnwidth}\raggedright
 - Additional costs of sick individuals treated in S1 or S2\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
 \texttt{c.Trt}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
 \texttt{gamma(shape\ =\ 73.5,\ scale\ =\ 163.3)}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.49\columnwidth}\raggedright
+\begin{minipage}[t]{0.33\columnwidth}\raggedright
 Utility weights\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
 \strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
 \strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.49\columnwidth}\raggedright
+\begin{minipage}[t]{0.33\columnwidth}\raggedright
 - Healthy individuals\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
 \texttt{u\_H}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
 \texttt{truncnorm(mean\ =\ 1,\ sd\ =\ 0.01,\ b\ =\ 1)}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.49\columnwidth}\raggedright
+\begin{minipage}[t]{0.33\columnwidth}\raggedright
 - Sick individuals in S1\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
 \texttt{u\_S1}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
 \texttt{truncnorm(mean\ =\ 0.75,\ sd\ =\ 0.02,\ b\ =\ 1)}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.49\columnwidth}\raggedright
+\begin{minipage}[t]{0.33\columnwidth}\raggedright
 - Sick individuals in S2\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
 \texttt{u\_S2}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
 \texttt{truncnorm(mean\ =\ 0.50,\ sd\ =\ 0.03,\ b\ =\ 1)}\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.49\columnwidth}\raggedright
+\begin{minipage}[t]{0.33\columnwidth}\raggedright
 Intervention effect\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
 \strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
 \strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.49\columnwidth}\raggedright
+\begin{minipage}[t]{0.33\columnwidth}\raggedright
 - Utility for treated individuals in S1\strut
-\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
 \texttt{u\_Trt}\strut
-\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
 \texttt{truncnorm(mean\ =\ 0.95,\ sd\ =\ 0.02,\ b\ =\ 1)}\strut
 \end{minipage}\tabularnewline
 \bottomrule
@@ -941,7 +941,7 @@ In a PSA we sample the input parameter values from these distributions and we th
 ##             mean = 0.95, sd = 0.02, b = 1))
 ##     return(df_psa_params)
 ## }
-## <bytecode: 0x000000001e3aa920>
+## <bytecode: 0x000000001db8b040>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 

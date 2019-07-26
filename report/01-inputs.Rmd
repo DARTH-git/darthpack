@@ -23,7 +23,7 @@ In this component, we start with the general setup of the model, specifying amon
 Table: (\#tab:parameters) Description of the initial parameters with their `R` name and value of the Sick-Sicker model.
 
 |           **Parameter**            |  **R name** |   **Value**   |
-|:-----------------------------------|:-----------:|:-------------:|
+|:-----------------------------------|:------------|:--------------|
 | Time horizon ($n_t$)               | `n_t`       | `r l_params_all$n_t` years |
 | Names of health states ($n$)       | `v_n`       | H, S1, S2, D  |
 | Annual discount rate (costs/QALYs) | `d_c`/`d_e` |  3%           |

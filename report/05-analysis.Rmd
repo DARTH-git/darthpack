@@ -88,9 +88,9 @@ In this subcomponent, we evaluate decision uncertainty by propagating the uncert
 
 Table: (\#tab:parameters-PSA) Description of parameters with their R name and distribution.
 
-|           **Parameter**         |  **R name** |   **Distribution**   |
-  |:--------------------------------|:-----------:|:-------------:|
-  | Annual transition probabilities |           |               |
+  |           **Parameter**         |  **R name** |   **Distribution**    |
+  |:--------------------------------|:------------|:---------------------------------------------|
+  | Annual transition probabilities |             |                       |
   | - Disease onset (H to S1)       | `p_HS1`     |  `beta(30, 170)`        |
   | - Recovery (S1 to H)            | `p_S1H`     |  `beta(60, 60)`         |
   | Annual costs                    |             |               |
