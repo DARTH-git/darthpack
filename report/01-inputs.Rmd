@@ -64,7 +64,7 @@ The `load_all_params` function is informed by the arguments `file.init` and `fil
 
 The `file.mort` argument is a string with the location and name of the file with mortality data. As described before, in our case-study this is the *01_all-cause-mortality.csv* file. Within the `load_all_parms` function, the `load_mort_data` function is used to create a vector with mortality rates from the .csv data. 
 
-After loading all the information, the `load_all_params` generates a list called,`l_params_all`, including all parameters for the model including the general setup parameters and the vector of mortality rates. The function also stores the dataframe  `df_params_init` with the initial set of parameters in the list. This is all executed in the in the *01_model-inputs.R* script by running the code below. 
+After loading all the information, the `load_all_params` generates a list called, `l_params_all`, including all parameters for the model including the general setup parameters and the vector of mortality rates. The function also stores the dataframe  `df_params_init` with the initial set of parameters in the list. This is all executed in the in the *01_model-inputs.R* script by running the code below. 
 ```{r, eval = FALSE, echo = TRUE}
 l_params_all <- load_all_params()
 ```

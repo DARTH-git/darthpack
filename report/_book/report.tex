@@ -125,7 +125,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-07-26}
+    \date{2019-07-30}
 
 \usepackage{booktabs}
 \usepackage{float}
@@ -251,7 +251,7 @@ Age-specific background mortality for healthy individuals is represented by the 
 ##         Total))
 ##     return(v_r_mort_by_age)
 ## }
-## <bytecode: 0x00000000151b6110>
+## <bytecode: 0x00000000151c5a50>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -288,7 +288,7 @@ Another function in the \emph{01\_model-inputs\_functions.R} script, is the \tex
 ##     })
 ##     l_params_all <- c(l_params_all, df_params_init)
 ## }
-## <bytecode: 0x00000000151b73b8>
+## <bytecode: 0x00000000151c6cf8>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -296,7 +296,7 @@ The \texttt{load\_all\_params} function is informed by the arguments \texttt{fil
 
 The \texttt{file.mort} argument is a string with the location and name of the file with mortality data. As described before, in our case-study this is the \emph{01\_all-cause-mortality.csv} file. Within the \texttt{load\_all\_parms} function, the \texttt{load\_mort\_data} function is used to create a vector with mortality rates from the .csv data.
 
-After loading all the information, the \texttt{load\_all\_params} generates a list called,\texttt{l\_params\_all}, including all parameters for the model including the general setup parameters and the vector of mortality rates. The function also stores the dataframe \texttt{df\_params\_init} with the initial set of parameters in the list. This is all executed in the in the \emph{01\_model-inputs.R} script by running the code below.
+After loading all the information, the \texttt{load\_all\_params} generates a list called, \texttt{l\_params\_all}, including all parameters for the model including the general setup parameters and the vector of mortality rates. The function also stores the dataframe \texttt{df\_params\_init} with the initial set of parameters in the list. This is all executed in the in the \emph{01\_model-inputs.R} script by running the code below.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -363,7 +363,7 @@ The function \texttt{decision\_model} is defined in the \emph{02\_simulation\_mo
 ##         return(list(a_P = a_P, m_M = m_M))
 ##     })
 ## }
-## <bytecode: 0x000000001831c1c0>
+## <bytecode: 0x000000001831e0e0>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -499,7 +499,7 @@ In section \emph{03.3 Run calibration algorithms}, we set the parameters we need
 ##         21, 31)], PropSicker = v_prop_S2[c(11, 21, 31)])
 ##     return(l_out)
 ## }
-## <bytecode: 0x0000000019185468>
+## <bytecode: 0x0000000019187400>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -577,7 +577,7 @@ In section \emph{04.2 Compute model-predicted outputs}, we compute the model-pre
 ##     data_sum <- plyr::rename(data_sum, c(mean = varname))
 ##     return(data_sum)
 ## }
-## <bytecode: 0x0000000018b6f2b8>
+## <bytecode: 0x0000000018b710f8>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -622,7 +622,7 @@ The analysis component is where the elements in components 1-4 are combined to a
 \hypertarget{Deterministic-analysis}{%
 \section{05a Deterministic analysis}\label{Deterministic-analysis}}
 
-In this subcomponent, we perform a deterministic CEA, followed by some deterministic sensitivity analysis, including one-way, two-way and tornado sensitivity analyses. The function script of this subcomponent, \emph{05a\_deterministic\_analysis\_function.R}, contains the function \texttt{calculate\_ce\_out}. This function calculates costs and effects for a given vector of parameters using a simulation model. We need to run our simulation model using the calibrated parameter values, but the list we created in component 01 \ref{inputs} still contain the placeholder values for the calibrated parameters. This means we need to update these values by the calibrated values stored in the vector \texttt{v\_calib\_post\_map}. The function \texttt{update\_param\_list} updates the list of parameters with new values for some specific parameters.
+In this subcomponent, we perform a deterministic CEA, followed by some deterministic sensitivity analysis, including one-way, two-way and tornado sensitivity analyses. The function script of this subcomponent, \emph{05a\_deterministic\_analysis\_function.R}, contains the function \texttt{calculate\_ce\_out}. This function calculates costs and effects for a given vector of parameters using a simulation model. We need to run our simulation model using the calibrated parameter values, but the list we created in component 01 (\ref{inputs}) still contain the placeholder values for the calibrated parameters. This means we need to update these values by the calibrated values stored in the vector \texttt{v\_calib\_post\_map}. The function \texttt{update\_param\_list} updates the list of parameters with new values for some specific parameters.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -639,7 +639,7 @@ In this subcomponent, we perform a deterministic CEA, followed by some determini
 ##     l_params_all <- modifyList(l_params_all, params_updated)
 ##     return(l_params_all)
 ## }
-## <bytecode: 0x000000001dbe5d98>
+## <bytecode: 0x000000001dbe8090>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -693,7 +693,7 @@ We use this new list as an argument in the \texttt{calculate\_ce\_out} function.
 ##         return(df_ce)
 ##     })
 ## }
-## <bytecode: 0x000000001e304070>
+## <bytecode: 0x000000001e304448>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -941,7 +941,7 @@ In a PSA we sample the input parameter values from these distributions and we th
 ##             mean = 0.95, sd = 0.02, b = 1))
 ##     return(df_psa_params)
 ## }
-## <bytecode: 0x000000001db8b040>
+## <bytecode: 0x000000001db8b3a8>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -988,7 +988,7 @@ Treatment & 213755.8 & 20.63891 & 98216.84 & 0.6858646 & 143201.5\\
 \end{tabular}
 \end{table}
 
-Next, we perform a CEA using the previously used \texttt{calculate\_icers} functions from \texttt{dampack}. Table \ref{tab:df-cea-prob} shows the results of the probabilistic CEA. In addition, we plot a cost-effectiveness plane with the frontier, the cost-effectiveness acceptability curves (CEACs) and frontier (CEAF), expected Loss curves (ELCs) (Figure @ref(fig:05b\_cea\_frontier\_psa) - \ref{fig:05b-elc}) \citep{Alarid-Escudero2019}. Followed by creating linear regression metamodeling sensitivity analysis graphs (Figure \ref{fig:05b-owsa-lrm-nmb} - @ref(fig:05b-twsa-lrm-uS1-uTrt\_nmb))\citep{Jalal2013}. All generated figures are shown below and stored to the \emph{figs} folder .
+Next, we perform a CEA using the previously used \texttt{calculate\_icers} functions from \texttt{dampack}. Table \ref{tab:df-cea-prob} shows the results of the probabilistic CEA. In addition, we plot a cost-effectiveness plane with the frontier, the cost-effectiveness acceptability curves (CEACs) and frontier (CEAF), expected Loss curves (ELCs) (Figures \ref{fig:05b-cea-frontier-psa} - \ref{fig:05b-elc}) \citep{Alarid-Escudero2019}. Followed by creating linear regression metamodeling sensitivity analysis graphs (Figures \ref{fig:05b-owsa-lrm-nmb} - \ref{fig:05b-twsa-lrm-uS1-uTrt-nmb})\citep{Jalal2013}. All generated figures are shown below and stored to the \emph{figs} folder .
 
 \begin{figure}
 
