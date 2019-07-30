@@ -32,9 +32,9 @@ load_mort_data <- function(file = NULL){
 #' @export
 load_all_params <- function(file.init = NULL,
                             file.mort = NULL){ # User defined
-  #### Load initial set of initial parameters form .csv file ####
+  #### Load initial set of initial parameters from .csv file ####
   if(!is.null(file.init)) {
-    df_params_init <- read.csv(file = file)
+    df_params_init <- read.csv(file = file.init)
   } else{
     df_params_init <- df_params_init
   }

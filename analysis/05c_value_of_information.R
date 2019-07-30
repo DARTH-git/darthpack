@@ -14,7 +14,8 @@
 # The structure of this code is according to the DARTH framework               #
 # https://github.com/DARTH-git/Decision-Modeling-Framework                     #
 ################################################################################
-# rm(list = ls()) # to clean the workspace
+
+rm(list = ls()) # to clean the workspace
 
 #### 05c.1 Load packages, functions and data ####
 #### 05c.1.1 Load packages ####
