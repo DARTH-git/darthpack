@@ -13,7 +13,7 @@
 # https://github.com/DARTH-git/Decision-Modeling-Framework                     #
 ################################################################################ 
 
-# rm(list = ls()) # to clean the workspace
+rm(list = ls()) # to clean the workspace
 
 #### 01.1 Load packages and functions ####
 #### 01.1.1 Load packages and functions ####

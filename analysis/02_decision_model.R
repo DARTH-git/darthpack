@@ -13,7 +13,7 @@
 # https://github.com/DARTH-git/Decision-Modeling-Framework                     #
 ################################################################################ 
 
-# rm(list = ls()) # to clean the workspace
+rm(list = ls()) # to clean the workspace
 
 #### 02.1 Load packages and functions ####
 #### 02.1.1 Load packages and functions ####
@@ -21,7 +21,8 @@ library(dplyr)    # For data manipulation
 library(survival) # For plotting state-transition diagram
 
 #### 02.1.2 Load inputs ####
-l_params_all <- load_all_params() # function in darthpack
+l_params_all <- load_all_params(file.init = "data-raw/01_init_params.csv",
+                                file.mort = "data-raw/01_all_cause_mortality.csv") # function in darthpack
 
 #### 02.1.3 Load functions ####
 # no functions required

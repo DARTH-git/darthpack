@@ -14,14 +14,16 @@
 # The structure of this code is according to the DARTH framework               #
 # https://github.com/DARTH-git/Decision-Modeling-Framework                     #
 ################################################################################ 
-# rm(list = ls()) # to clean the workspace
+
+rm(list = ls()) # to clean the workspace
 
 #### 04.1 Load packages and functions ####
 #### 04.1.1 Load packages ####
 # Dependencies have been loaded with 'darthpack'
 
 #### 04.1.2 Load inputs ####
-l_params_all <- load_all_params() # function in darthpack
+l_params_all <- load_all_params(file.init = "data-raw/01_init_params.csv",
+                                file.mort = "data-raw/01_all_cause_mortality.csv") # function in darthpack
 
 #### 04.1.3 Load functions ####
 # no required functions
