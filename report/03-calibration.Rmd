@@ -35,7 +35,7 @@ In the next section, _03.3.2 Run IMIS algorithm_, we calibrate the Sick-Sicker m
 We then explore these posterior distributions in section _03.4 Exploring posterior distribution_. We start by estimating the posterior mean, median and 95% credible interval, the mode and the maximum-a-posteriori (MAP). All for these summary statistics are combined in a dataframe called `df_posterior_summ`. Table \@ref(tab:SummaryCal) shows the summary statistics of the posterior distribution. 
 ```{r SummaryCal, eval = TRUE, echo = FALSE, message=F, warning=F, cache=F}
 load("../tables/03_summary_posterior.RData")
-knitr::kable(df_posterior_summ[, -1], caption = "Summary statistics of the posterior distribution") # create a table 
+knitr::kable(df_posterior_summ[, -1], caption = "Summary statistics of the posterior distribution", format = "latex") # create a table 
 ``` 
 
 In section _03.4.2 Visualization of posterior distribution_, we generate a pairwise scatter plot of the calibrated parameters (Figure \@ref(fig:03-posterior-distribution-marginal)) and a 3D scatter plot of the joint posterior distribution (Figure \@ref(fig:Posterior-distribution-joint)). These figures are saved in the *figs* directory.

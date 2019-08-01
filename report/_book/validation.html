@@ -24,7 +24,7 @@
 <meta name="author" content="DARTH" />
 
 
-<meta name="date" content="2019-07-24" />
+<meta name="date" content="2019-07-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -154,25 +154,25 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##   data_sum &lt;- plyr::rename(data_sum, c(&quot;mean&quot; = varname))
 ##   return(data_sum)
 ## }
-## &lt;bytecode: 0x7fb91272b0f8&gt;
+## &lt;bytecode: 0x7fb863d1c380&gt;
 ## &lt;environment: namespace:darthpack&gt;</code></pre>
 <p>This function is informed by three arguments, <code>data</code>, <code>varname</code> and <code>groupnames</code>.</p>
 <p>The computation of the model-predicted outputs using the MAP estimate is done by inserting the <code>v_calib_post_map</code> data into the previously described <code>calibration_out</code> function. This function creates a list including the estimated values for survival, prevalence and the proportion of sicker individuals at cycles 10, 20 and 30.</p>
 <p>In sections <em>04.6 Internal validation: Model-predicted outputs vs. targets</em>, we check the internal validation by plotting the model-predicted outputs against the calibration targets (Figures <a href="validation.html#fig:04-surv">4.1</a>-<a href="validation.html#fig:04-proportion">4.3</a>). The generated plots are saved as .png files in the <em>fig</em> folder. These files can be used in reports without the need of re-running the code.</p>
 <div class="figure" style="text-align: center"><span id="fig:04-surv"></span>
-<img src="../figs/04_posterior_vs_targets_survival.png" alt="Survival data: Model-predicted outputs vs targets." width="1200" />
+<img src="../figs/04_posterior_vs_targets_survival.png" alt="Survival data: Model-predicted outputs vs targets." width="100%" />
 <p class="caption">
 Figure 4.1: Survival data: Model-predicted outputs vs targets.
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:04-prevalence"></span>
-<img src="../figs/04_posterior_vs_targets_prevalence.png" alt="Prevalence data of sick individuals: Model-predicted output vs targets." width="1200" />
+<img src="../figs/04_posterior_vs_targets_prevalence.png" alt="Prevalence data of sick individuals: Model-predicted output vs targets." width="100%" />
 <p class="caption">
 Figure 4.2: Prevalence data of sick individuals: Model-predicted output vs targets.
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:04-proportion"></span>
-<img src="../figs/04_posterior_vs_targets_proportion_sicker.png" alt="Proportion who are Sicker, among all those afflicted (Sick + Sicker): Model-predicted output." width="1200" />
+<img src="../figs/04_posterior_vs_targets_proportion_sicker.png" alt="Proportion who are Sicker, among all those afflicted (Sick + Sicker): Model-predicted output." width="100%" />
 <p class="caption">
 Figure 4.3: Proportion who are Sicker, among all those afflicted (Sick + Sicker): Model-predicted output.
 </p>

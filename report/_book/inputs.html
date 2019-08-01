@@ -24,7 +24,7 @@
 <meta name="author" content="DARTH" />
 
 
-<meta name="date" content="2019-07-24" />
+<meta name="date" content="2019-07-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -146,130 +146,130 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <thead>
 <tr class="header">
 <th align="left"><strong>Parameter</strong></th>
-<th align="center"><strong>R name</strong></th>
-<th align="center"><strong>Value</strong></th>
+<th align="left"><strong>R name</strong></th>
+<th align="left"><strong>Value</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="left">Time horizon (<span class="math inline">\(n_t\)</span>)</td>
-<td align="center"><code>n_t</code></td>
-<td align="center">75 years</td>
+<td align="left"><code>n_t</code></td>
+<td align="left">75 years</td>
 </tr>
 <tr class="even">
 <td align="left">Names of health states (<span class="math inline">\(n\)</span>)</td>
-<td align="center"><code>v_n</code></td>
-<td align="center">H, S1, S2, D</td>
+<td align="left"><code>v_n</code></td>
+<td align="left">H, S1, S2, D</td>
 </tr>
 <tr class="odd">
 <td align="left">Annual discount rate (costs/QALYs)</td>
-<td align="center"><code>d_c</code>/<code>d_e</code></td>
-<td align="center">3%</td>
+<td align="left"><code>d_c</code>/<code>d_e</code></td>
+<td align="left">3%</td>
 </tr>
 <tr class="even">
 <td align="left">Annual transition probabilities</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="left"></td>
+<td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="left">- Disease onset (H to S1)</td>
-<td align="center"><code>p_HS1</code></td>
-<td align="center">0.15</td>
+<td align="left"><code>p_HS1</code></td>
+<td align="left">0.15</td>
 </tr>
 <tr class="even">
 <td align="left">- Recovery (S1 to H)</td>
-<td align="center"><code>p_S1H</code></td>
-<td align="center">0.5</td>
+<td align="left"><code>p_S1H</code></td>
+<td align="left">0.5</td>
 </tr>
 <tr class="odd">
 <td align="left">- Disease progression (S1 to S2) in the time-homogenous model</td>
-<td align="center"><code>p_S1S2</code></td>
-<td align="center">0.105</td>
+<td align="left"><code>p_S1S2</code></td>
+<td align="left">0.105</td>
 </tr>
 <tr class="even">
 <td align="left">Annual mortality</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="left"></td>
+<td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="left">- All-cause mortality (H to D)</td>
-<td align="center"><code>p_HD</code></td>
-<td align="center">age-specific</td>
+<td align="left"><code>p_HD</code></td>
+<td align="left">age-specific</td>
 </tr>
 <tr class="even">
 <td align="left">- Hazard rate ratio of death in S1 vs H</td>
-<td align="center"><code>hr_S1</code></td>
-<td align="center">3</td>
+<td align="left"><code>hr_S1</code></td>
+<td align="left">3</td>
 </tr>
 <tr class="odd">
 <td align="left">- Hazard rate ratio of death in S2 vs H</td>
-<td align="center"><code>hr_S2</code></td>
-<td align="center">3</td>
+<td align="left"><code>hr_S2</code></td>
+<td align="left">3</td>
 </tr>
 <tr class="even">
 <td align="left">Annual costs</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="left"></td>
+<td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="left">- Healthy individuals</td>
-<td align="center"><code>c_H</code></td>
-<td align="center">$2,000</td>
+<td align="left"><code>c_H</code></td>
+<td align="left">$2,000</td>
 </tr>
 <tr class="even">
 <td align="left">- Sick individuals in S1</td>
-<td align="center"><code>c_S1</code></td>
-<td align="center">$4,000</td>
+<td align="left"><code>c_S1</code></td>
+<td align="left">$4,000</td>
 </tr>
 <tr class="odd">
 <td align="left">- Sick individuals in S2</td>
-<td align="center"><code>c_S2</code></td>
-<td align="center">$15,000</td>
+<td align="left"><code>c_S2</code></td>
+<td align="left">$15,000</td>
 </tr>
 <tr class="even">
 <td align="left">- Dead individuals</td>
-<td align="center"><code>c_D</code></td>
-<td align="center">$0</td>
+<td align="left"><code>c_D</code></td>
+<td align="left">$0</td>
 </tr>
 <tr class="odd">
 <td align="left">- Additional costs of sick individuals treated in S1 or S2</td>
-<td align="center"><code>c_Trt</code></td>
-<td align="center">$12,000</td>
+<td align="left"><code>c_Trt</code></td>
+<td align="left">$12,000</td>
 </tr>
 <tr class="even">
 <td align="left">Utility weights</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="left"></td>
+<td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="left">- Healthy individuals</td>
-<td align="center"><code>u_H</code></td>
-<td align="center">1.00</td>
+<td align="left"><code>u_H</code></td>
+<td align="left">1.00</td>
 </tr>
 <tr class="even">
 <td align="left">- Sick individuals in S1</td>
-<td align="center"><code>u_S1</code></td>
-<td align="center">0.75</td>
+<td align="left"><code>u_S1</code></td>
+<td align="left">0.75</td>
 </tr>
 <tr class="odd">
 <td align="left">- Sick individuals in S2</td>
-<td align="center"><code>u_S2</code></td>
-<td align="center">0.50</td>
+<td align="left"><code>u_S2</code></td>
+<td align="left">0.50</td>
 </tr>
 <tr class="even">
 <td align="left">- Dead individuals</td>
-<td align="center"><code>u_D</code></td>
-<td align="center">0.00</td>
+<td align="left"><code>u_D</code></td>
+<td align="left">0.00</td>
 </tr>
 <tr class="odd">
 <td align="left">Intervention effect</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="left"></td>
+<td align="left"></td>
 </tr>
 <tr class="even">
 <td align="left">- Utility for treated individuals in S1</td>
-<td align="center"><code>u_Trt</code></td>
-<td align="center">0.95</td>
+<td align="left"><code>u_Trt</code></td>
+<td align="left">0.95</td>
 </tr>
 </tbody>
 </table>
@@ -287,7 +287,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##   
 ##   return(v_r_mort_by_age)
 ## }
-## &lt;bytecode: 0x7fb90eae5120&gt;
+## &lt;bytecode: 0x7fb86700c338&gt;
 ## &lt;environment: namespace:darthpack&gt;</code></pre>
 <p>Another function in the <em>01_model-inputs_functions.R</em> script, is the <code>load_all_parms</code> function. This function, which is actually using the <code>load_mort_data</code> function, loads all parameters for the decision model from multiple sources and creates a list that contains all parameters and their values.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print.function</span>(load_all_params)  <span class="co"># print the function</span></code></pre></div>
@@ -331,7 +331,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##   l_params_all &lt;- c(l_params_all, 
 ##                     df_params_init) # Add initial set of parameters
 ## }
-## &lt;bytecode: 0x7fb90df61f70&gt;
+## &lt;bytecode: 0x7fb8647db640&gt;
 ## &lt;environment: namespace:darthpack&gt;</code></pre>
 <p>The <code>load_all_params</code> function is informed by the arguments <code>file.init</code> and <code>file.mort</code>. The <code>file.init</code> argument is a string with the location and name of the file with initial set of parameters. The initial parameter values for our case-study are stored in the <em>01_init-params.csv</em> file located in the <em>data</em> directory. The <code>load_all_params</code> function read this .csv file into the function environment as a dataframe called, <code>df_params_init</code>.</p>
 <p>The <code>file.mort</code> argument is a string with the location and name of the file with mortality data. As described before, in our case-study this is the <em>01_all-cause-mortality.csv</em> file. Within the <code>load_all_parms</code> function, the <code>load_mort_data</code> function is used to create a vector with mortality rates from the .csv data.</p>
