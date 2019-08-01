@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2019.7.18)  30 JUL 2019 11:06
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2019.7.18)  1 AUG 2019 15:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1064,122 +1064,127 @@ Package xcolor Warning: Incompatible color definition on input line 264.
 
 Package xcolor Warning: Incompatible color definition on input line 264.
 
-[10]
+[10] [11]
 
-Package xcolor Warning: Incompatible color definition on input line 301.
-
-
-Package xcolor Warning: Incompatible color definition on input line 305.
+Package xcolor Warning: Incompatible color definition on input line 317.
 
 
-Package xcolor Warning: Incompatible color definition on input line 305.
+Package xcolor Warning: Incompatible color definition on input line 321.
 
-[11] [12]
+
+Package xcolor Warning: Incompatible color definition on input line 321.
+
+[12]
 Chapter 2.
 
-Package xcolor Warning: Incompatible color definition on input line 318.
+Package xcolor Warning: Incompatible color definition on input line 334.
 
 
-Package xcolor Warning: Incompatible color definition on input line 322.
+Package xcolor Warning: Incompatible color definition on input line 338.
 
 
-Package xcolor Warning: Incompatible color definition on input line 322.
-
-
-Overfull \hbox (7.99498pt too wide) in paragraph at lines 368--368
-[]\TU/lmtt/m/n/10 ##             stop("Not all the age in the age range have a 
-corresponding mortality rate")[] 
- []
+Package xcolor Warning: Incompatible color definition on input line 338.
 
 [13
 
 ]
+Overfull \hbox (34.24498pt too wide) in paragraph at lines 412--412
+[]\TU/lmtt/m/n/10 ##     check_sum_of_transition_array(a_P, n_states, n_t, err_
+stop = err_stop, verbose = verbose)[] 
+ []
 
-Package xcolor Warning: Incompatible color definition on input line 372.
 
-
-Package xcolor Warning: Incompatible color definition on input line 376.
-
-
-Package xcolor Warning: Incompatible color definition on input line 376.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [14]
 
-Package xcolor Warning: Incompatible color definition on input line 382.
+Package xcolor Warning: Incompatible color definition on input line 416.
 
 
-Package xcolor Warning: Incompatible color definition on input line 386.
+Package xcolor Warning: Incompatible color definition on input line 420.
 
 
-Package xcolor Warning: Incompatible color definition on input line 386.
+Package xcolor Warning: Incompatible color definition on input line 420.
 
 
-Package xcolor Warning: Incompatible color definition on input line 414.
+Package xcolor Warning: Incompatible color definition on input line 426.
 
 
-Package xcolor Warning: Incompatible color definition on input line 418.
+Package xcolor Warning: Incompatible color definition on input line 430.
 
 
-Package xcolor Warning: Incompatible color definition on input line 418.
+Package xcolor Warning: Incompatible color definition on input line 430.
 
 [15]
 
-Package xcolor Warning: Incompatible color definition on input line 432.
+Package xcolor Warning: Incompatible color definition on input line 458.
 
 
-Package xcolor Warning: Incompatible color definition on input line 436.
+Package xcolor Warning: Incompatible color definition on input line 462.
 
 
-Package xcolor Warning: Incompatible color definition on input line 436.
+Package xcolor Warning: Incompatible color definition on input line 462.
 
 
-Package xcolor Warning: Incompatible color definition on input line 448.
+Package xcolor Warning: Incompatible color definition on input line 476.
 
 
-Package xcolor Warning: Incompatible color definition on input line 452.
+Package xcolor Warning: Incompatible color definition on input line 480.
 
 
-Package xcolor Warning: Incompatible color definition on input line 452.
+Package xcolor Warning: Incompatible color definition on input line 480.
+
+[16]
+
+Package xcolor Warning: Incompatible color definition on input line 492.
+
+
+Package xcolor Warning: Incompatible color definition on input line 496.
+
+
+Package xcolor Warning: Incompatible color definition on input line 496.
 
 File: report_files/figure-latex/Sick-Sicker-Trace-1.pdf Graphic file (type pdf)
 
 <use report_files/figure-latex/Sick-Sicker-Trace-1.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[16] [17] [18
+[17] [18
 
 ]
 Chapter 3.
 
-Package xcolor Warning: Incompatible color definition on input line 482.
+Package xcolor Warning: Incompatible color definition on input line 526.
 
 
-Package xcolor Warning: Incompatible color definition on input line 486.
+Package xcolor Warning: Incompatible color definition on input line 530.
 
 
-Package xcolor Warning: Incompatible color definition on input line 486.
+Package xcolor Warning: Incompatible color definition on input line 530.
 
-[19]
+
+Overfull \hbox (55.24498pt too wide) in paragraph at lines 559--559
+[]\TU/lmtt/m/n/10 ##   l_params_all <- update_param_list(l_params_all = l_param
+s_all, params_updated = v_params_calib)[] 
+ []
+
+[19] [20]
 File: ../figs/03_posterior_distribution_joint.png Graphic file (type bmp)
 <../figs/03_posterior_distribution_joint.png>
-[20]
 File: ../figs/03_posterior_distribution_marginal.png Graphic file (type bmp)
 <../figs/03_posterior_distribution_marginal.png>
-[21] [22]
-Chapter 4.
-
-Package xcolor Warning: Incompatible color definition on input line 560.
-
-
-Package xcolor Warning: Incompatible color definition on input line 564.
-
-
-Package xcolor Warning: Incompatible color definition on input line 564.
-
-[23
+[21] [22] [23] [24
 
 ]
+Chapter 4.
+
+Package xcolor Warning: Incompatible color definition on input line 615.
+
+
+Package xcolor Warning: Incompatible color definition on input line 619.
+
+
+Package xcolor Warning: Incompatible color definition on input line 619.
+
+[25]
 File: ../figs/04_posterior_vs_targets_survival.png Graphic file (type bmp)
 <../figs/04_posterior_vs_targets_survival.png>
 File: ../figs/04_posterior_vs_targets_prevalence.png Graphic file (type bmp)
@@ -1187,133 +1192,190 @@ File: ../figs/04_posterior_vs_targets_prevalence.png Graphic file (type bmp)
 File: ../figs/04_posterior_vs_targets_proportion_sicker.png Graphic file (type 
 bmp)
 <../figs/04_posterior_vs_targets_proportion_sicker.png>
-[24] [25] [26]
+[26] [27] [28]
 Chapter 5.
-
-Package xcolor Warning: Incompatible color definition on input line 627.
-
-
-Package xcolor Warning: Incompatible color definition on input line 631.
-
-
-Package xcolor Warning: Incompatible color definition on input line 631.
-
-[27
+[29
 
 ]
 
-Package xcolor Warning: Incompatible color definition on input line 650.
+Package xcolor Warning: Incompatible color definition on input line 807.
 
 
-Package xcolor Warning: Incompatible color definition on input line 654.
+Package xcolor Warning: Incompatible color definition on input line 811.
 
 
-Package xcolor Warning: Incompatible color definition on input line 654.
+Package xcolor Warning: Incompatible color definition on input line 811.
 
 
-Package xcolor Warning: Incompatible color definition on input line 658.
-
-
-Package xcolor Warning: Incompatible color definition on input line 664.
-
-
-Package xcolor Warning: Incompatible color definition on input line 664.
-
-[28]
-
-Package xcolor Warning: Incompatible color definition on input line 704.
-
-
-Package xcolor Warning: Incompatible color definition on input line 708.
-
-
-Package xcolor Warning: Incompatible color definition on input line 708.
-
-
-Package xcolor Warning: Incompatible color definition on input line 718.
-
-
-Package xcolor Warning: Incompatible color definition on input line 724.
-
-
-Package xcolor Warning: Incompatible color definition on input line 724.
-
-File: ../figs/05a_cea_frontier.png Graphic file (type bmp)
-<../figs/05a_cea_frontier.png>
-File: ../figs/05a_owsa_nmb.png Graphic file (type bmp)
-<../figs/05a_owsa_nmb.png>
-File: ../figs/05a_optimal_owsa_nmb.png Graphic file (type bmp)
-<../figs/05a_optimal_owsa_nmb.png>
-File: ../figs/05a_tornado_Treatment_nmb.png Graphic file (type bmp)
-<../figs/05a_tornado_Treatment_nmb.png>
-File: ../figs/05a_twsa_uS1_uTrt_nmb.png Graphic file (type bmp)
-<../figs/05a_twsa_uS1_uTrt_nmb.png>
-[29] [30] [31]
-
-Package xcolor Warning: Incompatible color definition on input line 920.
-
-
-Package xcolor Warning: Incompatible color definition on input line 924.
-
-
-Package xcolor Warning: Incompatible color definition on input line 924.
-
-
-Overfull \hbox (7.99498pt too wide) in paragraph at lines 946--946
-[]\TU/lmtt/m/n/10 ##             mean = 0.5, sd = 0.03, b = 1), u_D = 0, u_Trt 
-= truncnorm::rtruncnorm(n_sim,[] 
+Overfull \hbox (49.99498pt too wide) in paragraph at lines 845--845
+[]\TU/lmtt/m/n/10 ##     c_H   = rgamma(n_sim, shape = 100, scale = 20)    , # 
+cost of remaining one cycle in state H[] 
  []
 
-[32] [33] [34] [35]
 
-Package xcolor Warning: Incompatible color definition on input line 950.
+Overfull \hbox (55.24498pt too wide) in paragraph at lines 845--845
+[]\TU/lmtt/m/n/10 ##     c_S1  = rgamma(n_sim, shape = 177.8, scale = 22.5), # 
+cost of remaining one cycle in state S1[] 
+ []
 
 
-Package xcolor Warning: Incompatible color definition on input line 963.
+Overfull \hbox (55.24498pt too wide) in paragraph at lines 845--845
+[]\TU/lmtt/m/n/10 ##     c_S2  = rgamma(n_sim, shape = 225, scale = 66.7)  , # 
+cost of remaining one cycle in state S2[] 
+ []
 
 
-Package xcolor Warning: Incompatible color definition on input line 963.
+Overfull \hbox (2.74498pt too wide) in paragraph at lines 845--845
+[]\TU/lmtt/m/n/10 ##     c_Trt = rgamma(n_sim, shape = 73.5, scale = 163.3), # 
+cost of treatment (per cycle)[] 
+ []
 
-File: ../figs/05b_cea_plane_scatter.png Graphic file (type bmp)
-<../figs/05b_cea_plane_scatter.png>
-File: ../figs/05b_cea_frontier_psa.png Graphic file (type bmp)
-<../figs/05b_cea_frontier_psa.png>
-File: ../figs/05b_ceac_ceaf.png Graphic file (type bmp)
-<../figs/05b_ceac_ceaf.png>
-File: ../figs/05b_elc.png Graphic file (type bmp)
-<../figs/05b_elc.png>
-File: ../figs/05b_owsa_lrm_nmb.png Graphic file (type bmp)
-<../figs/05b_owsa_lrm_nmb.png>
-File: ../figs/05b_optimal_owsa_lrm_nmb.png Graphic file (type bmp)
-<../figs/05b_optimal_owsa_lrm_nmb.png>
-File: ../figs/05b_tornado_lrm_Treatment_nmb.png Graphic file (type bmp)
-<../figs/05b_tornado_lrm_Treatment_nmb.png>
-File: ../figs/05b_twsa_lrm_uS1_uTrt_nmb.png Graphic file (type bmp)
-<../figs/05b_twsa_lrm_uS1_uTrt_nmb.png>
+
+Overfull \hbox (18.49498pt too wide) in paragraph at lines 845--845
+[]\TU/lmtt/m/n/10 ##     c_D   = 0                                         , # 
+cost of being in the death state[] 
+ []
+
+
+Overfull \hbox (44.74498pt too wide) in paragraph at lines 845--845
+[]\TU/lmtt/m/n/10 ##     u_H   = truncnorm::rtruncnorm(n_sim, mean =    1, sd =
+ 0.01, b = 1), # utility when healthy[] 
+ []
+
+
+Overfull \hbox (28.99498pt too wide) in paragraph at lines 845--845
+[]\TU/lmtt/m/n/10 ##     u_S1  = truncnorm::rtruncnorm(n_sim, mean = 0.75, sd =
+ 0.02, b = 1), # utility when sick[] 
+ []
+
+
+Overfull \hbox (39.49498pt too wide) in paragraph at lines 845--845
+[]\TU/lmtt/m/n/10 ##     u_S2  = truncnorm::rtruncnorm(n_sim, mean = 0.50, sd =
+ 0.03, b = 1), # utility when sicker[] 
+ []
+
+
+Overfull \hbox (76.24498pt too wide) in paragraph at lines 845--845
+[]\TU/lmtt/m/n/10 ##     u_Trt = truncnorm::rtruncnorm(n_sim, mean = 0.95, sd =
+ 0.02, b = 1)  # utility when being treated[] 
+ []
+
+[30]
+
+Package xcolor Warning: Incompatible color definition on input line 849.
+
+
+Package xcolor Warning: Incompatible color definition on input line 862.
+
+
+Package xcolor Warning: Incompatible color definition on input line 862.
+
+File: ../figs/05a_cea_plane_scatter.png Graphic file (type bmp)
+<../figs/05a_cea_plane_scatter.png>
+File: ../figs/05a_cea_frontier_psa.png Graphic file (type bmp)
+<../figs/05a_cea_frontier_psa.png>
+File: ../figs/05a_ceac_ceaf.png Graphic file (type bmp)
+<../figs/05a_ceac_ceaf.png>
+File: ../figs/05a_elc.png Graphic file (type bmp)
+<../figs/05a_elc.png>
+File: ../figs/05a_owsa_lrm_nmb.png Graphic file (type bmp)
+<../figs/05a_owsa_lrm_nmb.png>
+File: ../figs/05a_optimal_owsa_lrm_nmb.png Graphic file (type bmp)
+<../figs/05a_optimal_owsa_lrm_nmb.png>
+File: ../figs/05a_tornado_lrm_Treatment_nmb.png Graphic file (type bmp)
+<../figs/05a_tornado_lrm_Treatment_nmb.png>
+File: ../figs/05a_twsa_lrm_uS1_uTrt_nmb.png Graphic file (type bmp)
+<../figs/05a_twsa_lrm_uS1_uTrt_nmb.png>
+
+Underfull \vbox (badness 1365) has occurred while \output is active []
+
+[31] [32] [33] [34] [35]
+
+Package xcolor Warning: Incompatible color definition on input line 960.
+
+
+Package xcolor Warning: Incompatible color definition on input line 964.
+
+
+Package xcolor Warning: Incompatible color definition on input line 964.
+
+
+Overfull \hbox (123.49498pt too wide) in paragraph at lines 977--977
+[]\TU/lmtt/m/n/10 ##     params_updated <- split(unname(params_updated),names(p
+arams_updated)) #converte the named vector to a list[] 
+ []
+
+[36] [37] [38] [39]
+
+Package xcolor Warning: Incompatible color definition on input line 983.
+
+
+Package xcolor Warning: Incompatible color definition on input line 987.
+
+
+Package xcolor Warning: Incompatible color definition on input line 987.
+
+
+Package xcolor Warning: Incompatible color definition on input line 991.
+
+
+Package xcolor Warning: Incompatible color definition on input line 997.
+
+
+Package xcolor Warning: Incompatible color definition on input line 997.
+
+[40] [41]
 
 Package xcolor Warning: Incompatible color definition on input line 1061.
 
-[36] [37] [38] [39] [40]
 
 Package xcolor Warning: Incompatible color definition on input line 1065.
 
 
 Package xcolor Warning: Incompatible color definition on input line 1065.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1075.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1081.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1081.
+
+File: ../figs/05b_cea_frontier.png Graphic file (type bmp)
+<../figs/05b_cea_frontier.png>
+File: ../figs/05b_owsa_nmb.png Graphic file (type bmp)
+<../figs/05b_owsa_nmb.png>
+File: ../figs/05b_optimal_owsa_nmb.png Graphic file (type bmp)
+<../figs/05b_optimal_owsa_nmb.png>
+File: ../figs/05b_tornado_Treatment_nmb.png Graphic file (type bmp)
+<../figs/05b_tornado_Treatment_nmb.png>
+File: ../figs/05b_twsa_uS1_uTrt_nmb.png Graphic file (type bmp)
+<../figs/05b_twsa_uS1_uTrt_nmb.png>
+
+Package xcolor Warning: Incompatible color definition on input line 1152.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1156.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1156.
 
 File: ../figs/05c_evpi.png Graphic file (type bmp)
 <../figs/05c_evpi.png>
-(./report.bbl [41] [42] [43] [44] [45] [46
+(./report.bbl [42] [43] [44] [45] [46] [47] [48])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1170.
+[49
 
-])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1079.
-[47]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1079.
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1170.
 (./report.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1079.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1079.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1170.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1170.
 
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: EB43D5B132248D6C2041D6E343BFAED5.
+(rerunfilecheck)             Checksum: EB1F72A88FFA0CEDEBCD02944AE411B2.
  ) 
 Here is how much of TeX's memory you used:
  25498 strings out of 494894
@@ -1322,6 +1384,6 @@ Here is how much of TeX's memory you used:
  29136 multiletter control sequences out of 15000+600000
  545179 words of font info for 57 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 46i,9n,68p,2020b,448s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 46i,9n,68p,2020b,456s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.pdf (47 pages).
+Output written on report.pdf (49 pages).

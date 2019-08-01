@@ -8,9 +8,9 @@ l_params_all <- load_all_params()
 
 # Decision model {#simulation}
 
-In this second component, we build the backbone of the decision analysis: the implementation of the model. This component is performed by the *02_simulation_model.R* script. This file itself is not very large. It simply loads some packages and sources the input from component 01 and in addition it runs the `decision_model` function that is used to caputre the dynamic process of the Sick-Sicker example and stores the output. The output of the model is the traditional cohort trace. The trace describes how the cohort is distributed among the different health states over time and is plotted at the end of this script.
+In this second component, we build the backbone of the decision analysis: the implementation of the model. This component is performed by the *02_decision_model.R* script. This file itself is not very large. It simply loads some packages and sources the input from component 01 and in addition it runs the `decision_model` function that is used to caputre the dynamic process of the Sick-Sicker example and stores the output. The output of the model is the traditional cohort trace. The trace describes how the cohort is distributed among the different health states over time and is plotted at the end of this script.
 
-The function `decision_model` is defined in the *02_simulation_model_functions.R* file in the `R` folder. As described in the paper, constructing a model as a function at this stage facilitates subsequent stages of the model development and analysis. This since these processes will all call the same model function, but pass different parameter values and/or calculate different final outcomes based on the model outputs. In the next part, we will describe the code within the function.
+The function `decision_model` is defined in the *02_decision_model_functions.R* file in the `R` folder. As described in the paper, constructing a model as a function at this stage facilitates subsequent stages of the model development and analysis. This since these processes will all call the same model function, but pass different parameter values and/or calculate different final outcomes based on the model outputs. In the next part, we will describe the code within the function.
 
 ```{r}
 print.function(decision_model) # print the code of the function
