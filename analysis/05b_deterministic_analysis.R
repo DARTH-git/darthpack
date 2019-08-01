@@ -65,7 +65,7 @@ ggsave("figs/05b_cea_frontier.png", width = 8, height = 6)
 
 #### 05b.6 Deterministic sensitivity analysis (DSA) ####
 #### 05b.6.1 One-way sensitivity analysis (OWSA) ####
-owsa_nmb <- owsa_det(parms = c("c_Trt", "p_HS1", "u_S1", "u_Trt"), # parameter names
+owsa_nmb <- darthpack::owsa_det(parms = c("c_Trt", "p_HS1", "u_S1", "u_Trt"), # parameter names
                      ranges = list("c_Trt" = c(6000, 13000),
                                    "p_HS1" = c(0.01, 0.50),
                                    "u_S1"  = c(0.75, 0.95),
@@ -87,11 +87,11 @@ owsa_opt_strat(owsa = owsa_nmb)
 ggsave("figs/05b_optimal_owsa_nmb.png", width = 8, height = 6)
 
 #### 05b.6.3 Tornado plot ####
-owsa_tornado(owsa = owsa_nmb, strategy = "Treatment")
+owsa_tornado(owsa = owsa_nmb)
 ggsave("figs/05b_tornado_Treatment_nmb.png", width = 8, height = 6)
 
 #### 05b.6.2 Two-way sensitivity analysis (TWSA) ####
-twsa_nmb <- twsa_det(parm1 = "u_S1",  # parameter 1 name
+twsa_nmb <- darthpack::twsa_det(parm1 = "u_S1",  # parameter 1 name
                      parm2 = "u_Trt", # parameter 2 name
                      ranges = list("u_S1"  = c(0.70, 0.80),
                                    "u_Trt" = c(0.90, 1.00)),
