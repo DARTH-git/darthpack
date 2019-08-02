@@ -165,7 +165,14 @@
 <li>Type a name for your repository of your decision model, and an optional description.</li>
 <li>Choose to make the repository either public or private. Public repositories are visible to the public, while private repositories are only accessible to you, and people you share them with. For more information, see “<a href="https://help.github.com/en/articles/setting-repository-visibility">Setting repository visibility</a>.”</li>
 <li>Click <strong>Create repository from template</strong>.</li>
-<li>Either download the repository or clone it.</li>
+<li>Either clone the repository or download it.
+<ol style="list-style-type: lower-alpha">
+<li>
+<strong>Clone</strong>, which requires the user to have a GitHub desktop installed, or</li>
+<li>
+<strong>Download zip</strong> that will ask the user to download the whole repository as a .zip file.</li>
+</ol>
+</li>
 <li>Open the RStudio project <code>darthpack.Rproj</code>.</li>
 <li>Install all required and suggested packages from the <em>DESCRIPTION</em> file in the main folder
 <ul>
@@ -227,7 +234,7 @@ devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumen
 <a href="#release-your-udpated-framework" class="anchor"></a>Release your udpated framework</h1>
 <p>Once the framework has been modified and updated to your specific needs, run <code>pkgdown</code> from the package directory each time you release your package:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pkgdown<span class="op">::</span><span class="kw"><a href="https://pkgdown.r-lib.org/reference/build_site.html">build_site</a></span>()</code></pre></div>
-<p>For a more detailed description on how to quickly and easily build a website for your package, please go to <a href="https://github.com/r-lib/pkgdown" class="uri">https://github.com/r-lib/pkgdown</a></p>
+<p>For a more detailed description on how to quickly and easily build a website for your package, please go to <a href="https://github.com/r-lib/pkgdown" class="uri">https://github.com/r-lib/pkgdown</a> and</p>
 </div>
   </div>
 
