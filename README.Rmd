@@ -39,7 +39,7 @@ devtools::install_github("r-lib/devtools")
 The main website of the package could be found in: https://darth-git.github.io/darthpack/
 
 ## Use repository as a GitHub coding template
-1. Sign in to GitHub. You need to sign in to use this repository as a template.
+1. Sign in to GitHub. You need to sign in to use this repository as a template. If you don’t have a GitHub account, you can [create one here](https://github.com/join).
 2. On the `darthpack` GitHub repository, navigate to the main page of the repository (https://github.com/DARTH-git/darthpack).
 3. Above the file list, click **Use this template**.
 4. Use the **Owner** drop-down menu, and select the account you want to own the repository.
