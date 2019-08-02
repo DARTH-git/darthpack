@@ -5,6 +5,7 @@ articles:
   aa-introduction: aa-introduction.html
   bb-inputs: bb-inputs.html
   cc-model: cc-model.html
+  darthpack: darthpack.html
   dd-calibration: dd-calibration.html
   ee-validation: ee-validation.html
   ff-analysis: ff-analysis.html
