@@ -3,7 +3,7 @@
 darthpack <img src="docs/figs/under_const.jpeg" align="center" alt="" width="360" />
 ====================================================================================
 
-An R package that showcases the the [Decision Analysis in R for Technologies in Health (DARTH)](darthworkgroup.com) coding framework to construct model-based cost-effectiveness analysis in R. This package is part of the following working paper submitted for publication:
+An R package that showcases the the [Decision Analysis in R for Technologies in Health (DARTH)](https://darthworkgroup.com) coding framework to construct model-based cost-effectiveness analysis in R. This package is part of the following working paper submitted for publication:
 
 -   Alarid-Escudero F, Krijkamp E, Pechlivanoglou P, Jalal H, Kao SY, Yang A, Enns EA. "A need for change! A coding framework for improving transparency in decision modeling". (2019) Under revision
 
