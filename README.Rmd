@@ -24,9 +24,11 @@ An R package that showcases the the [Decision Analysis in R for Technologies in 
 ```{r, eval=FALSE}
 # Install release version from CRAN
 install.packages("devtools")
+install.packages("pkgdown")
 
 # Install development version from GitHub
 devtools::install_github("r-lib/devtools")
+devtools::install_github("r-lib/pkgdown")
 ```
 
 # Usage and installation 
