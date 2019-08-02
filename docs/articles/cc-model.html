@@ -109,12 +109,11 @@
 
     
     
-<pre><code>#&gt; Warning: package 'ggplot2' was built under R version 3.5.2</code></pre>
 <div id="simulation" class="section level1">
 <h1 class="hasAnchor">
-<a href="#simulation" class="anchor"></a>Simulation</h1>
-<p>In this second component, we build the backbone of the decision analysis: the implementation of the model. This component is performed by the <em>02_simulation_model.R</em> script. This file itself is not very large. It simply loads some packages, sources the input from component 01, sources the function <code>decision_model</code> that is used the capture the dynamic process of the Sick-Sicker example, runs this function and stores the output. The output of the model is the traditional cohort trace, describing how the cohort is distributed among the different health states over time, which is plotted at the end of this script. This trace will be used in many of the other components.</p>
-<p>The function <code>decision_model</code> is defined in the <em>02_simulation_model_functions.R file</em>. As described in the paper, constructing a model as a function at this stage facilitates subsequent stages of the model development and analysis, as these processes will all call the same model function, but pass different parameter values and/or calculate different final outcomes based on the model outputs. In the next part, we will describe the code within the function.</p>
+<a href="#simulation" class="anchor"></a>Decision model</h1>
+<p>In this second component, we build the backbone of the decision analysis: the implementation of the model. This component is performed by the <em>02_decision_model.R</em> script. This file itself is not very large. It simply loads some packages and sources the input from component 01 and in addition it runs the <code>decision_model</code> function that is used to caputre the dynamic process of the Sick-Sicker example and stores the output. The output of the model is the traditional cohort trace. The trace describes how the cohort is distributed among the different health states over time and is plotted at the end of this script.</p>
+<p>The function <code>decision_model</code> is defined in the <em>02_decision_model_functions.R</em> file in the <code>R</code> folder. As described in the paper, constructing a model as a function at this stage facilitates subsequent stages of the model development and analysis. This since these processes will all call the same model function, but pass different parameter values and/or calculate different final outcomes based on the model outputs. In the next part, we will describe the code within the function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print.function</a></span>(decision_model) <span class="co"># print the code of the function</span>
 <span class="co">#&gt; function(l_params_all, err_stop = FALSE, verbose = FALSE){ # User defined</span>
 <span class="co">#&gt;   </span><span class="al">###</span><span class="co"> Definition:</span>
@@ -185,12 +184,12 @@
 <span class="co">#&gt;   }</span>
 <span class="co">#&gt;   )</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x7fc3506ddae0&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x7f805bd70eb0&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:darthpack&gt;</span></code></pre></div>
 <p>The <code>decision_model</code> function is informed by the argument <code>l_params_all</code>. Via this argument we give the function a list with all parameters of the decision model. For the Sick-Sicker model, these parameters are stored in the list <code>l_params_all</code>, which we passed into the function as shown below.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l_out_stm &lt;-<span class="st"> </span><span class="kw"><a href="../reference/decision_model.html">decision_model</a></span>(<span class="dt">l_params_all =</span> l_params_all) <span class="co"># run the function</span></code></pre></div>
 <p>This function itself has all the mathematical equations of the decision models coded inside. It starts by calculating the age-specific transition probabilities from all non-dead states based on the vector of age-specific mortality rates <code>v_r_mort_by_age</code>. These parameters will become vectors of length <code>n_t</code>, describing the probability to die for all ages from all non-dead states.</p>
-<p>The next part of the function, creates an array that stores the age-specific transition probability matrices in each of the third dimension. The transition probability matrix is a core component of a state-transition cohort model <span class="citation">[@Iskandar2018]</span>. This matrix contains the probabilities of transitioning from the current health state, indicated by the rows, to the other health states, specified by the columns. Since we have age-specific transition probabilities, the transition probability matrix is different at each cycle. These probabilities are only depending on the age of the cohort, and not on other events; therefore, we can generate all matrices at the start of the model. This results in <code>n_t</code> different age-specific matrices that are stored in an array, called <code>a_P</code>, of dimensions <code>n_states</code> x <code>n_states</code> x <code>n_t</code>. After initializing the array, it is filled with the transition probability stored in the list. When running the model, we can index the correct transition probability matrix corresponding with the current age of the cohort. We then added some sanity checks to make sure that the transition matrices and the transition probabilities are valid. The transition probability matrices stored in the array <code>a_P</code>, for the first three and last cycle, are shown below.</p>
+<p>The next part of the function, creates an array that stores age-specific transition probability matrices in each of the third dimension. The transition probability matrix is a core component of a state-transition cohort model <span class="citation">[@Iskandar2018]</span>. This matrix contains the probabilities of transitioning from the current health state, indicated by the rows, to the other health states, specified by the columns. Since we have age-specific transition probabilities, the transition probability matrix is different each cycle. These probabilities are only depending on the age of the cohort, and not on other events; therefore, we can generate all matrices at the start of the model. This results in <code>n_t</code> different age-specific matrices that are stored in an array, called <code>a_P</code>, of dimensions <code>n_states</code> x <code>n_states</code> x <code>n_t</code>. After initializing the array, it is filled with the transition probability stored in the list. When running the model, we can index the correct transition probability matrix corresponding with the current age of the cohort. We then added some sanity checks to make sure that the transition matrices and the transition probabilities are valid. The first three and last cycles of the transition probability matrices stored in the array <code>a.P</code> are shown below.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l_out_stm<span class="op">$</span>a_P[, , <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] <span class="co"># show the first three time-points of a_P</span>
 <span class="co">#&gt; , , 0</span>
 <span class="co">#&gt; </span>
@@ -222,7 +221,7 @@ l_out_stm<span class="op">$</span>a_P[, , l_params_all<span class="op">$</span>n
 <span class="co">#&gt; S2 0.0000000 0.0000000 0.03365849 0.9663415</span>
 <span class="co">#&gt; D  0.0000000 0.0000000 0.00000000 1.0000000</span></code></pre></div>
 <p>By comparing these probability matrices, we observe an increase in the probabilities of transitioning to death from all health states.</p>
-<p>After the array is filled, the cohort trace matrix, <code>m_M</code>, of dimensions <code>n_t</code> x <code>n_states</code> is initialized. This matrix will store the state occupation at each point in time. The first row of the matrix is informed by the initial state vector <code>v.s.init</code>. For the remaining points in time, we iteratively multiply the cohort trace with the age-specific transition probability matrix corresponding to the specific cycle obtained by indexing the array <code>a_P</code> appropriately. All the outputs and relevant elements of the decision model are stored in a list, called <code>l_out_stm</code>. This list contains the array of the transition probability matrix for all cycles <code>t</code> and the cohort trace <code>m_M</code>.</p>
+<p>After the array is filled, the cohort trace matrix, <code>m_M</code>, of dimensions <code>n_t</code> x <code>n_states</code> is initialized. This matrix will store the state occupation at each point in time. The first row of the matrix is informed by the initial state vector <code>v_s_init</code>. For the remaining points in time, we iteratively multiply the cohort trace with the age-specific transition probability matrix corresponding to the specific cycle obtained by indexing the array <code>a_P</code> appropriately. All the outputs and relevant elements of the decision model are stored in a list, called <code>l_out_stm</code>. This list contains the array of the transition probability matrix for all cycles <code>t</code> and the cohort trace <code>m_M</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(l_out_stm<span class="op">$</span>m_M)    <span class="co"># show the top part of the cohort trace</span>
 <span class="co">#&gt;           H        S1         S2           D</span>
 <span class="co">#&gt; 0 1.0000000 0.0000000 0.00000000 0.000000000</span>
@@ -239,9 +238,9 @@ l_out_stm<span class="op">$</span>a_P[, , l_params_all<span class="op">$</span>n
 <span class="co">#&gt; 73 0.003460336 0.0007552206 5.436484e-05 0.9957301</span>
 <span class="co">#&gt; 74 0.002289594 0.0004937081 3.298632e-05 0.9971837</span>
 <span class="co">#&gt; 75 0.001475636 0.0003151589 1.985106e-05 0.9981894</span></code></pre></div>
-<p>Using the code below, we can graphically show the model dynamics by plotting the cohort trace. Figure  shows the distribution of the cohort among the different health states at each time point.</p>
+<p>Using the code below, we can graphically show the model dynamics by plotting the cohort trace. Figure @ref(fig:Sick-Sicker-Trace) shows the distribution of the cohort among the different health states at each time point.</p>
 <div class="figure">
-<img src="cc-model_files/figure-html/Sick-Sicker-Trace-1.png" alt="Cohort trace of the Sick-Sicker cohort model\label{fig:Sick-Sicker-Trace}" width="700"><p class="caption">
+<img src="cc-model_files/figure-html/Sick-Sicker-Trace-1.png" alt="Cohort trace of the Sick-Sicker cohort model" width="700"><p class="caption">
 Cohort trace of the Sick-Sicker cohort model
 </p>
 </div>
@@ -257,7 +256,7 @@ Cohort trace of the Sick-Sicker cohort model
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#simulation">Simulation</a></li>
+<li><a href="#simulation">Decision model</a></li>
       <li><a href="#references">References</a></li>
       </ul>
 </div>

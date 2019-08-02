@@ -29,8 +29,11 @@ l_params_all <- load_all_params()
 ```
 
 # Analysis {#analysis}
-The analysis component is where the elements in components 1-4 are combined to answer the question(s) of interest given current information and to quantify the value of potential further research. Our framework separates the analysis in three subcomponents: _05a Probabilistic analysis_, _05b Deterministic analysis_and _05c Value of information analysis_. For the Sick-Sicker case-study, we use all three subcomponents to conduct the CEA and to quantify the uncertainty of our decision. For procedures in the CEA, we rely on the `R` package `dampack`, which is available here: <https://github.com/DARTH-git/dampack>. Instructions for installing `dampack` are described in Appendix 0 provided in the *app0_packages_setup.R* script of the *analysis* folder.
-
+The analysis component is where the elements in components 1-4 are combined to answer the question(s) of interest given current information and to quantify the value of potential further research. Our framework separates the analysis in three subcomponents: _05a Probabilistic analysis_, _05b Deterministic analysis_and _05c Value of information analysis_. For the Sick-Sicker case-study, we use all three subcomponents to conduct the CEA and to quantify the uncertainty of our decision. For procedures in the CEA, we rely on the `R` package `dampack`, which is available here: <https://github.com/DARTH-git/dampack>. To install `dampack`, please follow these instructions:
+```{r, eval=FALSE}
+# Install development version from GitHub
+devtools::install_github("DARTH-git/dampack")
+```
 
 ## 05a Probabilistic analysis {#Probabilistic-analysis} 
 In this subcomponent, we evaluate decision uncertainty by propagating the uncertainty through the CEA using probabilistic sensitivity analysis (PSA). Until now we used the parameter values as described in Table \@ref(tab:parameters). However, we are uncertain about these values. Most of these input parameters are defined by probability distribution as described in Table \@ref(tab:parameters-PSA). 
@@ -82,7 +85,7 @@ knitr::include_graphics("../figs/05a_cea_plane_scatter.png")
 ```
 
 ```{r df-cea-prob, eval = TRUE, echo = FALSE}
-df_cea_psa <- read.csv(file = "./tables/05a_probabilistic_cea_results.csv")[, c(-1, -8)]
+df_cea_psa <- read.csv(file = "../tables/05a_probabilistic_cea_results.csv")[, c(-1, -8)]
 # load("../tables/05a_probabilistic_cea_results.RData")
 knitr::kable(df_cea_psa[, -7], caption = "Probabilistic cost-effectiveness analysis results of the Sick-Sicker model comparing no treatment with treatment") # create a table 
 ``` 

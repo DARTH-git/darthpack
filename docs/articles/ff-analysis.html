@@ -109,10 +109,470 @@
 
     
     
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(darthpack)</code></pre></div>
+<div id="analysis" class="section level1">
+<h1 class="hasAnchor">
+<a href="#analysis" class="anchor"></a>Analysis</h1>
+<p>The analysis component is where the elements in components 1-4 are combined to answer the question(s) of interest given current information and to quantify the value of potential further research. Our framework separates the analysis in three subcomponents: <em>05a Probabilistic analysis</em>, _05b Deterministic analysis_and <em>05c Value of information analysis</em>. For the Sick-Sicker case-study, we use all three subcomponents to conduct the CEA and to quantify the uncertainty of our decision. For procedures in the CEA, we rely on the <code>R</code> package <code>dampack</code>, which is available here: <a href="https://github.com/DARTH-git/dampack" class="uri">https://github.com/DARTH-git/dampack</a>. To install <code>dampack</code>, please follow these instructions:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Install development version from GitHub</span>
+devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"DARTH-git/dampack"</span>)</code></pre></div>
+<div id="Probabilistic-analysis" class="section level2">
+<h2 class="hasAnchor">
+<a href="#Probabilistic-analysis" class="anchor"></a>05a Probabilistic analysis</h2>
+<p>In this subcomponent, we evaluate decision uncertainty by propagating the uncertainty through the CEA using probabilistic sensitivity analysis (PSA). Until now we used the parameter values as described in Table @ref(tab:parameters). However, we are uncertain about these values. Most of these input parameters are defined by probability distribution as described in Table @ref(tab:parameters-PSA).</p>
+<table class="table">
+<caption>(#tab:parameters-PSA) Description of parameters with their R name and distribution.</caption>
+<colgroup>
+<col width="35%">
+<col width="14%">
+<col width="49%">
+</colgroup>
+<thead><tr class="header">
+<th align="left"><strong>Parameter</strong></th>
+<th align="left"><strong>R name</strong></th>
+<th align="left"><strong>Distribution</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Annual transition probabilities</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">- Disease onset (H to S1)</td>
+<td align="left"><code>p_HS1</code></td>
+<td align="left"><code><a href="https://www.rdocumentation.org/packages/base/topics/Special">beta(30, 170)</a></code></td>
+</tr>
+<tr class="odd">
+<td align="left">- Recovery (S1 to H)</td>
+<td align="left"><code>p_S1H</code></td>
+<td align="left"><code><a href="https://www.rdocumentation.org/packages/base/topics/Special">beta(60, 60)</a></code></td>
+</tr>
+<tr class="even">
+<td align="left">Annual costs</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">- Healthy individuals</td>
+<td align="left"><code>c_H</code></td>
+<td align="left"><code><a href="https://www.rdocumentation.org/packages/base/topics/Special">gamma(shape = 100, scale = 20)</a></code></td>
+</tr>
+<tr class="even">
+<td align="left">- Sick individuals in S1</td>
+<td align="left"><code>c_S1</code></td>
+<td align="left"><code><a href="https://www.rdocumentation.org/packages/base/topics/Special">gamma(shape = 177.8, scale = 22.5)</a></code></td>
+</tr>
+<tr class="odd">
+<td align="left">- Sick individuals in S2</td>
+<td align="left"><code>c_S2</code></td>
+<td align="left"><code><a href="https://www.rdocumentation.org/packages/base/topics/Special">gamma(shape = 225, scale = 66.7)</a></code></td>
+</tr>
+<tr class="even">
+<td align="left">- Additional costs of sick individuals treated in S1 or S2</td>
+<td align="left"><code>c.Trt</code></td>
+<td align="left"><code><a href="https://www.rdocumentation.org/packages/base/topics/Special">gamma(shape = 73.5, scale = 163.3)</a></code></td>
+</tr>
+<tr class="odd">
+<td align="left">Utility weights</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">- Healthy individuals</td>
+<td align="left"><code>u_H</code></td>
+<td align="left"><code>truncnorm(mean = 1, sd = 0.01, b = 1)</code></td>
+</tr>
+<tr class="odd">
+<td align="left">- Sick individuals in S1</td>
+<td align="left"><code>u_S1</code></td>
+<td align="left"><code>truncnorm(mean = 0.75, sd = 0.02, b = 1)</code></td>
+</tr>
+<tr class="even">
+<td align="left">- Sick individuals in S2</td>
+<td align="left"><code>u_S2</code></td>
+<td align="left"><code>truncnorm(mean = 0.50, sd = 0.03, b = 1)</code></td>
+</tr>
+<tr class="odd">
+<td align="left">Intervention effect</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">- Utility for treated individuals in S1</td>
+<td align="left"><code>u_Trt</code></td>
+<td align="left"><code>truncnorm(mean = 0.95, sd = 0.02, b = 1)</code></td>
+</tr>
+</tbody>
+</table>
+<p>In a PSA we sample the input parameter values from these distributions and we then run the model at each sample. In the file <em>05a_probabilistic_analysis_functions.R</em> we created a single function, called <code>generate_psa_params</code>. This function generates a PSA dataset for all the CEA input parameters. We specify the number of PSA samples via the <code>n_sim</code> argument. The function also accepts specifying a seed to allow reproducibility of the results.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print.function</a></span>(generate_psa_params) <span class="co"># print the function </span>
+<span class="co">#&gt; function(n_sim = 1000, seed = 20190220){ # User defined</span>
+<span class="co">#&gt;   ## Load calibrated parameters</span>
+<span class="co">#&gt;   data("m_calib_post")</span>
+<span class="co">#&gt;   n_sim &lt;- nrow(m_calib_post)</span>
+<span class="co">#&gt;   set_seed &lt;- seed</span>
+<span class="co">#&gt;   df_psa_params &lt;- data.frame(</span>
+<span class="co">#&gt;     </span><span class="al">###</span><span class="co"> Calibrated parameters</span>
+<span class="co">#&gt;     m_calib_post,</span>
+<span class="co">#&gt;     </span>
+<span class="co">#&gt;     </span><span class="al">###</span><span class="co"> Transition probabilities (per cycle)</span>
+<span class="co">#&gt;     p_HS1   = rbeta(n_sim, 30, 170),        # probability to become sick when healthy</span>
+<span class="co">#&gt;     p_S1H   = rbeta(n_sim, 60, 60) ,        # probability to become healthy when sick</span>
+<span class="co">#&gt;     </span>
+<span class="co">#&gt;     </span><span class="al">###</span><span class="co"> State rewards</span>
+<span class="co">#&gt;     ## Costs</span>
+<span class="co">#&gt;     c_H   = rgamma(n_sim, shape = 100, scale = 20)    , # cost of remaining one cycle in state H</span>
+<span class="co">#&gt;     c_S1  = rgamma(n_sim, shape = 177.8, scale = 22.5), # cost of remaining one cycle in state S1</span>
+<span class="co">#&gt;     c_S2  = rgamma(n_sim, shape = 225, scale = 66.7)  , # cost of remaining one cycle in state S2</span>
+<span class="co">#&gt;     c_Trt = rgamma(n_sim, shape = 73.5, scale = 163.3), # cost of treatment (per cycle)</span>
+<span class="co">#&gt;     c_D   = 0                                         , # cost of being in the death state</span>
+<span class="co">#&gt;     ## Utilities</span>
+<span class="co">#&gt;     u_H   = truncnorm::rtruncnorm(n_sim, mean =    1, sd = 0.01, b = 1), # utility when healthy</span>
+<span class="co">#&gt;     u_S1  = truncnorm::rtruncnorm(n_sim, mean = 0.75, sd = 0.02, b = 1), # utility when sick</span>
+<span class="co">#&gt;     u_S2  = truncnorm::rtruncnorm(n_sim, mean = 0.50, sd = 0.03, b = 1), # utility when sicker</span>
+<span class="co">#&gt;     u_D   = 0                                               , # utility when dead</span>
+<span class="co">#&gt;     u_Trt = truncnorm::rtruncnorm(n_sim, mean = 0.95, sd = 0.02, b = 1)  # utility when being treated</span>
+<span class="co">#&gt;   )</span>
+<span class="co">#&gt;   return(df_psa_params)</span>
+<span class="co">#&gt; }</span>
+<span class="co">#&gt; &lt;bytecode: 0x7f845e2913b8&gt;</span>
+<span class="co">#&gt; &lt;environment: namespace:darthpack&gt;</span></code></pre></div>
+<p>The function returns the <code>df_psa_input</code> dataframe with a PSA dataset of the input parameters. With this dataframe we can run the PSA to produce distributions of costs, effectiveness and NMB. The PSA is performed by the <em>05a_probabilistic_analysis.R</em> script. As shown in the code below, the <code>df_psa_input</code> dataframe is used by the <code>update_param_list</code> function to generate the corresponding list of parameters for the PSA. For each simulation, we perfrom three steps. First, the list of parameters is updated by the <code>update_param_list</code> function. Second, the model is executed by the <code>calculate_ce_out</code> function using the updated parameter list and third, the dataframes <code>df_c</code> and <code>df_e</code> store the estimated cost and effects, respectively. The final part of this loop is to satisfy the modeler when waiting on the results, by displaying the simulation progress.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n_sim){ 
+  l_psa_input &lt;-<span class="st"> </span><span class="kw"><a href="../reference/update_param_list.html">update_param_list</a></span>(l_params_all, df_psa_input[i, ])
+  df_out_temp &lt;-<span class="st"> </span><span class="kw"><a href="../reference/calculate_ce_out.html">calculate_ce_out</a></span>(l_psa_input)
+  df_c[i, ] &lt;-<span class="st"> </span>df_out_temp<span class="op">$</span>Cost
+  df_e[i, ] &lt;-<span class="st"> </span>df_out_temp<span class="op">$</span>Effect
+  <span class="co"># Display simulation progress</span>
+  <span class="cf">if</span>(i<span class="op">/</span>(n_sim<span class="op">/</span><span class="dv">10</span>) <span class="op">==</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Round">round</a></span>(i<span class="op">/</span>(n_sim<span class="op">/</span><span class="dv">10</span>), <span class="dv">0</span>)) {
+    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cat">cat</a></span>(<span class="st">'</span><span class="ch">\r</span><span class="st">'</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste</a></span>(i<span class="op">/</span>n_sim <span class="op">*</span><span class="st"> </span><span class="dv">100</span>, <span class="st">"% done"</span>, <span class="dt">sep =</span> <span class="st">" "</span>))
+  }
+}</code></pre></div>
+<p>We can plot the results using the <code>plot</code> function from <code>dampack</code>. Figure @ref(fig:05a-CEAplane) shows the CE scatter plot with the joint distribution of costs and effects for each strategy and their corresponding 95% confidence ellipse.</p>
+<div class="figure">
+<img src="../figs/05a_cea_plane_scatter.png" alt="The cost-effectiveness plane graph showing the results of the probabilistic sensitivity analysis for the Sick-Sicker case-study." width="100%"><p class="caption">
+The cost-effectiveness plane graph showing the results of the probabilistic sensitivity analysis for the Sick-Sicker case-study.
+</p>
+</div>
+<table class="table">
+<caption>
+Probabilistic cost-effectiveness analysis results of the Sick-Sicker model comparing no treatment with treatment
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+Strategy
+</th>
+<th style="text-align:right;">
+Cost
+</th>
+<th style="text-align:right;">
+Effect
+</th>
+<th style="text-align:right;">
+Inc_Cost
+</th>
+<th style="text-align:right;">
+Inc_Effect
+</th>
+<th style="text-align:right;">
+ICER
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+No.Treatment
+</td>
+<td style="text-align:right;">
+115538.9
+</td>
+<td style="text-align:right;">
+19.95305
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Treatment
+</td>
+<td style="text-align:right;">
+213755.8
+</td>
+<td style="text-align:right;">
+20.63891
+</td>
+<td style="text-align:right;">
+98216.84
+</td>
+<td style="text-align:right;">
+0.6858646
+</td>
+<td style="text-align:right;">
+143201.5
+</td>
+</tr>
+</tbody>
+</table>
+<p>Next, we perform a CEA using the previously used <code>calculate_icers</code> functions from <code>dampack</code>. Table @ref(tab:df-cea-prob) shows the results of the probabilistic CEA. In addition, we plot a cost-effectiveness plane with the frontier, the cost-effectiveness acceptability curves (CEACs) and frontier (CEAF), expected Loss curves (ELCs) (Figures @ref(fig:05a-cea-frontier-psa) - @ref(fig:05a-elc)) <span class="citation">[@Alarid-Escudero2019]</span>. Followed by creating linear regression metamodeling sensitivity analysis graphs (Figures @ref(fig:05a-owsa-lrm-nmb) - @ref(fig:05a-twsa-lrm-uS1-uTrt-nmb))<span class="citation">[@Jalal2013]</span>. All generated figures are shown below and stored to the <em>figs</em> folder .</p>
+<div class="figure">
+<img src="../figs/05a_cea_frontier_psa.png" alt="Cost-effectiveness frontier" width="100%"><p class="caption">
+Cost-effectiveness frontier
+</p>
+</div>
+<div class="figure">
+<img src="../figs/05a_ceac_ceaf.png" alt="Cost-effectiveness acceptability curves (CEACs) and frontier (CEAF)." width="100%"><p class="caption">
+Cost-effectiveness acceptability curves (CEACs) and frontier (CEAF).
+</p>
+</div>
+<div class="figure">
+<img src="../figs/05a_elc.png" alt="Expected Loss Curves." width="100%"><p class="caption">
+Expected Loss Curves.
+</p>
+</div>
+<div class="figure">
+<img src="../figs/05a_owsa_lrm_nmb.png" alt="One-way sensitivity analysis (OWSA)." width="100%"><p class="caption">
+One-way sensitivity analysis (OWSA).
+</p>
+</div>
+<div class="figure">
+<img src="../figs/05a_optimal_owsa_lrm_nmb.png" alt="Optimal strategy with OWSA" width="100%"><p class="caption">
+Optimal strategy with OWSA
+</p>
+</div>
+<div class="figure">
+<img src="../figs/05a_tornado_lrm_Treatment_nmb.png" alt="Tornado plot" width="100%"><p class="caption">
+Tornado plot
+</p>
+</div>
+<div class="figure">
+<img src="../figs/05a_twsa_lrm_uS1_uTrt_nmb.png" alt="Two-way sensitivity analysis (TWSA)." width="100%"><p class="caption">
+Two-way sensitivity analysis (TWSA).
+</p>
+</div>
+</div>
+<div id="Deterministic-analysis" class="section level2">
+<h2 class="hasAnchor">
+<a href="#Deterministic-analysis" class="anchor"></a>05b Deterministic analysis</h2>
+<p>In this subcomponent, we perform a deterministic CEA, followed by some deterministic sensitivity analysis, including one-way, two-way and tornado sensitivity analyses. The function script of this subcomponent, <em>05b_deterministic_analysis_function.R</em>, contains the function <code>calculate_ce_out</code>. This function calculates costs and effects for a given vector of parameters using a simulation model. We need to run our simulation model using the calibrated parameter values, but the list we created in component 01 (@ref(inputs)) still contain the placeholder values for the calibrated parameters. This means we need to update these values by the calibrated values stored in the vector <code>v_calib_post_map</code>. The function <code>update_param_list</code> updates the list of parameters with new values for some specific parameters.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print.function</a></span>(update_param_list)
+<span class="co">#&gt; function(l_params_all, params_updated){</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;   if (typeof(params_updated)!="list"){</span>
+<span class="co">#&gt;     params_updated &lt;- split(unname(params_updated),names(params_updated)) #converte the named vector to a list</span>
+<span class="co">#&gt;   }</span>
+<span class="co">#&gt;   l_params_all &lt;- modifyList(l_params_all, params_updated) #update the values</span>
+<span class="co">#&gt;   return(l_params_all)</span>
+<span class="co">#&gt; }</span>
+<span class="co">#&gt; &lt;bytecode: 0x7f845ee8d8c0&gt;</span>
+<span class="co">#&gt; &lt;environment: namespace:darthpack&gt;</span></code></pre></div>
+<p>The first argument of the function, called <code>l_params_all</code>, is a list with all the parameters of decision model. The second argument, <code>params_updated</code>, is an object with parameters for which values need to be updated. The function returns the list <code>l_params_all</code> with updated values.</p>
+<p>In the <em>05b_deterministic_analysis.R</em> script we execute the <code>update_param_list</code> function for our case-study, resulting in the list <code>l_params_basecase</code> where the placeholder values for <code>p_S1S2</code>, <code>hr_S1</code> and <code>hr_S2</code> are replaced by the calibration estimates.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l_params_basecase &lt;-<span class="st"> </span><span class="kw"><a href="../reference/update_param_list.html">update_param_list</a></span>(l_params_all, v_calib_post_map) </code></pre></div>
+<p>We use this new list as an argument in the <code>calculate_ce_out</code> function. In addition, we specify the willingness-to-pay (WTP) threshold value using the <code>n_wtp</code> argument of this function. This WTP value is used to compute a net monetary benefit (NMB) value. If the user does not specify the WTP, a default value of $100,000/QALY will be used by the function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_out_ce &lt;-<span class="st"> </span><span class="kw"><a href="../reference/calculate_ce_out.html">calculate_ce_out</a></span>(<span class="dt">l_params_all =</span> l_params_basecase, 
+                                <span class="dt">n_wtp =</span> <span class="dv">150000</span>)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print.function</a></span>(calculate_ce_out) <span class="co"># print the function</span>
+<span class="co">#&gt; function(l_params_all = load_all_params(), </span>
+<span class="co">#&gt;                              n_wtp = 100000){ # User defined</span>
+<span class="co">#&gt;   with(as.list(l_params_all), {</span>
+<span class="co">#&gt;     ## Create discounting vectors</span>
+<span class="co">#&gt;     v_dwc &lt;- 1 / ((1 + d_e) ^ (0:(n_t))) # vector with discount weights for costs</span>
+<span class="co">#&gt;     v_dwe &lt;- 1 / ((1 + d_c) ^ (0:(n_t))) # vector with discount weights for QALYs</span>
+<span class="co">#&gt;     </span>
+<span class="co">#&gt;     ## Run STM model at a parameter set for each intervention</span>
+<span class="co">#&gt;     l_model_out_no_trt &lt;- decision_model(l_params_all = l_params_all)</span>
+<span class="co">#&gt;     l_model_out_trt    &lt;- decision_model(l_params_all = l_params_all)</span>
+<span class="co">#&gt;     </span>
+<span class="co">#&gt;     ## Cohort trace by treatment</span>
+<span class="co">#&gt;     m_M_no_trt &lt;- l_model_out_no_trt$m_M # No treatment</span>
+<span class="co">#&gt;     m_M_trt    &lt;- l_model_out_trt$m_M    # Treatment</span>
+<span class="co">#&gt;     </span>
+<span class="co">#&gt;     ## Vectors with costs and utilities by treatment</span>
+<span class="co">#&gt;     v_u_no_trt &lt;- c(u_H, u_S1, u_S2, u_D)</span>
+<span class="co">#&gt;     v_u_trt    &lt;- c(u_H, u_Trt, u_S2, u_D)</span>
+<span class="co">#&gt;     </span>
+<span class="co">#&gt;     v_c_no_trt &lt;- c(c_H, c_S1, c_S2, c_D)</span>
+<span class="co">#&gt;     v_c_trt    &lt;- c(c_H, c_S1 + c_Trt, c_S2 + c_Trt, c_D)</span>
+<span class="co">#&gt;     </span>
+<span class="co">#&gt;     ## Mean Costs and QALYs for Treatment and NO Treatment</span>
+<span class="co">#&gt;     v_tu_no_trt &lt;- m_M_no_trt %*% v_u_no_trt</span>
+<span class="co">#&gt;     v_tu_trt    &lt;- m_M_trt %*% v_u_trt</span>
+<span class="co">#&gt;     </span>
+<span class="co">#&gt;     v_tc_no_trt &lt;- m_M_no_trt %*% v_c_no_trt</span>
+<span class="co">#&gt;     v_tc_trt    &lt;- m_M_trt %*% v_c_trt</span>
+<span class="co">#&gt;     </span>
+<span class="co">#&gt;     ## Total discounted mean Costs and QALYs</span>
+<span class="co">#&gt;     tu_d_no_trt &lt;- t(v_tu_no_trt) %*% v_dwe </span>
+<span class="co">#&gt;     tu_d_trt    &lt;- t(v_tu_trt) %*% v_dwe</span>
+<span class="co">#&gt;     </span>
+<span class="co">#&gt;     tc_d_no_trt &lt;- t(v_tc_no_trt) %*% v_dwc</span>
+<span class="co">#&gt;     tc_d_trt    &lt;- t(v_tc_trt)    %*% v_dwc</span>
+<span class="co">#&gt;     </span>
+<span class="co">#&gt;     ## Vector with total discounted mean Costs and QALYs</span>
+<span class="co">#&gt;     v_tc_d &lt;- c(tc_d_no_trt, tc_d_trt)</span>
+<span class="co">#&gt;     v_tu_d &lt;- c(tu_d_no_trt, tu_d_trt)</span>
+<span class="co">#&gt;     </span>
+<span class="co">#&gt;     ## Vector with discounted net monetary benefits (NMB)</span>
+<span class="co">#&gt;     v_nmb_d &lt;- v_tu_d * n_wtp - v_tc_d</span>
+<span class="co">#&gt;     </span>
+<span class="co">#&gt;     ## Dataframe with discounted costs, effectiveness and NMB</span>
+<span class="co">#&gt;     df_ce &lt;- data.frame(Strategy = v_names_str,</span>
+<span class="co">#&gt;                         Cost     = v_tc_d,</span>
+<span class="co">#&gt;                         Effect   = v_tu_d,</span>
+<span class="co">#&gt;                         NMB      = v_nmb_d)</span>
+<span class="co">#&gt;     </span>
+<span class="co">#&gt;     return(df_ce)</span>
+<span class="co">#&gt;   }</span>
+<span class="co">#&gt;   )</span>
+<span class="co">#&gt; }</span>
+<span class="co">#&gt; &lt;bytecode: 0x7f8460ac69a8&gt;</span>
+<span class="co">#&gt; &lt;environment: namespace:darthpack&gt;</span></code></pre></div>
+<p>After calculating the discount weights, this function runs the simulation model using the previously described function <code>decision_model</code> in the <em>02_simulatiomn_model_function.R</em> script. Inside the function <code>calculate_ce_out</code>, the simulation model is run for both the treatment, <code>l_model_out_trt</code>, and no treatment, <code>l_model_out_no_trt</code>, strategies of the Sick-Sicker model. Running it for both treatment strategies is done for illustration purposes. In this case-study, the resulting cohort traces are identical and we could have executed it only once.</p>
+<p>In the second part of the function we create multiple vectors for both the cost and effects of both strategies. These vectors multiply the cohort trace to compute the cycle-specific rewards. This results in vectors of total costs (<code>v_tc</code>) and total effects (<code>v_tu</code>) per cycle. By multiplying these vectors with the vectors with the discount weights for costs (<code>v_dwc</code>) and effects (<code>v_dwe</code>) we get the total discounted mean costs (<code>tc_d_no_trt</code> and <code>tc_d_trt</code>) and QALYs (<code>tu_d_no_trt</code> and <code>tu_d_trt</code>) for both strategies. These values are used in the calculation of the NMB. Finally, the total discounted costs, effectiveness and NMB are combined in the dataframe <code>df_ce</code>. The results for our case-study are shown below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_out_ce <span class="co"># print the dataframe </span>
+<span class="co">#&gt;       Strategy     Cost   Effect     NMB</span>
+<span class="co">#&gt; 1 No Treatment 115239.8 20.02366 2888309</span>
+<span class="co">#&gt; 2    Treatment 214157.6 20.72299 2894291</span></code></pre></div>
+<p>This dataframe of CE results can be used as an argument in the <code>calculate_icers</code> function from the <code>dampack</code> package to calculate the incremental cost-effectiveness ratios (ICERs) and noting which strategies are weakly and strongly dominated. Table @ref(tab:df-cea-det) shows the result of the deterministic CEA.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_cea_det &lt;-<span class="st"> </span><span class="kw">calculate_icers</span>(<span class="dt">cost =</span> df_out_ce<span class="op">$</span>Cost, 
+                              <span class="dt">effect =</span> df_out_ce<span class="op">$</span>Effect, 
+                              <span class="dt">strategies =</span> l_params_basecase<span class="op">$</span>v_names_str)</code></pre></div>
+<table class="table">
+<caption>
+Deterministic cost-effectiveness analysis results of the Sick-Sicker model comparing no treatment with treatment.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+Strategy
+</th>
+<th style="text-align:right;">
+Cost
+</th>
+<th style="text-align:right;">
+Effect
+</th>
+<th style="text-align:right;">
+Inc_Cost
+</th>
+<th style="text-align:right;">
+Inc_Effect
+</th>
+<th style="text-align:right;">
+ICER
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+No Treatment
+</td>
+<td style="text-align:right;">
+115239.8
+</td>
+<td style="text-align:right;">
+20.02366
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Treatment
+</td>
+<td style="text-align:right;">
+214157.6
+</td>
+<td style="text-align:right;">
+20.72299
+</td>
+<td style="text-align:right;">
+98917.83
+</td>
+<td style="text-align:right;">
+0.6993333
+</td>
+<td style="text-align:right;">
+141445.9
+</td>
+</tr>
+</tbody>
+</table>
+<p>Finally, Figure @ref(fig:05b-CEA-frontier) shows the cost-effectiveness frontier of the CEA.</p>
+<div class="figure">
+<img src="../figs/05b_cea_frontier.png" alt="Cost-effectiveness frontier." width="100%"><p class="caption">
+Cost-effectiveness frontier.
+</p>
+</div>
+<p>We then conduct a series of deterministic sensitivity analysis. First, we conduct a one-way sensitivity analysis (OWSA) on the variables <code>c_Trt</code>, <code>p_HS1</code>, <code>u_S1</code> and <code>u_Trt</code> and a two-way sensitivity analysis (TWSA) using the owsa_det and twsa_det functions. We use the output of these functions to produce different SA plots, such as OWSA tornado, one-way optimal strategy and TWSA plots (Figures @ref(fig:05b-owsa-nmb) - @ref(fig:05b-twsa-uS1-uTrt-nmb)).</p>
+<div class="figure">
+<img src="../figs/05b_owsa_nmb.png" alt="One-way sensitivity analysis results" width="100%"><p class="caption">
+One-way sensitivity analysis results
+</p>
+</div>
+<div class="figure">
+<img src="../figs/05b_optimal_owsa_nmb.png" alt="The optimal strategy with OWSA" width="100%"><p class="caption">
+The optimal strategy with OWSA
+</p>
+</div>
+<div class="figure">
+<img src="../figs/05b_tornado_Treatment_nmb.png" alt="The tornado plot" width="100%"><p class="caption">
+The tornado plot
+</p>
+</div>
+<div class="figure">
+<img src="../figs/05b_twsa_uS1_uTrt_nmb.png" alt="Two-way sensitivity results." width="100%"><p class="caption">
+Two-way sensitivity results.
+</p>
+</div>
+</div>
+<div id="voi" class="section level2">
+<h2 class="hasAnchor">
+<a href="#voi" class="anchor"></a>05c Value of information</h2>
+<p>In the VOI component, the results from the PSA generated in the probabilistic analysis subcomponent are used to determine whether further potential research is needed. We use the <code>calc_evpi</code> function from the <code>dampack</code> package to calculate the expected value of perfect information (EVPI). Figure @ref(fig:05c-evpi) shows the EVPI for the different WTP values.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">evpi &lt;-<span class="st"> </span><span class="kw">calc_evpi</span>(<span class="dt">wtp =</span> v_wtp, <span class="dt">psa =</span> l_psa)</code></pre></div>
+<div class="figure">
+<img src="../figs/05c_evpi.png" alt="Expected value of perfect information" width="100%"><p class="caption">
+Expected value of perfect information
+</p>
+</div>
+</div>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1 class="hasAnchor">
+<a href="#references" class="anchor"></a>References</h1>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+        <div id="tocnav">
+      <h2 class="hasAnchor">
+<a href="#tocnav" class="anchor"></a>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+<li>
+<a href="#analysis">Analysis</a><ul class="nav nav-pills nav-stacked">
+<li><a href="#Probabilistic-analysis">05a Probabilistic analysis</a></li>
+      <li><a href="#Deterministic-analysis">05b Deterministic analysis</a></li>
+      <li><a href="#voi">05c Value of information</a></li>
+      </ul>
+</li>
+      <li><a href="#references">References</a></li>
+      </ul>
+</div>
       </div>
 
 </div>
