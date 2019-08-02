@@ -52,7 +52,9 @@ Use repository as a GitHub coding template
 5.  Type a name for your repository of your decision model, and an optional description.
 6.  Choose to make the repository either public or private. Public repositories are visible to the public, while private repositories are only accessible to you, and people you share them with. For more information, see "[Setting repository visibility](https://help.github.com/en/articles/setting-repository-visibility)."
 7.  Click **Create repository from template**.
-8.  Either download the repository or clone it.
+8.  Either clone the repository or download it.
+    1.  **Clone**, which requires the user to have a GitHub desktop installed, or
+    2.  **Download zip** that will ask the user to download the whole repository as a .zip file.
 9.  Open the RStudio project `darthpack.Rproj`.
 10. Install all required and suggested packages from the *DESCRIPTION* file in the main folder
     -   To install `dampack`, please follow these instructions:
@@ -108,4 +110,4 @@ Once the framework has been modified and updated to your specific needs, run `pk
 pkgdown::build_site()
 ```
 
-For a more detailed description on how to quickly and easily build a website for your package, please go to <https://github.com/r-lib/pkgdown>
+For a more detailed description on how to quickly and easily build a website for your package, please go to <https://github.com/r-lib/pkgdown> and
