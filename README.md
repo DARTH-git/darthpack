@@ -17,8 +17,8 @@ Preliminaries
 # Install release version from CRAN
 install.packages("devtools")
 
-# Install development version from GitHub
-devtools::install_github("r-lib/devtools")
+# Or install development version from GitHub
+# devtools::install_github("r-lib/devtools")
 ```
 
 -   Install `pkgdown` to publish `darthpack` or your own `darthpack`-based repository or package as a website (optional)
@@ -27,8 +27,8 @@ devtools::install_github("r-lib/devtools")
 # Install release version from CRAN
 install.packages("pkgdown")
 
-# Install development version from GitHub
-devtools::install_github("r-lib/pkgdown")
+# Or install development version from GitHub
+# devtools::install_github("r-lib/pkgdown")
 ```
 
 Usage and installation
