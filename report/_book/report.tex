@@ -125,7 +125,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-08-01}
+    \date{2019-08-02}
 
 \usepackage{booktabs}
 \usepackage{float}
@@ -251,7 +251,7 @@ Age-specific background mortality for healthy individuals is represented by the 
 ##   
 ##   return(v_r_mort_by_age)
 ## }
-## <bytecode: 0x00000000131f08d0>
+## <bytecode: 0x00000000150fa4f0>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -304,7 +304,7 @@ Another function in the \emph{01\_model\_inputs\_functions.R} script, is the \te
 ##   l_params_all <- c(l_params_all, 
 ##                     df_params_init) # Add initial set of parameters
 ## }
-## <bytecode: 0x0000000015123190>
+## <bytecode: 0x000000001522c380>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -407,7 +407,7 @@ The function \texttt{decision\_model} is defined in the \emph{02\_decision\_mode
 ##   }
 ##   )
 ## }
-## <bytecode: 0x000000001837da58>
+## <bytecode: 0x000000001835e6a0>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -554,7 +554,7 @@ In section \emph{03.3 Run calibration algorithms}, we set the parameters we need
 ##                 PropSicker = v_prop_S2[c(11, 21, 31)])
 ##   return(l_out)
 ## }
-## <bytecode: 0x000000001933fc70>
+## <bytecode: 0x00000000192f1a08>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -632,7 +632,7 @@ In section \emph{04.2 Compute model-predicted outputs}, we compute the model-pre
 ##   data_sum <- plyr::rename(data_sum, c("mean" = varname))
 ##   return(data_sum)
 ## }
-## <bytecode: 0x0000000018dcfeb8>
+## <bytecode: 0x0000000018d7e490>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -672,7 +672,7 @@ In sections \emph{04.6 Internal validation: Model-predicted outputs vs.~targets}
 \hypertarget{analysis}{%
 \chapter{Analysis}\label{analysis}}
 
-The analysis component is where the elements in components 1-4 are combined to answer the question(s) of interest given current information and to quantify the value of potential further research. Our framework separates the analysis in three subcomponents: \emph{05a Probabilistic analysis}, \_05b Deterministic analysis\_and \emph{05c Value of information analysis}. For the Sick-Sicker case-study, we use all three subcomponents to conduct the CEA and to quantify the uncertainty of our decision. For procedures in the CEA, we rely on the \texttt{R} package \texttt{dampack}, which is available here: \url{https://github.com/DARTH-git/dampack}. Instructions for installing \texttt{dampack} are described in Appendix 0 provided in the \emph{app0\_packages\_setup.R} script of the \emph{analysis} folder.
+The analysis component is where the elements in components 1-4 are combined to answer the question(s) of interest given current information and to quantify the value of potential further research. Our framework separates the analysis in three subcomponents: \emph{05a Probabilistic analysis}, \_05b Deterministic analysis\_and \emph{05c Value of information analysis}. For the Sick-Sicker case-study, we use all three subcomponents to conduct the CEA and to quantify the uncertainty of our decision. For procedures in the CEA, we rely on the \texttt{R} package \texttt{dampack}, which is available here: \url{https://github.com/DARTH-git/dampack}. To install \texttt{dampack}, please follow these instructions:
 
 \hypertarget{Probabilistic-analysis}{%
 \section{05a Probabilistic analysis}\label{Probabilistic-analysis}}
@@ -840,7 +840,7 @@ In a PSA we sample the input parameter values from these distributions and we th
 ##   )
 ##   return(df_psa_params)
 ## }
-## <bytecode: 0x000000001e11e440>
+## <bytecode: 0x000000001e100c48>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -972,7 +972,7 @@ In this subcomponent, we perform a deterministic CEA, followed by some determini
 ##   l_params_all <- modifyList(l_params_all, params_updated) #update the values
 ##   return(l_params_all)
 ## }
-## <bytecode: 0x000000001de7f4a0>
+## <bytecode: 0x000000001dd4dd38>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
@@ -1050,7 +1050,7 @@ We use this new list as an argument in the \texttt{calculate\_ce\_out} function.
 ##   }
 ##   )
 ## }
-## <bytecode: 0x000000001e4391d8>
+## <bytecode: 0x000000001e410038>
 ## <environment: namespace:darthpack>
 \end{verbatim}
 
