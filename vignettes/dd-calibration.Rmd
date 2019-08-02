@@ -1,5 +1,5 @@
 ---
-title: "03 Caibration"
+title: "03 Calibration"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{dd-calibration}

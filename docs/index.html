@@ -68,6 +68,15 @@
       <a href="articles/cc-model.html">02 Decision model</a>
     </li>
     <li>
+      <a href="articles/dd-calibration.html">03 Calibration</a>
+    </li>
+    <li>
+      <a href="articles/ee-validation.html">04 Validation</a>
+    </li>
+    <li>
+      <a href="articles/ff-analysis.html">05 Analysis</a>
+    </li>
+    <li>
       <a href="articles/zz-testing.html">Testing</a>
     </li>
   </ul>
@@ -112,29 +121,41 @@
 <ul>
 <li>Install <a href="https://www.rstudio.com/products/rstudio/download/">Rstudio</a>
 </li>
-<li>Install devtools</li>
+<li>Install <code>devtools</code> to install <code>darthpack</code> as a package and modify it to generate your own package</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Install release version from CRAN</span>
 <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"devtools"</span>)
 
 <span class="co"># Install development version from GitHub</span>
 devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"r-lib/devtools"</span>)</code></pre></div>
+<ul>
+<li>Install <code>pkgdown</code> to publish <code>darthpack</code> or your own <code>darthpack</code>-based repository or package as a website (optional)</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Install release version from CRAN</span>
+<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"pkgdown"</span>)
+
+<span class="co"># Install development version from GitHub</span>
+devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"r-lib/pkgdown"</span>)</code></pre></div>
 </div>
 <div id="usage-and-installation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#usage-and-installation" class="anchor"></a>Usage and installation</h1>
 <p>‘darthpack’ repository could be used in at least three different ways:</p>
 <ol style="list-style-type: decimal">
-<li><a href="#use-repository-as-a-github-coding-template">GitHub coding template</a></li>
-<li><a href="#use-repository-as-a-regular-coding-template">Regular coding template</a></li>
-<li><a href="#use-as-an-r-package">R package</a></li>
+<li>
+<a href="#use-repository-as-a-github-coding-template">GitHub coding template</a> for using it to generate a repository of your own model-based decision or cost-effectiveness analysis linked to the original <code>darthpack</code> GitHub repository</li>
+<li>
+<a href="#use-repository-as-a-regular-coding-template">Regular coding template</a> for using it to generate a repository of your own model-based decision or cost-effectiveness analysis</li>
+<li>
+<a href="#use-as-an-r-package">R package</a> for using it as a standalone package to run current functions of <code>darthpack</code>
+</li>
 </ol>
 <p>The main website of the package could be found in: <a href="https://darth-git.github.io/darthpack/" class="uri">https://darth-git.github.io/darthpack/</a></p>
 <div id="use-repository-as-a-github-coding-template" class="section level2">
 <h2 class="hasAnchor">
 <a href="#use-repository-as-a-github-coding-template" class="anchor"></a>Use repository as a GitHub coding template</h2>
 <ol style="list-style-type: decimal">
-<li>Sign in to GitHub. You need to sign in to use this repository as a template.</li>
+<li>Sign in to GitHub. You need to sign in to use this repository as a template. If you don’t have a GitHub account, you can <a href="https://github.com/join">create one here</a>.</li>
 <li>On the <code>darthpack</code> GitHub repository, navigate to the main page of the repository (<a href="https://github.com/DARTH-git/darthpack" class="uri">https://github.com/DARTH-git/darthpack</a>).</li>
 <li>Above the file list, click <strong>Use this template</strong>.</li>
 <li>Use the <strong>Owner</strong> drop-down menu, and select the account you want to own the repository.</li>
@@ -143,6 +164,15 @@ devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumen
 <li>Click <strong>Create repository from template</strong>.</li>
 <li>Either download the repository or clone it.</li>
 <li>Open the RStudio project <code>darthpack.Rproj</code>.</li>
+<li>Install all required and suggested packages from the <em>DESCRIPTION</em> file in the main folder
+<ul>
+<li>To install <code>dampack</code>, please follow these instructions:</li>
+</ul>
+</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Install development version from GitHub</span>
+devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"DARTH-git/dampack"</span>)</code></pre></div>
+<ol start="11" style="list-style-type: decimal">
 <li>In RStudio, load all the functions from the repository by typing <code><a href="https://www.rdocumentation.org/packages/devtools/topics/load_all">devtools::load_all(".")</a></code>
 </li>
 <li>Run all the decision modeling modules in the analysis folder.</li>
@@ -162,6 +192,15 @@ devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumen
 </ol>
 </li>
 <li>Open the RStudio project <code>darthpack.Rproj</code>.</li>
+<li>Install all required and suggested packages from the <em>DESCRIPTION</em> file in the main folder
+<ul>
+<li>To install <code>dampack</code>, please follow these instructions:</li>
+</ul>
+</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Install development version from GitHub</span>
+devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"DARTH-git/dampack"</span>)</code></pre></div>
+<ol start="5" style="list-style-type: decimal">
 <li>In RStudio, load all the functions from the repository by typing <code><a href="https://www.rdocumentation.org/packages/devtools/topics/load_all">devtools::load_all(".")</a></code>
 </li>
 <li>Run all the decision modeling modules in the analysis folder.</li>
@@ -183,7 +222,7 @@ devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumen
 <div id="release-your-udpated-framework" class="section level1">
 <h1 class="hasAnchor">
 <a href="#release-your-udpated-framework" class="anchor"></a>Release your udpated framework</h1>
-<p>Once the framework has been modified and updated to your specific needs, run pkgdown from the package directory each time you release your package:</p>
+<p>Once the framework has been modified and updated to your specific needs, run <code>pkgdown</code> from the package directory each time you release your package:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pkgdown<span class="op">::</span><span class="kw"><a href="https://pkgdown.r-lib.org/reference/build_site.html">build_site</a></span>()</code></pre></div>
 <p>For a more detailed description on how to quickly and easily build a website for your package, please go to <a href="https://github.com/r-lib/pkgdown" class="uri">https://github.com/r-lib/pkgdown</a></p>
 </div>

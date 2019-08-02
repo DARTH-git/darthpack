@@ -62,6 +62,15 @@
       <a href="../articles/cc-model.html">02 Decision model</a>
     </li>
     <li>
+      <a href="../articles/dd-calibration.html">03 Calibration</a>
+    </li>
+    <li>
+      <a href="../articles/ee-validation.html">04 Validation</a>
+    </li>
+    <li>
+      <a href="../articles/ff-analysis.html">05 Analysis</a>
+    </li>
+    <li>
       <a href="../articles/zz-testing.html">Testing</a>
     </li>
   </ul>
@@ -112,12 +121,16 @@ l_params_all &lt;-<span class="st"> </span><span class="kw"><a href="../referenc
 <div id="set-up" class="section level2 unnumbered">
 <h2 class="hasAnchor">
 <a href="#set-up" class="anchor"></a>Set-up</h2>
-<p>This report is a supplementary material meant to guide you through the <code>R</code> code of a fully functional decision model to showcase the framework described by the <a href="http://darthworkgroup.com/">Decision Analysis in R for Technologies in Health (DARTH) workgroup</a> in the manuscript <em>A need for change! A coding framework for improving transparency in decision modeling</em>. The code of this analysis can be downloaded from GitHub (<a href="https://github.com/DARTH-git/darthpack" class="uri">https://github.com/DARTH-git/darthpack</a>). We recommend downloading the case-study files as a single .zip file containing all directories. Unzip the folder and save to your desired directory. The framework is divided into different directories, described in Table 1, that could be accessed from the RStudio project <em>darthpack.Rproj</em>. In this framework, you will find multiple directories as described in Table 1 of the main manuscript. We refer to the directory names of this framework and scripts stored in these directories using <em>italic</em> style. This report is created with Markdown and is located in the <em>reports</em> directory of the framework. The figures for the case-study can be found in the <em>figs</em> directory, data required to conduct some of the analyses of the different components are in the <em>data</em> directory and the <code>R</code> scripts with functions, are located in the <em>R</em> directory. The main <code>R</code> scripts that conduct the analyses of the different components of the framework are stored in the <code>analysis</code> directory. In this document we do not show all the <code>R</code> code we refer to. Therefore, it is important to follow along while reading this document. To make sure you have all the required packages needed to run all the code, first install all the required packages by running the <em>00_general-setup.R</em> script in the <code>R</code> directory.</p>
+<p>These vignettes are meant to guide you through the <code>R</code> code-based functions of <code>darthpack</code> with a fully functional decision model to showcase the framework described by the <a href="http://darthworkgroup.com/">Decision Analysis in R for Technologies in Health (DARTH) workgroup</a> in the manuscript <em>A need for change! A coding framework for improving transparency in decision modeling</em>. For a more detailed description of the usage and installation of <code>darthpack</code>, we refer the reader to the package’s website (<a href="https://darth-git.github.io/darthpack/" class="uri">https://darth-git.github.io/darthpack/</a>). The framework is divided into different directories, described in Table 1 of the main manuscript, that could be accessed from the RStudio project <em>darthpack.Rproj</em>. We refer to the directory names of this framework and scripts stored in these directories using <em>italic</em> style. These vignettes are created with R Markdown and are located in the <em>vignettes</em> directory of the framework. The figures for the case-study can be found in the <em>figs</em> directory, data required to conduct some of the analyses of the different components are in the <em>data</em> and <em>data-raw</em> directories and the <code>R</code> scripts with functions, are located in the <em>R</em> directory. The main <code>R</code> scripts that conduct the analyses of the different components of the framework are stored in the <code>analysis</code> directory. In this document we do not show all the <code>R</code> code we refer to. Therefore, it is important to follow along while reading this document. To make sure you have all the required packages needed to run all the code, first install all the required and suggested packages in <em>DESCRIPTION</em> file in the main directory of <code>dartpack</code>.</p>
+</div>
+<div id="shiny-app" class="section level2">
+<h2 class="hasAnchor">
+<a href="#shiny-app" class="anchor"></a>Shiny app</h2>
 </div>
 <div id="prerequisites-general" class="section level2 unnumbered">
 <h2 class="hasAnchor">
 <a href="#prerequisites-general" class="anchor"></a>Prerequisites general</h2>
-<p>The book describing our Sick-Sicker case study is written in Markdown. More about books written in Markdown can be found on this website: <a href="https://bookdown.org/yihui/bookdown/" class="uri">https://bookdown.org/yihui/bookdown/</a>. When you like to generate the book yourself using Markdown you need to install the <code>bookdown</code> package from CRAN or Github:</p>
+<p>The book describing our Sick-Sicker case study is written in R Markdown using the <code>bookdown</code> package. More about books written in R Markdown using <code>bookdown</code> can be found on this website: <a href="https://bookdown.org/yihui/bookdown/" class="uri">https://bookdown.org/yihui/bookdown/</a>. When you like to generate the book yourself using Markdown you need to install the <code>bookdown</code> package from CRAN or Github:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"bookdown"</span>)
 <span class="co"># or the development version</span>
 <span class="co"># devtools::install_github("rstudio/bookdown")</span></code></pre></div>
@@ -152,6 +165,7 @@ l_params_all &lt;-<span class="st"> </span><span class="kw"><a href="../referenc
 <li>
 <a href="#the-sick-sicker-model">The Sick-Sicker model</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#set-up">Set-up</a></li>
+      <li><a href="#shiny-app">Shiny app</a></li>
       <li><a href="#prerequisites-general">Prerequisites general</a></li>
       </ul>
 </li>

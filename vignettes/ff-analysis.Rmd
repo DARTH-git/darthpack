@@ -2,7 +2,7 @@
 title: "05 Analysis"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{ee-analysis}
+  %\VignetteIndexEntry{ff-analysis}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
