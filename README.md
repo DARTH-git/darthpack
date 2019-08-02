@@ -24,11 +24,11 @@ devtools::install_github("r-lib/devtools")
 Usage and installation
 ======================
 
-'darthpack' could be used in at least three different ways:
+'darthpack' repository could be used in at least three different ways:
 
-1.  [As a GitHub coding template](#use-repository-as-coding-template)
-2.  [As a regular coding template](#use-repository-as-coding-template)
-3.  [As an R package](#installation-as-a-package)
+1.  [GitHub coding template](#use-repository-as-a-github-coding-template)
+2.  [Regular coding template](#use-repository-as-a-regular-coding-template)
+3.  [R package](#use-as-an-r-package)
 
 The main website of the package could be found in: <https://darth-git.github.io/darthpack/>
 
@@ -47,8 +47,8 @@ Use repository as a GitHub coding template
 10. In RStudio, load all the functions from the repository by typing `devtools::load_all(".")`
 11. Run all the decision modeling modules in the analysis folder.
 
-Use repository as coding template
----------------------------------
+Use repository as a regular coding template
+-------------------------------------------
 
 1.  On the `darthpack` GitHub repository, navigate to the main page of the repository (<https://github.com/DARTH-git/darthpack>).
 2.  Above the file list, click **Clone or download** and select either
@@ -58,10 +58,10 @@ Use repository as coding template
 4.  In RStudio, load all the functions from the repository by typing `devtools::load_all(".")`
 5.  Run all the decision modeling modules in the analysis folder.
 
-Installation as an R package
-----------------------------
+Use as an R package
+-------------------
 
-1.  Install the development version from [GitHub](https://github.com) with:
+1.  Install the development version of 'darthpack' from [GitHub](https://github.com) with:
 
 ``` r
 devtools::install_github("DARTH-git/darthpack")
