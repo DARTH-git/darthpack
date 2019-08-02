@@ -45,7 +45,6 @@ knitr::opts_knit$set(root.dir = '..')
 knitr::include_graphics("../figs/03_posterior_distribution_joint.png")
 ```
 
-
 ```{r 03-posterior-distribution-marginal, fig.cap="Pairwise posterior distribution of calibrated parameters", out.width='100%', echo = FALSE}
 knitr::include_graphics("../figs/03_posterior_distribution_marginal.png")
 ```

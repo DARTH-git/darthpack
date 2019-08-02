@@ -14,6 +14,53 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r, include = FALSE, warning = FALSE}
+library(knitr)
+# https://haozhu233.github.io/kableExtra/awesome_table_in_html.html
+library(kableExtra)
+library(dplyr)
+library(reshape2)
+library(ggplot2)
+library(png)
 library(darthpack)
+### Load parameters
+l_params_all <- load_all_params()
 ```
+
+# Model calibration {#calibration}
+
+In this third component, we calibrate unknown model parameters by matching model outputs to specified calibration targets. Specifically, we calibrate the Sick-Sicker model to match survival, prevalence and the proportion who are Sicker, among all those afflicted (Sick+Sicker). We used a Bayesian calibration approach using the incremental mixture importance sampling (IMIS) algorithm [@Steele2006], which has been used to calibrate health policy models [@Raftery2010, @Menzies2017, @Rutter2018]. Bayesian methods allow us to quantify the uncertainty in the calibrated parameters even in the presence of non-identifiability [@Alarid-Escudero2018b]. This analysis is coded in the *03_calibration.R* file in the `analysis` folder. The target data is stored in the *03_calibration_targets.RData* file. Similar to component 02 \@ref(simulation), in the section _03.1 Load packages_, we start by loading inputs and functions. In addition, we load the calibration targets data into the R workspace. In the next section, _03.2 Visualize targets_, we plot each of the calibration targets with their confidence intervals.
+
+In section _03.3 Run calibration algorithms_, we set the parameters we need to calibrate to fixed values and test if the function `calibration_out` that produces model outputs corresponding to the calibration targets works. This function takes a vector of parameters that need to be calibrated and a list with all parameters of decision model and computes model outputs to be used for calibration routines.
+
+```{r}
+print.function(calibration_out) # print the functions
+```
+
+This function is informed by two argument `v_params_calib` and `l_params_all`. The vector `v_params_calib` contains the values of the three parameters of interest. The list `l_params_all` contains all parameters of the decision model. The placeholder values are replaced by `v_params_calib` and with these values the model is evaluated. Model evaluation takes place by running the `decision_model` function, described in component 02. The result in a new list with output of the model corresponding to the parameter values in the `v_params_calib`. With this new decision model output, the overall survival, disease prevalence and the proportion of Sicker in the Sick and Sicker states are calculated. The estimated values for these epidemiological outcomes at different timepoints are combined in a list called `l_out` produced but the `calibration_out`. 
+
+Once we make sure this code works, we specify the calibration parameters in section _03.3.1 Specify calibration parameters_. These include setting the seed for the random number generation, specifying the number of random samples to obtain from the calibrated posterior distribution, the name of the input parameters and the range of these parameters that will inform the prior distributions of the calibrated parameters, and the name of the calibration targets: `Surv`, `Prev`, `PropSick`.
+
+In the next section, _03.3.2 Run IMIS algorithm_, we calibrate the Sick-Sicker model with the IMIS algorithm. For this case-study, we assume a normal likelihood and uniform priors. For a more detailed description of IMIS for Bayesian calibration, different likelihood functions and prior distributions, we refer the reader to the tutorial for Bayesian calibration by Menzies et al. [@Menzies2017]. We use the `IMIS` function from the `IMIS` package that calls the functions `likelihood`, `sample.prior` and `prior`, to draw samples from the posterior distribution [@IMIS]. The functions are specified in the *03_calibration_functions.R* file in the `R` folder. For the `IMIS` function, we specify the incremental sample size at each iteration of IMIS, the desired posterior sample size at the resample stage, the maximum number of iterations in IMIS and the number of optimizers which could be 0. The function returns a list, which we call `l_fit_imis`, with the posterior samples, the diagnostic statistics at each IMIS iteration and the centers of Gaussian components [@IMIS]. We store the posterior samples in the matrix `m_calib_post`. 
+
+We then explore these posterior distributions in section _03.4 Exploring posterior distribution_. We start by estimating the posterior mean, median and 95% credible interval, the mode and the maximum-a-posteriori (MAP). All for these summary statistics are combined in a dataframe called `df_posterior_summ`. Table \@ref(tab:SummaryCal) shows the summary statistics of the posterior distribution. 
+```{r SummaryCal, eval = TRUE, echo = FALSE, message=F, warning=F, cache=F}
+load("../tables/03_summary_posterior.RData")
+knitr::kable(df_posterior_summ[, -1], caption = "Summary statistics of the posterior distribution", format = "latex") # create a table 
+``` 
+
+In section _03.4.2 Visualization of posterior distribution_, we generate a pairwise scatter plot of the calibrated parameters (Figure \@ref(fig:03-posterior-distribution-marginal)) and a 3D scatter plot of the joint posterior distribution (Figure \@ref(fig:Posterior-distribution-joint)). These figures are saved in the *figs* directory.
+
+```{r Posterior-distribution-joint, out.width='100%', fig.cap='Joint posterior distribution', echo=FALSE}
+knitr::opts_knit$set(root.dir = '..')
+knitr::include_graphics("../figs/03_posterior_distribution_joint.png")
+```
+
+
+```{r 03-posterior-distribution-marginal, fig.cap="Pairwise posterior distribution of calibrated parameters", out.width='100%', echo = FALSE}
+knitr::include_graphics("../figs/03_posterior_distribution_marginal.png")
+```
+
+Finally, the posterior distribution and MAP estimate from the IMIS calibration are stored in the file *03_imis_output.RData*. Storing this data as an .Rdata file allows to import the data in following sections without needing to re-run the calibration component. 
+
+# References {-}

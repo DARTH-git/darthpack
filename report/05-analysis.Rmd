@@ -1,3 +1,4 @@
+
 ```{r, include = FALSE, warning = FALSE}
 library(knitr)
 # https://haozhu233.github.io/kableExtra/awesome_table_in_html.html
@@ -184,9 +185,3 @@ evpi <- calc_evpi(wtp = v_wtp, psa = l_psa)
 ```{r 05c-evpi, fig.cap="Expected value of perfect information", out.width='100%', echo=FALSE}
 knitr::include_graphics("../figs/05c_evpi.png")
 ```
-
-
-
-
-
-
