@@ -14,14 +14,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup, echo=FALSE}
+# Define model inputs {#inputs}
+
+As described in the main manuscript, in this first component we declare all model input variables and set their values. The `R` script running the analysis of this component is the *01_model-inputs.R* file in the `R` directory. To load the parameters, we run 
+
+```{r load-inputs}
 library(darthpack)
 l_params_all <- load_all_params()
 ```
-
-# Define model inputs {#inputs}
-
-As described in the main manuscript, in this first component we declare all model input variables and set their values. The `R` script running the analysis of this component is the *01_model-inputs.R* file in the `R` directory. 
 
 The input to inform the values is divided in three categories: external, estimated, and calibrated. The majority of the Sick-Sicker model parameters are informed by external data. Only three parameter values need to be estimated using model calibration. 
 

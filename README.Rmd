@@ -59,13 +59,13 @@ The main website of the package could be found in: https://darth-git.github.io/d
     a. **Clone**, which requires the user to have a GitHub desktop installed, or
     b. **Download zip** that will ask the user to download the whole repository as a .zip file.
 9. Open the RStudio project `darthpack.Rproj`.
-10. Install all required and suggested packages from the *DESCRIPTION* file in the main folder 
+10. Install all the required and suggested packages listed in the  [*DESCRIPTION*](https://github.com/DARTH-git/darthpack/blob/master/DESCRIPTION) file in the main folder of the repository
     - To install `dampack`, please follow these instructions:
 ```{r, eval=FALSE}
 # Install development version from GitHub
 devtools::install_github("DARTH-git/dampack")
 ```
-11. In RStudio, load all the functions from the repository by typing `devtools::load_all(".")`
+11. In RStudio, load all the functions and data from the repository by typing `devtools::load_all(".")`
 12. Run all the decision modeling modules in the analysis folder.
 
 ## Use repository as a regular coding template
@@ -74,13 +74,13 @@ devtools::install_github("DARTH-git/dampack")
     a. **Open in desktop**, which requires the user to have a GitHub desktop installed, or
     b. **Download zip** that will ask the user to download the whole repository as a .zip file.
 3. Open the RStudio project `darthpack.Rproj`.
-4. Install all required and suggested packages from the *DESCRIPTION* file in the main folder 
+4. Install all the required and suggested packages listed in the  [*DESCRIPTION*](https://github.com/DARTH-git/darthpack/blob/master/DESCRIPTION) file in the main folder of the repository
     - To install `dampack`, please follow these instructions:
 ```{r, eval=FALSE}
 # Install development version from GitHub
 devtools::install_github("DARTH-git/dampack")
 ```
-5. In RStudio, load all the functions from the repository by typing `devtools::load_all(".")`
+5. In RStudio, load all the functions and data from the repository by typing `devtools::load_all(".")`
 6. Run all the decision modeling modules in the analysis folder.
 
 ## Use as an R package
@@ -90,7 +90,7 @@ devtools::install_github("DARTH-git/dampack")
 devtools::install_github("DARTH-git/darthpack")
 ```
 
-2. Load all the functions from the repository by typing 
+2. Load all the functions and data from the repository by typing 
 ```{r, eval=FALSE}
 library(darthpack)
 ```
