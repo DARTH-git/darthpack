@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2018.4.16)  3 AUG 2019 00:51
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2018.4.16)  3 AUG 2019 00:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -959,32 +959,32 @@ Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 154.
-LaTeX Font Info:    ... okay on input line 154.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 154.
-LaTeX Font Info:    ... okay on input line 154.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 154.
-LaTeX Font Info:    ... okay on input line 154.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 154.
-LaTeX Font Info:    ... okay on input line 154.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 154.
-LaTeX Font Info:    ... okay on input line 154.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 154.
-LaTeX Font Info:    ... okay on input line 154.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 154.
-LaTeX Font Info:    ... okay on input line 154.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 154.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 154.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 155.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 155.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 154.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 154.
-LaTeX Font Info:    ... okay on input line 154.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 154.
-LaTeX Font Info:    ... okay on input line 154.
-LaTeX Info: Redefining \microtypecontext on input line 154.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Info: Redefining \microtypecontext on input line 155.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: No adjustment of tracking.
@@ -996,7 +996,7 @@ File: mt-LatinModernRoman.cfg 2013/03/13 v1.0 microtype config. file: Latin Mod
 ern Roman (RS)
 )
 \AtBeginShipoutBox=\box63
-Package hyperref Info: Link coloring OFF on input line 154.
+Package hyperref Info: Link coloring OFF on input line 155.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -1004,9 +1004,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count307
 )
-LaTeX Info: Redefining \ref on input line 154.
-LaTeX Info: Redefining \pageref on input line 154.
-LaTeX Info: Redefining \nameref on input line 154.
+LaTeX Info: Redefining \ref on input line 155.
+LaTeX Info: Redefining \pageref on input line 155.
+LaTeX Info: Redefining \nameref on input line 155.
 (./report.out) (./report.out)
 \@outlinefile=\write4
 \openout4 = `report.out'.
@@ -1098,7 +1098,7 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 File: ../figs/02_model_diagram.png Graphic file (type bmp)
 <../figs/02_model_diagram.png>
 
-Overfull \hbox (12.05849pt too wide) in paragraph at lines 196--197
+Overfull \hbox (12.05849pt too wide) in paragraph at lines 197--198
  [][] 
  []
 
@@ -1108,53 +1108,53 @@ Overfull \hbox (12.05849pt too wide) in paragraph at lines 196--197
 Chapter 1.
 [9]
 
-Package xcolor Warning: Incompatible color definition on input line 341.
+Package xcolor Warning: Incompatible color definition on input line 342.
 
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 343.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 344.
 
-Package xcolor Warning: Incompatible color definition on input line 345.
-
-
-Package xcolor Warning: Incompatible color definition on input line 345.
+Package xcolor Warning: Incompatible color definition on input line 346.
 
 
-Package xcolor Warning: Incompatible color definition on input line 370.
+Package xcolor Warning: Incompatible color definition on input line 346.
 
 
-Package xcolor Warning: Incompatible color definition on input line 374.
+Package xcolor Warning: Incompatible color definition on input line 371.
 
 
-Package xcolor Warning: Incompatible color definition on input line 374.
+Package xcolor Warning: Incompatible color definition on input line 375.
+
+
+Package xcolor Warning: Incompatible color definition on input line 375.
 
 [10]
 Underfull \vbox (badness 1082) has occurred while \output is active []
 
 [11]
 
-Package xcolor Warning: Incompatible color definition on input line 445.
+Package xcolor Warning: Incompatible color definition on input line 446.
 
 
-Package xcolor Warning: Incompatible color definition on input line 449.
+Package xcolor Warning: Incompatible color definition on input line 450.
 
 
-Package xcolor Warning: Incompatible color definition on input line 449.
+Package xcolor Warning: Incompatible color definition on input line 450.
 
 [12]
 Chapter 2.
 
-Package xcolor Warning: Incompatible color definition on input line 489.
+Package xcolor Warning: Incompatible color definition on input line 490.
 
 
-Package xcolor Warning: Incompatible color definition on input line 493.
+Package xcolor Warning: Incompatible color definition on input line 494.
 
 
-Package xcolor Warning: Incompatible color definition on input line 493.
+Package xcolor Warning: Incompatible color definition on input line 494.
 
 [13
 
 ]
-Overfull \hbox (34.24498pt too wide) in paragraph at lines 567--567
+Overfull \hbox (34.24498pt too wide) in paragraph at lines 568--568
 []\TU/lmtt/m/n/10 ##     check_sum_of_transition_array(a_P, n_states, n_t, err_
 stop = err_stop, verbose = verbose)[] 
  []
@@ -1164,51 +1164,51 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [14]
 
-Package xcolor Warning: Incompatible color definition on input line 575.
+Package xcolor Warning: Incompatible color definition on input line 576.
 
 
-Package xcolor Warning: Incompatible color definition on input line 579.
+Package xcolor Warning: Incompatible color definition on input line 580.
 
 
-Package xcolor Warning: Incompatible color definition on input line 579.
+Package xcolor Warning: Incompatible color definition on input line 580.
 
 
-Package xcolor Warning: Incompatible color definition on input line 609.
+Package xcolor Warning: Incompatible color definition on input line 610.
 
 
-Package xcolor Warning: Incompatible color definition on input line 613.
+Package xcolor Warning: Incompatible color definition on input line 614.
 
 
-Package xcolor Warning: Incompatible color definition on input line 613.
+Package xcolor Warning: Incompatible color definition on input line 614.
 
 [15]
 
-Package xcolor Warning: Incompatible color definition on input line 641.
+Package xcolor Warning: Incompatible color definition on input line 642.
 
 
-Package xcolor Warning: Incompatible color definition on input line 645.
+Package xcolor Warning: Incompatible color definition on input line 646.
 
 
-Package xcolor Warning: Incompatible color definition on input line 645.
+Package xcolor Warning: Incompatible color definition on input line 646.
 
 
-Package xcolor Warning: Incompatible color definition on input line 670.
+Package xcolor Warning: Incompatible color definition on input line 671.
 
 
-Package xcolor Warning: Incompatible color definition on input line 674.
+Package xcolor Warning: Incompatible color definition on input line 675.
 
 
-Package xcolor Warning: Incompatible color definition on input line 674.
+Package xcolor Warning: Incompatible color definition on input line 675.
 
 
-Package xcolor Warning: Incompatible color definition on input line 686.
+Package xcolor Warning: Incompatible color definition on input line 687.
 
 [16]
 
-Package xcolor Warning: Incompatible color definition on input line 690.
+Package xcolor Warning: Incompatible color definition on input line 691.
 
 
-Package xcolor Warning: Incompatible color definition on input line 690.
+Package xcolor Warning: Incompatible color definition on input line 691.
 
 File: report_files/figure-latex/Sick-Sicker-Trace-1.pdf Graphic file (type pdf)
 
@@ -1218,16 +1218,16 @@ File: report_files/figure-latex/Sick-Sicker-Trace-1.pdf Graphic file (type pdf)
 ]
 Chapter 3.
 
-Package xcolor Warning: Incompatible color definition on input line 744.
+Package xcolor Warning: Incompatible color definition on input line 745.
 
 
-Package xcolor Warning: Incompatible color definition on input line 748.
+Package xcolor Warning: Incompatible color definition on input line 749.
 
 
-Package xcolor Warning: Incompatible color definition on input line 748.
+Package xcolor Warning: Incompatible color definition on input line 749.
 
 
-Overfull \hbox (55.24498pt too wide) in paragraph at lines 777--777
+Overfull \hbox (55.24498pt too wide) in paragraph at lines 778--778
 []\TU/lmtt/m/n/10 ##   l_params_all <- update_param_list(l_params_all = l_param
 s_all, params_updated = v_params_calib)[] 
  []
@@ -1243,13 +1243,13 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [21] [22]
 Chapter 4.
 
-Package xcolor Warning: Incompatible color definition on input line 892.
+Package xcolor Warning: Incompatible color definition on input line 893.
 
 
-Package xcolor Warning: Incompatible color definition on input line 896.
+Package xcolor Warning: Incompatible color definition on input line 897.
 
 
-Package xcolor Warning: Incompatible color definition on input line 896.
+Package xcolor Warning: Incompatible color definition on input line 897.
 
 [23
 
@@ -1267,77 +1267,77 @@ Chapter 5.
 
 ]
 
-Package xcolor Warning: Incompatible color definition on input line 1114.
+Package xcolor Warning: Incompatible color definition on input line 1115.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1118.
+Package xcolor Warning: Incompatible color definition on input line 1119.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1118.
+Package xcolor Warning: Incompatible color definition on input line 1119.
 
 
-Overfull \hbox (49.99498pt too wide) in paragraph at lines 1152--1152
+Overfull \hbox (49.99498pt too wide) in paragraph at lines 1153--1153
 []\TU/lmtt/m/n/10 ##     c_H   = rgamma(n_sim, shape = 100, scale = 20)    , # 
 cost of remaining one cycle in state H[] 
  []
 
 
-Overfull \hbox (55.24498pt too wide) in paragraph at lines 1152--1152
+Overfull \hbox (55.24498pt too wide) in paragraph at lines 1153--1153
 []\TU/lmtt/m/n/10 ##     c_S1  = rgamma(n_sim, shape = 177.8, scale = 22.5), # 
 cost of remaining one cycle in state S1[] 
  []
 
 
-Overfull \hbox (55.24498pt too wide) in paragraph at lines 1152--1152
+Overfull \hbox (55.24498pt too wide) in paragraph at lines 1153--1153
 []\TU/lmtt/m/n/10 ##     c_S2  = rgamma(n_sim, shape = 225, scale = 66.7)  , # 
 cost of remaining one cycle in state S2[] 
  []
 
 
-Overfull \hbox (2.74498pt too wide) in paragraph at lines 1152--1152
+Overfull \hbox (2.74498pt too wide) in paragraph at lines 1153--1153
 []\TU/lmtt/m/n/10 ##     c_Trt = rgamma(n_sim, shape = 73.5, scale = 163.3), # 
 cost of treatment (per cycle)[] 
  []
 
 
-Overfull \hbox (18.49498pt too wide) in paragraph at lines 1152--1152
+Overfull \hbox (18.49498pt too wide) in paragraph at lines 1153--1153
 []\TU/lmtt/m/n/10 ##     c_D   = 0                                         , # 
 cost of being in the death state[] 
  []
 
 
-Overfull \hbox (44.74498pt too wide) in paragraph at lines 1152--1152
+Overfull \hbox (44.74498pt too wide) in paragraph at lines 1153--1153
 []\TU/lmtt/m/n/10 ##     u_H   = truncnorm::rtruncnorm(n_sim, mean =    1, sd =
  0.01, b = 1), # utility when healthy[] 
  []
 
 
-Overfull \hbox (28.99498pt too wide) in paragraph at lines 1152--1152
+Overfull \hbox (28.99498pt too wide) in paragraph at lines 1153--1153
 []\TU/lmtt/m/n/10 ##     u_S1  = truncnorm::rtruncnorm(n_sim, mean = 0.75, sd =
  0.02, b = 1), # utility when sick[] 
  []
 
 
-Overfull \hbox (39.49498pt too wide) in paragraph at lines 1152--1152
+Overfull \hbox (39.49498pt too wide) in paragraph at lines 1153--1153
 []\TU/lmtt/m/n/10 ##     u_S2  = truncnorm::rtruncnorm(n_sim, mean = 0.50, sd =
  0.03, b = 1), # utility when sicker[] 
  []
 
 
-Overfull \hbox (76.24498pt too wide) in paragraph at lines 1152--1152
+Overfull \hbox (76.24498pt too wide) in paragraph at lines 1153--1153
 []\TU/lmtt/m/n/10 ##     u_Trt = truncnorm::rtruncnorm(n_sim, mean = 0.95, sd =
  0.02, b = 1)  # utility when being treated[] 
  []
 
 [28]
 
-Package xcolor Warning: Incompatible color definition on input line 1169.
+Package xcolor Warning: Incompatible color definition on input line 1170.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1182.
+Package xcolor Warning: Incompatible color definition on input line 1183.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1182.
+Package xcolor Warning: Incompatible color definition on input line 1183.
 
 File: ../figs/05a_cea_plane_scatter.png Graphic file (type bmp)
 <../figs/05a_cea_plane_scatter.png>
@@ -1360,61 +1360,61 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [29] [30] [31] [32] [33]
 
-Package xcolor Warning: Incompatible color definition on input line 1304.
+Package xcolor Warning: Incompatible color definition on input line 1305.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1308.
+Package xcolor Warning: Incompatible color definition on input line 1309.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1308.
+Package xcolor Warning: Incompatible color definition on input line 1309.
 
 
-Overfull \hbox (123.49498pt too wide) in paragraph at lines 1321--1321
+Overfull \hbox (123.49498pt too wide) in paragraph at lines 1322--1322
 []\TU/lmtt/m/n/10 ##     params_updated <- split(unname(params_updated),names(p
 arams_updated)) #converte the named vector to a list[] 
  []
 
 [34] [35] [36] [37]
 
-Package xcolor Warning: Incompatible color definition on input line 1335.
+Package xcolor Warning: Incompatible color definition on input line 1336.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1339.
+Package xcolor Warning: Incompatible color definition on input line 1340.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1339.
+Package xcolor Warning: Incompatible color definition on input line 1340.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1348.
+Package xcolor Warning: Incompatible color definition on input line 1349.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1354.
+Package xcolor Warning: Incompatible color definition on input line 1355.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1354.
+Package xcolor Warning: Incompatible color definition on input line 1355.
 
 [38]
 
-Package xcolor Warning: Incompatible color definition on input line 1438.
+Package xcolor Warning: Incompatible color definition on input line 1439.
 
 
 Underfull \vbox (badness 3780) has occurred while \output is active []
 
 [39]
 
-Package xcolor Warning: Incompatible color definition on input line 1442.
+Package xcolor Warning: Incompatible color definition on input line 1443.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1442.
+Package xcolor Warning: Incompatible color definition on input line 1443.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1456.
+Package xcolor Warning: Incompatible color definition on input line 1457.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1462.
+Package xcolor Warning: Incompatible color definition on input line 1463.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1462.
+Package xcolor Warning: Incompatible color definition on input line 1463.
 
 File: ../figs/05b_cea_frontier.png Graphic file (type bmp)
 <../figs/05b_cea_frontier.png>
@@ -1427,25 +1427,25 @@ File: ../figs/05b_tornado_Treatment_nmb.png Graphic file (type bmp)
 File: ../figs/05b_twsa_uS1_uTrt_nmb.png Graphic file (type bmp)
 <../figs/05b_twsa_uS1_uTrt_nmb.png>
 
-Package xcolor Warning: Incompatible color definition on input line 1544.
+Package xcolor Warning: Incompatible color definition on input line 1545.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1548.
+Package xcolor Warning: Incompatible color definition on input line 1549.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1548.
+Package xcolor Warning: Incompatible color definition on input line 1549.
 
 File: ../figs/05c_evpi.png Graphic file (type bmp)
 <../figs/05c_evpi.png>
 (./report.bbl [40] [41] [42] [43] [44] [45] [46])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1562.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1563.
 [47
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1562.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1563.
 (./report.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1562.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1562.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1563.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1563.
 
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: EB1F72A88FFA0CEDEBCD02944AE411B2.
@@ -1453,7 +1453,7 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 Here is how much of TeX's memory you used:
  24772 strings out of 492970
  453260 string characters out of 6133938
- 607170 words of memory out of 5000000
+ 607266 words of memory out of 5000000
  28455 multiletter control sequences out of 15000+600000
  543113 words of font info for 55 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191

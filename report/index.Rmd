@@ -1,5 +1,5 @@
 --- 
-title: 'darthpack: An R package with DARTH''s decision modeling coding framework'
+title: 'Sick-Sicker case-study using darthpack, an R package with DARTH''s decision modeling coding framework'
 author: "DARTH"
 date: "`r Sys.Date()`"
 output: 
