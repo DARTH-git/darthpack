@@ -34,7 +34,7 @@ install.packages("pkgdown")
 Usage and installation
 ======================
 
-'darthpack' repository could be used in at least three different ways:
+`darthpack` repository could be used in at least three different ways:
 
 1.  [GitHub coding template](#use-repository-as-a-github-coding-template) for using it to generate a repository of your own model-based decision or cost-effectiveness analysis linked to the original `darthpack` GitHub repository
 2.  [Regular coding template](#use-repository-as-a-regular-coding-template) for using it to generate a repository of your own model-based decision or cost-effectiveness analysis
@@ -89,7 +89,7 @@ devtools::install_github("DARTH-git/dampack")
 Use as an R package
 -------------------
 
-1.  Install the development version of 'darthpack' from [GitHub](https://github.com) with:
+1.  Install the development version of `darthpack` from [GitHub](https://github.com) with:
 
 ``` r
 devtools::install_github("DARTH-git/darthpack")
