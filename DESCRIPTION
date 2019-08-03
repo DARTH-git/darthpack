@@ -58,7 +58,9 @@ Imports:
     plyr,
     reshape2,
     truncnorm,
-    utils
+    utils,
+    IMIS,
+    plotrix
 Suggests: 
     knitr,
     rmarkdown,
