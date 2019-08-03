@@ -24,7 +24,7 @@
 <meta name="author" content="DARTH" />
 
 
-<meta name="date" content="2019-07-26" />
+<meta name="date" content="2019-08-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -47,6 +47,7 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
 
 
 <style type="text/css">
@@ -111,8 +112,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>3</b> Model calibration</a></li>
 <li class="chapter" data-level="4" data-path="validation.html"><a href="validation.html"><i class="fa fa-check"></i><b>4</b> Validation</a></li>
 <li class="chapter" data-level="5" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>5</b> Analysis</a><ul>
-<li class="chapter" data-level="5.1" data-path="analysis.html"><a href="analysis.html#Deterministic-analysis"><i class="fa fa-check"></i><b>5.1</b> 05a Deterministic analysis</a></li>
-<li class="chapter" data-level="5.2" data-path="analysis.html"><a href="analysis.html#Probabilistic-analysis"><i class="fa fa-check"></i><b>5.2</b> 05b Probabilistic analysis</a></li>
+<li class="chapter" data-level="5.1" data-path="analysis.html"><a href="analysis.html#Probabilistic-analysis"><i class="fa fa-check"></i><b>5.1</b> 05a Probabilistic analysis</a></li>
+<li class="chapter" data-level="5.2" data-path="analysis.html"><a href="analysis.html#Deterministic-analysis"><i class="fa fa-check"></i><b>5.2</b> 05b Deterministic analysis</a></li>
 <li class="chapter" data-level="5.3" data-path="analysis.html"><a href="analysis.html#voi"><i class="fa fa-check"></i><b>5.3</b> 05c Value of information</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -165,7 +166,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##                 PropSicker = v_prop_S2[c(11, 21, 31)])
 ##   return(l_out)
 ## }
-## &lt;bytecode: 0x7fb86900ea50&gt;
+## &lt;bytecode: 0x7fb55dfdc240&gt;
 ## &lt;environment: namespace:darthpack&gt;</code></pre>
 <p>This function is informed by two argument <code>v_params_calib</code> and <code>l_params_all</code>. The vector <code>v_params_calib</code> contains the values of the three parameters of interest. The list <code>l_params_all</code> contains all parameters of the decision model. The placeholder values are replaced by <code>v_params_calib</code> and with these values the model is evaluated. Model evaluation takes place by running the <code>decision_model</code> function, described in component 02. The result in a new list with output of the model corresponding to the parameter values in the <code>v_params_calib</code>. With this new decision model output, the overall survival, disease prevalence and the proportion of Sicker in the Sick and Sicker states are calculated. The estimated values for these epidemiological outcomes at different timepoints are combined in a list called <code>l_out</code> produced but the <code>calibration_out</code>.</p>
 <p>Once we make sure this code works, we specify the calibration parameters in section <em>03.3.1 Specify calibration parameters</em>. These include setting the seed for the random number generation, specifying the number of random samples to obtain from the calibrated posterior distribution, the name of the input parameters and the range of these parameters that will inform the prior distributions of the calibrated parameters, and the name of the calibration targets: <code>Surv</code>, <code>Prev</code>, <code>PropSick</code>.</p>

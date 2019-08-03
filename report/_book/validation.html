@@ -24,7 +24,7 @@
 <meta name="author" content="DARTH" />
 
 
-<meta name="date" content="2019-07-26" />
+<meta name="date" content="2019-08-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -47,6 +47,7 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
 
 
 <style type="text/css">
@@ -111,8 +112,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>3</b> Model calibration</a></li>
 <li class="chapter" data-level="4" data-path="validation.html"><a href="validation.html"><i class="fa fa-check"></i><b>4</b> Validation</a></li>
 <li class="chapter" data-level="5" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>5</b> Analysis</a><ul>
-<li class="chapter" data-level="5.1" data-path="analysis.html"><a href="analysis.html#Deterministic-analysis"><i class="fa fa-check"></i><b>5.1</b> 05a Deterministic analysis</a></li>
-<li class="chapter" data-level="5.2" data-path="analysis.html"><a href="analysis.html#Probabilistic-analysis"><i class="fa fa-check"></i><b>5.2</b> 05b Probabilistic analysis</a></li>
+<li class="chapter" data-level="5.1" data-path="analysis.html"><a href="analysis.html#Probabilistic-analysis"><i class="fa fa-check"></i><b>5.1</b> 05a Probabilistic analysis</a></li>
+<li class="chapter" data-level="5.2" data-path="analysis.html"><a href="analysis.html#Deterministic-analysis"><i class="fa fa-check"></i><b>5.2</b> 05b Deterministic analysis</a></li>
 <li class="chapter" data-level="5.3" data-path="analysis.html"><a href="analysis.html#voi"><i class="fa fa-check"></i><b>5.3</b> 05c Value of information</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -154,11 +155,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##   data_sum &lt;- plyr::rename(data_sum, c(&quot;mean&quot; = varname))
 ##   return(data_sum)
 ## }
-## &lt;bytecode: 0x7fb863d1c380&gt;
+## &lt;bytecode: 0x7fb559f97eb0&gt;
 ## &lt;environment: namespace:darthpack&gt;</code></pre>
 <p>This function is informed by three arguments, <code>data</code>, <code>varname</code> and <code>groupnames</code>.</p>
 <p>The computation of the model-predicted outputs using the MAP estimate is done by inserting the <code>v_calib_post_map</code> data into the previously described <code>calibration_out</code> function. This function creates a list including the estimated values for survival, prevalence and the proportion of sicker individuals at cycles 10, 20 and 30.</p>
-<p>In sections <em>04.6 Internal validation: Model-predicted outputs vs. targets</em>, we check the internal validation by plotting the model-predicted outputs against the calibration targets (Figures <a href="validation.html#fig:04-surv">4.1</a>-<a href="validation.html#fig:04-proportion">4.3</a>). The generated plots are saved as .png files in the <em>fig</em> folder. These files can be used in reports without the need of re-running the code.</p>
+<p>In sections <em>04.6 Internal validation: Model-predicted outputs vs. targets</em>, we check the internal validation by plotting the model-predicted outputs against the calibration targets (Figures <a href="validation.html#fig:04-surv">4.1</a>-<a href="validation.html#fig:04-proportion">4.3</a>). The generated plots are saved as .png files in the <em>figs</em> folder. These files can be used in reports without the need of re-running the code.</p>
 <div class="figure" style="text-align: center"><span id="fig:04-surv"></span>
 <img src="../figs/04_posterior_vs_targets_survival.png" alt="Survival data: Model-predicted outputs vs targets." width="100%" />
 <p class="caption">

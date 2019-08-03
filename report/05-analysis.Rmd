@@ -68,7 +68,8 @@ knitr::include_graphics("../figs/05a_cea_plane_scatter.png")
 ```{r df-cea-prob, eval = TRUE, echo = FALSE}
 df_cea_psa <- read.csv(file = "./tables/05a_probabilistic_cea_results.csv")[, c(-1, -8)]
 # load("../tables/05a_probabilistic_cea_results.RData")
-knitr::kable(df_cea_psa[, -7], caption = "Probabilistic cost-effectiveness analysis results of the Sick-Sicker model comparing no treatment with treatment") # create a table 
+knitr::kable(df_cea_psa[, -7], caption = "Probabilistic cost-effectiveness analysis results of the Sick-Sicker model comparing no treatment with treatment") %>% 
+  kable_styling(latex_options = c("hold_position"))
 ``` 
 Next, we perform a CEA using the previously used `calculate_icers` functions from `dampack`. Table \@ref(tab:df-cea-prob) shows the results of the probabilistic CEA. In addition, we plot a cost-effectiveness plane with the frontier, the cost-effectiveness acceptability curves (CEACs) and frontier (CEAF), expected Loss curves (ELCs) (Figures \@ref(fig:05a-cea-frontier-psa) - \@ref(fig:05a-elc)) [@Alarid-Escudero2019]. Followed by creating linear regression metamodeling sensitivity analysis graphs (Figures \@ref(fig:05a-owsa-lrm-nmb) - \@ref(fig:05a-twsa-lrm-uS1-uTrt-nmb))[@Jalal2013]. All generated figures are shown below and stored to the *figs* folder . 
 
@@ -147,7 +148,8 @@ df_cea_det <- calculate_icers(cost = df_out_ce$Cost,
 
 ```{r df-cea-det, eval = TRUE, echo = FALSE}
 # load("../tables/05b_deterministic_cea_results.RData")
-knitr::kable(df_cea_det[, -7], caption = "Deterministic cost-effectiveness analysis results of the Sick-Sicker model comparing no treatment with treatment.") # create a table 
+knitr::kable(df_cea_det[, -7], caption = "Deterministic cost-effectiveness analysis results of the Sick-Sicker model comparing no treatment with treatment.") %>% 
+  kable_styling(latex_options = c("hold_position")) # create a table 
 ``` 
 
 Finally, Figure  \@ref(fig:05b-CEA-frontier) shows the cost-effectiveness frontier of the CEA.

@@ -24,7 +24,7 @@
 <meta name="author" content="DARTH" />
 
 
-<meta name="date" content="2019-07-26" />
+<meta name="date" content="2019-08-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -47,6 +47,7 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
 
 
 <style type="text/css">
@@ -111,8 +112,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>3</b> Model calibration</a></li>
 <li class="chapter" data-level="4" data-path="validation.html"><a href="validation.html"><i class="fa fa-check"></i><b>4</b> Validation</a></li>
 <li class="chapter" data-level="5" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>5</b> Analysis</a><ul>
-<li class="chapter" data-level="5.1" data-path="analysis.html"><a href="analysis.html#Deterministic-analysis"><i class="fa fa-check"></i><b>5.1</b> 05a Deterministic analysis</a></li>
-<li class="chapter" data-level="5.2" data-path="analysis.html"><a href="analysis.html#Probabilistic-analysis"><i class="fa fa-check"></i><b>5.2</b> 05b Probabilistic analysis</a></li>
+<li class="chapter" data-level="5.1" data-path="analysis.html"><a href="analysis.html#Probabilistic-analysis"><i class="fa fa-check"></i><b>5.1</b> 05a Probabilistic analysis</a></li>
+<li class="chapter" data-level="5.2" data-path="analysis.html"><a href="analysis.html#Deterministic-analysis"><i class="fa fa-check"></i><b>5.2</b> 05b Deterministic analysis</a></li>
 <li class="chapter" data-level="5.3" data-path="analysis.html"><a href="analysis.html#voi"><i class="fa fa-check"></i><b>5.3</b> 05c Value of information</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -138,200 +139,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="analysis" class="section level1">
 <h1><span class="header-section-number">Chapter 5</span> Analysis</h1>
-<p>The analysis component is where the elements in components 1-4 are combined to answer the question(s) of interest given current information and to quantify the value of potential further research. Our framework separates the analysis in three subcomponents: <em>05a Deterministic analysis</em>, <em>05b Uncertainty analysis</em> and <em>05c Value of information analysis</em>. For the Sick-Sicker case-study, we use all three subcomponents to conduct the CEA and to quantify the uncertainty of our decision. For procedures in the CEA, we rely on the <code>R</code> package <code>dampack</code>, which is available here: <a href="https://github.com/DARTH-git/dampack" class="uri">https://github.com/DARTH-git/dampack</a>. Instructions for installing <code>dampack</code> are described in Appendix 0 provided in the <em>app0_packages_setup.R</em> script of the <em>analysis</em> folder.</p>
-<div id="Deterministic-analysis" class="section level2">
-<h2><span class="header-section-number">5.1</span> 05a Deterministic analysis</h2>
-<p>In this subcomponent, we perform a deterministic CEA, followed by some deterministic sensitivity analysis, including one-way, two-way and tornado sensitivity analyses. The function script of this subcomponent, <em>05a_deterministic_analysis_function.R</em>, contains the function <code>calculate_ce_out</code>. This function calculates costs and effects for a given vector of parameters using a simulation model. We need to run our simulation model using the calibrated parameter values, but the list we created in component 01 <a href="inputs.html#inputs">1</a> still contain the placeholder values for the calibrated parameters. This means we need to update these values by the calibrated values stored in the vector <code>v_calib_post_map</code>. The function <code>update_param_list</code> updates the list of parameters with new values for some specific parameters.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print.function</span>(update_param_list)</code></pre></div>
-<pre><code>## function(l_params_all, params_updated){
-## 
-##   if (typeof(params_updated)!=&quot;list&quot;){
-##     params_updated &lt;- split(unname(params_updated),names(params_updated)) #converte the named vector to a list
-##   }
-##   l_params_all &lt;- modifyList(l_params_all, params_updated) #update the values
-##   return(l_params_all)
-## }
-## &lt;bytecode: 0x7fb86b7947e0&gt;
-## &lt;environment: namespace:darthpack&gt;</code></pre>
-<p>The first argument of the function, called <code>l_params_all</code>, is a list with all the parameters of decision model. The second argument, <code>params_updated</code>, is an object with parameters for which values need to be updated. The function returns the list <code>l_params_all</code> with updated values.</p>
-<p>In the <em>05a_deterministic_analysis.R</em> script we execute the <code>update_param_list</code> function for our case-study, resulting in the list <code>l_params_basecase</code> where the placeholder values for <code>p_S1S2</code>, <code>hr_S1</code> and <code>hr_S2</code> are replaced by the calibration estimates.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l_params_basecase &lt;-<span class="st"> </span><span class="kw">update_param_list</span>(l_params_all, v_calib_post_map) </code></pre></div>
-<p>We use this new list as an argument in the <code>calculate_ce_out</code> function. In addition, we specify the willingness-to-pay (WTP) threshold value using the <code>n_wtp</code> argument of this function. This WTP value is used to compute a net monetary benefit (NMB) value. If the user does not specify the WTP, a default value of $100,000/QALY will be used by the function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_out_ce &lt;-<span class="st"> </span><span class="kw">calculate_ce_out</span>(<span class="dt">l_params_all =</span> l_params_basecase, 
-                                <span class="dt">n_wtp =</span> <span class="dv">150000</span>)
-<span class="kw">print.function</span>(calculate_ce_out) <span class="co"># print the function</span></code></pre></div>
-<pre><code>## function(l_params_all = load_all_params(), 
-##                              n_wtp = 100000){ # User defined
-##   with(as.list(l_params_all), {
-##     ## Create discounting vectors
-##     v_dwc &lt;- 1 / ((1 + d_e) ^ (0:(n_t))) # vector with discount weights for costs
-##     v_dwe &lt;- 1 / ((1 + d_c) ^ (0:(n_t))) # vector with discount weights for QALYs
-##     
-##     ## Run STM model at a parameter set for each intervention
-##     l_model_out_no_trt &lt;- decision_model(l_params_all = l_params_all)
-##     l_model_out_trt    &lt;- decision_model(l_params_all = l_params_all)
-##     
-##     ## Cohort trace by treatment
-##     m_M_no_trt &lt;- l_model_out_no_trt$m_M # No treatment
-##     m_M_trt    &lt;- l_model_out_trt$m_M    # Treatment
-##     
-##     ## Vectors with costs and utilities by treatment
-##     v_u_no_trt &lt;- c(u_H, u_S1, u_S2, u_D)
-##     v_u_trt    &lt;- c(u_H, u_Trt, u_S2, u_D)
-##     
-##     v_c_no_trt &lt;- c(c_H, c_S1, c_S2, c_D)
-##     v_c_trt    &lt;- c(c_H, c_S1 + c_Trt, c_S2 + c_Trt, c_D)
-##     
-##     ## Mean Costs and QALYs for Treatment and NO Treatment
-##     v_tu_no_trt &lt;- m_M_no_trt %*% v_u_no_trt
-##     v_tu_trt    &lt;- m_M_trt %*% v_u_trt
-##     
-##     v_tc_no_trt &lt;- m_M_no_trt %*% v_c_no_trt
-##     v_tc_trt    &lt;- m_M_trt %*% v_c_trt
-##     
-##     ## Total discounted mean Costs and QALYs
-##     tu_d_no_trt &lt;- t(v_tu_no_trt) %*% v_dwe 
-##     tu_d_trt    &lt;- t(v_tu_trt) %*% v_dwe
-##     
-##     tc_d_no_trt &lt;- t(v_tc_no_trt) %*% v_dwc
-##     tc_d_trt    &lt;- t(v_tc_trt)    %*% v_dwc
-##     
-##     ## Vector with total discounted mean Costs and QALYs
-##     v_tc_d &lt;- c(tc_d_no_trt, tc_d_trt)
-##     v_tu_d &lt;- c(tu_d_no_trt, tu_d_trt)
-##     
-##     ## Vector with discounted net monetary benefits (NMB)
-##     v_nmb_d &lt;- v_tu_d * n_wtp - v_tc_d
-##     
-##     ## Dataframe with discounted costs, effectiveness and NMB
-##     df_ce &lt;- data.frame(Strategy = v_names_str,
-##                         Cost     = v_tc_d,
-##                         Effect   = v_tu_d,
-##                         NMB      = v_nmb_d)
-##     
-##     return(df_ce)
-##   }
-##   )
-## }
-## &lt;bytecode: 0x7fb86d9fae28&gt;
-## &lt;environment: namespace:darthpack&gt;</code></pre>
-<p>After calculating the discount weights, this function runs the simulation model using the previously described function <code>decision_model</code> in the <em>02_simulatiomn_model_function.R</em> script. Inside the function <code>calculate_ce_out</code>, the simulation model is run for both the treatment, <code>l_model_out_trt</code>, and no treatment, <code>l_model_out_no_trt</code>, strategies of the Sick-Sicker model. Running it for both treatment strategies is done for illustration purposes. In this case-study, the resulting cohort traces are identical and we could have executed it only once.</p>
-<p>In the second part of the function we create multiple vectors for both the cost and effects of both strategies. These vectors multiply the cohort trace to compute the cycle-specific rewards. This results in vectors of total costs (<code>v_tc</code>) and total effects (<code>v_tu</code>) per cycle. By multiplying these vectors with the vectors with the discount weights for costs (<code>v_dwc</code>) and effects (<code>v_dwe</code>) we get the total discounted mean costs (<code>tc_d_no_trt</code> and <code>tc_d_trt</code>) and QALYs (<code>tu_d_no_trt</code> and <code>tu_d_trt</code>) for both strategies. These values are used in the calculation of the NMB. Finally, the total discounted costs, effectiveness and NMB are combined in the dataframe <code>df_ce</code>. The results for our case-study are shown below.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_out_ce <span class="co"># print the dataframe </span></code></pre></div>
-<pre><code>##       Strategy     Cost   Effect     NMB
-## 1 No Treatment 115239.8 20.02366 2888309
-## 2    Treatment 214157.6 20.72299 2894291</code></pre>
-<p>This dataframe of CE results can be used as an argument in the <code>calculate_icers</code> function from the <code>dampack</code> package to calculate the incremental cost-effectiveness ratios (ICERs) and noting which strategies are weakly and strongly dominated. Table <a href="analysis.html#tab:df-cea-det">5.1</a> shows the result of the deterministic CEA.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_cea_det &lt;-<span class="st"> </span><span class="kw">calculate_icers</span>(<span class="dt">cost =</span> df_out_ce<span class="op">$</span>Cost, 
-                              <span class="dt">effect =</span> df_out_ce<span class="op">$</span>Effect, 
-                              <span class="dt">strategies =</span> l_params_basecase<span class="op">$</span>v_names_str)</code></pre></div>
-<table>
-<caption>
-<span id="tab:df-cea-det">Table 5.1: </span>Deterministic cost-effectiveness analysis results of the Sick-Sicker model comparing no treatment with treatment.
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-Strategy
-</th>
-<th style="text-align:right;">
-Cost
-</th>
-<th style="text-align:right;">
-Effect
-</th>
-<th style="text-align:right;">
-Inc_Cost
-</th>
-<th style="text-align:right;">
-Inc_Effect
-</th>
-<th style="text-align:right;">
-ICER
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-No Treatment
-</td>
-<td style="text-align:right;">
-115239.8
-</td>
-<td style="text-align:right;">
-20.02366
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Treatment
-</td>
-<td style="text-align:right;">
-214157.6
-</td>
-<td style="text-align:right;">
-20.72299
-</td>
-<td style="text-align:right;">
-98917.83
-</td>
-<td style="text-align:right;">
-0.6993333
-</td>
-<td style="text-align:right;">
-141445.9
-</td>
-</tr>
-</tbody>
-</table>
-<p>Finally, Figure <a href="analysis.html#fig:05a-CEA-frontier">5.1</a> shows the cost-effectiveness frontier of the CEA.</p>
-<div class="figure" style="text-align: center"><span id="fig:05a-CEA-frontier"></span>
-<img src="../figs/05a_cea_frontier.png" alt="Cost-effectiveness frontier." width="100%" />
-<p class="caption">
-Figure 5.1: Cost-effectiveness frontier.
-</p>
-</div>
-<p>We then conduct a series of deterministic sensitivity analysis. First, we conduct a one-way sensitivity analysis (OWSA) on the variables <code>c_Trt</code>, <code>p_HS1</code>, <code>u_S1</code> and <code>u_Trt</code> and a two-way sensitivity analysis (TWSA) using the owsa_det and twsa_det functions. We use the output of these functions to produce different SA plots, such as OWSA tornado, one-way optimal strategy and TWSA plots (Figures <a href="analysis.html#fig:05a-owsa-nmb">5.2</a> - <a href="analysis.html#fig:05a-twsa-uS1-uTrt-nmb">5.5</a>).</p>
-<div class="figure" style="text-align: center"><span id="fig:05a-owsa-nmb"></span>
-<img src="../figs/05a_owsa_nmb.png" alt="One-way sensitivity analysis results" width="100%" />
-<p class="caption">
-Figure 5.2: One-way sensitivity analysis results
-</p>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:05a-optimal-owsa-nmb"></span>
-<img src="../figs/05a_optimal_owsa_nmb.png" alt="The optimal strategy with OWSA" width="100%" />
-<p class="caption">
-Figure 5.3: The optimal strategy with OWSA
-</p>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:05a-tornado-Treatment-nmb"></span>
-<img src="../figs/05a_tornado_Treatment_nmb.png" alt="The tornado plot" width="100%" />
-<p class="caption">
-Figure 5.4: The tornado plot
-</p>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:05a-twsa-uS1-uTrt-nmb"></span>
-<img src="../figs/05a_twsa_uS1_uTrt_nmb.png" alt="Two-way sensitivity results." width="100%" />
-<p class="caption">
-Figure 5.5: Two-way sensitivity results.
-</p>
-</div>
-</div>
+<p>The analysis component is where the elements in components 1-4 are combined to answer the question(s) of interest given current information and to quantify the value of potential further research. Our framework separates the analysis in three subcomponents: <em>05a Probabilistic analysis</em>, _05b Deterministic analysis_and <em>05c Value of information analysis</em>. For the Sick-Sicker case-study, we use all three subcomponents to conduct the CEA and to quantify the uncertainty of our decision. For procedures in the CEA, we rely on the <code>R</code> package <code>dampack</code>, which is available here: <a href="https://github.com/DARTH-git/dampack" class="uri">https://github.com/DARTH-git/dampack</a>. To install <code>dampack</code>, please follow these instructions:</p>
 <div id="Probabilistic-analysis" class="section level2">
-<h2><span class="header-section-number">5.2</span> 05b Probabilistic analysis</h2>
-<p>In this subcomponent, we evaluate decision uncertainty by propagating the uncertainty through the CEA using probabilistic sensitivity analysis (PSA). Until now we used the parameter values as described in Table <a href="inputs.html#tab:parameters">1.1</a>. However, we are uncertain about these values. Most of these input parameters are defined by probability distribution as described in Table <a href="analysis.html#tab:parameters-PSA">5.2</a>.</p>
+<h2><span class="header-section-number">5.1</span> 05a Probabilistic analysis</h2>
+<p>In this subcomponent, we evaluate decision uncertainty by propagating the uncertainty through the CEA using probabilistic sensitivity analysis (PSA). Until now we used the parameter values as described in Table <a href="inputs.html#tab:parameters">1.1</a>. However, we are uncertain about these values. Most of these input parameters are defined by probability distribution as described in Table <a href="analysis.html#tab:parameters-PSA">5.1</a>.</p>
 <table>
-<caption><span id="tab:parameters-PSA">Table 5.2: </span> Description of parameters with their R name and distribution.</caption>
+<caption><span id="tab:parameters-PSA">Table 5.1: </span> Description of parameters with their R name and distribution.</caption>
 <colgroup>
 <col width="35%" />
 <col width="14%" />
@@ -417,7 +230,7 @@ Figure 5.5: Two-way sensitivity results.
 </tr>
 </tbody>
 </table>
-<p>In a PSA we sample the input parameter values from these distributions and we then run the model at each sample. In the file <em>05b_uncertainty_analysis_functions.R</em> we created a single function, called <code>generate_psa_params</code>. This function generates a PSA dataset for all the CEA input parameters. We specify the number of PSA samples via the <code>n_sim</code> argument. The function also accepts specifying a seed to allow reproducibility of the results.</p>
+<p>In a PSA we sample the input parameter values from these distributions and we then run the model at each sample. In the file <em>05a_probabilistic_analysis_functions.R</em> we created a single function, called <code>generate_psa_params</code>. This function generates a PSA dataset for all the CEA input parameters. We specify the number of PSA samples via the <code>n_sim</code> argument. The function also accepts specifying a seed to allow reproducibility of the results.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print.function</span>(generate_psa_params) <span class="co"># print the function </span></code></pre></div>
 <pre><code>## function(n_sim = 1000, seed = 20190220){ # User defined
 ##   ## Load calibrated parameters
@@ -448,9 +261,9 @@ Figure 5.5: Two-way sensitivity results.
 ##   )
 ##   return(df_psa_params)
 ## }
-## &lt;bytecode: 0x7fb86d0dca18&gt;
+## &lt;bytecode: 0x7fb55aa7c3c8&gt;
 ## &lt;environment: namespace:darthpack&gt;</code></pre>
-<p>The function returns the <code>df_psa_input</code> dataframe with a PSA dataset of the input parameters. With this dataframe we can run the PSA to produce distributions of costs, effectiveness and NMB. The PSA is performed by the <em>05b_probabilistic_analysis.R</em> script. As shown in the code below, the <code>df_psa_input</code> dataframe is used by the <code>update_param_list</code> function to generate the corresponding list of parameters for the PSA. For each simulation, we perfrom three steps. First, the list of parameters is updated by the <code>update_param_list</code> function. Second, the model is executed by the <code>calculate_ce_out</code> function using the updated parameter list and third, the dataframes <code>df_c</code> and <code>df_e</code> store the estimated cost and effects, respectively. The final part of this loop is to satisfy the modeler when waiting on the results, by displaying the simulation progress.</p>
+<p>The function returns the <code>df_psa_input</code> dataframe with a PSA dataset of the input parameters. With this dataframe we can run the PSA to produce distributions of costs, effectiveness and NMB. The PSA is performed by the <em>05a_probabilistic_analysis.R</em> script. As shown in the code below, the <code>df_psa_input</code> dataframe is used by the <code>update_param_list</code> function to generate the corresponding list of parameters for the PSA. For each simulation, we perfrom three steps. First, the list of parameters is updated by the <code>update_param_list</code> function. Second, the model is executed by the <code>calculate_ce_out</code> function using the updated parameter list and third, the dataframes <code>df_c</code> and <code>df_e</code> store the estimated cost and effects, respectively. The final part of this loop is to satisfy the modeler when waiting on the results, by displaying the simulation progress.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n_sim){ 
   l_psa_input &lt;-<span class="st"> </span><span class="kw">update_param_list</span>(l_params_all, df_psa_input[i, ])
   df_out_temp &lt;-<span class="st"> </span><span class="kw">calculate_ce_out</span>(l_psa_input)
@@ -461,55 +274,311 @@ Figure 5.5: Two-way sensitivity results.
     <span class="kw">cat</span>(<span class="st">&#39;</span><span class="ch">\r</span><span class="st">&#39;</span>, <span class="kw">paste</span>(i<span class="op">/</span>n_sim <span class="op">*</span><span class="st"> </span><span class="dv">100</span>, <span class="st">&quot;% done&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))
   }
 }</code></pre></div>
-<p>We can plot the results using the <code>plot</code> function from <code>dampack</code>. Figure <a href="analysis.html#fig:05b-CEAplane">5.6</a> shows the CE scatter plot with the joint distribution of costs and effects for each strategy and their corresponding 95% confidence ellipse.</p>
-<div class="figure" style="text-align: center"><span id="fig:05b-CEAplane"></span>
-<img src="../figs/05b_cea_plane_scatter.png" alt="The cost-effectiveness plane graph showing the results of the probabilistic sensitivity analysis for the Sick-Sicker case-study." width="100%" />
+<p>We can plot the results using the <code>plot</code> function from <code>dampack</code>. Figure <a href="analysis.html#fig:05a-CEAplane">5.1</a> shows the CE scatter plot with the joint distribution of costs and effects for each strategy and their corresponding 95% confidence ellipse.</p>
+<div class="figure" style="text-align: center"><span id="fig:05a-CEAplane"></span>
+<img src="../figs/05a_cea_plane_scatter.png" alt="The cost-effectiveness plane graph showing the results of the probabilistic sensitivity analysis for the Sick-Sicker case-study." width="100%" />
 <p class="caption">
-Figure 5.6: The cost-effectiveness plane graph showing the results of the probabilistic sensitivity analysis for the Sick-Sicker case-study.
+Figure 5.1: The cost-effectiveness plane graph showing the results of the probabilistic sensitivity analysis for the Sick-Sicker case-study.
 </p>
 </div>
-
-<p>Next, we perform a CEA using the previously used <code>calculate_icers</code> functions from <code>dampack</code>. Table <a href="#tab:df-cea-prob"><strong>??</strong></a> shows the results of the probabilistic CEA. In addition, we plot a cost-effectiveness plane with the frontier, the cost-effectiveness acceptability curves (CEACs) and frontier (CEAF), expected Loss curves (ELCs) (Figure @ref(fig:05b_cea_frontier_psa) - <a href="analysis.html#fig:05b-elc">5.9</a>) <span class="citation">(Alarid-Escudero et al. <a href="#ref-Alarid-Escudero2019">2019</a>)</span>. Followed by creating linear regression metamodeling sensitivity analysis graphs (Figure <a href="analysis.html#fig:05b-owsa-lrm-nmb">5.10</a> - @ref(fig:05b-twsa-lrm-uS1-uTrt_nmb))<span class="citation">(H. Jalal et al. <a href="#ref-Jalal2013">2013</a>)</span>. All generated figures are shown below and stored to the <em>figs</em> folder .</p>
-<div class="figure" style="text-align: center"><span id="fig:05b-cea-frontier-psa"></span>
-<img src="../figs/05b_cea_frontier_psa.png" alt="Cost-effectiveness frontier" width="100%" />
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:df-cea-prob">Table 5.2: </span>Probabilistic cost-effectiveness analysis results of the Sick-Sicker model comparing no treatment with treatment
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Strategy
+</th>
+<th style="text-align:right;">
+Cost
+</th>
+<th style="text-align:right;">
+Effect
+</th>
+<th style="text-align:right;">
+Inc_Cost
+</th>
+<th style="text-align:right;">
+Inc_Effect
+</th>
+<th style="text-align:right;">
+ICER
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+No.Treatment
+</td>
+<td style="text-align:right;">
+115538.9
+</td>
+<td style="text-align:right;">
+19.95305
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Treatment
+</td>
+<td style="text-align:right;">
+213755.8
+</td>
+<td style="text-align:right;">
+20.63891
+</td>
+<td style="text-align:right;">
+98216.84
+</td>
+<td style="text-align:right;">
+0.6858646
+</td>
+<td style="text-align:right;">
+143201.5
+</td>
+</tr>
+</tbody>
+</table>
+<p>Next, we perform a CEA using the previously used <code>calculate_icers</code> functions from <code>dampack</code>. Table <a href="analysis.html#tab:df-cea-prob">5.2</a> shows the results of the probabilistic CEA. In addition, we plot a cost-effectiveness plane with the frontier, the cost-effectiveness acceptability curves (CEACs) and frontier (CEAF), expected Loss curves (ELCs) (Figures <a href="analysis.html#fig:05a-cea-frontier-psa">5.2</a> - <a href="analysis.html#fig:05a-elc">5.4</a>) <span class="citation">(Alarid-Escudero et al. <a href="#ref-Alarid-Escudero2019">2019</a>)</span>. Followed by creating linear regression metamodeling sensitivity analysis graphs (Figures <a href="analysis.html#fig:05a-owsa-lrm-nmb">5.5</a> - <a href="analysis.html#fig:05a-twsa-lrm-uS1-uTrt-nmb">5.8</a>)<span class="citation">(H. Jalal et al. <a href="#ref-Jalal2013">2013</a>)</span>. All generated figures are shown below and stored to the <em>figs</em> folder .</p>
+<div class="figure" style="text-align: center"><span id="fig:05a-cea-frontier-psa"></span>
+<img src="../figs/05a_cea_frontier_psa.png" alt="Cost-effectiveness frontier" width="100%" />
 <p class="caption">
-Figure 5.7: Cost-effectiveness frontier
+Figure 5.2: Cost-effectiveness frontier
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:05b-ceac-ceaf"></span>
-<img src="../figs/05b_ceac_ceaf.png" alt="Cost-effectiveness acceptability curves (CEACs) and frontier (CEAF)." width="100%" />
+<div class="figure" style="text-align: center"><span id="fig:05a-ceac-ceaf"></span>
+<img src="../figs/05a_ceac_ceaf.png" alt="Cost-effectiveness acceptability curves (CEACs) and frontier (CEAF)." width="100%" />
 <p class="caption">
-Figure 5.8: Cost-effectiveness acceptability curves (CEACs) and frontier (CEAF).
+Figure 5.3: Cost-effectiveness acceptability curves (CEACs) and frontier (CEAF).
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:05b-elc"></span>
-<img src="../figs/05b_elc.png" alt="Expected Loss Curves." width="100%" />
+<div class="figure" style="text-align: center"><span id="fig:05a-elc"></span>
+<img src="../figs/05a_elc.png" alt="Expected Loss Curves." width="100%" />
 <p class="caption">
-Figure 5.9: Expected Loss Curves.
+Figure 5.4: Expected Loss Curves.
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:05b-owsa-lrm-nmb"></span>
-<img src="../figs/05b_owsa_lrm_nmb.png" alt="One-way sensitivity analysis (OWSA)." width="100%" />
+<div class="figure" style="text-align: center"><span id="fig:05a-owsa-lrm-nmb"></span>
+<img src="../figs/05a_owsa_lrm_nmb.png" alt="One-way sensitivity analysis (OWSA)." width="100%" />
 <p class="caption">
-Figure 5.10: One-way sensitivity analysis (OWSA).
+Figure 5.5: One-way sensitivity analysis (OWSA).
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:05b-optimal-owsa-lrm-nmb"></span>
-<img src="../figs/05b_optimal_owsa_lrm_nmb.png" alt="Optimal strategy with OWSA" width="100%" />
+<div class="figure" style="text-align: center"><span id="fig:05a-optimal-owsa-lrm-nmb"></span>
+<img src="../figs/05a_optimal_owsa_lrm_nmb.png" alt="Optimal strategy with OWSA" width="100%" />
 <p class="caption">
-Figure 5.11: Optimal strategy with OWSA
+Figure 5.6: Optimal strategy with OWSA
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:05b-tornado-lrm-Treatment-nmb"></span>
-<img src="../figs/05b_tornado_lrm_Treatment_nmb.png" alt="Tornado plot" width="100%" />
+<div class="figure" style="text-align: center"><span id="fig:05a-tornado-lrm-Treatment-nmb"></span>
+<img src="../figs/05a_tornado_lrm_Treatment_nmb.png" alt="Tornado plot" width="100%" />
 <p class="caption">
-Figure 5.12: Tornado plot
+Figure 5.7: Tornado plot
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:05b-twsa-lrm-uS1-uTrt-nmb"></span>
-<img src="../figs/05b_twsa_lrm_uS1_uTrt_nmb.png" alt="Two-way sensitivity analysis (TWSA)." width="100%" />
+<div class="figure" style="text-align: center"><span id="fig:05a-twsa-lrm-uS1-uTrt-nmb"></span>
+<img src="../figs/05a_twsa_lrm_uS1_uTrt_nmb.png" alt="Two-way sensitivity analysis (TWSA)." width="100%" />
 <p class="caption">
-Figure 5.13: Two-way sensitivity analysis (TWSA).
+Figure 5.8: Two-way sensitivity analysis (TWSA).
+</p>
+</div>
+</div>
+<div id="Deterministic-analysis" class="section level2">
+<h2><span class="header-section-number">5.2</span> 05b Deterministic analysis</h2>
+<p>In this subcomponent, we perform a deterministic CEA, followed by some deterministic sensitivity analysis, including one-way, two-way and tornado sensitivity analyses. The function script of this subcomponent, <em>05b_deterministic_analysis_function.R</em>, contains the function <code>calculate_ce_out</code>. This function calculates costs and effects for a given vector of parameters using a simulation model. We need to run our simulation model using the calibrated parameter values, but the list we created in component 01 (<a href="inputs.html#inputs">1</a>) still contain the placeholder values for the calibrated parameters. This means we need to update these values by the calibrated values stored in the vector <code>v_calib_post_map</code>. The function <code>update_param_list</code> updates the list of parameters with new values for some specific parameters.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print.function</span>(update_param_list)</code></pre></div>
+<pre><code>## function(l_params_all, params_updated){
+##   
+##   if (typeof(params_updated)!=&quot;list&quot;){
+##     params_updated &lt;- split(unname(params_updated),names(params_updated)) #converte the named vector to a list
+##   }
+##   l_params_all &lt;- modifyList(l_params_all, params_updated) #update the values
+##   return(l_params_all)
+## }
+## &lt;bytecode: 0x7fb564d0c998&gt;
+## &lt;environment: namespace:darthpack&gt;</code></pre>
+<p>The first argument of the function, called <code>l_params_all</code>, is a list with all the parameters of decision model. The second argument, <code>params_updated</code>, is an object with parameters for which values need to be updated. The function returns the list <code>l_params_all</code> with updated values.</p>
+<p>In the <em>05b_deterministic_analysis.R</em> script we execute the <code>update_param_list</code> function for our case-study, resulting in the list <code>l_params_basecase</code> where the placeholder values for <code>p_S1S2</code>, <code>hr_S1</code> and <code>hr_S2</code> are replaced by the calibration estimates.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l_params_basecase &lt;-<span class="st"> </span><span class="kw">update_param_list</span>(l_params_all, v_calib_post_map) </code></pre></div>
+<p>We use this new list as an argument in the <code>calculate_ce_out</code> function. In addition, we specify the willingness-to-pay (WTP) threshold value using the <code>n_wtp</code> argument of this function. This WTP value is used to compute a net monetary benefit (NMB) value. If the user does not specify the WTP, a default value of $100,000/QALY will be used by the function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_out_ce &lt;-<span class="st"> </span><span class="kw">calculate_ce_out</span>(<span class="dt">l_params_all =</span> l_params_basecase, 
+                                <span class="dt">n_wtp =</span> <span class="dv">150000</span>)
+<span class="kw">print.function</span>(calculate_ce_out) <span class="co"># print the function</span></code></pre></div>
+<pre><code>## function(l_params_all = load_all_params(), 
+##                              n_wtp = 100000){ # User defined
+##   with(as.list(l_params_all), {
+##     ## Create discounting vectors
+##     v_dwc &lt;- 1 / ((1 + d_e) ^ (0:(n_t))) # vector with discount weights for costs
+##     v_dwe &lt;- 1 / ((1 + d_c) ^ (0:(n_t))) # vector with discount weights for QALYs
+##     
+##     ## Run STM model at a parameter set for each intervention
+##     l_model_out_no_trt &lt;- decision_model(l_params_all = l_params_all)
+##     l_model_out_trt    &lt;- decision_model(l_params_all = l_params_all)
+##     
+##     ## Cohort trace by treatment
+##     m_M_no_trt &lt;- l_model_out_no_trt$m_M # No treatment
+##     m_M_trt    &lt;- l_model_out_trt$m_M    # Treatment
+##     
+##     ## Vectors with costs and utilities by treatment
+##     v_u_no_trt &lt;- c(u_H, u_S1, u_S2, u_D)
+##     v_u_trt    &lt;- c(u_H, u_Trt, u_S2, u_D)
+##     
+##     v_c_no_trt &lt;- c(c_H, c_S1, c_S2, c_D)
+##     v_c_trt    &lt;- c(c_H, c_S1 + c_Trt, c_S2 + c_Trt, c_D)
+##     
+##     ## Mean Costs and QALYs for Treatment and NO Treatment
+##     v_tu_no_trt &lt;- m_M_no_trt %*% v_u_no_trt
+##     v_tu_trt    &lt;- m_M_trt %*% v_u_trt
+##     
+##     v_tc_no_trt &lt;- m_M_no_trt %*% v_c_no_trt
+##     v_tc_trt    &lt;- m_M_trt %*% v_c_trt
+##     
+##     ## Total discounted mean Costs and QALYs
+##     tu_d_no_trt &lt;- t(v_tu_no_trt) %*% v_dwe 
+##     tu_d_trt    &lt;- t(v_tu_trt) %*% v_dwe
+##     
+##     tc_d_no_trt &lt;- t(v_tc_no_trt) %*% v_dwc
+##     tc_d_trt    &lt;- t(v_tc_trt)    %*% v_dwc
+##     
+##     ## Vector with total discounted mean Costs and QALYs
+##     v_tc_d &lt;- c(tc_d_no_trt, tc_d_trt)
+##     v_tu_d &lt;- c(tu_d_no_trt, tu_d_trt)
+##     
+##     ## Vector with discounted net monetary benefits (NMB)
+##     v_nmb_d &lt;- v_tu_d * n_wtp - v_tc_d
+##     
+##     ## Dataframe with discounted costs, effectiveness and NMB
+##     df_ce &lt;- data.frame(Strategy = v_names_str,
+##                         Cost     = v_tc_d,
+##                         Effect   = v_tu_d,
+##                         NMB      = v_nmb_d)
+##     
+##     return(df_ce)
+##   }
+##   )
+## }
+## &lt;bytecode: 0x7fb5640c6d40&gt;
+## &lt;environment: namespace:darthpack&gt;</code></pre>
+<p>After calculating the discount weights, this function runs the simulation model using the previously described function <code>decision_model</code> in the <em>02_simulatiomn_model_function.R</em> script. Inside the function <code>calculate_ce_out</code>, the simulation model is run for both the treatment, <code>l_model_out_trt</code>, and no treatment, <code>l_model_out_no_trt</code>, strategies of the Sick-Sicker model. Running it for both treatment strategies is done for illustration purposes. In this case-study, the resulting cohort traces are identical and we could have executed it only once.</p>
+<p>In the second part of the function we create multiple vectors for both the cost and effects of both strategies. These vectors multiply the cohort trace to compute the cycle-specific rewards. This results in vectors of total costs (<code>v_tc</code>) and total effects (<code>v_tu</code>) per cycle. By multiplying these vectors with the vectors with the discount weights for costs (<code>v_dwc</code>) and effects (<code>v_dwe</code>) we get the total discounted mean costs (<code>tc_d_no_trt</code> and <code>tc_d_trt</code>) and QALYs (<code>tu_d_no_trt</code> and <code>tu_d_trt</code>) for both strategies. These values are used in the calculation of the NMB. Finally, the total discounted costs, effectiveness and NMB are combined in the dataframe <code>df_ce</code>. The results for our case-study are shown below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_out_ce <span class="co"># print the dataframe </span></code></pre></div>
+<pre><code>##       Strategy     Cost  Effect     NMB
+## 1 No Treatment 115244.8 20.0233 2888250
+## 2    Treatment 214165.8 20.7226 2894224</code></pre>
+<p>This dataframe of CE results can be used as an argument in the <code>calculate_icers</code> function from the <code>dampack</code> package to calculate the incremental cost-effectiveness ratios (ICERs) and noting which strategies are weakly and strongly dominated. Table <a href="analysis.html#tab:df-cea-det">5.3</a> shows the result of the deterministic CEA.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_cea_det &lt;-<span class="st"> </span><span class="kw">calculate_icers</span>(<span class="dt">cost =</span> df_out_ce<span class="op">$</span>Cost, 
+                              <span class="dt">effect =</span> df_out_ce<span class="op">$</span>Effect, 
+                              <span class="dt">strategies =</span> l_params_basecase<span class="op">$</span>v_names_str)</code></pre></div>
+<table>
+<caption>
+<span id="tab:df-cea-det">Table 5.3: </span>Deterministic cost-effectiveness analysis results of the Sick-Sicker model comparing no treatment with treatment.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Strategy
+</th>
+<th style="text-align:right;">
+Cost
+</th>
+<th style="text-align:right;">
+Effect
+</th>
+<th style="text-align:right;">
+Inc_Cost
+</th>
+<th style="text-align:right;">
+Inc_Effect
+</th>
+<th style="text-align:right;">
+ICER
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+No Treatment
+</td>
+<td style="text-align:right;">
+115244.8
+</td>
+<td style="text-align:right;">
+20.0233
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Treatment
+</td>
+<td style="text-align:right;">
+214165.8
+</td>
+<td style="text-align:right;">
+20.7226
+</td>
+<td style="text-align:right;">
+98921.01
+</td>
+<td style="text-align:right;">
+0.6992988
+</td>
+<td style="text-align:right;">
+141457.4
+</td>
+</tr>
+</tbody>
+</table>
+<p>Finally, Figure <a href="analysis.html#fig:05b-CEA-frontier">5.9</a> shows the cost-effectiveness frontier of the CEA.</p>
+<div class="figure" style="text-align: center"><span id="fig:05b-CEA-frontier"></span>
+<img src="../figs/05b_cea_frontier.png" alt="Cost-effectiveness frontier." width="100%" />
+<p class="caption">
+Figure 5.9: Cost-effectiveness frontier.
+</p>
+</div>
+<p>We then conduct a series of deterministic sensitivity analysis. First, we conduct a one-way sensitivity analysis (OWSA) on the variables <code>c_Trt</code>, <code>p_HS1</code>, <code>u_S1</code> and <code>u_Trt</code> and a two-way sensitivity analysis (TWSA) using the owsa_det and twsa_det functions. We use the output of these functions to produce different SA plots, such as OWSA tornado, one-way optimal strategy and TWSA plots (Figures <a href="analysis.html#fig:05b-owsa-nmb">5.10</a> - <a href="analysis.html#fig:05b-twsa-uS1-uTrt-nmb">5.13</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:05b-owsa-nmb"></span>
+<img src="../figs/05b_owsa_nmb.png" alt="One-way sensitivity analysis results" width="100%" />
+<p class="caption">
+Figure 5.10: One-way sensitivity analysis results
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:05b-optimal-owsa-nmb"></span>
+<img src="../figs/05b_optimal_owsa_nmb.png" alt="The optimal strategy with OWSA" width="100%" />
+<p class="caption">
+Figure 5.11: The optimal strategy with OWSA
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:05b-tornado-Treatment-nmb"></span>
+<img src="../figs/05b_tornado_Treatment_nmb.png" alt="The tornado plot" width="100%" />
+<p class="caption">
+Figure 5.12: The tornado plot
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:05b-twsa-uS1-uTrt-nmb"></span>
+<img src="../figs/05b_twsa_uS1_uTrt_nmb.png" alt="Two-way sensitivity results." width="100%" />
+<p class="caption">
+Figure 5.13: Two-way sensitivity results.
 </p>
 </div>
 </div>

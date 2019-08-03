@@ -24,7 +24,7 @@
 <meta name="author" content="DARTH" />
 
 
-<meta name="date" content="2019-07-26" />
+<meta name="date" content="2019-08-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -47,6 +47,7 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
 
 
 <style type="text/css">
@@ -111,8 +112,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>3</b> Model calibration</a></li>
 <li class="chapter" data-level="4" data-path="validation.html"><a href="validation.html"><i class="fa fa-check"></i><b>4</b> Validation</a></li>
 <li class="chapter" data-level="5" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>5</b> Analysis</a><ul>
-<li class="chapter" data-level="5.1" data-path="analysis.html"><a href="analysis.html#Deterministic-analysis"><i class="fa fa-check"></i><b>5.1</b> 05a Deterministic analysis</a></li>
-<li class="chapter" data-level="5.2" data-path="analysis.html"><a href="analysis.html#Probabilistic-analysis"><i class="fa fa-check"></i><b>5.2</b> 05b Probabilistic analysis</a></li>
+<li class="chapter" data-level="5.1" data-path="analysis.html"><a href="analysis.html#Probabilistic-analysis"><i class="fa fa-check"></i><b>5.1</b> 05a Probabilistic analysis</a></li>
+<li class="chapter" data-level="5.2" data-path="analysis.html"><a href="analysis.html#Deterministic-analysis"><i class="fa fa-check"></i><b>5.2</b> 05b Deterministic analysis</a></li>
 <li class="chapter" data-level="5.3" data-path="analysis.html"><a href="analysis.html#voi"><i class="fa fa-check"></i><b>5.3</b> 05c Value of information</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -138,8 +139,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="simulation" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Decision model</h1>
-<p>In this second component, we build the backbone of the decision analysis: the implementation of the model. This component is performed by the <em>02_simulation_model.R</em> script. This file itself is not very large. It simply loads some packages and sources the input from component 01 and in addition it runs the <code>decision_model</code> function that is used to caputre the dynamic process of the Sick-Sicker example and stores the output. The output of the model is the traditional cohort trace. The trace describes how the cohort is distributed among the different health states over time and is plotted at the end of this script.</p>
-<p>The function <code>decision_model</code> is defined in the <em>02_simulation_model_functions.R</em> file in the <code>R</code> folder. As described in the paper, constructing a model as a function at this stage facilitates subsequent stages of the model development and analysis. This since these processes will all call the same model function, but pass different parameter values and/or calculate different final outcomes based on the model outputs. In the next part, we will describe the code within the function.</p>
+<p>In this second component, we build the backbone of the decision analysis: the implementation of the model. This component is performed by the <em>02_decision_model.R</em> script. This file itself is not very large. It simply loads some packages and sources the input from component 01 and in addition it runs the <code>decision_model</code> function that is used to caputre the dynamic process of the Sick-Sicker example and stores the output. The output of the model is the traditional cohort trace. The trace describes how the cohort is distributed among the different health states over time and is plotted at the end of this script.</p>
+<p>The function <code>decision_model</code> is defined in the <em>02_decision_model_functions.R</em> file in the <code>R</code> folder. As described in the paper, constructing a model as a function at this stage facilitates subsequent stages of the model development and analysis. This since these processes will all call the same model function, but pass different parameter values and/or calculate different final outcomes based on the model outputs. In the next part, we will describe the code within the function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print.function</span>(decision_model) <span class="co"># print the code of the function</span></code></pre></div>
 <pre><code>## function(l_params_all, err_stop = FALSE, verbose = FALSE){ # User defined
 ##   ### Definition:
@@ -210,7 +211,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##   }
 ##   )
 ## }
-## &lt;bytecode: 0x7fb869027ce8&gt;
+## &lt;bytecode: 0x7fb56080ce78&gt;
 ## &lt;environment: namespace:darthpack&gt;</code></pre>
 <p>The <code>decision_model</code> function is informed by the argument <code>l_params_all</code>. Via this argument we give the function a list with all parameters of the decision model. For the Sick-Sicker model, these parameters are stored in the list <code>l_params_all</code>, which we passed into the function as shown below.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l_out_stm &lt;-<span class="st"> </span><span class="kw">decision_model</span>(<span class="dt">l_params_all =</span> l_params_all) <span class="co"># run the function</span></code></pre></div>

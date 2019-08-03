@@ -24,7 +24,7 @@
 <meta name="author" content="DARTH" />
 
 
-<meta name="date" content="2019-07-26" />
+<meta name="date" content="2019-08-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -47,6 +47,7 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
 
 
 <style type="text/css">
@@ -111,8 +112,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>3</b> Model calibration</a></li>
 <li class="chapter" data-level="4" data-path="validation.html"><a href="validation.html"><i class="fa fa-check"></i><b>4</b> Validation</a></li>
 <li class="chapter" data-level="5" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>5</b> Analysis</a><ul>
-<li class="chapter" data-level="5.1" data-path="analysis.html"><a href="analysis.html#Deterministic-analysis"><i class="fa fa-check"></i><b>5.1</b> 05a Deterministic analysis</a></li>
-<li class="chapter" data-level="5.2" data-path="analysis.html"><a href="analysis.html#Probabilistic-analysis"><i class="fa fa-check"></i><b>5.2</b> 05b Probabilistic analysis</a></li>
+<li class="chapter" data-level="5.1" data-path="analysis.html"><a href="analysis.html#Probabilistic-analysis"><i class="fa fa-check"></i><b>5.1</b> 05a Probabilistic analysis</a></li>
+<li class="chapter" data-level="5.2" data-path="analysis.html"><a href="analysis.html#Deterministic-analysis"><i class="fa fa-check"></i><b>5.2</b> 05b Deterministic analysis</a></li>
 <li class="chapter" data-level="5.3" data-path="analysis.html"><a href="analysis.html#voi"><i class="fa fa-check"></i><b>5.3</b> 05c Value of information</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -138,7 +139,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="inputs" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Define model inputs</h1>
-<p>As described in the main manuscript, in this first component we declare all model input variables and set their values. The <code>R</code> script running the analysis of this component is the <em>01_model-inputs.R</em> file in the <code>analysis</code> directory.</p>
+<p>As described in the main manuscript, in this first component we declare all model input variables and set their values. The <code>R</code> script running the analysis of this component is the <em>01_model_inputs.R</em> file in the <code>analysis</code> directory.</p>
 <p>The input to inform the values is divided in three categories: external, estimated, and calibrated. The majority of the Sick-Sicker model parameters are informed by external data. Only three parameter values need to be estimated using model calibration.</p>
 <p>In this component, we start with the general setup of the model, specifying among others the time horizon, name and number of health states, proportion of the cohort in each of the different health states at the start of the simulation and discount rates. The next step is to specify the external parameters. The initial model parameter values and <code>R</code> variable names are presented in Table <a href="inputs.html#tab:parameters">1.1</a>.</p>
 <table>
@@ -273,7 +274,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </tr>
 </tbody>
 </table>
-<p>Age-specific background mortality for healthy individuals is represented by the US population in 2015 and obtained from the <a href="https://www.mortality.org">Human Mortality database</a>. This information is stored in the <em>01_all-cause-mortality.csv</em> file in the <em>data</em> directory. Based on this .csv file a vector with mortality rates by age is created using the <code>load_mort_data</code> function in the <em>01_model-inputs_functions.R</em> script. This function gives us the flexibility to easily import data from other countries or years.</p>
+<p>Age-specific background mortality for healthy individuals is represented by the US population in 2015 and obtained from the <a href="https://www.mortality.org">Human Mortality database</a>. This information is stored in the <em>01_all_cause_mortality.csv</em> file in the <em>data-raw</em> directory. Based on this .csv file a vector with mortality rates by age is created using the <code>load_mort_data</code> function in the <em>01_model_inputs_functions.R</em> script. This function gives us the flexibility to easily import data from other countries or years.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print.function</span>(load_mort_data) <span class="co"># print the function</span></code></pre></div>
 <pre><code>## function(file = NULL){
 ##   # Load mortality data from file
@@ -287,15 +288,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##   
 ##   return(v_r_mort_by_age)
 ## }
-## &lt;bytecode: 0x7fb86700c338&gt;
+## &lt;bytecode: 0x7fb5603eeeb0&gt;
 ## &lt;environment: namespace:darthpack&gt;</code></pre>
-<p>Another function in the <em>01_model-inputs_functions.R</em> script, is the <code>load_all_parms</code> function. This function, which is actually using the <code>load_mort_data</code> function, loads all parameters for the decision model from multiple sources and creates a list that contains all parameters and their values.</p>
+<p>Another function in the <em>01_model_inputs_functions.R</em> script, is the <code>load_all_parms</code> function. This function, which is actually using the <code>load_mort_data</code> function, loads all parameters for the decision model from multiple sources and creates a list that contains all parameters and their values.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print.function</span>(load_all_params)  <span class="co"># print the function</span></code></pre></div>
 <pre><code>## function(file.init = NULL,
 ##                             file.mort = NULL){ # User defined
-##   #### Load initial set of initial parameters form .csv file ####
+##   #### Load initial set of initial parameters from .csv file ####
 ##   if(!is.null(file.init)) {
-##     df_params_init &lt;- read.csv(file = file)
+##     df_params_init &lt;- read.csv(file = file.init)
 ##   } else{
 ##     df_params_init &lt;- df_params_init
 ##   }
@@ -331,11 +332,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##   l_params_all &lt;- c(l_params_all, 
 ##                     df_params_init) # Add initial set of parameters
 ## }
-## &lt;bytecode: 0x7fb8647db640&gt;
+## &lt;bytecode: 0x7fb5603d7c88&gt;
 ## &lt;environment: namespace:darthpack&gt;</code></pre>
-<p>The <code>load_all_params</code> function is informed by the arguments <code>file.init</code> and <code>file.mort</code>. The <code>file.init</code> argument is a string with the location and name of the file with initial set of parameters. The initial parameter values for our case-study are stored in the <em>01_init-params.csv</em> file located in the <em>data</em> directory. The <code>load_all_params</code> function read this .csv file into the function environment as a dataframe called, <code>df_params_init</code>.</p>
-<p>The <code>file.mort</code> argument is a string with the location and name of the file with mortality data. As described before, in our case-study this is the <em>01_all-cause-mortality.csv</em> file. Within the <code>load_all_parms</code> function, the <code>load_mort_data</code> function is used to create a vector with mortality rates from the .csv data.</p>
-<p>After loading all the information, the <code>load_all_params</code> generates a list called,<code>l_params_all</code>, including all parameters for the model including the general setup parameters and the vector of mortality rates. The function also stores the dataframe <code>df_params_init</code> with the initial set of parameters in the list. This is all executed in the in the <em>01_model-inputs.R</em> script by running the code below.</p>
+<p>The <code>load_all_params</code> function is informed by the arguments <code>file.init</code> and <code>file.mort</code>. The <code>file.init</code> argument is a string with the location and name of the file with initial set of parameters. The initial parameter values for our case-study are stored in the <em>01_init_params.csv</em> file located in the <em>data-raw</em> directory. The <code>load_all_params</code> function read this .csv file into the function environment as a dataframe called, <code>df_params_init</code>.</p>
+<p>The <code>file.mort</code> argument is a string with the location and name of the file with mortality data. As described before, in our case-study this is the <em>01_all_cause_mortality.csv</em> file. Within the <code>load_all_parms</code> function, the <code>load_mort_data</code> function is used to create a vector with mortality rates from the .csv data.</p>
+<p>After loading all the information, the <code>load_all_params</code> generates a list called, <code>l_params_all</code>, including all parameters for the model including the general setup parameters and the vector of mortality rates. The function also stores the dataframe <code>df_params_init</code> with the initial set of parameters in the list. This is all executed in the in the <em>01_model_inputs.R</em> script by running the code below.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l_params_all &lt;-<span class="st"> </span><span class="kw">load_all_params</span>()</code></pre></div>
 <p>For the Sick-Sicker model we do not have to estimate parameters, but we do have three parameters that need to be estimated via model calibration. In this stage of the framework, we simply set these parameters to valid “dummy” values that are compatible with the next phase of the analysis, model implementation, but are ultimately just placeholder values until we conduct the calibration phase. This means that these values will be replaced by the best-fitted calibrated values after we performed the calibration in component 3.</p>
 <p>Using a function to create a list of base-case parameters to have all model parameters in a single object is very useful, because this object will have to be updated for the calibration and the different sensitivity analyses in components 3 and 5 of the framework, respectively. Below, we guide you through the components of the function.</p>

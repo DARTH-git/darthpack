@@ -21,7 +21,7 @@ This function is informed by three arguments, `data`, `varname` and `groupnames`
 
 The computation of the model-predicted outputs using the MAP estimate is done by inserting the `v_calib_post_map` data into the previously described `calibration_out` function. This function creates a list including the estimated values for survival, prevalence and the proportion of sicker individuals at cycles 10, 20 and 30. 
 
-In sections _04.6 Internal validation: Model-predicted outputs vs. targets_, we check the internal validation by plotting the model-predicted outputs against the calibration targets (Figures \@ref(fig:04-surv)-\@ref(fig:04-proportion)). The generated plots are saved as .png files in the *fig* folder. These files can be used in reports without the need of re-running the code. 
+In sections _04.6 Internal validation: Model-predicted outputs vs. targets_, we check the internal validation by plotting the model-predicted outputs against the calibration targets (Figures \@ref(fig:04-surv)-\@ref(fig:04-proportion)). The generated plots are saved as .png files in the *figs* folder. These files can be used in reports without the need of re-running the code. 
 
 ```{r 04-surv, fig.cap="Survival data: Model-predicted outputs vs targets.", out.width='100%', echo = FALSE }
 knitr::include_graphics("../figs/04_posterior_vs_targets_survival.png")
