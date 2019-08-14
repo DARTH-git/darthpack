@@ -35,9 +35,9 @@ Usage and installation
 
 `darthpack` repository could be used in at least three different ways:
 
-1]  [GitHub coding template](#use-repository-as-a-github-coding-template) for using it to generate a repository of your own model-based decision or cost-effectiveness analysis linked to the original `darthpack` GitHub repository
-2]  [Regular coding template](#use-repository-as-a-regular-coding-template) for using it to generate a repository of your own model-based decision or cost-effectiveness analysis
-3]  [R package](#use-as-an-r-package) for using it as a standalone package to run current functions of `darthpack`
+1.]  [GitHub coding template](#use-repository-as-a-github-coding-template) for using it to generate a repository of your own model-based decision or cost-effectiveness analysis linked to the original `darthpack` GitHub repository
+2.]  [Regular coding template](#use-repository-as-a-regular-coding-template) for using it to generate a repository of your own model-based decision or cost-effectiveness analysis
+3.]  [R package](#use-as-an-r-package) for using it as a standalone package to run current functions of `darthpack`
 
 The main website of the package could be found in: <https://darth-git.github.io/darthpack/>
 
