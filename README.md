@@ -3,7 +3,7 @@
 darthpack <img src="docs/figs/under_const.jpeg" align="center" alt="" width="360" />
 ====================================================================================
 
-An R package that showcases the the [Decision Analysis in R for Technologies in Health (DARTH)](https://darthworkgroup.com) coding framework to construct model-based cost-effectiveness analysis in R. This package is part of the following working paper submitted for publication:
+An R package that showcases the [Decision Analysis in R for Technologies in Health (DARTH)](https://darthworkgroup.com) coding framework to construct model-based cost-effectiveness analysis in R. This package is part of the following working paper submitted for publication:
 
 -   Alarid-Escudero F, Krijkamp E, Pechlivanoglou P, Jalal H, Kao SY, Yang A, Enns EA. "A need for change! A coding framework for improving transparency in decision modeling". (2019) Under revision
 
@@ -36,9 +36,9 @@ Usage and installation
 
 `darthpack` repository could be used in at least three different ways:
 
-1)  [GitHub coding template](#use-repository-as-a-github-coding-template) for using it to generate a repository of your own model-based decision or cost-effectiveness analysis linked to the original `darthpack` GitHub repository
-2)  [Regular coding template](#use-repository-as-a-regular-coding-template) for using it to generate a repository of your own model-based decision or cost-effectiveness analysis
-3)  [R package](#use-as-an-r-package) for using it as a standalone package to run current functions of `darthpack`
+1]  [GitHub coding template](#use-repository-as-a-github-coding-template) for using it to generate a repository of your own model-based decision or cost-effectiveness analysis linked to the original `darthpack` GitHub repository
+2]  [Regular coding template](#use-repository-as-a-regular-coding-template) for using it to generate a repository of your own model-based decision or cost-effectiveness analysis
+3]  [R package](#use-as-an-r-package) for using it as a standalone package to run current functions of `darthpack`
 
 The main website of the package could be found in: <https://darth-git.github.io/darthpack/>
 
@@ -101,7 +101,7 @@ devtools::install_github("DARTH-git/darthpack")
 library(darthpack)
 ```
 
-Release your udpated framework
+Release your updated framework
 ==============================
 
 Once the framework has been modified and updated to your specific needs, run `pkgdown` from the package directory each time you release your package:
