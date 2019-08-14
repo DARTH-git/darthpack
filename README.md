@@ -1,4 +1,3 @@
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 darthpack <img src="docs/figs/under_const.jpeg" align="center" alt="" width="360" />
 
