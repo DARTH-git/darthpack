@@ -1,5 +1,5 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-<img src="docs/figs/darth-logo-small.png" align="center" alt="" width="80" /> darthpack  <img src="docs/figs/under_const.jpeg" align="center" alt="" width="360" />
+darthpack  <img src="docs/figs/under_const.jpeg" align="center" alt="" width="360" /> <img src="docs/figs/darth-logo-small.png" align="left" alt="" width="80" />
 ====================================================================================
 
  An R package that showcases the [Decision Analysis in R for Technologies in Health (DARTH)](https://darthworkgroup.com) coding framework to construct model-based cost-effectiveness analysis in R. This package is part of the following working paper submitted for publication:
