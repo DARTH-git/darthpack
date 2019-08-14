@@ -1,6 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-darthpack <img src="docs/figs/darth-logo-small.png" align="center" alt="" width="100" />  <img src="docs/figs/under_const.jpeg" align="right" alt="" width="360" />
+darthpack <img src="docs/figs/under_const.jpeg" align="center" alt="" width="360" />
 
 ====================================================================================
 
