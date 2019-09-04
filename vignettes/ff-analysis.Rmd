@@ -5,6 +5,9 @@ vignette: >
   %\VignetteIndexEntry{ff-analysis}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+bibliography:
+- book.bib
+- packages.bib
 ---
 
 ```{r, include = FALSE}
@@ -85,7 +88,7 @@ knitr::include_graphics("../figs/05a_cea_plane_scatter.png")
 ```
 
 ```{r df-cea-prob, eval = TRUE, echo = FALSE}
-df_cea_psa <- read.csv(file = "../tables/05a_probabilistic_cea_results.csv")[, c(-1, -8)]
+# df_cea_psa <- read.csv(file = "../tables/05a_probabilistic_cea_results.csv")[, c(-1, -8)]
 # load("../tables/05a_probabilistic_cea_results.RData")
 knitr::kable(df_cea_psa[, -7], caption = "Probabilistic cost-effectiveness analysis results of the Sick-Sicker model comparing no treatment with treatment") # create a table 
 ``` 

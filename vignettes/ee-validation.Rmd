@@ -5,6 +5,9 @@ vignette: >
   %\VignetteIndexEntry{ee-validation}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+bibliography:
+- book.bib
+- packages.bib
 ---
 
 ```{r, include = FALSE}

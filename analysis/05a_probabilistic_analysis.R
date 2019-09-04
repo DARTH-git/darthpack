@@ -98,8 +98,10 @@ df_cea_psa <- calculate_icers(cost = df_out_ce_psa$meanCost,
 df_cea_psa
 ### Save CEA table with ICERs
 ## As .RData
+# save(df_cea_psa, 
+#      file = "tables/05a_probabilistic_cea_results.RData")
 save(df_cea_psa, 
-     file = "tables/05a_probabilistic_cea_results.RData")
+     file = "data/05a_probabilistic_cea_results.RData")
 ## As .csv
 write.csv(df_cea_psa, 
           file = "tables/05a_probabilistic_cea_results.csv")
