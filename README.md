@@ -7,7 +7,7 @@ darthpack <img src="docs/figs/under_const.jpeg" align="center" alt="" width="360
 
 -   Alarid-Escudero F, Krijkamp E, Pechlivanoglou P, Jalal H, Kao SY, Yang A, Enns EA. "A need for change! A coding framework for improving transparency in decision modeling". PharmacoEconomics 2019. In press.
 
-The main website of `darthpack` can be [found here](https://github.com/DARTH-git/darthpack).
+The main website of `darthpack` can be [found here](https://darth-git.github.io/darthpack/).
 
 Preliminaries
 =============
