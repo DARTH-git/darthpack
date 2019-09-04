@@ -1,6 +1,6 @@
 Type: Package
 Package: darthpack
-Title: Decision Modeling Coding Framework
+Title: The Decision Analysis in R for Technologies in Health (DARTH) coding framework
 Version: 0.1.0
 Authors@R: 
     c(person(given = "Fernando",
@@ -60,14 +60,17 @@ Imports:
     truncnorm,
     utils,
     IMIS,
-    plotrix
+    plotrix,
+    rlang
 Suggests: 
     knitr,
     rmarkdown,
     dampack,
     ggplot2, 
     testthat,
-    pkgdown
+    pkgdown,
+    survival,
+    BiocManager
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

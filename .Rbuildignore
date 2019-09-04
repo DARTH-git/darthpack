@@ -9,3 +9,5 @@
 ^output$
 ^tables$
 ^data-raw$
+^README\.Rmd$
+^Shiny_framework\.R$

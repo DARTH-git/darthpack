@@ -11,7 +11,7 @@
 #     - Eva A. Enns, PhD                                                       # 
 ################################################################################ 
 # The structure of this code is according to the DARTH framework               #
-# https://github.com/DARTH-git/Decision-Modeling-Framework                     #
+# https://github.com/DARTH-git/darthpack                                       #
 ################################################################################ 
 
 rm(list = ls()) # to clean the workspace
