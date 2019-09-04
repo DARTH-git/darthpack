@@ -1,7 +1,7 @@
 #' Calculate cost-effectiveness outcomes
 #'
 #' \code{calculate_ce_out} calculates costs and effects for a given vector of 
-#' parameters using a decision model. This function needs to be modifed by the 
+#' parameters using a decision model. This function needs to be modified by the 
 #' users to fit their needs
 #' @param l_params_all List with all parameters of decision model
 #' @param n_wtp Willingness-to-pay threshold to compute net benefits.
@@ -85,7 +85,7 @@ calculate_ce_out <- function(l_params_all = load_all_params(),
 #' \code{owsa_tornado} from \code{dampack}
 #' @section Details:
 #' FUN must return a dataframe where the first column are the strategy names
-#' and the rest of teh columns must be outcomes.
+#' and the rest of the columns must be outcomes.
 #' @export
 owsa_det <- function(parms, ranges, nsamps = 100, params_basecase, FUN, outcome, 
                      strategies = NULL, ...){
@@ -191,7 +191,7 @@ owsa_det <- function(parms, ranges, nsamps = 100, params_basecase, FUN, outcome,
 #' visualized with \code{plot.owsa}, and \code{owsa_tornado}
 #' @section Details:
 #' FUN must return a dataframe where the first column are the strategy names
-#' and the rest of teh columns must be outcomes.
+#' and the rest of the columns must be outcomes.
 #' @export
 twsa_det <- function(parm1, parm2, ranges, nsamps = 40, params_basecase, FUN, outcome, 
                      strategies = NULL, ...){

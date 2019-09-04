@@ -42,7 +42,7 @@ given function that produces outcomes.
 \section{Details}{
 
 FUN must return a dataframe where the first column are the strategy names
-and the rest of teh columns must be outcomes.
+and the rest of the columns must be outcomes.
 }
 
 \keyword{owsa}

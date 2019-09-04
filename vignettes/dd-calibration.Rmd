@@ -5,6 +5,9 @@ vignette: >
   %\VignetteIndexEntry{dd-calibration}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+bibliography:
+- book.bib
+- packages.bib  
 ---
 
 ```{r, include = FALSE}
@@ -61,6 +64,6 @@ knitr::include_graphics("../figs/03_posterior_distribution_joint.png")
 knitr::include_graphics("../figs/03_posterior_distribution_marginal.png")
 ```
 
-Finally, the posterior distribution and MAP estimate from the IMIS calibration are stored in the file *03_imis_output.RData*. Storing this data as an .Rdata file allows to import the data in following sections without needing to re-run the calibration component. 
+Finally, the posterior distribution and MAP estimate from the IMIS calibration are stored in the file *03_imis_output.RData*. Storing this data as an .RData file allows to import the data in following sections without needing to re-run the calibration component. 
 
 # References {-}

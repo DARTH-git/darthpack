@@ -16,6 +16,6 @@ A data frame with discounted costs, effectiveness and NMB for each strategy.
 }
 \description{
 \code{calculate_ce_out} calculates costs and effects for a given vector of
-parameters using a decision model. This function needs to be modifed by the
+parameters using a decision model. This function needs to be modified by the
 users to fit their needs
 }

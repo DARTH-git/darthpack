@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>One-way sensitivity analysis (OWSA) — owsa_det • darthpack</title>
+<title><code>darthpack</code> package — darthpack • darthpack</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,9 @@
 
 
 
-<meta property="og:title" content="One-way sensitivity analysis (OWSA) — owsa_det" />
+<meta property="og:title" content="<code>darthpack</code> package — darthpack" />
 
-<meta property="og:description" content="This function runs a deterministic one-way sensitivity analysis (OWSA) on a
-given function that produces outcomes." />
+<meta property="og:description" content="The Decision Analysis in R for Technologies in Health (DARTH) coding framework" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -134,84 +133,31 @@ given function that produces outcomes." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>One-way sensitivity analysis (OWSA)</h1>
-    <small class="dont-index">Source: <a href='https://github.com/DARTH-git/darthpack/blob/master/R/05b_deterministic_analysis_functions.R'><code>R/05b_deterministic_analysis_functions.R</code></a></small>
-    <div class="hidden name"><code>owsa_det.Rd</code></div>
+    <h1><code>darthpack</code> package</h1>
+    <small class="dont-index">Source: <a href='https://github.com/DARTH-git/darthpack/blob/master/R/darthpack.R'><code>R/darthpack.R</code></a></small>
+    <div class="hidden name"><code>darthpack.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function runs a deterministic one-way sensitivity analysis (OWSA) on a
-given function that produces outcomes.</p>
+    <p>The Decision Analysis in R for Technologies in Health (DARTH) coding framework</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>owsa_det</span>(<span class='no'>parms</span>, <span class='no'>ranges</span>, <span class='kw'>nsamps</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='no'>params_basecase</span>, <span class='no'>FUN</span>, <span class='no'>outcome</span>,
-  <span class='kw'>strategies</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>parms</th>
-      <td><p>Vector with strings with the name of the parameters of interest</p></td>
-    </tr>
-    <tr>
-      <th>ranges</th>
-      <td><p>A named list of the form c("parm" = c(0, 1), ...) that gives
-the ranges for the parameters of interest. The number of samples from this
-range is determined by <code>nsamp</code></p></td>
-    </tr>
-    <tr>
-      <th>nsamps</th>
-      <td><p>number of parameter values. If NULL, 100 parameter values are
-used</p></td>
-    </tr>
-    <tr>
-      <th>params_basecase</th>
-      <td><p>List with parameters for the base case</p></td>
-    </tr>
-    <tr>
-      <th>FUN</th>
-      <td><p>Function that takes <code>params_basecase</code> and <code>...</code> and
-produces <code>outcome</code> of interest</p></td>
-    </tr>
-    <tr>
-      <th>outcome</th>
-      <td><p>String with the outcome of interest produced by <code>nsamp</code></p></td>
-    </tr>
-    <tr>
-      <th>strategies</th>
-      <td><p>vector of strategy names. The default (NULL) will use
-strategy names in FUN</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Further arguments to FUN (not used)</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A dataframe with the results of the sensitivity analysis. Can be
-visualized with <code>plot.owsa</code>, <code>owsa_opt_strat</code> and
-<code>owsa_tornado</code> from <code>dampack</code></p>
-    
+        
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    
-    <p>FUN must return a dataframe where the first column are the strategy names
-and the rest of the columns must be outcomes.</p>
+    <p>See the description of the package on
+<a href='https://darth-git.github.io/darthpack/index.html'>darthpack website</a>
+or the README on
+<a href='https://github.com/DARTH-git/darthpack#readme'>GitHub</a></p>
     
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
           </ul>
 

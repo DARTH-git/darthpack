@@ -109,14 +109,14 @@
 
     
     
-<p>In this section, we use <code>testthat</code> package to demonstrate unit testing <span class="citation">(<span class="citeproc-not-found" data-reference-id="testthat"><strong>???</strong></span>)</span>. We first show the test structure used in the <code>testthat</code> package. We then demonstrate some unit tests for the functions in <code>02_simulation_model_functions.R</code>.</p>
+<p>In this section, we use <code>testthat</code> package to demonstrate unit testing <span class="citation">(Wickham 2011)</span>. We first show the test structure used in the <code>testthat</code> package. We then demonstrate some unit tests for the functions in <code>02_simulation_model_functions.R</code>.</p>
 <div id="test-structure" class="section level1">
 <h1 class="hasAnchor">
 <a href="#test-structure" class="anchor"></a>Test structure</h1>
-<p>A test file is a <code>.R</code> script and is normally stored separately from the source code. In the developement of the Sick-Sicker project, we create a <code>tests</code> folder for all the test files. In practice, a developer often creates a test file corresponding to a file of source code. Because the functionalities in an R script are usually related, the tests in the corresponding test file natually go together. A test file consists of three components from the lowest to the highest levels: <span style="color:blue">expectation</span>, <span style="color:blue">test</span> and <span style="color:blue">context</span> <span class="citation">(<span class="citeproc-not-found" data-reference-id="testthat"><strong>???</strong></span>)</span>.</p>
+<p>A test file is a <code>.R</code> script and is normally stored separately from the source code. In the development of the Sick-Sicker project, we create a <code>tests</code> folder for all the test files. In practice, a developer often creates a test file corresponding to a file of source code. Because the functionalities in an R script are usually related, the tests in the corresponding test file naturally go together. A test file consists of three components from the lowest to the highest levels: <span style="color:blue">expectation</span>, <span style="color:blue">test</span> and <span style="color:blue">context</span> <span class="citation">(Wickham 2011)</span>.</p>
 <ul>
 <li>In general, an expectation is to verify whether or not part of a function or a process works as expected.</li>
-<li>A test, consisting of a collection of expections, specifies which function or which part of a function is tested.</li>
+<li>A test, consisting of a collection of exceptions, specifies which function or which part of a function is tested.</li>
 <li>A context groups tests for related functionalities.</li>
 </ul>
 <p>An expectation is where the developer checks the expected behavior of the function or process of interest. For each expectation, we follow this coding flow:</p>
@@ -154,7 +154,7 @@ test_that("# of hosts MIB killed", {
 test_that("MIB's real name", {
   ...
 })</code></pre>
-<p>The text in the <code>context</code> function provides the name of the group of tests. By convention, one test file contains one <code>context()</code>, but the file can include more than one <code>context()</code>. Similarly, the text in the <code>test_that</code> function incidates which groups of expectations are being executed. After running the test files in the <code>R</code> console, the console would display whether the group of tests passed or failed. These texts in <code>context</code> and <code>test_that</code> would appear, allowing developers to quickly locate where the tests go wrong.</p>
+<p>The text in the <code>context</code> function provides the name of the group of tests. By convention, one test file contains one <code>context()</code>, but the file can include more than one <code>context()</code>. Similarly, the text in the <code>test_that</code> function indicates which groups of expectations are being executed. After running the test files in the <code>R</code> console, the console would display whether the group of tests passed or failed. These texts in <code>context</code> and <code>test_that</code> would appear, allowing developers to quickly locate where the tests go wrong.</p>
 </div>
 <div id="example" class="section level1">
 <h1 class="hasAnchor">
@@ -243,6 +243,11 @@ l_params_all &lt;-<span class="st"> </span><span class="kw"><a href="../referenc
 <div id="references" class="section level1 unnumbered">
 <h1 class="hasAnchor">
 <a href="#references" class="anchor"></a>References</h1>
+<div id="refs" class="references">
+<div id="ref-testthat">
+<p>Wickham, Hadley. 2011. “Testthat: Get Started with Testing.” <em>The R Journal</em> 3: 5–10. <a href="https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf" class="uri">https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf</a>.</p>
+</div>
+</div>
 </div>
   </div>
 

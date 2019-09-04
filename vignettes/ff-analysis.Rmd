@@ -63,7 +63,7 @@ In a PSA we sample the input parameter values from these distributions and we th
 print.function(generate_psa_params) # print the function 
 ```
 
-The function returns the `df_psa_input` dataframe with a PSA dataset of the input parameters. With this dataframe we can run the PSA to produce distributions of costs, effectiveness and NMB. The PSA is performed by the  *05a_probabilistic_analysis.R* script. As shown in the code below, the `df_psa_input` dataframe is used by the `update_param_list` function to generate the corresponding list of parameters for the PSA. For each simulation, we perfrom three steps. First, the list of parameters is updated by the `update_param_list` function. Second, the model is executed by the `calculate_ce_out` function using the updated parameter list and third, the dataframes `df_c` and `df_e` store the estimated cost and effects, respectively. The final part of this loop is to satisfy the modeler when waiting on the results, by displaying the simulation progress.  
+The function returns the `df_psa_input` dataframe with a PSA dataset of the input parameters. With this dataframe we can run the PSA to produce distributions of costs, effectiveness and NMB. The PSA is performed by the  *05a_probabilistic_analysis.R* script. As shown in the code below, the `df_psa_input` dataframe is used by the `update_param_list` function to generate the corresponding list of parameters for the PSA. For each simulation, we perform three steps. First, the list of parameters is updated by the `update_param_list` function. Second, the model is executed by the `calculate_ce_out` function using the updated parameter list and third, the dataframes `df_c` and `df_e` store the estimated cost and effects, respectively. The final part of this loop is to satisfy the modeler when waiting on the results, by displaying the simulation progress.  
 
 ```{r, eval = FALSE, echo = TRUE}
 for(i in 1:n_sim){ 
@@ -148,7 +148,7 @@ df_out_ce <- calculate_ce_out(l_params_all = l_params_basecase,
 print.function(calculate_ce_out) # print the function
 ```
 
-After calculating the discount weights, this function runs the simulation model using the previously described function `decision_model` in the *02_simulatiomn_model_function.R* script. Inside the function `calculate_ce_out`, the simulation model is run for both the treatment,  `l_model_out_trt`, and no treatment, `l_model_out_no_trt`, strategies of the Sick-Sicker model. Running it for both treatment strategies is done for illustration purposes. In this case-study, the resulting cohort traces are identical and we could have executed it only once. 
+After calculating the discount weights, this function runs the simulation model using the previously described function `decision_model` in the *02_simulation_model_function.R* script. Inside the function `calculate_ce_out`, the simulation model is run for both the treatment,  `l_model_out_trt`, and no treatment, `l_model_out_no_trt`, strategies of the Sick-Sicker model. Running it for both treatment strategies is done for illustration purposes. In this case-study, the resulting cohort traces are identical and we could have executed it only once. 
 
 In the second part of the function we create multiple vectors for both the cost and effects of both strategies. These vectors multiply the cohort trace to compute the cycle-specific rewards. This results in vectors of total costs (`v_tc`) and total effects (`v_tu`) per cycle. By multiplying these vectors with the vectors with the discount weights for costs (`v_dwc`) and effects (`v_dwe`) we get the total discounted mean costs (`tc_d_no_trt` and `tc_d_trt`) and QALYs (`tu_d_no_trt` and `tu_d_trt`) for both strategies. These values are used in the calculation of the NMB. Finally, the total discounted costs, effectiveness and NMB are combined in the dataframe `df_ce`. The results for our case-study are shown below. 
 
@@ -175,7 +175,7 @@ Finally, Figure  \@ref(fig:05b-CEA-frontier) shows the cost-effectiveness fronti
 knitr::include_graphics("../figs/05b_cea_frontier.png")
 ```
 
-We then conduct a series of deterministic sensitivity analysis. First, we conduct a one-way sensitivity analysis (OWSA) on the variables `c_Trt`, `p_HS1`, `u_S1` and `u_Trt` and a two-way sensitivity analysis (TWSA) using the owsa_det and twsa_det functions. We use the output of these functions to produce different SA plots, such as OWSA tornado, one-way optimal strategy and TWSA plots (Figures \@ref(fig:05b-owsa-nmb) - \@ref(fig:05b-twsa-uS1-uTrt-nmb)).
+We then conduct a series of deterministic sensitivity analysis. First, we conduct a one-way sensitivity analysis (OWSA) on the variables `c_Trt`, `p_HS1`, `u_S1` and `u_Trt` and a two-way sensitivity analysis (TWSA) using the `owsa_det` and `twsa_det` functions. We use the output of these functions to produce different SA plots, such as OWSA tornado, one-way optimal strategy and TWSA plots (Figures \@ref(fig:05b-owsa-nmb) - \@ref(fig:05b-twsa-uS1-uTrt-nmb)).
 
 ```{r 05b-owsa-nmb, fig.cap = "One-way sensitivity analysis results", out.width='100%', echo = FALSE}
 knitr::include_graphics("../figs/05b_owsa_nmb.png")

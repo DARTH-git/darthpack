@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 The main website of `darthpack` can be [found here](https://github.com/DARTH-git/darthpack).
 
 # Preliminaries
-- Install [Rstudio](https://www.rstudio.com/products/rstudio/download/)
+- Install [RStudio](https://www.rstudio.com/products/rstudio/download/)
 - Install `devtools` to install `darthpack` as a package and modify it to generate your own package
 ```{r, eval=FALSE}
 # Install release version from CRAN

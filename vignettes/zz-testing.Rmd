@@ -27,10 +27,10 @@ In this section, we use `testthat` package to demonstrate unit testing [@testtha
 
 # Test structure
 
-A test file is a `.R` script and is normally stored separately from the source code. In the developement of the Sick-Sicker project, we create a `tests` folder for all the test files. In practice, a developer often creates a test file corresponding to a file of source code. Because the functionalities in an R script are usually related, the tests in the corresponding test file natually go together. A test file consists of three components from the lowest to the highest levels: <span style="color:blue">expectation</span>, <span style="color:blue">test</span> and <span style="color:blue">context</span> [@testthat]. 
+A test file is a `.R` script and is normally stored separately from the source code. In the development of the Sick-Sicker project, we create a `tests` folder for all the test files. In practice, a developer often creates a test file corresponding to a file of source code. Because the functionalities in an R script are usually related, the tests in the corresponding test file naturally go together. A test file consists of three components from the lowest to the highest levels: <span style="color:blue">expectation</span>, <span style="color:blue">test</span> and <span style="color:blue">context</span> [@testthat]. 
 
 * In general, an expectation is to verify whether or not part of a function or a process works as expected. 
-* A test, consisting of a collection of expections, specifies which function or which part of a function is tested. 
+* A test, consisting of a collection of exceptions, specifies which function or which part of a function is tested. 
 * A context groups tests for related functionalities. 
 
 An expectation is where the developer checks the expected behavior of the function or process of interest. For each expectation, we follow this coding flow: 
@@ -72,7 +72,7 @@ test_that("MIB's real name", {
 })
 ```
 
-The text in the `context` function provides the name of the group of tests. By convention, one test file contains one `context()`, but the file can include more than one `context()`. Similarly, the text in the `test_that` function incidates which groups of expectations are being executed. After running the test files in the `R` console, the console would display whether the group of tests passed or failed. These texts in `context` and `test_that` would appear, allowing developers to quickly locate where the tests go wrong. 
+The text in the `context` function provides the name of the group of tests. By convention, one test file contains one `context()`, but the file can include more than one `context()`. Similarly, the text in the `test_that` function indicates which groups of expectations are being executed. After running the test files in the `R` console, the console would display whether the group of tests passed or failed. These texts in `context` and `test_that` would appear, allowing developers to quickly locate where the tests go wrong. 
 
 # Example
 

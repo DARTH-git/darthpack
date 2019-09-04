@@ -112,7 +112,7 @@
 <div id="simulation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#simulation" class="anchor"></a>Decision model</h1>
-<p>In this second component, we build the backbone of the decision analysis: the implementation of the model. This component is performed by the <em>02_decision_model.R</em> script. This file itself is not very large. It simply loads some packages and sources the input from component 01 and in addition it runs the <code>decision_model</code> function that is used to caputre the dynamic process of the Sick-Sicker example and stores the output. The output of the model is the traditional cohort trace. The trace describes how the cohort is distributed among the different health states over time and is plotted at the end of this script.</p>
+<p>In this second component, we build the backbone of the decision analysis: the implementation of the model. This component is performed by the <em>02_decision_model.R</em> script. This file itself is not very large. It simply loads some packages and sources the input from component 01 and in addition it runs the <code>decision_model</code> function that is used to capture the dynamic process of the Sick-Sicker example and stores the output. The output of the model is the traditional cohort trace. The trace describes how the cohort is distributed among the different health states over time and is plotted at the end of this script.</p>
 <p>The function <code>decision_model</code> is defined in the <em>02_decision_model_functions.R</em> file in the <code>R</code> folder. As described in the paper, constructing a model as a function at this stage facilitates subsequent stages of the model development and analysis. This since these processes will all call the same model function, but pass different parameter values and/or calculate different final outcomes based on the model outputs. In the next part, we will describe the code within the function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print.function</a></span>(decision_model) <span class="co"># print the code of the function</span>
 <span class="co">#&gt; function(l_params_all, err_stop = FALSE, verbose = FALSE){ # User defined</span>
@@ -184,7 +184,7 @@
 <span class="co">#&gt;   }</span>
 <span class="co">#&gt;   )</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x7f8611a492b8&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x7f822372f6f0&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:darthpack&gt;</span></code></pre></div>
 <p>The <code>decision_model</code> function is informed by the argument <code>l_params_all</code>. Via this argument we give the function a list with all parameters of the decision model. For the Sick-Sicker model, these parameters are stored in the list <code>l_params_all</code>, which we passed into the function as shown below.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l_out_stm &lt;-<span class="st"> </span><span class="kw"><a href="../reference/decision_model.html">decision_model</a></span>(<span class="dt">l_params_all =</span> l_params_all) <span class="co"># run the function</span></code></pre></div>

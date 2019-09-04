@@ -36,7 +36,7 @@ The vignettes in the *vignettes* folder and the *Articles* tab in the [`darthpac
 
 ## Prerequisites general{-}
 
-The book describing our Sick-Sicker case study is written in R Markdown using the `bookdown` package. More about books written in R Markdown using `bookdown` can be found on this website: <https://bookdown.org/yihui/bookdown/>. When you like to generate the book yourself using Markdown you need to install the `bookdown` package from CRAN or Github:
+The book describing our Sick-Sicker case study is written in R Markdown using the `bookdown` package. More about books written in R Markdown using `bookdown` can be found on this website: <https://bookdown.org/yihui/bookdown/>. When you like to generate the book yourself using Markdown you need to install the `bookdown` package from CRAN or GitHub:
 
 ```{r eval=FALSE}
 install.packages("bookdown")

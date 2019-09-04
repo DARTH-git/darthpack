@@ -16,7 +16,7 @@ load_mort_data <- function(file = NULL){
     df_r_mort_by_age <- all_cause_mortality
   }
   # Vector with mortality rates
-  v_r_mort_by_age  <- as.matrix(dplyr::select(df_r_mort_by_age, Total))
+  v_r_mort_by_age  <- as.matrix(dplyr::select(df_r_mort_by_age, .data$Total))
   
   return(v_r_mort_by_age)
 }

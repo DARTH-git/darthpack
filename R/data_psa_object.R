@@ -8,7 +8,7 @@
 #'   \item{n_sim}{Number of PSA samples.}
 #'   \item{cost}{A data frame with \code{n_sim} rows and \code{n_strategies} columns with the cost per strategy for all PSA samples.}
 #'   \item{effectiveness}{A data frame with \code{n_sim} rows and \code{n_strategies} columns with the effectiveness per strategy for all PSA samples.}
-#'   \item{parameters}{Survival target. A data frame of input paramters with 
+#'   \item{parameters}{Survival target. A data frame of input parameters with 
 #'   \code{n_sim} rows and 15 columns:
 #'     \itemize{\item c_H: Annual cost for healthy individuals
 #'              \item c_S1: Annual cost for sick individuals in S1
