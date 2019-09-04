@@ -70,7 +70,10 @@ Suggests:
     testthat,
     pkgdown,
     survival,
-    BiocManager
+    BiocManager,
+    kableExtra,
+    png,
+    scales
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

@@ -34,6 +34,8 @@
 
 <meta property="og:description" content="log_prior computes a log-prior value for one (or multiple) parameter
 set(s) based on their prior distributions." />
+
+<meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -146,7 +148,9 @@ set(s) based on their prior distributions.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>log_prior</span>(<span class='no'>v_params</span>)</pre>
+    <pre class="usage"><span class='fu'>log_prior</span>(<span class='no'>v_params</span>, <span class='kw'>v_param_names</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"p_S1S2"</span>, <span class='st'>"hr_S1"</span>, <span class='st'>"hr_S2"</span>),
+  <span class='kw'>v_lb</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>p_S1S2</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='kw'>hr_S1</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>hr_S2</span> <span class='kw'>=</span> <span class='fl'>5</span>), <span class='kw'>v_ub</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>p_S1S2</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
+  <span class='kw'>hr_S1</span> <span class='kw'>=</span> <span class='fl'>4.5</span>, <span class='kw'>hr_S2</span> <span class='kw'>=</span> <span class='fl'>15</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -154,6 +158,18 @@ set(s) based on their prior distributions.</p>
     <tr>
       <th>v_params</th>
       <td><p>Vector (or matrix) of model parameters.</p></td>
+    </tr>
+    <tr>
+      <th>v_param_names</th>
+      <td><p>Vector with parameter names.</p></td>
+    </tr>
+    <tr>
+      <th>v_lb</th>
+      <td><p>Vector with upper bounds for each parameter.</p></td>
+    </tr>
+    <tr>
+      <th>v_ub</th>
+      <td><p>Vector with lower bounds for each parameter.</p></td>
     </tr>
     </table>
     
@@ -167,7 +183,7 @@ set(s) based on their prior distributions.</p>
 <span class='no'>n_param</span>        <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>v_param_names</span>)
 <span class='no'>v_lb</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>p_S1S2</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='kw'>hr_S1</span> <span class='kw'>=</span> <span class='fl'>1.0</span>, <span class='kw'>hr_S2</span> <span class='kw'>=</span> <span class='fl'>5</span>)  <span class='co'># lower bound</span>
 <span class='no'>v_ub</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>p_S1S2</span> <span class='kw'>=</span> <span class='fl'>0.50</span>, <span class='kw'>hr_S1</span> <span class='kw'>=</span> <span class='fl'>4.5</span>, <span class='kw'>hr_S2</span> <span class='kw'>=</span> <span class='fl'>15</span>) <span class='co'># upper bound</span>
-<span class='fu'>log_prior</span>(<span class='kw'>v_params</span> <span class='kw'>=</span> <span class='fu'><a href='sample.prior.html'>sample.prior</a></span>(<span class='kw'>n_samp</span> <span class='kw'>=</span> <span class='fl'>5</span>))</div><div class='output co'>#&gt; <span class='error'>Error in log_prior(v_params = sample.prior(n_samp = 5)): object 'v_param_names' not found</span></div></pre>
+<span class='fu'>log_prior</span>(<span class='kw'>v_params</span> <span class='kw'>=</span> <span class='fu'><a href='sample.prior.html'>sample.prior</a></span>(<span class='kw'>n_samp</span> <span class='kw'>=</span> <span class='fl'>5</span>))</div><div class='output co'>#&gt; [1] -2.841998 -2.841998 -2.841998 -2.841998 -2.841998</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

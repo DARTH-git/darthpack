@@ -21,8 +21,7 @@ rm(list = ls()) # to clean the workspace
 # Dependencies have been loaded with 'darthpack'
 
 #### 03.1.2 Load inputs ####
-l_params_all <- load_all_params(file.init = "data-raw/01_init_params.csv",
-                                file.mort = "data-raw/01_all_cause_mortality.csv") # function in darthpack
+l_params_all <- load_all_params()
 
 #### 03.1.3 Load functions ####
 # no required functions

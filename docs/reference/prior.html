@@ -33,6 +33,8 @@
 <meta property="og:title" content="Evaluate prior of calibrated parameters — prior" />
 
 <meta property="og:description" content="prior computes a prior value for one (or multiple) parameter set(s)." />
+
+<meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -165,7 +167,7 @@
 <span class='no'>n_param</span>        <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>v_param_names</span>)
 <span class='no'>v_lb</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>p_S1S2</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='kw'>hr_S1</span> <span class='kw'>=</span> <span class='fl'>1.0</span>, <span class='kw'>hr_S2</span> <span class='kw'>=</span> <span class='fl'>5</span>)  <span class='co'># lower bound</span>
 <span class='no'>v_ub</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>p_S1S2</span> <span class='kw'>=</span> <span class='fl'>0.50</span>, <span class='kw'>hr_S1</span> <span class='kw'>=</span> <span class='fl'>4.5</span>, <span class='kw'>hr_S2</span> <span class='kw'>=</span> <span class='fl'>15</span>) <span class='co'># upper bound</span>
-<span class='fu'>prior</span>(<span class='kw'>v_params</span> <span class='kw'>=</span> <span class='fu'><a href='sample.prior.html'>sample.prior</a></span>(<span class='kw'>n_samp</span> <span class='kw'>=</span> <span class='fl'>5</span>))</div><div class='output co'>#&gt; <span class='error'>Error in log_prior(v_params): object 'v_param_names' not found</span></div></pre>
+<span class='fu'>prior</span>(<span class='kw'>v_params</span> <span class='kw'>=</span> <span class='fu'><a href='sample.prior.html'>sample.prior</a></span>(<span class='kw'>n_samp</span> <span class='kw'>=</span> <span class='fl'>5</span>))</div><div class='output co'>#&gt; [1] 0.05830904 0.05830904 0.05830904 0.05830904 0.05830904</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

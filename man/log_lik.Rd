@@ -4,10 +4,12 @@
 \alias{log_lik}
 \title{Log-likelihood function for a parameter set}
 \usage{
-log_lik(v_params)
+log_lik(v_params, l_params_all = load_all_params())
 }
 \arguments{
 \item{v_params}{Vector (or matrix) of model parameters.}
+
+\item{l_params_all}{List with all parameters of the decision model.}
 }
 \value{
 A scalar (or vector) with log-likelihood values.
@@ -17,11 +19,13 @@ A scalar (or vector) with log-likelihood values.
 parameter set(s).
 }
 \examples{
-v_param_names  <- c("p_S1S2", "hr_S1", "hr_S2")
-n_param        <- length(v_param_names)
-v_lb <- c(p_S1S2 = 0.01, hr_S1 = 1.0, hr_S2 = 5)  # lower bound
-v_ub <- c(p_S1S2 = 0.50, hr_S1 = 4.5, hr_S2 = 15) # upper bound
-v_target_names <- c("Surv", "Prev", "PropSick")
-n_target       <- length(v_target_names)
-log_lik(v_params = sample.prior(n_samp = 2))
+\dontrun{
+  v_param_names  <- c("p_S1S2", "hr_S1", "hr_S2")
+  n_param        <- length(v_param_names)
+  v_lb <- c(p_S1S2 = 0.01, hr_S1 = 1.0, hr_S2 = 5)  # lower bound
+  v_ub <- c(p_S1S2 = 0.50, hr_S1 = 4.5, hr_S2 = 15) # upper bound
+  v_target_names <- c("Surv", "Prev", "PropSick")
+  n_target       <- length(v_target_names)
+  log_lik(v_params = sample.prior(n_samp = 2))
+}
 }

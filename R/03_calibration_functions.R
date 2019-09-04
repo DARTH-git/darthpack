@@ -77,6 +77,9 @@ sample.prior <- function(n_samp,
 #' \code{log_prior} computes a log-prior value for one (or multiple) parameter 
 #' set(s) based on their prior distributions.
 #' @param v_params Vector (or matrix) of model parameters.
+#' @param v_param_names Vector with parameter names.
+#' @param v_ub Vector with lower bounds for each parameter.
+#' @param v_lb Vector with upper bounds for each parameter.
 #' @return 
 #' A scalar (or vector) with log-prior values.
 #' @examples 
@@ -86,10 +89,14 @@ sample.prior <- function(n_samp,
 #' v_ub <- c(p_S1S2 = 0.50, hr_S1 = 4.5, hr_S2 = 15) # upper bound
 #' log_prior(v_params = sample.prior(n_samp = 5))
 #' @export
-log_prior <- function(v_params){
+log_prior <- function(v_params, 
+                      v_param_names = c("p_S1S2", "hr_S1", "hr_S2"),
+                      v_lb = c(p_S1S2 = 0.01, hr_S1 = 1.0, hr_S2 = 5),
+                      v_ub = c(p_S1S2 = 0.50, hr_S1 = 4.5, hr_S2 = 15)){
   if(is.null(dim(v_params))) { # If vector, change to matrix
     v_params <- t(v_params) 
   }
+  n_param <- length(v_param_names)
   n_samp <- nrow(v_params)
   colnames(v_params) <- v_param_names
   lprior <- rep(0, n_samp)
@@ -130,27 +137,33 @@ prior <- function(v_params) {
 #' \code{log_lik} computes a log-likelihood value for one (or multiple) 
 #' parameter set(s).
 #'
-#' @param v_params Vector (or matrix) of model parameters. 
+#' @param v_params Vector (or matrix) of model parameters.
+#' @param l_params_all List with all parameters of the decision model. 
 #' @return 
 #' A scalar (or vector) with log-likelihood values.
 #' @importFrom stats dnorm dunif quantile qunif rbeta rgamma sd
 #' @examples 
-#' v_param_names  <- c("p_S1S2", "hr_S1", "hr_S2")
-#' n_param        <- length(v_param_names)
-#' v_lb <- c(p_S1S2 = 0.01, hr_S1 = 1.0, hr_S2 = 5)  # lower bound
-#' v_ub <- c(p_S1S2 = 0.50, hr_S1 = 4.5, hr_S2 = 15) # upper bound
-#' v_target_names <- c("Surv", "Prev", "PropSick")
-#' n_target       <- length(v_target_names)
-#' log_lik(v_params = sample.prior(n_samp = 2))
+#' \dontrun{
+#'   v_param_names  <- c("p_S1S2", "hr_S1", "hr_S2")
+#'   n_param        <- length(v_param_names)
+#'   v_lb <- c(p_S1S2 = 0.01, hr_S1 = 1.0, hr_S2 = 5)  # lower bound
+#'   v_ub <- c(p_S1S2 = 0.50, hr_S1 = 4.5, hr_S2 = 15) # upper bound
+#'   v_target_names <- c("Surv", "Prev", "PropSick")
+#'   n_target       <- length(v_target_names)
+#'   log_lik(v_params = sample.prior(n_samp = 2))
+#' }
 #' @export
-log_lik <- function(v_params){ # User defined
+log_lik <- function(v_params,
+                    l_params_all = load_all_params()){ # User defined
   if(is.null(dim(v_params))) { # If vector, change to matrix
     v_params <- t(v_params) 
   }
   
   n_samp <- nrow(v_params)
+  v_target_names <- c("Surv", "Prev", "PropSick")
+  n_target       <- length(v_target_names)
   v_llik <- matrix(0, nrow = n_samp, ncol = n_target) 
-  colnames(v_llik) <- c("Surv", "Prev", "PropSick")
+  colnames(v_llik) <- v_target_names
   v_llik_overall <- numeric(n_samp)
   for(j in 1:n_samp) { # j=1
     jj <- tryCatch( { 
@@ -245,13 +258,15 @@ log_post <- function(v_params) {
 #' @return 
 #' A scalar (or vector) with posterior values.
 #' @examples
-#' v_param_names  <- c("p_S1S2", "hr_S1", "hr_S2")
-#' n_param        <- length(v_param_names)
-#' v_lb <- c(p_S1S2 = 0.01, hr_S1 = 1.0, hr_S2 = 5)  # lower bound
-#' v_ub <- c(p_S1S2 = 0.50, hr_S1 = 4.5, hr_S2 = 15) # upper bound
-#' v_target_names <- c("Surv", "Prev", "PropSick")
-#' n_target       <- length(v_target_names)
-#' posterior(v_params = sample.prior(n_samp = 5))
+#' \dontrun{
+#'  v_param_names  <- c("p_S1S2", "hr_S1", "hr_S2")
+#'  n_param        <- length(v_param_names)
+#'  v_lb <- c(p_S1S2 = 0.01, hr_S1 = 1.0, hr_S2 = 5)  # lower bound
+#'  v_ub <- c(p_S1S2 = 0.50, hr_S1 = 4.5, hr_S2 = 15) # upper bound
+#'  v_target_names <- c("Surv", "Prev", "PropSick")
+#'  n_target       <- length(v_target_names)
+#'  posterior(v_params = sample.prior(n_samp = 5))
+#' }
 #' @export
 posterior <- function(v_params) { 
   v_posterior <- exp(log_post(v_params)) 

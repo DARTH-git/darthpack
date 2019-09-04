@@ -18,12 +18,12 @@ knitr::opts_chunk$set(
 ```
 
 ```{r, include = FALSE, warning = FALSE}
-library(knitr)
+suppressWarnings(library(knitr))
 # https://haozhu233.github.io/kableExtra/awesome_table_in_html.html
 library(kableExtra)
-library(dplyr)
+suppressWarnings(library(dplyr))
 library(reshape2)
-library(ggplot2)
+suppressWarnings(library(ggplot2))
 library(png)
 library(darthpack)
 ### Load parameters

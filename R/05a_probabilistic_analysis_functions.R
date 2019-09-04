@@ -15,7 +15,6 @@
 #' @export
 generate_psa_params <- function(n_sim = 1000, seed = 20190220){ # User defined
   ## Load calibrated parameters
-  data("m_calib_post")
   n_sim <- nrow(m_calib_post)
   set_seed <- seed
   df_psa_params <- data.frame(
