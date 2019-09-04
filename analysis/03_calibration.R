@@ -114,7 +114,7 @@ df_posterior_summ
 ### Save summary statistics of posterior distribution
 ## As .RData
 save(df_posterior_summ, 
-     file = "tables/03_summary_posterior.RData")
+     file = "data/03_summary_posterior.RData")
 ## As .csv
 write.csv(df_posterior_summ, 
           file = "tables/03_summary_posterior.csv", 

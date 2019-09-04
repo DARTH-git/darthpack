@@ -5,6 +5,7 @@ vignette: >
   %\VignetteIndexEntry{dd-calibration}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+tables: true
 bibliography:
 - book.bib
 - packages.bib  
@@ -18,7 +19,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r, include = FALSE, warning = FALSE}
-suppressWarnings(library(knitr))
+library(knitr)
 # https://haozhu233.github.io/kableExtra/awesome_table_in_html.html
 library(kableExtra)
 suppressWarnings(library(dplyr))
@@ -46,10 +47,16 @@ Once we make sure this code works, we specify the calibration parameters in sect
 
 In the next section, _03.3.2 Run IMIS algorithm_, we calibrate the Sick-Sicker model with the IMIS algorithm. For this case-study, we assume a normal likelihood and uniform priors. For a more detailed description of IMIS for Bayesian calibration, different likelihood functions and prior distributions, we refer the reader to the tutorial for Bayesian calibration by Menzies et al. [@Menzies2017]. We use the `IMIS` function from the `IMIS` package that calls the functions `likelihood`, `sample.prior` and `prior`, to draw samples from the posterior distribution [@IMIS]. The functions are specified in the *03_calibration_functions.R* file in the `R` folder. For the `IMIS` function, we specify the incremental sample size at each iteration of IMIS, the desired posterior sample size at the resample stage, the maximum number of iterations in IMIS and the number of optimizers which could be 0. The function returns a list, which we call `l_fit_imis`, with the posterior samples, the diagnostic statistics at each IMIS iteration and the centers of Gaussian components [@IMIS]. We store the posterior samples in the matrix `m_calib_post`. 
 
-We then explore these posterior distributions in section _03.4 Exploring posterior distribution_. We start by estimating the posterior mean, median and 95% credible interval, the mode and the maximum-a-posteriori (MAP). All for these summary statistics are combined in a dataframe called `df_posterior_summ`. Table \@ref(tab:SummaryCal) shows the summary statistics of the posterior distribution. 
-```{r SummaryCal, eval = TRUE, echo = FALSE, message=F, warning=F, cache=F}
-load("../tables/03_summary_posterior.RData")
-knitr::kable(df_posterior_summ[, -1], caption = "Summary statistics of the posterior distribution", format = "latex") # create a table 
+We then explore these posterior distributions in section _03.4 Exploring posterior distribution_. We start by estimating the posterior mean, median and 95% credible interval, the mode and the maximum-a-posteriori (MAP). All for these summary statistics are combined in a dataframe called `df_posterior_summ`. Table \@ref(tab:summarycal) shows the summary statistics of the posterior distribution. 
+
+```{r summarycal, eval = TRUE, echo = FALSE, message=F, warning=F, cache=F}
+# load("../tables/03_summary_posterior.RData")
+tab <- df_posterior_summ[, -1]
+knitr::kable(tab, 
+             caption = "Summary statistics of the posterior distribution", 
+             format = "html") %>% 
+  kable_styling(latex_options = c("hold_position")) # create a table 
+
 ``` 
 
 In section _03.4.2 Visualization of posterior distribution_, we generate a pairwise scatter plot of the calibrated parameters (Figure \@ref(fig:03-posterior-distribution-marginal)) and a 3D scatter plot of the joint posterior distribution (Figure \@ref(fig:Posterior-distribution-joint)). These figures are saved in the *figs* directory.

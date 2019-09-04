@@ -97,7 +97,7 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
+      </header><script src="dd-calibration_files/kePrint-0.0.1/kePrint.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>03 Calibration</h1>
@@ -140,13 +140,98 @@
 <span class="co">#&gt;                 PropSicker = v_prop_S2[c(11, 21, 31)])</span>
 <span class="co">#&gt;   return(l_out)</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x7fe979c3aa88&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x7fc2175544a8&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:darthpack&gt;</span></code></pre></div>
 <p>This function is informed by two argument <code>v_params_calib</code> and <code>l_params_all</code>. The vector <code>v_params_calib</code> contains the values of the three parameters of interest. The list <code>l_params_all</code> contains all parameters of the decision model. The placeholder values are replaced by <code>v_params_calib</code> and with these values the model is evaluated. Model evaluation takes place by running the <code>decision_model</code> function, described in component 02. The result in a new list with output of the model corresponding to the parameter values in the <code>v_params_calib</code>. With this new decision model output, the overall survival, disease prevalence and the proportion of Sicker in the Sick and Sicker states are calculated. The estimated values for these epidemiological outcomes at different timepoints are combined in a list called <code>l_out</code> produced but the <code>calibration_out</code>.</p>
 <p>Once we make sure this code works, we specify the calibration parameters in section <em>03.3.1 Specify calibration parameters</em>. These include setting the seed for the random number generation, specifying the number of random samples to obtain from the calibrated posterior distribution, the name of the input parameters and the range of these parameters that will inform the prior distributions of the calibrated parameters, and the name of the calibration targets: <code>Surv</code>, <code>Prev</code>, <code>PropSick</code>.</p>
 <p>In the next section, <em>03.3.2 Run IMIS algorithm</em>, we calibrate the Sick-Sicker model with the IMIS algorithm. For this case-study, we assume a normal likelihood and uniform priors. For a more detailed description of IMIS for Bayesian calibration, different likelihood functions and prior distributions, we refer the reader to the tutorial for Bayesian calibration by Menzies et al. <span class="citation">(Menzies et al. 2017)</span>. We use the <code>IMIS</code> function from the <code>IMIS</code> package that calls the functions <code>likelihood</code>, <code>sample.prior</code> and <code>prior</code>, to draw samples from the posterior distribution <span class="citation">(A. Raftery and Le Bao 2012)</span>. The functions are specified in the <em>03_calibration_functions.R</em> file in the <code>R</code> folder. For the <code>IMIS</code> function, we specify the incremental sample size at each iteration of IMIS, the desired posterior sample size at the resample stage, the maximum number of iterations in IMIS and the number of optimizers which could be 0. The function returns a list, which we call <code>l_fit_imis</code>, with the posterior samples, the diagnostic statistics at each IMIS iteration and the centers of Gaussian components <span class="citation">(A. Raftery and Le Bao 2012)</span>. We store the posterior samples in the matrix <code>m_calib_post</code>.</p>
-We then explore these posterior distributions in section <em>03.4 Exploring posterior distribution</em>. We start by estimating the posterior mean, median and 95% credible interval, the mode and the maximum-a-posteriori (MAP). All for these summary statistics are combined in a dataframe called <code>df_posterior_summ</code>. Table @ref(tab:SummaryCal) shows the summary statistics of the posterior distribution.
-
+<p>We then explore these posterior distributions in section <em>03.4 Exploring posterior distribution</em>. We start by estimating the posterior mean, median and 95% credible interval, the mode and the maximum-a-posteriori (MAP). All for these summary statistics are combined in a dataframe called <code>df_posterior_summ</code>. Table @ref(tab:summarycal) shows the summary statistics of the posterior distribution.</p>
+<table class="table table">
+<caption>
+Summary statistics of the posterior distribution
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+<th style="text-align:right;">
+2.5%
+</th>
+<th style="text-align:right;">
+50%
+</th>
+<th style="text-align:right;">
+97.5%
+</th>
+<th style="text-align:right;">
+MAP
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+p_S1S2
+</td>
+<td style="text-align:right;">
+0.1076682
+</td>
+<td style="text-align:right;">
+0.0956305
+</td>
+<td style="text-align:right;">
+0.107546
+</td>
+<td style="text-align:right;">
+0.1201152
+</td>
+<td style="text-align:right;">
+0.1073784
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hr_S1
+</td>
+<td style="text-align:right;">
+2.7150701
+</td>
+<td style="text-align:right;">
+1.1119686
+</td>
+<td style="text-align:right;">
+2.724407
+</td>
+<td style="text-align:right;">
+4.3357750
+</td>
+<td style="text-align:right;">
+2.4223530
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hr_S2
+</td>
+<td style="text-align:right;">
+9.6366087
+</td>
+<td style="text-align:right;">
+7.2323662
+</td>
+<td style="text-align:right;">
+9.660728
+</td>
+<td style="text-align:right;">
+12.1053631
+</td>
+<td style="text-align:right;">
+9.7262516
+</td>
+</tr>
+</tbody>
+</table>
 <p>In section <em>03.4.2 Visualization of posterior distribution</em>, we generate a pairwise scatter plot of the calibrated parameters (Figure @ref(fig:03-posterior-distribution-marginal)) and a 3D scatter plot of the joint posterior distribution (Figure @ref(fig:Posterior-distribution-joint)). These figures are saved in the <em>figs</em> directory.</p>
 <div class="figure">
 <img src="../figs/03_posterior_distribution_joint.png" alt="Joint posterior distribution" width="100%"><p class="caption">
