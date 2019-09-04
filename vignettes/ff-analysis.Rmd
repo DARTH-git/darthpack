@@ -45,7 +45,7 @@ devtools::install_github("DARTH-git/dampack")
 ```
 
 ## 05a Probabilistic analysis {#Probabilistic-analysis} 
-In this subcomponent, we evaluate decision uncertainty by propagating the uncertainty through the CEA using probabilistic sensitivity analysis (PSA). Until now we used the parameter values as described in Table \@ref(tab:parameters). However, we are uncertain about these values. Most of these input parameters are defined by probability distribution as described in Table \@ref(tab:parameters-PSA). 
+In this subcomponent, we evaluate decision uncertainty by propagating the uncertainty through the CEA using probabilistic sensitivity analysis (PSA). Until now we used the parameter values as described in Table 1.1 of the *01 Model inputs* section. However, we are uncertain about these values. Most of these input parameters are defined by probability distribution as described in Table \@ref(tab:parameters-PSA). 
 
 Table: (\#tab:parameters-PSA) Description of parameters with their R name and distribution.
 
