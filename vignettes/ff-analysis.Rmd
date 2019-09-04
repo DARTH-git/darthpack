@@ -1,6 +1,12 @@
 ---
 title: "05 Analysis"
-output: rmarkdown::html_vignette
+output:
+  bookdown::html_document2
+# output:
+#   rmarkdown::html_vignette:
+#     fig_caption: yes
+pkgdown:
+  as_is: true
 vignette: >
   %\VignetteIndexEntry{ff-analysis}
   %\VignetteEngine{knitr::rmarkdown}

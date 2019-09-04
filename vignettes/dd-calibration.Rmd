@@ -1,6 +1,10 @@
 ---
 title: "03 Calibration"
-output: rmarkdown::html_vignette
+# output: rmarkdown::html_vignette
+output:
+  bookdown::html_document2
+pkgdown:
+  as_is: true
 vignette: >
   %\VignetteIndexEntry{dd-calibration}
   %\VignetteEngine{knitr::rmarkdown}

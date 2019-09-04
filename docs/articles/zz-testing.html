@@ -113,7 +113,7 @@
 <p>In this section, we use <code>testthat</code> package to demonstrate unit testing <span class="citation">(Wickham 2011)</span>. We first show the test structure used in the <code>testthat</code> package. We then demonstrate some unit tests for the functions in <code>02_simulation_model_functions.R</code>.</p>
 <div id="test-structure" class="section level1">
 <h1 class="hasAnchor">
-<a href="#test-structure" class="anchor"></a>Test structure</h1>
+<a href="#test-structure" class="anchor"></a><span class="header-section-number">1</span> Test structure</h1>
 <p>A test file is a <code>.R</code> script and is normally stored separately from the source code. In the development of the Sick-Sicker project, we create a <code>tests</code> folder for all the test files. In practice, a developer often creates a test file corresponding to a file of source code. Because the functionalities in an R script are usually related, the tests in the corresponding test file naturally go together. A test file consists of three components from the lowest to the highest levels: <span style="color:blue">expectation</span>, <span style="color:blue">test</span> and <span style="color:blue">context</span> <span class="citation">(Wickham 2011)</span>.</p>
 <ul>
 <li>In general, an expectation is to verify whether or not part of a function or a process works as expected.</li>
@@ -159,7 +159,7 @@ test_that("MIB's real name", {
 </div>
 <div id="example" class="section level1">
 <h1 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h1>
+<a href="#example" class="anchor"></a><span class="header-section-number">2</span> Example</h1>
 <p>The file <code>02_simulation_model_functions.R</code> includes function <code>decision_model</code>, which is the core code of the Markov model in the Sick-Sicker study. We show some example tests for <code>decision_model</code> here. In the following code, we test whether invalid input data evokes certain error message.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">context</span>(<span class="st">"testing 02_simulation_model_functions.R"</span>)
 
@@ -224,16 +224,16 @@ l_params_all &lt;-<span class="st"> </span><span class="kw"><a href="../referenc
 </div>
 <div id="run-tests" class="section level1">
 <h1 class="hasAnchor">
-<a href="#run-tests" class="anchor"></a>Run tests</h1>
+<a href="#run-tests" class="anchor"></a><span class="header-section-number">3</span> Run tests</h1>
 <p>There are multiple ways to run test files with <code>testthat</code> in R.</p>
 <div id="run-each-file-directly" class="section level2">
 <h2 class="hasAnchor">
-<a href="#run-each-file-directly" class="anchor"></a>Run each file directly</h2>
+<a href="#run-each-file-directly" class="anchor"></a><span class="header-section-number">3.1</span> Run each file directly</h2>
 <p>In this case, the library <code>testthat</code> should be attached before running a test file. If all tests in the file passed (that is, all expectations are met), no error messages are raised in the console. However, sometimes the developer might loss count of the number of tests or loss track of the type of tests. This method is not informative in informing how many tests passed, and where the error occurs if tests failed.</p>
 </div>
 <div id="run-test-files-at-once-for-an-r-project-package" class="section level2">
 <h2 class="hasAnchor">
-<a href="#run-test-files-at-once-for-an-r-project-package" class="anchor"></a>Run test files at once for an R project / package</h2>
+<a href="#run-test-files-at-once-for-an-r-project-package" class="anchor"></a><span class="header-section-number">3.2</span> Run test files at once for an R project / package</h2>
 <p>For an R package, the developer can run all the test files using shortcut <code>Ctrl/Cmd+Shift+T</code> or type R command <code><a href="https://www.rdocumentation.org/packages/testthat/topics/test_dir">testthat::test_dir("path/to/the/tests/folder")</a></code> in the console. The shortcut does not work for an R project. RStudio will then provide a summary of passed, failed, and skipped tests.</p>
 <div class="figure">
 <img src="../vignettes/test_summary.png" width="500">
@@ -253,21 +253,6 @@ l_params_all &lt;-<span class="st"> </span><span class="kw"><a href="../referenc
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-        <div id="tocnav">
-      <h2 class="hasAnchor">
-<a href="#tocnav" class="anchor"></a>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-<li><a href="#test-structure">Test structure</a></li>
-      <li><a href="#example">Example</a></li>
-      <li>
-<a href="#run-tests">Run tests</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#run-each-file-directly">Run each file directly</a></li>
-      <li><a href="#run-test-files-at-once-for-an-r-project-package">Run test files at once for an R project / package</a></li>
-      </ul>
-</li>
-      <li><a href="#references">References</a></li>
-      </ul>
-</div>
       </div>
 
 </div>

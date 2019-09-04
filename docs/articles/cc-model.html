@@ -112,7 +112,7 @@
     
 <div id="simulation" class="section level1">
 <h1 class="hasAnchor">
-<a href="#simulation" class="anchor"></a>Decision model</h1>
+<a href="#simulation" class="anchor"></a><span class="header-section-number">1</span> Decision model</h1>
 <p>In this second component, we build the backbone of the decision analysis: the implementation of the model. This component is performed by the <em>02_decision_model.R</em> script. This file itself is not very large. It simply loads some packages and sources the input from component 01 and in addition it runs the <code>decision_model</code> function that is used to capture the dynamic process of the Sick-Sicker example and stores the output. The output of the model is the traditional cohort trace. The trace describes how the cohort is distributed among the different health states over time and is plotted at the end of this script.</p>
 <p>The function <code>decision_model</code> is defined in the <em>02_decision_model_functions.R</em> file in the <code>R</code> folder. As described in the paper, constructing a model as a function at this stage facilitates subsequent stages of the model development and analysis. This since these processes will all call the same model function, but pass different parameter values and/or calculate different final outcomes based on the model outputs. In the next part, we will describe the code within the function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print.function</a></span>(decision_model) <span class="co"># print the code of the function</span>
@@ -185,7 +185,7 @@
 <span class="co">#&gt;   }</span>
 <span class="co">#&gt;   )</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x7f8dc0a425d8&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x7fa33c63cba0&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:darthpack&gt;</span></code></pre></div>
 <p>The <code>decision_model</code> function is informed by the argument <code>l_params_all</code>. Via this argument we give the function a list with all parameters of the decision model. For the Sick-Sicker model, these parameters are stored in the list <code>l_params_all</code>, which we passed into the function as shown below.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l_out_stm &lt;-<span class="st"> </span><span class="kw"><a href="../reference/decision_model.html">decision_model</a></span>(<span class="dt">l_params_all =</span> l_params_all) <span class="co"># run the function</span></code></pre></div>
@@ -239,10 +239,11 @@ l_out_stm<span class="op">$</span>a_P[, , l_params_all<span class="op">$</span>n
 <span class="co">#&gt; 73 0.003460336 0.0007552206 5.436484e-05 0.9957301</span>
 <span class="co">#&gt; 74 0.002289594 0.0004937081 3.298632e-05 0.9971837</span>
 <span class="co">#&gt; 75 0.001475636 0.0003151589 1.985106e-05 0.9981894</span></code></pre></div>
-<p>Using the code below, we can graphically show the model dynamics by plotting the cohort trace. Figure @ref(fig:Sick-Sicker-Trace) shows the distribution of the cohort among the different health states at each time point.</p>
+<p>Using the code below, we can graphically show the model dynamics by plotting the cohort trace. Figure <a href="#fig:Sick-Sicker-Trace">1.1</a> shows the distribution of the cohort among the different health states at each time point.</p>
 <div class="figure">
-<img src="cc-model_files/figure-html/Sick-Sicker-Trace-1.png" alt="Cohort trace of the Sick-Sicker cohort model" width="700"><p class="caption">
-Cohort trace of the Sick-Sicker cohort model
+<span id="fig:Sick-Sicker-Trace"></span>
+<img src="cc-model_files/figure-html/Sick-Sicker-Trace-1.png" alt="Cohort trace of the Sick-Sicker cohort model" width="672"><p class="caption">
+Figure 1.1: Cohort trace of the Sick-Sicker cohort model
 </p>
 </div>
 </div>
@@ -253,14 +254,6 @@ Cohort trace of the Sick-Sicker cohort model
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-        <div id="tocnav">
-      <h2 class="hasAnchor">
-<a href="#tocnav" class="anchor"></a>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-<li><a href="#simulation">Decision model</a></li>
-      <li><a href="#references">References</a></li>
-      </ul>
-</div>
       </div>
 
 </div>

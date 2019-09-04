@@ -1,6 +1,10 @@
 ---
 title: "02 Decision model"
-output: rmarkdown::html_vignette
+# output: rmarkdown::html_vignette
+output:
+  bookdown::html_document2
+pkgdown:
+  as_is: true
 vignette: >
   %\VignetteIndexEntry{cc-model}
   %\VignetteEngine{knitr::rmarkdown}
