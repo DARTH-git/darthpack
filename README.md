@@ -6,11 +6,13 @@ darthpack <img src='man/figures/logo.png' align="right" height="139" />
 =======================================================================
 
 <!-- <img src="docs/figs/under_const.jpeg" align="center" alt="" width="360" /> -->
-[`darthpack`](https://github.com/DARTH-git/darthpack) is an R package that showcases the [Decision Analysis in R for Technologies in Health (DARTH)](https://darthworkgroup.com) coding framework to construct model-based cost-effectiveness analysis in R. [`darthpack`](https://github.com/DARTH-git/darthpack) is part of the following manuscript:
+[`darthpack`](https://github.com/DARTH-git/darthpack) is an R package that showcases the [Decision Analysis in R for Technologies in Health (DARTH)](https://darthworkgroup.com) coding framework to construct model-based cost-effectiveness analysis in R. The main website of `darthpack` can be [found here](https://darth-git.github.io/darthpack/).
+
+[`darthpack`](https://github.com/DARTH-git/darthpack) is part of the following manuscript:
 
 -   Alarid-Escudero F, Krijkamp E, Pechlivanoglou P, Jalal H, Kao SY, Yang A, Enns EA. "A need for change! A coding framework for improving transparency in decision modeling". PharmacoEconomics 2019. <http://dx.doi.org/10.1007/s40273-019-00837-x> (In press)
 
-The main website of `darthpack` can be [found here](https://darth-git.github.io/darthpack/).
+The release that accompanies the published article has been archived in zenodo: <https://zenodo.org/record/3445451>.
 
 Preliminaries
 =============
