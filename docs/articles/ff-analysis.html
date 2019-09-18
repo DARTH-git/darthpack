@@ -239,7 +239,7 @@ devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumen
 <span class="co">#&gt;   )</span>
 <span class="co">#&gt;   return(df_psa_params)</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x7fd0d6aa7d00&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x7f813b9919c8&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:darthpack&gt;</span></code></pre></div>
 <p>The function returns the <code>df_psa_input</code> dataframe with a PSA dataset of the input parameters. With this dataframe we can run the PSA to produce distributions of costs, effectiveness and NMB. The PSA is performed by the <em>05a_probabilistic_analysis.R</em> script. As shown in the code below, the <code>df_psa_input</code> dataframe is used by the <code>update_param_list</code> function to generate the corresponding list of parameters for the PSA. For each simulation, we perform three steps. First, the list of parameters is updated by the <code>update_param_list</code> function. Second, the model is executed by the <code>calculate_ce_out</code> function using the updated parameter list and third, the dataframes <code>df_c</code> and <code>df_e</code> store the estimated cost and effects, respectively. The final part of this loop is to satisfy the modeler when waiting on the results, by displaying the simulation progress.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n_sim){ 
@@ -383,7 +383,7 @@ Figure 1.8: Two-way sensitivity analysis (TWSA).
 <span class="co">#&gt;   l_params_all &lt;- modifyList(l_params_all, params_updated) #update the values</span>
 <span class="co">#&gt;   return(l_params_all)</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x7fd0d993b268&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x7f813dd45930&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:darthpack&gt;</span></code></pre></div>
 <p>The first argument of the function, called <code>l_params_all</code>, is a list with all the parameters of decision model. The second argument, <code>params_updated</code>, is an object with parameters for which values need to be updated. The function returns the list <code>l_params_all</code> with updated values.</p>
 <p>In the <em>05b_deterministic_analysis.R</em> script we execute the <code>update_param_list</code> function for our case-study, resulting in the list <code>l_params_basecase</code> where the placeholder values for <code>p_S1S2</code>, <code>hr_S1</code> and <code>hr_S2</code> are replaced by the calibration estimates.</p>
@@ -445,7 +445,7 @@ Figure 1.8: Two-way sensitivity analysis (TWSA).
 <span class="co">#&gt;   }</span>
 <span class="co">#&gt;   )</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x7fd0da0dfee0&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x7f813d2aca98&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:darthpack&gt;</span></code></pre></div>
 <p>After calculating the discount weights, this function runs the simulation model using the previously described function <code>decision_model</code> in the <em>02_simulation_model_function.R</em> script. Inside the function <code>calculate_ce_out</code>, the simulation model is run for both the treatment, <code>l_model_out_trt</code>, and no treatment, <code>l_model_out_no_trt</code>, strategies of the Sick-Sicker model. Running it for both treatment strategies is done for illustration purposes. In this case-study, the resulting cohort traces are identical and we could have executed it only once.</p>
 <p>In the second part of the function we create multiple vectors for both the cost and effects of both strategies. These vectors multiply the cohort trace to compute the cycle-specific rewards. This results in vectors of total costs (<code>v_tc</code>) and total effects (<code>v_tu</code>) per cycle. By multiplying these vectors with the vectors with the discount weights for costs (<code>v_dwc</code>) and effects (<code>v_dwe</code>) we get the total discounted mean costs (<code>tc_d_no_trt</code> and <code>tc_d_trt</code>) and QALYs (<code>tu_d_no_trt</code> and <code>tu_d_trt</code>) for both strategies. These values are used in the calculation of the NMB. Finally, the total discounted costs, effectiveness and NMB are combined in the dataframe <code>df_ce</code>. The results for our case-study are shown below.</p>
