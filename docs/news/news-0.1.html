@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PSA object of the cost-effectiveness analysis decision model — l_psa • darthpack</title>
+<title>Version 0.1 • darthpack</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,7 @@
 
 
 
-<meta property="og:title" content="PSA object of the cost-effectiveness analysis decision model — l_psa" />
-
-<meta property="og:description" content="An object of class psa with PSA inputs and outputs for the Sick-Sicker model." />
+<meta property="og:title" content="Version 0.1" />
 
 <meta property="og:image" content="https://darth-git.github.io/darthpack/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -52,7 +50,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-topic">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -138,63 +136,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>PSA object of the cost-effectiveness analysis decision model</h1>
-    <small class="dont-index">Source: <a href='https://github.com/DARTH-git/darthpack/blob/master/R/data_psa_object.R'><code>R/data_psa_object.R</code></a></small>
-    <div class="hidden name"><code>l_psa.Rd</code></div>
-    </div>
-
-    <div class="ref-description">
-    
-    <p>An object of class <code>psa</code> with PSA inputs and outputs for the Sick-Sicker model.</p>
-    
-    </div>
-
-    <pre class="usage"><span class='no'>l_psa</span></pre>
-        
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
-
-    <p>A list with 11 rows and 5 variables:</p><dl class='dl-horizontal'>
-<dt>n_strategies</dt><dd><p>Number of strategies.</p></dd>
-<dt>strategies</dt><dd><p>Strategy names.</p></dd>
-<dt>n_sim</dt><dd><p>Number of PSA samples.</p></dd>
-<dt>cost</dt><dd><p>A data frame with <code>n_sim</code> rows and <code>n_strategies</code> columns with the cost per strategy for all PSA samples.</p></dd>
-<dt>effectiveness</dt><dd><p>A data frame with <code>n_sim</code> rows and <code>n_strategies</code> columns with the effectiveness per strategy for all PSA samples.</p></dd>
-<dt>parameters</dt><dd><p>Survival target. A data frame of input parameters with
-<code>n_sim</code> rows and 15 columns:
-<ul>
-<li><p>c_S1: Annual cost for sick individuals in S1</p></li>
-<li><p>c_S2: Annual cost for sick individuals in S2</p></li>
-<li><p>c_D: Annual cost for dead individuals</p></li>
-<li><p>c_Trt: Additional costs of sick individuals treated in S1 or S2</p></li>
-<li><p>u_H: Utility for healthy individuals</p></li>
-<li><p>u_S1: Utility for sick individuals in S1</p></li>
-<li><p>u_S2: Utility for sick individuals in S1</p></li>
-<li><p>u_D: Utility for dead individuals</p></li>
-<li><p>u_Trt: Utility for treated individuals in S1</p></li>
-<li><p>p_HS1: Annual transition probability of disease onset (H to S1)</p></li>
-<li><p>p_S1H: Annual transition probability of recovery (S1 to H)</p></li>
-<li><p>p_S1S2: Annual transition probability of disease progression (S1 to S2)</p></li>
-<li><p>hr_S1: Hazard rate ratio of death in S1 vs H</p></li>
-<li><p>hr_S2: Hazard rate ratio of death in S2 vs H</p></li>
-<li><p>n_age_init: Initial age of the population</p></li>
-<li><p>n_t: Time horizon in years</p></li>
-<li><p>d_c: Annual discount rate for costs</p></li>
-<li><p>d_e: Annual discount rate for effectiveness</p></li>
-</ul></p></dd>
-<dt>parnames</dt><dd><p>A vector of strings with parameter names.</p></dd>
-<dt>currency</dt><dd><p>A string with the currency.</p></dd>
-</dl>
-    
-
-  </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
+      <h1>Changelog <small>0.1</small></h1>
       
-      <li><a href="#format">Format</a></li>
-          </ul>
+    </div>
 
+    <div id="darthpack-0-1-0" class="section level1">
+<h1 class="page-header">
+<a href="#darthpack-0-1-0" class="anchor"></a>darthpack 0.1.0</h1>
+<ul>
+<li>Version included in following manuscript:
+<ul>
+<li>Alarid-Escudero F, Krijkamp E, Pechlivanoglou P, Jalal H, Kao SY, Yang A, Enns EA. “A need for change! A coding framework for improving transparency in decision modeling”. PharmacoEconomics 2019. <a href="http://dx.doi.org/10.1007/s40273-019-00837-x" class="uri">http://dx.doi.org/10.1007/s40273-019-00837-x</a> (In press)</li>
+</ul>
+</li>
+<li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
+</ul>
+</div>
   </div>
+
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <div id="tocnav">
+      <h2>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+        <li><a href="#darthpack-0-1-0">0.1.0</a></li>
+      </ul>
+    </div>
+  </div>
+
 </div>
 
       <footer>

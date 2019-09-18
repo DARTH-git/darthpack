@@ -11,7 +11,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="02 Decision model">
 <meta property="og:description" content="">
-<meta property="og:image" content="/logo.png">
+<meta property="og:image" content="https://darth-git.github.io/darthpack/logo.png">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -78,6 +78,9 @@
       <a href="../articles/zz-testing.html">Testing</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -185,7 +188,7 @@
 <span class="co">#&gt;   }</span>
 <span class="co">#&gt;   )</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x7f8259cc3ea8&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x7fefd3911ea8&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:darthpack&gt;</span></code></pre></div>
 <p>The <code>decision_model</code> function is informed by the argument <code>l_params_all</code>. Via this argument we give the function a list with all parameters of the decision model. For the Sick-Sicker model, these parameters are stored in the list <code>l_params_all</code>, which we passed into the function as shown below.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l_out_stm &lt;-<span class="st"> </span><span class="kw"><a href="../reference/decision_model.html">decision_model</a></span>(<span class="dt">l_params_all =</span> l_params_all) <span class="co"># run the function</span></code></pre></div>

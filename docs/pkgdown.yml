@@ -10,4 +10,7 @@ articles:
   ee-validation: ee-validation.html
   ff-analysis: ff-analysis.html
   zz-testing: zz-testing.html
+urls:
+  reference: https://darth-git.github.io/darthpack/reference
+  article: https://darth-git.github.io/darthpack/articles
 

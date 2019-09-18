@@ -1,3 +1,5 @@
+url: https://darth-git.github.io/darthpack
+
 reference:
 - title: "01 Model inputs"
   desc: >
@@ -93,6 +95,9 @@ reference:
   - '`m_calib_post`'
   - '`v_calib_post_map`'
   - '`l_psa`'  
+
+news:
+- one_page: false
 
 navbar:
   right:
