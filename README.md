@@ -1,10 +1,12 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+[![DOI](https://zenodo.org/badge/197059951.svg)](https://zenodo.org/badge/latestdoi/197059951)
+
 darthpack <img src='man/figures/logo.png' align="right" height="139" />
 =======================================================================
 
 <!-- <img src="docs/figs/under_const.jpeg" align="center" alt="" width="360" /> -->
-[`darthpack`](https://github.com/DARTH-git/darthpack) is an R package that showcases the [Decision Analysis in R for Technologies in Health (DARTH)](https://darthworkgroup.com) coding framework to construct model-based cost-effectiveness analysis in R. [`darthpack`](https://github.com/DARTH-git/darthpack) is part of the following manuscript accepted for publication:
+[`darthpack`](https://github.com/DARTH-git/darthpack) is an R package that showcases the [Decision Analysis in R for Technologies in Health (DARTH)](https://darthworkgroup.com) coding framework to construct model-based cost-effectiveness analysis in R. [`darthpack`](https://github.com/DARTH-git/darthpack) is part of the following manuscript:
 
 -   Alarid-Escudero F, Krijkamp E, Pechlivanoglou P, Jalal H, Kao SY, Yang A, Enns EA. "A need for change! A coding framework for improving transparency in decision modeling". PharmacoEconomics 2019. <http://dx.doi.org/10.1007/s40273-019-00837-x> (In press)
 
