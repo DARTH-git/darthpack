@@ -29,7 +29,17 @@ reference:
   - '`check_sum_of_transition_array`'
   - '`check_transition_probability`'
 - title: "03 Calibration"
-  desc: ~
+  desc: >
+    In this component, the unknown parameters of the decision model are 
+    calibrated by matching model outputs to specified calibration targets using
+    a Bayesian approach. The function `calibration_out` produces model outputs 
+    corresponding to the calibration targets. This function takes a vector of 
+    parameters that need to be calibrated and a list with all parameters of 
+    decision model and computes model outputs to be used for calibration routines.
+    We use the `IMIS` function from the `IMIS` package that calls the functions 
+    `likelihood`, `sample.prior` and `prior`, to draw samples from the posterior 
+    distribution. The functions are specified in the *03_calibration_functions.R* 
+    file in the `R` folder.
   contents:
   - '`calibration_out`'  
   - '`likelihood`'
@@ -40,15 +50,32 @@ reference:
   - '`prior`'
   - '`sample.prior`'
 - title: "04 Validation"
-  desc: ~
+  desc: >
+    In this component, the calibrated model is internally validated by 
+    comparing the predicted outputs from the model evaluated at the calibrated 
+    parameters against the calibration targets. The computation of the 
+    model-predicted outputs using the MAP estimate is done by inserting the 
+    `v_calib_post_map` data into the `calibration_out` function previously 
+    described in component *03 Calibration*. The function `data_summary` 
+    summarizes the model-predicted posterior outputs into different summary 
+    statistics, including the estimated values for survival, prevalence and the 
+    proportion of sicker individuals at cycles 10, 20 and 30. 
   contents:
   - '`data_summary`'
 - title: "05a Probabilistic analysis"
-  desc: ~
+  desc: >
+    In this subcomponent, decision uncertainty is evaluated by propagating the 
+    uncertainty through the CEA using probabilistic sensitivity analysis (PSA).
+    The function `generate_psa_params` generates a PSA dataset for all the CEA 
+    input parameters.
   contents:
   - '`generate_psa_params`'
 - title: "05b Deterministic analysis"
-  desc: ~
+  desc: >
+    This subcomponent performs a deterministic CEA, followed by some 
+    deterministic sensitivity analysis, including one-way, two-way and tornado 
+    sensitivity analyses. The function `calculate_ce_out` calculates costs and 
+    effects for a given vector of parameters using a simulation model.
   contents:
   - '`calculate_ce_out`'
   - '`owsa_det`'

@@ -200,7 +200,7 @@
       <tr>
         <th colspan="2">
           <h2 id="section--calibration" class="hasAnchor"><a href="#section--calibration" class="anchor"></a>03 Calibration</h2>
-          <p class="section-desc"></p>
+          <p class="section-desc"><p>In this component, the unknown parameters of the decision model are calibrated by matching model outputs to specified calibration targets using a Bayesian approach. The function <code>calibration_out</code> produces model outputs corresponding to the calibration targets. This function takes a vector of parameters that need to be calibrated and a list with all parameters of decision model and computes model outputs to be used for calibration routines. We use the <code>IMIS</code> function from the <code>IMIS</code> package that calls the functions <code>likelihood</code>, <code>sample.prior</code> and <code>prior</code>, to draw samples from the posterior distribution. The functions are specified in the <em>03_calibration_functions.R</em> file in the <code>R</code> folder.</p></p>
         </th>
       </tr>
       <tr>
@@ -256,7 +256,7 @@
       <tr>
         <th colspan="2">
           <h2 id="section--validation" class="hasAnchor"><a href="#section--validation" class="anchor"></a>04 Validation</h2>
-          <p class="section-desc"></p>
+          <p class="section-desc"><p>In this component, the calibrated model is internally validated by comparing the predicted outputs from the model evaluated at the calibrated parameters against the calibration targets. The computation of the model-predicted outputs using the MAP estimate is done by inserting the <code>v_calib_post_map</code> data into the <code>calibration_out</code> function previously described in component <em>03 Calibration</em>. The function <code>data_summary</code> summarizes the model-predicted posterior outputs into different summary statistics, including the estimated values for survival, prevalence and the proportion of sicker individuals at cycles 10, 20 and 30.</p></p>
         </th>
       </tr>
       <tr>
@@ -270,7 +270,7 @@
       <tr>
         <th colspan="2">
           <h2 id="section--a-probabilistic-analysis" class="hasAnchor"><a href="#section--a-probabilistic-analysis" class="anchor"></a>05a Probabilistic analysis</h2>
-          <p class="section-desc"></p>
+          <p class="section-desc"><p>In this subcomponent, decision uncertainty is evaluated by propagating the uncertainty through the CEA using probabilistic sensitivity analysis (PSA). The function <code>generate_psa_params</code> generates a PSA dataset for all the CEA input parameters.</p></p>
         </th>
       </tr>
       <tr>
@@ -284,7 +284,7 @@
       <tr>
         <th colspan="2">
           <h2 id="section--b-deterministic-analysis" class="hasAnchor"><a href="#section--b-deterministic-analysis" class="anchor"></a>05b Deterministic analysis</h2>
-          <p class="section-desc"></p>
+          <p class="section-desc"><p>This subcomponent performs a deterministic CEA, followed by some deterministic sensitivity analysis, including one-way, two-way and tornado sensitivity analyses. The function <code>calculate_ce_out</code> calculates costs and effects for a given vector of parameters using a simulation model.</p></p>
         </th>
       </tr>
       <tr>
