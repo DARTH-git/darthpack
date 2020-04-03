@@ -87,7 +87,7 @@ owsa_opt_strat(owsa = owsa_nmb)
 ggsave("figs/05b_optimal_owsa_nmb.png", width = 8, height = 6)
 
 #### 05b.6.3 Tornado plot ####
-owsa_tornado(owsa = owsa_nmb, strategy = 'Treatment')
+owsa_tornado(owsa = owsa_nmb)
 ggsave("figs/05b_tornado_Treatment_nmb.png", width = 8, height = 6)
 
 #### 05b.6.2 Two-way sensitivity analysis (TWSA) ####
