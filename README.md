@@ -12,6 +12,8 @@ darthpack <img src='man/figures/logo.png' align="right" height="139" />
 
 -   Alarid-Escudero F, Krijkamp E, Pechlivanoglou P, Jalal H, Kao SY, Yang A, Enns EA. ["A need for change! A coding framework for improving transparency in decision modeling"](https://link.springer.com/article/10.1007%2Fs40273-019-00837-x). PharmacoEconomics 2019;37(11):1329–1339. <http://dx.doi.org/10.1007/s40273-019-00837-x>
 
+- Shareable link: https://rdcu.be/bRP5h
+
 The release that accompanies the published article has been archived in zenodo: <https://zenodo.org/record/3445451>.
 
 Preliminaries
