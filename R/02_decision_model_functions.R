@@ -145,7 +145,7 @@ check_sum_of_transition_array <- function(a_P,
                                           verbose = FALSE) {
   
   valid <- (apply(a_P, 3, function(x) sum(rowSums(x))) == n_states)
-  if (!isTRUE(all_equal(as.numeric(sum(valid)), as.numeric(n_t)))) {
+  if (!isTRUE(all.equal(as.numeric(sum(valid)), as.numeric(n_t)))) {
     if(err_stop) {
       stop("This is not a valid transition Matrix")
     }
