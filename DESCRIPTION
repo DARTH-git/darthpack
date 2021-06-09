@@ -59,13 +59,13 @@ Imports:
     reshape2,
     truncnorm,
     utils,
-    IMIS,
     plotrix,
     rlang
 Suggests: 
     knitr,
     rmarkdown,
     dampack,
+    IMIS,
     ggplot2, 
     testthat,
     pkgdown,
