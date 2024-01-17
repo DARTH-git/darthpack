@@ -5,7 +5,7 @@
 # script could be modified by adding an external validation exercise.          #
 #                                                                              # 
 # Authors:                                                                     #
-#     - Fernando Alarid-Escudero, PhD, <fernando.alarid@cide.edu>              # 
+#     - Fernando Alarid-Escudero, PhD, <falarid@stanford.edu>                  # 
 #     - Eline Krijkamp, MS                                                     #
 #     - Petros Pechlivanoglou, PhD                                             #
 #     - Hawre Jalal, MD, PhD                                                   #

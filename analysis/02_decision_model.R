@@ -3,7 +3,7 @@
 # state-transition model (STM)                                                 #
 #                                                                              # 
 # Authors:                                                                     #
-#     - Fernando Alarid-Escudero, PhD, <fernando.alarid@cide.edu>              # 
+#     - Fernando Alarid-Escudero, PhD, <falarid@stanford.edu>                  # 
 #     - Eline Krijkamp, MS                                                     #
 #     - Petros Pechlivanoglou, PhD                                             #
 #     - Hawre Jalal, MD, PhD                                                   #
