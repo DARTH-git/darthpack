@@ -1,10 +1,10 @@
 ################################################################################ 
 # This script calibrates the Sick-Sicker state-transition model (STM) to       #
 # epidemiological targets using a Bayesian approach with the Incremental       #
-# Mixture Importance Samping (IMIS) algorithm                                 #
+# Mixture Importance Sampling (IMIS) algorithm                                 #
 #                                                                              # 
 # Authors:                                                                     #
-#     - Fernando Alarid-Escudero, PhD, <fernando.alarid@cide.edu>              # 
+#     - Fernando Alarid-Escudero, PhD, <falarid@stanford.edu>                  # 
 #     - Eline Krijkamp, MS                                                     #
 #     - Petros Pechlivanoglou, PhD                                             #
 #     - Hawre Jalal, MD, PhD                                                   #
@@ -18,6 +18,9 @@ rm(list = ls()) # to clean the workspace
 
 #### 03.1 Load packages, data and functions ####
 #### 03.1.1 Load packages and functions ####
+# Install IMIS from CRAN archive
+# devtools::install_version("IMIS", version = "0.1", repos = "http://cran.us.r-project.org")
+library(IMIS)
 # Dependencies have been loaded with 'darthpack'
 
 #### 03.1.2 Load inputs ####
