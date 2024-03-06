@@ -25,6 +25,34 @@ knitr::opts_chunk$set(
 
 The release that accompanies the published article has been archived in zenodo: https://zenodo.org/record/3445451.
 
+To learn more on Markov/cohort state-transition model in R, we recommend reading our introductory tutorial on **time-independent** cSTMs in R:
+
+- Alarid-Escudero F, Krijkamp EM, Enns EA, Yang A, Hunink MGM,
+  Pechlivanoglou P, Jalal H. [An Introductory Tutorial on Cohort
+  State-Transition Models in R Using a Cost-Effectiveness Analysis
+  Example](https://journals.sagepub.com/doi/full/10.1177/0272989X221103163).
+  [Medical Decision Making](https://journals.sagepub.com/home/mdm),
+  2023;43(1):3-20. <https://doi.org/10.1177/0272989X221103163>,
+
+our intermediate tutorial on **time-dependent** cohort state-transition models (cSTMs) in R:
+
+- Alarid-Escudero F, Krijkamp EM, Enns EA, Yang A, Hunink MGM,
+  Pechlivanoglou P, Jalal H. [A Tutorial on Time-Dependent Cohort
+  State-Transition Models in R using a Cost-Effectiveness Analysis
+  Example](https://journals.sagepub.com/doi/full/10.1177/0272989X221121747).
+  [Medical Decision Making](https://journals.sagepub.com/home/mdm).
+  2023;43(1):21-41. <https://doi.org/10.1177/0272989X221121747>,
+
+and understanding the use of multidimensional arrays to represent cSTM
+dynamics in R described in:
+
+- Krijkamp EM, Alarid-Escudero F, Enns EA, Pechlivanoglou P, Hunink MGM,
+  Yang A, Jalal HJ. [A multidimensional array representation of
+  state-transition model
+  dynamics](https://journals.sagepub.com/doi/full/10.1177/0272989X19893973).
+  [Medical Decision Making](https://journals.sagepub.com/home/mdm),
+  2020;40(2):242-248. <https://doi.org/10.1177/0272989X19893973>
+
 # Preliminaries
 - Install [RStudio](https://www.rstudio.com/products/rstudio/download/)
 - Install `devtools` to install `darthpack` as a package and modify it to generate your own package
