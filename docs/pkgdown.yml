@@ -1,5 +1,5 @@
-pandoc: 1.19.2.1
-pkgdown: 1.3.0
+pandoc: 3.6.2
+pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
   aa-introduction: aa-introduction.html
@@ -10,7 +10,7 @@ articles:
   ee-validation: ee-validation.html
   ff-analysis: ff-analysis.html
   zz-testing: zz-testing.html
+last_built: 2026-09-13T17:01Z
 urls:
   reference: https://darth-git.github.io/darthpack/reference
   article: https://darth-git.github.io/darthpack/articles
-

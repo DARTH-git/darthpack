@@ -3,7 +3,7 @@
 
 [![DOI](https://zenodo.org/badge/197059951.svg)](https://zenodo.org/badge/latestdoi/197059951)
 
-# darthpack <img src='man/figures/logo.png' align="right" height="139" />
+# darthpack <img src='man/figures/logo.png' align="right" height="139" alt="darthpack hex sticker logo" />
 
 <!-- <img src="docs/figs/under_const.jpeg" align="center" alt="" width="360" /> -->
 

@@ -6,19 +6,25 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>03 Calibration • darthpack</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<!-- favicons --><link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="03 Calibration">
-<meta property="og:description" content="">
-<meta property="og:image" content="https://darth-git.github.io/darthpack/logo.png">
-<meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
+
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +37,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">darthpack</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/darthpack.html">Get started</a>
 </li>
@@ -50,9 +50,9 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -85,9 +85,9 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/DARTH-git/darthpack">
+  <a href="https://github.com/DARTH-git/darthpack" class="external-link">
     <span class="fa fa-github fa-lg"></span>
-     
+
     github
   </a>
 </li>
@@ -99,57 +99,57 @@
 </div>
 <!--/.navbar -->
 
-      
-      </header><script src="dd-calibration_files/kePrint-0.0.1/kePrint.js"></script><div class="row">
+
+
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>03 Calibration</h1>
+      <h1 data-toc-skip>03 Calibration</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/DARTH-git/darthpack/blob/master/vignettes/dd-calibration.Rmd"><code>vignettes/dd-calibration.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/DARTH-git/darthpack/blob/HEAD/vignettes/dd-calibration.Rmd" class="external-link"><code>vignettes/dd-calibration.Rmd</code></a></small>
       <div class="hidden name"><code>dd-calibration.Rmd</code></div>
 
     </div>
 
     
     
-<div id="calibration" class="section level1">
-<h1 class="hasAnchor">
-<a href="#calibration" class="anchor"></a><span class="header-section-number">1</span> Model calibration</h1>
-<p>In this third component, we calibrate unknown model parameters by matching model outputs to specified calibration targets. Specifically, we calibrate the Sick-Sicker model to match survival, prevalence and the proportion who are Sicker, among all those afflicted (Sick+Sicker). We used a Bayesian calibration approach using the incremental mixture importance sampling (IMIS) algorithm <span class="citation">(Steele, Raftery, and Emond 2006)</span>, which has been used to calibrate health policy models <span class="citation">(Raftery and Bao 2010, <span class="citation">Menzies et al. (2017)</span>, <span class="citation">Rutter et al. (2018)</span>)</span>. Bayesian methods allow us to quantify the uncertainty in the calibrated parameters even in the presence of non-identifiability <span class="citation">(Alarid-Escudero et al. 2018)</span>. This analysis is coded in the <em>03_calibration.R</em> file in the <code>analysis</code> folder. The target data is stored in the <em>03_calibration_targets.RData</em> file. Similar to component 02 <a href="#simulation"><strong>??</strong></a>, in the section <em>03.1 Load packages</em>, we start by loading inputs and functions. In addition, we load the calibration targets data into the R workspace. In the next section, <em>03.2 Visualize targets</em>, we plot each of the calibration targets with their confidence intervals.</p>
+<div class="section level2" number="1">
+<h2 id="calibration">
+<span class="header-section-number">1</span> Model calibration<a class="anchor" aria-label="anchor" href="#calibration"></a>
+</h2>
+<p>In this third component, we calibrate unknown model parameters by matching model outputs to specified calibration targets. Specifically, we calibrate the Sick-Sicker model to match survival, prevalence and the proportion who are Sicker, among all those afflicted (Sick+Sicker). We used a Bayesian calibration approach using the incremental mixture importance sampling (IMIS) algorithm <span class="citation">(Steele, Raftery, and Emond 2006)</span>, which has been used to calibrate health policy models <span class="citation">Rutter et al. (2018)</span>. Bayesian methods allow us to quantify the uncertainty in the calibrated parameters even in the presence of non-identifiability <span class="citation">(Alarid-Escudero et al. 2018)</span>. This analysis is coded in the <em>03_calibration.R</em> file in the <code>analysis</code> folder. The target data is stored in the <em>03_calibration_targets.RData</em> file. Similar to component 02 <a href="#simulation"><strong>??</strong></a>, in the section <em>03.1 Load packages</em>, we start by loading inputs and functions. In addition, we load the calibration targets data into the R workspace. In the next section, <em>03.2 Visualize targets</em>, we plot each of the calibration targets with their confidence intervals.</p>
 <p>In section <em>03.3 Run calibration algorithms</em>, we set the parameters we need to calibrate to fixed values and test if the function <code>calibration_out</code> that produces model outputs corresponding to the calibration targets works. This function takes a vector of parameters that need to be calibrated and a list with all parameters of decision model and computes model outputs to be used for calibration routines.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print.function</a></span>(calibration_out) <span class="co"># print the functions</span>
-<span class="co">#&gt; function(v_params_calib, l_params_all){ # User defined</span>
-<span class="co">#&gt;   # Substitute values of calibrated parameters in base-case with </span>
-<span class="co">#&gt;   # calibrated values</span>
-<span class="co">#&gt;   l_params_all &lt;- update_param_list(l_params_all = l_params_all, params_updated = v_params_calib)</span>
-<span class="co">#&gt;   </span>
-<span class="co">#&gt;   # Run model with updated calibrated parameters</span>
-<span class="co">#&gt;   l_out_stm &lt;- decision_model(l_params_all = l_params_all)</span>
-<span class="co">#&gt;   </span>
-<span class="co">#&gt;   ####### Epidemiological Output ###########################################</span>
-<span class="co">#&gt;   #### Overall Survival (OS) ####</span>
-<span class="co">#&gt;   v_os &lt;- 1 - l_out_stm$m_M[, "D"]</span>
-<span class="co">#&gt;   </span>
-<span class="co">#&gt;   #### Disease prevalence #####</span>
-<span class="co">#&gt;   v_prev &lt;- rowSums(l_out_stm$m_M[, c("S1", "S2")])/v_os</span>
-<span class="co">#&gt;   </span>
-<span class="co">#&gt;   #### Proportion of sick in S1 state #####</span>
-<span class="co">#&gt;   v_prop_S2 &lt;- l_out_stm$m_M[, "S2"] / rowSums(l_out_stm$m_M[, c("S1", "S2")])</span>
-<span class="co">#&gt;   </span>
-<span class="co">#&gt;   ####### Return Output ###########################################</span>
-<span class="co">#&gt;   l_out &lt;- list(Surv = v_os[c(11, 21, 31)],</span>
-<span class="co">#&gt;                 Prev = v_prev[c(11, 21, 31)],</span>
-<span class="co">#&gt;                 PropSicker = v_prop_S2[c(11, 21, 31)])</span>
-<span class="co">#&gt;   return(l_out)</span>
-<span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x7fc4df626ef8&gt;</span>
-<span class="co">#&gt; &lt;environment: namespace:darthpack&gt;</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print.function</a></span><span class="op">(</span><span class="va">calibration_out</span><span class="op">)</span> <span class="co"># print the functions</span></span>
+<span><span class="co">#&gt; function (v_params_calib, l_params_all, v_target_times = c(10, </span></span>
+<span><span class="co">#&gt;     20, 30)) </span></span>
+<span><span class="co">#&gt; {</span></span>
+<span><span class="co">#&gt;     l_params_all &lt;- update_param_list(l_params_all = l_params_all, </span></span>
+<span><span class="co">#&gt;         params_updated = v_params_calib)</span></span>
+<span><span class="co">#&gt;     v_times_notvalid &lt;- setdiff(v_target_times, 0:l_params_all$n_t)</span></span>
+<span><span class="co">#&gt;     if (length(v_times_notvalid) &gt; 0) {</span></span>
+<span><span class="co">#&gt;         stop("The calibration target times must be whole model cycles between 0 ", </span></span>
+<span><span class="co">#&gt;             "and the model time horizon (n_t = ", l_params_all$n_t, </span></span>
+<span><span class="co">#&gt;             "). ", "Not valid: ", paste(v_times_notvalid, collapse = ", "))</span></span>
+<span><span class="co">#&gt;     }</span></span>
+<span><span class="co">#&gt;     l_out_stm &lt;- decision_model(l_params_all = l_params_all)</span></span>
+<span><span class="co">#&gt;     v_rows_targets &lt;- as.character(v_target_times)</span></span>
+<span><span class="co">#&gt;     v_os &lt;- 1 - l_out_stm$m_M[, "D"]</span></span>
+<span><span class="co">#&gt;     v_sick &lt;- rowSums(l_out_stm$m_M[, c("S1", "S2")])</span></span>
+<span><span class="co">#&gt;     v_prev &lt;- v_sick/v_os</span></span>
+<span><span class="co">#&gt;     v_prop_S2 &lt;- l_out_stm$m_M[, "S2"]/v_sick</span></span>
+<span><span class="co">#&gt;     l_out &lt;- list(Surv = v_os[v_rows_targets], Prev = v_prev[v_rows_targets], </span></span>
+<span><span class="co">#&gt;         PropSicker = v_prop_S2[v_rows_targets])</span></span>
+<span><span class="co">#&gt;     return(l_out)</span></span>
+<span><span class="co">#&gt; }</span></span>
+<span><span class="co">#&gt; &lt;bytecode: 0x1102a2860&gt;</span></span>
+<span><span class="co">#&gt; &lt;environment: namespace:darthpack&gt;</span></span></code></pre></div>
 <p>This function is informed by two argument <code>v_params_calib</code> and <code>l_params_all</code>. The vector <code>v_params_calib</code> contains the values of the three parameters of interest. The list <code>l_params_all</code> contains all parameters of the decision model. The placeholder values are replaced by <code>v_params_calib</code> and with these values the model is evaluated. Model evaluation takes place by running the <code>decision_model</code> function, described in component 02. The result in a new list with output of the model corresponding to the parameter values in the <code>v_params_calib</code>. With this new decision model output, the overall survival, disease prevalence and the proportion of Sicker in the Sick and Sicker states are calculated. The estimated values for these epidemiological outcomes at different timepoints are combined in a list called <code>l_out</code> produced but the <code>calibration_out</code>.</p>
-<p>Once we make sure this code works, we specify the calibration parameters in section <em>03.3.1 Specify calibration parameters</em>. These include setting the seed for the random number generation, specifying the number of random samples to obtain from the calibrated posterior distribution, the name of the input parameters and the range of these parameters that will inform the prior distributions of the calibrated parameters, and the name of the calibration targets: <code>Surv</code>, <code>Prev</code>, <code>PropSick</code>.</p>
-<p>In the next section, <em>03.3.2 Run IMIS algorithm</em>, we calibrate the Sick-Sicker model with the IMIS algorithm. For this case-study, we assume a normal likelihood and uniform priors. For a more detailed description of IMIS for Bayesian calibration, different likelihood functions and prior distributions, we refer the reader to the tutorial for Bayesian calibration by Menzies et al. <span class="citation">(Menzies et al. 2017)</span>. We use the <code>IMIS</code> function from the <code>IMIS</code> package that calls the functions <code>likelihood</code>, <code>sample.prior</code> and <code>prior</code>, to draw samples from the posterior distribution <span class="citation">(A. Raftery and Le Bao 2012)</span>. The functions are specified in the <em>03_calibration_functions.R</em> file in the <code>R</code> folder. For the <code>IMIS</code> function, we specify the incremental sample size at each iteration of IMIS, the desired posterior sample size at the resample stage, the maximum number of iterations in IMIS and the number of optimizers which could be 0. The function returns a list, which we call <code>l_fit_imis</code>, with the posterior samples, the diagnostic statistics at each IMIS iteration and the centers of Gaussian components <span class="citation">(A. Raftery and Le Bao 2012)</span>. We store the posterior samples in the matrix <code>m_calib_post</code>.</p>
+<p>Once we make sure this code works, we specify the calibration parameters in section <em>03.3.1 Specify calibration parameters</em>. These include setting the seed for the random number generation, specifying the number of random samples to obtain from the calibrated posterior distribution, the name of the input parameters and the range of these parameters that will inform the prior distributions of the calibrated parameters, and the name of the calibration targets: <code>Surv</code>, <code>Prev</code>, <code>PropSicker</code>.</p>
+<p>In the next section, <em>03.3.2 Run IMIS algorithm</em>, we calibrate the Sick-Sicker model with the IMIS algorithm. For this case-study, we assume a normal likelihood and uniform priors. For a more detailed description of IMIS for Bayesian calibration, different likelihood functions and prior distributions, we refer the reader to the tutorial for Bayesian calibration by Menzies et al. <span class="citation">(Menzies et al. 2017)</span>. We use the <code>IMIS</code> function from the <code>IMIS</code> package that calls the functions <code>likelihood</code>, <code>sample.prior</code> and <code>prior</code>, to draw samples from the posterior distribution <span class="citation">(Adrian Raftery and Le Bao 2012)</span>. The functions are specified in the <em>03_calibration_functions.R</em> file in the <code>R</code> folder. For the <code>IMIS</code> function, we specify the incremental sample size at each iteration of IMIS, the desired posterior sample size at the resample stage, the maximum number of iterations in IMIS and the number of optimizers which could be 0. The function returns a list, which we call <code>l_fit_imis</code>, with the posterior samples, the diagnostic statistics at each IMIS iteration and the centers of Gaussian components <span class="citation">(Adrian Raftery and Le Bao 2012)</span>. We store the posterior samples in the matrix <code>m_calib_post</code>.</p>
 <p>We then explore these posterior distributions in section <em>03.4 Exploring posterior distribution</em>. We start by estimating the posterior mean, median and 95% credible interval, the mode and the maximum-a-posteriori (MAP). All for these summary statistics are combined in a dataframe called <code>df_posterior_summ</code>. Table <a href="#tab:summarycal">1.1</a> shows the summary statistics of the posterior distribution.</p>
-<table class="table table">
+<table class="table table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:summarycal">Table 1.1: </span>Summary statistics of the posterior distribution
 </caption>
@@ -178,19 +178,19 @@ MAP
 p_S1S2
 </td>
 <td style="text-align:right;">
-0.1076682
+0.1076687
 </td>
 <td style="text-align:right;">
-0.0956305
+0.0964559
 </td>
 <td style="text-align:right;">
-0.107546
+0.1073187
 </td>
 <td style="text-align:right;">
-0.1201152
+0.1196543
 </td>
 <td style="text-align:right;">
-0.1073784
+0.107841
 </td>
 </tr>
 <tr>
@@ -198,19 +198,19 @@ p_S1S2
 hr_S1
 </td>
 <td style="text-align:right;">
-2.7150701
+2.7261594
 </td>
 <td style="text-align:right;">
-1.1119686
+1.1010910
 </td>
 <td style="text-align:right;">
-2.724407
+2.6790446
 </td>
 <td style="text-align:right;">
-4.3357750
+4.4020812
 </td>
 <td style="text-align:right;">
-2.4223530
+2.297053
 </td>
 </tr>
 <tr>
@@ -218,81 +218,89 @@ hr_S1
 hr_S2
 </td>
 <td style="text-align:right;">
-9.6366087
+9.6232710
 </td>
 <td style="text-align:right;">
-7.2323662
+7.3427361
 </td>
 <td style="text-align:right;">
-9.660728
+9.6461532
 </td>
 <td style="text-align:right;">
-12.1053631
+11.9533402
 </td>
 <td style="text-align:right;">
-9.7262516
+9.886776
 </td>
 </tr>
 </tbody>
 </table>
 <p>In section <em>03.4.2 Visualization of posterior distribution</em>, we generate a pairwise scatter plot of the calibrated parameters (Figure <a href="#fig:03-posterior-distribution-marginal">1.2</a>) and a 3D scatter plot of the joint posterior distribution (Figure <a href="#fig:Posterior-distribution-joint">1.1</a>). These figures are saved in the <em>figs</em> directory.</p>
 <div class="figure">
-<span id="fig:Posterior-distribution-joint"></span>
+<span style="display:block;" id="fig:Posterior-distribution-joint"></span>
 <img src="../figs/03_posterior_distribution_joint.png" alt="Joint posterior distribution" width="100%"><p class="caption">
 Figure 1.1: Joint posterior distribution
 </p>
 </div>
 <div class="figure">
-<span id="fig:03-posterior-distribution-marginal"></span>
+<span style="display:block;" id="fig:03-posterior-distribution-marginal"></span>
 <img src="../figs/03_posterior_distribution_marginal.png" alt="Pairwise posterior distribution of calibrated parameters" width="100%"><p class="caption">
 Figure 1.2: Pairwise posterior distribution of calibrated parameters
 </p>
 </div>
 <p>Finally, the posterior distribution and MAP estimate from the IMIS calibration are stored in the file <em>03_imis_output.RData</em>. Storing this data as an .RData file allows to import the data in following sections without needing to re-run the calibration component.</p>
 </div>
-<div id="references" class="section level1 unnumbered">
-<h1 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h1>
-<div id="refs" class="references">
-<div id="ref-Alarid-Escudero2018b">
-<p>Alarid-Escudero, F, RF MacLehose, Y Peralta, KM Kuntz, and Enns EA. 2018. “Nonidentifiability in Model Calibration and Implications for Medical Decision Making.” <em>Medical Decision Making</em> 38 (7): 810–21. doi:<a href="https://doi.org/10.1177/0272989X18792283">10.1177/0272989X18792283</a>.</p>
+<div class="section level2">
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-Alarid-Escudero2018b" class="csl-entry">
+Alarid-Escudero, F, RF MacLehose, Y Peralta, KM Kuntz, and Enns EA. 2018. <span>“Nonidentifiability in Model Calibration and Implications for Medical Decision Making.”</span> <em>Medical Decision Making</em> 38 (7): 810–21. <a href="https://doi.org/10.1177/0272989X18792283" class="external-link">https://doi.org/10.1177/0272989X18792283</a>.
 </div>
-<div id="ref-Menzies2017">
-<p>Menzies, Nicolas A., Djøra I. Soeteman, Ankur Pandya, and Jane J. Kim. 2017. “Bayesian Methods for Calibrating Health Policy Models: A Tutorial.” <em>PharmacoEconomics</em> 35 (6). Springer International Publishing: 613–24. doi:<a href="https://doi.org/10.1007/s40273-017-0494-4">10.1007/s40273-017-0494-4</a>.</p>
+<div id="ref-Menzies2017" class="csl-entry">
+Menzies, Nicolas A., Djøra I. Soeteman, Ankur Pandya, and Jane J. Kim. 2017. <span>“<span class="nocase">Bayesian Methods for Calibrating Health Policy Models: A Tutorial</span>.”</span> <em>PharmacoEconomics</em> 35 (6): 613–24. <a href="https://doi.org/10.1007/s40273-017-0494-4" class="external-link">https://doi.org/10.1007/s40273-017-0494-4</a>.
 </div>
-<div id="ref-Raftery2010">
-<p>Raftery, A, and L Bao. 2010. “Estimating and Projecting Trends in HIV/AIDS Generalized Epidemics Using Incremental Mixture Importance Sampling.” <em>Biometrics</em> 66 (4): 1162–73.</p>
+<div id="ref-Raftery2010" class="csl-entry">
+Raftery, A, and L Bao. 2010. <span>“<span class="nocase">Estimating and Projecting Trends in HIV/AIDS Generalized Epidemics Using Incremental Mixture Importance Sampling</span>.”</span> <em>Biometrics</em> 66 (4): 1162–73.
 </div>
-<div id="ref-IMIS">
-<p>Raftery, Adrian, and Le Bao. 2012. <em>IMIS: Increamental Mixture Importance Sampling</em>. <a href="https://CRAN.R-project.org/package=IMIS" class="uri">https://CRAN.R-project.org/package=IMIS</a>.</p>
+<div id="ref-IMIS" class="csl-entry">
+Raftery, Adrian, and Le Bao. 2012. <em>IMIS: Increamental Mixture Importance Sampling</em>. <a href="https://CRAN.R-project.org/package=IMIS" class="external-link">https://CRAN.R-project.org/package=IMIS</a>.
 </div>
-<div id="ref-Rutter2018">
-<p>Rutter, C, J Ozik, M DeYoreo, and Collier N. 2018. “Microsimulation Model Calibration using Incremental Mixture Approximate Bayesian Computation.” <em>arXiv</em>, no. april: 1–20. <a href="https://arxiv.org/abs/1804.02090v3" class="uri">https://arxiv.org/abs/1804.02090v3</a>.</p>
+<div id="ref-Rutter2018" class="csl-entry">
+Rutter, C, J Ozik, M DeYoreo, and Collier N. 2018. <span>“<span class="nocase">Microsimulation Model Calibration using Incremental Mixture Approximate Bayesian Computation.</span>”</span> <em>arXiv</em>, no. april: 1–20. <a href="https://arxiv.org/abs/1804.02090v3" class="external-link">https://arxiv.org/abs/1804.02090v3</a>.
 </div>
-<div id="ref-Steele2006">
-<p>Steele, R, A Raftery, and M Emond. 2006. “Computing Normalizing Constants for Finite Mixture Models via Incremental Mixture Importance Sampling (IMIS).” <em>Journal ofComputational and Graphical Statistics</em> 15 (3): 712–34. doi:<a href="https://doi.org/10.1198/106186006X132358">10.1198/106186006X132358</a>.</p>
+<div id="ref-Steele2006" class="csl-entry">
+Steele, R, A Raftery, and M Emond. 2006. <span>“<span class="nocase">Computing Normalizing Constants for Finite Mixture Models via Incremental Mixture Importance Sampling (IMIS)</span>.”</span> <em>Journal ofComputational and Graphical Statistics</em> 15 (3): 712–34. <a href="https://doi.org/10.1198/106186006X132358" class="external-link">https://doi.org/10.1198/106186006X132358</a>.
 </div>
 </div>
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+
       </div>
 
 </div>
 
 
+
       <footer><div class="copyright">
-  <p>Developed by Fernando Alarid-Escudero, Eline Krijkamp, Petros Pechlivanoglou, Hawre Jalal, Szu-Yu Kao, Alan Yang, Eva Enns.</p>
+  <p></p>
+<p>Developed by Fernando Alarid-Escudero, Eline Krijkamp, Petros Pechlivanoglou, Hawre Jalal, Szu-Yu Kao, Alan Yang, Eva Enns.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
+
       </footer>
 </div>
 
-  
+
+
+
+
 
   </body>
 </html>

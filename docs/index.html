@@ -6,26 +6,28 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Decision Analysis in R for Technologies in Health (DARTH) coding framework • darthpack</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<!-- favicons --><link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+<link rel="icon" type="”image/svg+xml”" href="favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" sizes="any" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
+<script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="The Decision Analysis in R for Technologies in Health (DARTH) coding framework">
-<meta property="og:description" content='A collection of functions that implements the Decision Analysis in R for 
-  Technologies in Health (DARTH) coding framework to construct model-based 
-  cost-effectiveness analysis in R. This repository is part of the following 
-  working paper submitted for publication: Alarid-Escudero F, Krijkamp E, 
-  Pechlivanoglou P, Jalal H, Kao SY, Yang A, Enns EA. "A need for change! A 
-  coding framework for improving transparency in decision modeling". (2019). 
-  Under revision.'>
+<meta property="og:description" content='A collection of functions that implements the Decision Analysis in R for Technologies in Health (DARTH) coding framework to construct model-based cost-effectiveness analysis in R. This repository accompanies the following publication: Alarid-Escudero F, Krijkamp E, Pechlivanoglou P, Jalal H, Kao SY, Yang A, Enns EA. "A need for change! A coding framework for improving transparency in decision modeling". PharmacoEconomics 2019;37(11):1329-1339. &lt;doi:10.1007/s40273-019-00837-x&gt;.'>
 <meta property="og:image" content="https://darth-git.github.io/darthpack/logo.png">
-<meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
-    <div class="container template-article">
+<body data-spy="scroll" data-target="#toc">
+
+
+    <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -37,18 +39,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">darthpack</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="articles/darthpack.html">Get started</a>
 </li>
@@ -56,9 +52,9 @@
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -91,9 +87,9 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/DARTH-git/darthpack">
+  <a href="https://github.com/DARTH-git/darthpack" class="external-link">
     <span class="fa fa-github fa-lg"></span>
-     
+
     github
   </a>
 </li>
@@ -105,53 +101,70 @@
 </div>
 <!--/.navbar -->
 
-      
+
+
       </header><div class="row">
-  <div class="col-md-9 contents">
-    
+  <div class="contents col-md-9">
 
-    
-    
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<div id="darthpack" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#darthpack" class="anchor"></a>darthpack <img src="reference/figures/logo.png" align="right" height="139">
+<div class="section level1">
+<div class="page-header"><h1 id="darthpack-">darthpack <img src="reference/figures/logo.png" align="right" height="139" alt="darthpack hex sticker logo"><a class="anchor" aria-label="anchor" href="#darthpack-"></a>
 </h1></div>
-<!-- <img src="figs/under_const.jpeg" align="center" alt="" width="360" /> -->
-<p><a href="https://github.com/DARTH-git/darthpack"><code>darthpack</code></a> is an R package that showcases the <a href="https://darthworkgroup.com">Decision Analysis in R for Technologies in Health (DARTH)</a> coding framework to construct model-based cost-effectiveness analysis in R. The main website of <code>darthpack</code> can be <a href="https://darth-git.github.io/darthpack/">found here</a>.</p>
-<p><a href="https://github.com/DARTH-git/darthpack"><code>darthpack</code></a> is part of the following manuscript:</p>
+<!-- <img src="docs/figs/under_const.jpeg" align="center" alt="" width="360" /> -->
+<p><a href="https://github.com/DARTH-git/darthpack" class="external-link"><code>darthpack</code></a> is an R package that showcases the <a href="https://darthworkgroup.com" class="external-link">Decision Analysis in R for Technologies in Health (DARTH)</a> coding framework to construct model-based cost-effectiveness analysis in R. The main website of <code>darthpack</code> can be <a href="https://darth-git.github.io/darthpack/">found here</a>.</p>
+<p><a href="https://github.com/DARTH-git/darthpack" class="external-link"><code>darthpack</code></a> is part of the following manuscript:</p>
 <ul>
-<li>Alarid-Escudero F, Krijkamp E, Pechlivanoglou P, Jalal H, Kao SY, Yang A, Enns EA. <a href="https://link.springer.com/article/10.1007%2Fs40273-019-00837-x">“A need for change! A coding framework for improving transparency in decision modeling”</a>. PharmacoEconomics 2019;37(11):1329–1339. <a href="http://dx.doi.org/10.1007/s40273-019-00837-x" class="uri">http://dx.doi.org/10.1007/s40273-019-00837-x</a>
+<li>Alarid-Escudero F, Krijkamp E, Pechlivanoglou P, Jalal H, Kao SY, Yang A, Enns EA. <a href="https://link.springer.com/article/10.1007%2Fs40273-019-00837-x" class="external-link">“A need for change! A coding framework for improving transparency in decision modeling”</a>. PharmacoEconomics 2019;37(11):1329–1339. <a href="http://dx.doi.org/10.1007/s40273-019-00837-x" class="external-link uri">http://dx.doi.org/10.1007/s40273-019-00837-x</a>
 </li>
 </ul>
-<p>The release that accompanies the published article has been archived in zenodo: <a href="https://zenodo.org/record/3445451" class="uri">https://zenodo.org/record/3445451</a>.</p>
-</div>
-<div id="preliminaries" class="section level1">
-<h1 class="hasAnchor">
-<a href="#preliminaries" class="anchor"></a>Preliminaries</h1>
+<p>The release that accompanies the published article has been archived in zenodo: <a href="https://zenodo.org/record/3445451" class="external-link uri">https://zenodo.org/record/3445451</a>.</p>
+<div class="section level2">
+<h2 id="whats-new-in-version-020">What’s new in version 0.2.0<a class="anchor" aria-label="anchor" href="#whats-new-in-version-020"></a>
+</h2>
+<p>Version 0.2.0 is a <strong>new and improved version</strong> of the framework. It corrects a number of defects in the framework functions – including a log-likelihood bug that corrupted Bayesian calibration whenever a parameter set could not be evaluated, discount rates that were applied to the wrong outcome in <code><a href="reference/calculate_ce_out.html">calculate_ce_out()</a></code>, a <code><a href="reference/generate_psa_params.html">generate_psa_params()</a></code> that ignored both its <code>n_sim</code> and its <code>seed</code> argument, and a transition-array check that passed invalid matrices – and it adds input validation so that common mistakes, such as a misspelled parameter name, now raise an error instead of silently returning results for the base case. The test suite grew from 27 to 294 assertions and <code>R CMD check</code> now passes cleanly.</p>
+<p><strong>The calibration is unchanged</strong>: re-running the IMIS calibration reproduces the published posterior distribution bit-for-bit, and the framework functions return the same values as version 0.1.0 at the parameters shipped with the package. All results in <code>data/</code>, <code>output/</code>, <code>figs/</code> and <code>tables/</code> have been regenerated by running <code>analysis/_master.R</code> against the fixed code, so every committed figure and table is now what the code in this repository actually produces. The deterministic cost-effectiveness table changed the most, because it had been generated by an older version of <code><a href="reference/calculate_ce_out.html">calculate_ce_out()</a></code> and never refreshed; its ICER now agrees with the probabilistic one to within Monte Carlo error, where the two previously differed by 29%. The <a href="https://darth-git.github.io/darthpack/news/index.html">NEWS</a> file describes every change.</p>
+<p>To learn more on Markov/cohort state-transition model in R, we recommend reading our introductory tutorial on <strong>time-independent</strong> cSTMs in R:</p>
 <ul>
-<li>Install <a href="https://www.rstudio.com/products/rstudio/download/">RStudio</a>
+<li>Alarid-Escudero F, Krijkamp EM, Enns EA, Yang A, Hunink MGM, Pechlivanoglou P, Jalal H. <a href="https://journals.sagepub.com/doi/full/10.1177/0272989X221103163" class="external-link">An Introductory Tutorial on Cohort State-Transition Models in R Using a Cost-Effectiveness Analysis Example</a>. <a href="https://journals.sagepub.com/home/mdm" class="external-link">Medical Decision Making</a>, 2023;43(1):3-20. <a href="https://doi.org/10.1177/0272989X221103163" class="external-link uri">https://doi.org/10.1177/0272989X221103163</a>,</li>
+</ul>
+<p>our intermediate tutorial on <strong>time-dependent</strong> cohort state-transition models (cSTMs) in R:</p>
+<ul>
+<li>Alarid-Escudero F, Krijkamp EM, Enns EA, Yang A, Hunink MGM, Pechlivanoglou P, Jalal H. <a href="https://journals.sagepub.com/doi/full/10.1177/0272989X221121747" class="external-link">A Tutorial on Time-Dependent Cohort State-Transition Models in R using a Cost-Effectiveness Analysis Example</a>. <a href="https://journals.sagepub.com/home/mdm" class="external-link">Medical Decision Making</a>. 2023;43(1):21-41. <a href="https://doi.org/10.1177/0272989X221121747" class="external-link uri">https://doi.org/10.1177/0272989X221121747</a>,</li>
+</ul>
+<p>and understanding the use of multidimensional arrays to represent cSTM dynamics in R described in:</p>
+<ul>
+<li>Krijkamp EM, Alarid-Escudero F, Enns EA, Pechlivanoglou P, Hunink MGM, Yang A, Jalal HJ. <a href="https://journals.sagepub.com/doi/full/10.1177/0272989X19893973" class="external-link">A multidimensional array representation of state-transition model dynamics</a>. <a href="https://journals.sagepub.com/home/mdm" class="external-link">Medical Decision Making</a>, 2020;40(2):242-248. <a href="https://doi.org/10.1177/0272989X19893973" class="external-link uri">https://doi.org/10.1177/0272989X19893973</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="section level1">
+<h1 id="preliminaries">Preliminaries<a class="anchor" aria-label="anchor" href="#preliminaries"></a>
+</h1>
+<ul>
+<li>Install <a href="https://www.rstudio.com/products/rstudio/download/" class="external-link">RStudio</a>
 </li>
 <li>Install <code>devtools</code> to install <code>darthpack</code> as a package and modify it to generate your own package</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Install release version from CRAN</span>
-<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"devtools"</span>)
-
-<span class="co"># Or install development version from GitHub</span>
-<span class="co"># devtools::install_github("r-lib/devtools")</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Install release version from CRAN</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Or install development version from GitHub</span></span>
+<span><span class="co"># devtools::install_github("r-lib/devtools")</span></span></code></pre></div>
 <ul>
 <li>Install <code>pkgdown</code> to publish <code>darthpack</code> or your own <code>darthpack</code>-based repository or package as a website (optional)</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Install release version from CRAN</span>
-<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"pkgdown"</span>)
-
-<span class="co"># Or install development version from GitHub</span>
-<span class="co"># devtools::install_github("r-lib/pkgdown")</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Install release version from CRAN</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pkgdown"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Or install development version from GitHub</span></span>
+<span><span class="co"># devtools::install_github("r-lib/pkgdown")</span></span></code></pre></div>
 </div>
-<div id="usage-and-installation" class="section level1">
-<h1 class="hasAnchor">
-<a href="#usage-and-installation" class="anchor"></a>Usage and installation</h1>
+<div class="section level1">
+<h1 id="usage-and-installation">Usage and installation<a class="anchor" aria-label="anchor" href="#usage-and-installation"></a>
+</h1>
 <p><code>darthpack</code> repository could be used in at least three different ways:</p>
 <ol style="list-style-type: decimal">
 <li>
@@ -163,19 +176,19 @@
 </li>
 </ol>
 <p>The main website of the package could be found in: <a href="https://darth-git.github.io/darthpack/" class="uri">https://darth-git.github.io/darthpack/</a></p>
-<div id="use-repository-as-a-github-coding-template" class="section level2">
-<h2 class="hasAnchor">
-<a href="#use-repository-as-a-github-coding-template" class="anchor"></a>Use repository as a GitHub coding template</h2>
+<div class="section level2">
+<h2 id="use-repository-as-a-github-coding-template">Use repository as a GitHub coding template<a class="anchor" aria-label="anchor" href="#use-repository-as-a-github-coding-template"></a>
+</h2>
 <ol style="list-style-type: decimal">
-<li>Sign in to GitHub. You need to sign in to use this repository as a template. If you don’t have a GitHub account, you can <a href="https://github.com/join">create one here</a>.</li>
-<li>On the <code>darthpack</code> GitHub repository, navigate to the main page of the repository (<a href="https://github.com/DARTH-git/darthpack" class="uri">https://github.com/DARTH-git/darthpack</a>).</li>
+<li>Sign in to GitHub. You need to sign in to use this repository as a template. If you don’t have a GitHub account, you can <a href="https://github.com/join" class="external-link">create one here</a>.</li>
+<li>On the <code>darthpack</code> GitHub repository, navigate to the main page of the repository (<a href="https://github.com/DARTH-git/darthpack" class="external-link uri">https://github.com/DARTH-git/darthpack</a>).</li>
 <li>Above the file list, click <strong>Use this template</strong>.</li>
 <li>Use the <strong>Owner</strong> drop-down menu, and select the account you want to own the repository.</li>
 <li>Type a name for your repository of your decision model, and an optional description.</li>
-<li>Choose to make the repository either public or private. Public repositories are visible to the public, while private repositories are only accessible to you, and people you share them with. For more information, see “<a href="https://help.github.com/en/articles/setting-repository-visibility">Setting repository visibility</a>.”</li>
+<li>Choose to make the repository either public or private. Public repositories are visible to the public, while private repositories are only accessible to you, and people you share them with. For more information, see “<a href="https://help.github.com/en/articles/setting-repository-visibility" class="external-link">Setting repository visibility</a>.”</li>
 <li>Click <strong>Create repository from template</strong>.</li>
 <li>Either clone the repository or download it.
-<ol style="list-style-type: lower-alpha">
+<ol style="list-style-type: decimal">
 <li>
 <strong>Clone</strong>, which requires the user to have a GitHub desktop installed, or</li>
 <li>
@@ -183,27 +196,29 @@
 </ol>
 </li>
 <li>Open the RStudio project <code>darthpack.Rproj</code>.</li>
-<li>Install all the required and suggested packages listed in the <a href="https://github.com/DARTH-git/darthpack/blob/master/DESCRIPTION"><em>DESCRIPTION</em></a> file in the main folder of the repository
+<li>Install all the required and suggested packages listed in the <a href="https://github.com/DARTH-git/darthpack/blob/master/DESCRIPTION" class="external-link"><em>DESCRIPTION</em></a> file in the main folder of the repository
 <ul>
-<li>To install <code>dampack</code>, please follow these instructions:</li>
+<li>
+<code>dampack</code> is on CRAN, but <code>IMIS</code>, used by the calibration component, has been archived and has to be installed from the CRAN archive:</li>
 </ul>
 </li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Install development version from GitHub</span>
-devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"DARTH-git/dampack"</span>)</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"dampack"</span><span class="op">)</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/install-deprecated.html" class="external-link">install_version</a></span><span class="op">(</span><span class="st">"IMIS"</span>, version <span class="op">=</span> <span class="st">"0.1"</span>, repos <span class="op">=</span> <span class="st">"https://cloud.r-project.org"</span><span class="op">)</span></span></code></pre></div>
 <ol start="11" style="list-style-type: decimal">
-<li>In RStudio, load all the functions and data from the repository by typing <code><a href="https://www.rdocumentation.org/packages/devtools/topics/load_all">devtools::load_all(".")</a></code>
+<li>In RStudio, load all the functions and data from the repository by typing <code>devtools::load_all(".")</code>
 </li>
 <li>Run all the decision modeling modules in the analysis folder.</li>
 </ol>
 </div>
-<div id="use-repository-as-a-regular-coding-template" class="section level2">
-<h2 class="hasAnchor">
-<a href="#use-repository-as-a-regular-coding-template" class="anchor"></a>Use repository as a regular coding template</h2>
+<div class="section level2">
+<h2 id="use-repository-as-a-regular-coding-template">Use repository as a regular coding template<a class="anchor" aria-label="anchor" href="#use-repository-as-a-regular-coding-template"></a>
+</h2>
 <ol style="list-style-type: decimal">
-<li>On the <code>darthpack</code> GitHub repository, navigate to the main page of the repository (<a href="https://github.com/DARTH-git/darthpack" class="uri">https://github.com/DARTH-git/darthpack</a>).</li>
+<li>On the <code>darthpack</code> GitHub repository, navigate to the main page of the repository (<a href="https://github.com/DARTH-git/darthpack" class="external-link uri">https://github.com/DARTH-git/darthpack</a>).</li>
 <li>Above the file list, click <strong>Clone or download</strong> and select either
-<ol style="list-style-type: lower-alpha">
+<ol style="list-style-type: decimal">
 <li>
 <strong>Open in desktop</strong>, which requires the user to have a GitHub desktop installed, or</li>
 <li>
@@ -211,95 +226,121 @@ devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumen
 </ol>
 </li>
 <li>Open the RStudio project <code>darthpack.Rproj</code>.</li>
-<li>Install all the required and suggested packages listed in the <a href="https://github.com/DARTH-git/darthpack/blob/master/DESCRIPTION"><em>DESCRIPTION</em></a> file in the main folder of the repository
+<li>Install all the required and suggested packages listed in the <a href="https://github.com/DARTH-git/darthpack/blob/master/DESCRIPTION" class="external-link"><em>DESCRIPTION</em></a> file in the main folder of the repository
 <ul>
-<li>To install <code>dampack</code>, please follow these instructions:</li>
+<li>
+<code>dampack</code> is on CRAN, but <code>IMIS</code>, used by the calibration component, has been archived and has to be installed from the CRAN archive:</li>
 </ul>
 </li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Install development version from GitHub</span>
-devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"DARTH-git/dampack"</span>)</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"dampack"</span><span class="op">)</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/install-deprecated.html" class="external-link">install_version</a></span><span class="op">(</span><span class="st">"IMIS"</span>, version <span class="op">=</span> <span class="st">"0.1"</span>, repos <span class="op">=</span> <span class="st">"https://cloud.r-project.org"</span><span class="op">)</span></span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
-<li>In RStudio, load all the functions and data from the repository by typing <code><a href="https://www.rdocumentation.org/packages/devtools/topics/load_all">devtools::load_all(".")</a></code>
+<li>In RStudio, load all the functions and data from the repository by typing <code>devtools::load_all(".")</code>
 </li>
 <li>Run all the decision modeling modules in the analysis folder.</li>
 </ol>
 </div>
-<div id="use-as-an-r-package" class="section level2">
-<h2 class="hasAnchor">
-<a href="#use-as-an-r-package" class="anchor"></a>Use as an R package</h2>
+<div class="section level2">
+<h2 id="use-as-an-r-package">Use as an R package<a class="anchor" aria-label="anchor" href="#use-as-an-r-package"></a>
+</h2>
 <ol style="list-style-type: decimal">
-<li>Install the development version of <code>darthpack</code> from <a href="https://github.com">GitHub</a> with:</li>
+<li>Install the development version of <code>darthpack</code> from <a href="https://github.com" class="external-link">GitHub</a> with:</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"DARTH-git/darthpack"</span>)</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/install-deprecated.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"DARTH-git/darthpack"</span><span class="op">)</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Load all the functions and data from the repository by typing</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(darthpack)</code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://darth-git.github.io/darthpack">darthpack</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div id="release-your-updated-framework" class="section level1">
-<h1 class="hasAnchor">
-<a href="#release-your-updated-framework" class="anchor"></a>Release your updated framework</h1>
+<div class="section level1">
+<h1 id="release-your-updated-framework">Release your updated framework<a class="anchor" aria-label="anchor" href="#release-your-updated-framework"></a>
+</h1>
 <p>Once the framework has been modified and updated to your specific needs, run <code>pkgdown</code> from the package directory each time you release your package:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pkgdown<span class="op">::</span><span class="kw"><a href="https://pkgdown.r-lib.org/reference/build_site.html">build_site</a></span>()</code></pre></div>
-<p>For a more detailed description on how to quickly and easily build a website for your package, please go to <a href="https://github.com/r-lib/pkgdown" class="uri">https://github.com/r-lib/pkgdown</a> and</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">pkgdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgdown.r-lib.org/reference/build_site.html" class="external-link">build_site</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>For a more detailed description on how to quickly and easily build a website for your package, please go to <a href="https://github.com/r-lib/pkgdown" class="external-link uri">https://github.com/r-lib/pkgdown</a> and the <code>pkgdown</code> documentation at <a href="https://pkgdown.r-lib.org" class="external-link uri">https://pkgdown.r-lib.org</a>.</p>
 </div>
+
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/DARTH-git/darthpack">https://​github.com/​DARTH-git/​darthpack</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/DARTH-git/darthpack/issues">https://​github.com/​DARTH-git/​darthpack/​issues</a>
-</li>
+<li><a href="https://github.com/DARTH-git/darthpack/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/DARTH-git/darthpack/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>file <a href="LICENSE-text.html">LICENSE</a>
 </li>
 </ul>
 </div>
+
+<div class="community">
+<h2 data-toc-skip>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
+</ul>
+</div>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing darthpack</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Fernando Alarid-Escudero <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-5076-1172" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
-<li>Eline Krijkamp <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-3970-2205" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
-<li>Petros Pechlivanoglou <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-5090-7936" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
-<li>Hawre Jalal <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-8224-6834" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
-<li>Szu-Yu Kao <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-4987-3983" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
-<li>Alan Yang <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-0344-6812" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
-<li>Eva Enns <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-0693-7358" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
-<li><a href="authors.html">All authors...</a></li>
+<li>Fernando Alarid-Escudero <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-5076-1172" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Eline Krijkamp <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-3970-2205" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Petros Pechlivanoglou <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-5090-7936" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Hawre Jalal <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-8224-6834" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Szu-Yu Kao <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-4987-3983" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Alan Yang <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-0344-6812" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Eva Enns <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-0693-7358" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
 
-      <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://zenodo.org/badge/latestdoi/197059951"><img src="https://zenodo.org/badge/197059951.svg" alt="DOI"></a></li>
+<li><a href="https://zenodo.org/badge/latestdoi/197059951" class="external-link"><img src="https://zenodo.org/badge/197059951.svg" alt="DOI"></a></li>
 </ul>
 </div>
-</div>
 
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Fernando Alarid-Escudero, Eline Krijkamp, Petros Pechlivanoglou, Hawre Jalal, Szu-Yu Kao, Alan Yang, Eva Enns.</p>
+  <p></p>
+<p>Developed by Fernando Alarid-Escudero, Eline Krijkamp, Petros Pechlivanoglou, Hawre Jalal, Szu-Yu Kao, Alan Yang, Eva Enns.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
+
       </footer>
 </div>
 
-  
+
+
+
+
 
   </body>
 </html>

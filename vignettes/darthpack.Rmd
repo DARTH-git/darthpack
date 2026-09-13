@@ -24,7 +24,7 @@ knitr::write_bib(c(
                            'lhs', 'IMIS', 'matrixStats',
                            'plotrix', 'psych', "survival",
                            "scatterplot3d", "reshape2",
-                           "BiocManager", "devtools",
+                           "devtools",
                            "shiny", "rstudioapi", 'nlme'
 ), 'packages.bib')
 ```

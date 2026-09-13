@@ -44,3 +44,7 @@ inst/doc
 dev_history.R
 # Python virtual environment
 .venv/
+
+# bookdown intermediates
+report/report_files/
+report/report.Rmd

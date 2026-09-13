@@ -1,22 +1,21 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Analysis | darthpack: An R package with DARTH’s decision modeling coding framework</title>
+  <title>Chapter 5 Analysis | Sick-Sicker case-study using darthpack, an R package with DARTH’s decision modeling coding framework</title>
   <meta name="description" content="This is a minimal description of a report of a model-based cost-effectiveness analysis of a health technology example of using the bookdown package to write a book." />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.48 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Analysis | darthpack: An R package with DARTH’s decision modeling coding framework" />
+  <meta property="og:title" content="Chapter 5 Analysis | Sick-Sicker case-study using darthpack, an R package with DARTH’s decision modeling coding framework" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a minimal description of a report of a model-based cost-effectiveness analysis of a health technology example of using the bookdown package to write a book." />
   <meta name="github-repo" content="DARTH-git/darthpack/report" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Analysis | darthpack: An R package with DARTH’s decision modeling coding framework" />
+  <meta name="twitter:title" content="Chapter 5 Analysis | Sick-Sicker case-study using darthpack, an R package with DARTH’s decision modeling coding framework" />
   
   <meta name="twitter:description" content="This is a minimal description of a report of a model-based cost-effectiveness analysis of a health technology example of using the bookdown package to write a book." />
   
@@ -24,22 +23,24 @@
 <meta name="author" content="DARTH" />
 
 
-<meta name="date" content="2019-08-03" />
+<meta name="date" content="2026-09-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="validation.html">
-<link rel="next" href="references.html">
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link rel="prev" href="validation.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,45 +48,106 @@
 
 
 
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -104,14 +166,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="./">darthpack</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The Sick-Sicker model</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The Sick-Sicker model</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#set-up"><i class="fa fa-check"></i>Set-up</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="inputs.html"><a href="inputs.html"><i class="fa fa-check"></i><b>1</b> Define model inputs</a></li>
 <li class="chapter" data-level="2" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i><b>2</b> Decision model</a></li>
 <li class="chapter" data-level="3" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>3</b> Model calibration</a></li>
 <li class="chapter" data-level="4" data-path="validation.html"><a href="validation.html"><i class="fa fa-check"></i><b>4</b> Validation</a></li>
-<li class="chapter" data-level="5" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>5</b> Analysis</a><ul>
+<li class="chapter" data-level="5" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>5</b> Analysis</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="analysis.html"><a href="analysis.html#Probabilistic-analysis"><i class="fa fa-check"></i><b>5.1</b> 05a Probabilistic analysis</a></li>
 <li class="chapter" data-level="5.2" data-path="analysis.html"><a href="analysis.html#Deterministic-analysis"><i class="fa fa-check"></i><b>5.2</b> 05b Deterministic analysis</a></li>
 <li class="chapter" data-level="5.3" data-path="analysis.html"><a href="analysis.html#voi"><i class="fa fa-check"></i><b>5.3</b> 05c Value of information</a></li>
@@ -129,7 +193,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">darthpack: An R package with DARTH’s decision modeling coding framework</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Sick-Sicker case-study using darthpack, an R package with DARTH’s decision modeling coding framework</a>
           </h1>
         </div>
 
@@ -137,18 +201,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="analysis" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Analysis</h1>
+<div id="analysis" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Analysis<a href="analysis.html#analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The analysis component is where the elements in components 1-4 are combined to answer the question(s) of interest given current information and to quantify the value of potential further research. Our framework separates the analysis in three subcomponents: <em>05a Probabilistic analysis</em>, _05b Deterministic analysis_and <em>05c Value of information analysis</em>. For the Sick-Sicker case-study, we use all three subcomponents to conduct the CEA and to quantify the uncertainty of our decision. For procedures in the CEA, we rely on the <code>R</code> package <code>dampack</code>, which is available here: <a href="https://github.com/DARTH-git/dampack" class="uri">https://github.com/DARTH-git/dampack</a>. To install <code>dampack</code>, please follow these instructions:</p>
-<div id="Probabilistic-analysis" class="section level2">
-<h2><span class="header-section-number">5.1</span> 05a Probabilistic analysis</h2>
+<div id="Probabilistic-analysis" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> 05a Probabilistic analysis<a href="analysis.html#Probabilistic-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this subcomponent, we evaluate decision uncertainty by propagating the uncertainty through the CEA using probabilistic sensitivity analysis (PSA). Until now we used the parameter values as described in Table <a href="inputs.html#tab:parameters">1.1</a>. However, we are uncertain about these values. Most of these input parameters are defined by probability distribution as described in Table <a href="analysis.html#tab:parameters-PSA">5.1</a>.</p>
 <table>
 <caption><span id="tab:parameters-PSA">Table 5.1: </span> Description of parameters with their R name and distribution.</caption>
 <colgroup>
 <col width="35%" />
 <col width="14%" />
-<col width="49%" />
+<col width="50%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -231,51 +295,61 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </tbody>
 </table>
 <p>In a PSA we sample the input parameter values from these distributions and we then run the model at each sample. In the file <em>05a_probabilistic_analysis_functions.R</em> we created a single function, called <code>generate_psa_params</code>. This function generates a PSA dataset for all the CEA input parameters. We specify the number of PSA samples via the <code>n_sim</code> argument. The function also accepts specifying a seed to allow reproducibility of the results.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print.function</span>(generate_psa_params) <span class="co"># print the function </span></code></pre></div>
-<pre><code>## function(n_sim = 1000, seed = 20190220){ # User defined
-##   ## Load calibrated parameters
-##   data(&quot;m_calib_post&quot;)
-##   n_sim &lt;- nrow(m_calib_post)
-##   set_seed &lt;- seed
-##   df_psa_params &lt;- data.frame(
-##     ### Calibrated parameters
-##     m_calib_post,
-##     
-##     ### Transition probabilities (per cycle)
-##     p_HS1   = rbeta(n_sim, 30, 170),        # probability to become sick when healthy
-##     p_S1H   = rbeta(n_sim, 60, 60) ,        # probability to become healthy when sick
-##     
-##     ### State rewards
-##     ## Costs
-##     c_H   = rgamma(n_sim, shape = 100, scale = 20)    , # cost of remaining one cycle in state H
-##     c_S1  = rgamma(n_sim, shape = 177.8, scale = 22.5), # cost of remaining one cycle in state S1
-##     c_S2  = rgamma(n_sim, shape = 225, scale = 66.7)  , # cost of remaining one cycle in state S2
-##     c_Trt = rgamma(n_sim, shape = 73.5, scale = 163.3), # cost of treatment (per cycle)
-##     c_D   = 0                                         , # cost of being in the death state
-##     ## Utilities
-##     u_H   = truncnorm::rtruncnorm(n_sim, mean =    1, sd = 0.01, b = 1), # utility when healthy
-##     u_S1  = truncnorm::rtruncnorm(n_sim, mean = 0.75, sd = 0.02, b = 1), # utility when sick
-##     u_S2  = truncnorm::rtruncnorm(n_sim, mean = 0.50, sd = 0.03, b = 1), # utility when sicker
-##     u_D   = 0                                               , # utility when dead
-##     u_Trt = truncnorm::rtruncnorm(n_sim, mean = 0.95, sd = 0.02, b = 1)  # utility when being treated
-##   )
-##   return(df_psa_params)
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="analysis.html#cb21-1" tabindex="-1"></a><span class="fu">print.function</span>(generate_psa_params) <span class="co"># print the function </span></span></code></pre></div>
+<pre><code>## function (n_sim = 1000, seed = 20190220) 
+## {
+##     if (!is.numeric(n_sim) || length(n_sim) != 1 || is.na(n_sim) || 
+##         n_sim &lt; 1) {
+##         stop(&quot;&#39;n_sim&#39; must be a single number of at least 1&quot;)
+##     }
+##     n_sim &lt;- as.integer(n_sim)
+##     if (!is.null(seed)) {
+##         set.seed(seed)
+##     }
+##     n_post &lt;- nrow(m_calib_post)
+##     if (n_sim == n_post) {
+##         m_calib_post_samp &lt;- m_calib_post
+##     }
+##     else {
+##         if (n_sim &gt; n_post) {
+##             warning(&quot;&#39;n_sim&#39; (&quot;, n_sim, &quot;) is larger than the posterior sample of &quot;, 
+##                 &quot;the calibrated parameters (&quot;, n_post, &quot;), so posterior draws &quot;, 
+##                 &quot;are resampled with replacement. Rerun the calibration with a &quot;, 
+##                 &quot;larger &#39;B.re&#39; to obtain n_sim distinct draws.&quot;, 
+##                 call. = FALSE)
+##         }
+##         v_rows_post &lt;- sample.int(n = n_post, size = n_sim, replace = n_sim &gt; 
+##             n_post)
+##         m_calib_post_samp &lt;- m_calib_post[v_rows_post, , drop = FALSE]
+##     }
+##     rownames(m_calib_post_samp) &lt;- NULL
+##     df_psa_params &lt;- data.frame(m_calib_post_samp, p_HS1 = rbeta(n_sim, 
+##         30, 170), p_S1H = rbeta(n_sim, 60, 60), c_H = rgamma(n_sim, 
+##         shape = 100, scale = 20), c_S1 = rgamma(n_sim, shape = 177.8, 
+##         scale = 22.5), c_S2 = rgamma(n_sim, shape = 225, scale = 66.7), 
+##         c_Trt = rgamma(n_sim, shape = 73.5, scale = 163.3), c_D = 0, 
+##         u_H = truncnorm::rtruncnorm(n_sim, mean = 1, sd = 0.01, 
+##             b = 1), u_S1 = truncnorm::rtruncnorm(n_sim, mean = 0.75, 
+##             sd = 0.02, b = 1), u_S2 = truncnorm::rtruncnorm(n_sim, 
+##             mean = 0.5, sd = 0.03, b = 1), u_D = 0, u_Trt = truncnorm::rtruncnorm(n_sim, 
+##             mean = 0.95, sd = 0.02, b = 1))
+##     return(df_psa_params)
 ## }
-## &lt;bytecode: 0x7fb55aa7c3c8&gt;
+## &lt;bytecode: 0x11e5cf6d0&gt;
 ## &lt;environment: namespace:darthpack&gt;</code></pre>
 <p>The function returns the <code>df_psa_input</code> dataframe with a PSA dataset of the input parameters. With this dataframe we can run the PSA to produce distributions of costs, effectiveness and NMB. The PSA is performed by the <em>05a_probabilistic_analysis.R</em> script. As shown in the code below, the <code>df_psa_input</code> dataframe is used by the <code>update_param_list</code> function to generate the corresponding list of parameters for the PSA. For each simulation, we perfrom three steps. First, the list of parameters is updated by the <code>update_param_list</code> function. Second, the model is executed by the <code>calculate_ce_out</code> function using the updated parameter list and third, the dataframes <code>df_c</code> and <code>df_e</code> store the estimated cost and effects, respectively. The final part of this loop is to satisfy the modeler when waiting on the results, by displaying the simulation progress.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n_sim){ 
-  l_psa_input &lt;-<span class="st"> </span><span class="kw">update_param_list</span>(l_params_all, df_psa_input[i, ])
-  df_out_temp &lt;-<span class="st"> </span><span class="kw">calculate_ce_out</span>(l_psa_input)
-  df_c[i, ] &lt;-<span class="st"> </span>df_out_temp<span class="op">$</span>Cost
-  df_e[i, ] &lt;-<span class="st"> </span>df_out_temp<span class="op">$</span>Effect
-  <span class="co"># Display simulation progress</span>
-  <span class="cf">if</span>(i<span class="op">/</span>(n_sim<span class="op">/</span><span class="dv">10</span>) <span class="op">==</span><span class="st"> </span><span class="kw">round</span>(i<span class="op">/</span>(n_sim<span class="op">/</span><span class="dv">10</span>), <span class="dv">0</span>)) {
-    <span class="kw">cat</span>(<span class="st">&#39;</span><span class="ch">\r</span><span class="st">&#39;</span>, <span class="kw">paste</span>(i<span class="op">/</span>n_sim <span class="op">*</span><span class="st"> </span><span class="dv">100</span>, <span class="st">&quot;% done&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))
-  }
-}</code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="analysis.html#cb23-1" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_sim){ </span>
+<span id="cb23-2"><a href="analysis.html#cb23-2" tabindex="-1"></a>  l_psa_input <span class="ot">&lt;-</span> <span class="fu">update_param_list</span>(l_params_all, df_psa_input[i, ])</span>
+<span id="cb23-3"><a href="analysis.html#cb23-3" tabindex="-1"></a>  df_out_temp <span class="ot">&lt;-</span> <span class="fu">calculate_ce_out</span>(l_psa_input)</span>
+<span id="cb23-4"><a href="analysis.html#cb23-4" tabindex="-1"></a>  df_c[i, ] <span class="ot">&lt;-</span> df_out_temp<span class="sc">$</span>Cost</span>
+<span id="cb23-5"><a href="analysis.html#cb23-5" tabindex="-1"></a>  df_e[i, ] <span class="ot">&lt;-</span> df_out_temp<span class="sc">$</span>Effect</span>
+<span id="cb23-6"><a href="analysis.html#cb23-6" tabindex="-1"></a>  <span class="co"># Display simulation progress</span></span>
+<span id="cb23-7"><a href="analysis.html#cb23-7" tabindex="-1"></a>  <span class="cf">if</span>(i<span class="sc">/</span>(n_sim<span class="sc">/</span><span class="dv">10</span>) <span class="sc">==</span> <span class="fu">round</span>(i<span class="sc">/</span>(n_sim<span class="sc">/</span><span class="dv">10</span>), <span class="dv">0</span>)) {</span>
+<span id="cb23-8"><a href="analysis.html#cb23-8" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&#39;</span><span class="sc">\r</span><span class="st">&#39;</span>, <span class="fu">paste</span>(i<span class="sc">/</span>n_sim <span class="sc">*</span> <span class="dv">100</span>, <span class="st">&quot;% done&quot;</span>, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>))</span>
+<span id="cb23-9"><a href="analysis.html#cb23-9" tabindex="-1"></a>  }</span>
+<span id="cb23-10"><a href="analysis.html#cb23-10" tabindex="-1"></a>}</span></code></pre></div>
 <p>We can plot the results using the <code>plot</code> function from <code>dampack</code>. Figure <a href="analysis.html#fig:05a-CEAplane">5.1</a> shows the CE scatter plot with the joint distribution of costs and effects for each strategy and their corresponding 95% confidence ellipse.</p>
-<div class="figure" style="text-align: center"><span id="fig:05a-CEAplane"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:05a-CEAplane"></span>
 <img src="../figs/05a_cea_plane_scatter.png" alt="The cost-effectiveness plane graph showing the results of the probabilistic sensitivity analysis for the Sick-Sicker case-study." width="100%" />
 <p class="caption">
 Figure 5.1: The cost-effectiveness plane graph showing the results of the probabilistic sensitivity analysis for the Sick-Sicker case-study.
@@ -283,7 +357,7 @@ Figure 5.1: The cost-effectiveness plane graph showing the results of the probab
 </div>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:df-cea-prob">Table 5.2: </span>Probabilistic cost-effectiveness analysis results of the Sick-Sicker model comparing no treatment with treatment
+<span id="tab:df-cea-prob">Table 5.2: </span><span id="tab:df-cea-prob">Table 5.3: </span>Probabilistic cost-effectiveness analysis results of the Sick-Sicker model comparing no treatment with treatment
 </caption>
 <thead>
 <tr>
@@ -313,10 +387,10 @@ ICER
 No.Treatment
 </td>
 <td style="text-align:right;">
-115538.9
+115178.1
 </td>
 <td style="text-align:right;">
-19.95305
+19.91475
 </td>
 <td style="text-align:right;">
 NA
@@ -333,156 +407,142 @@ NA
 Treatment
 </td>
 <td style="text-align:right;">
-213755.8
+213684.8
 </td>
 <td style="text-align:right;">
-20.63891
+20.60944
 </td>
 <td style="text-align:right;">
-98216.84
+98506.7
 </td>
 <td style="text-align:right;">
-0.6858646
+0.694694
 </td>
 <td style="text-align:right;">
-143201.5
+141798.7
 </td>
 </tr>
 </tbody>
 </table>
-<p>Next, we perform a CEA using the previously used <code>calculate_icers</code> functions from <code>dampack</code>. Table <a href="analysis.html#tab:df-cea-prob">5.2</a> shows the results of the probabilistic CEA. In addition, we plot a cost-effectiveness plane with the frontier, the cost-effectiveness acceptability curves (CEACs) and frontier (CEAF), expected Loss curves (ELCs) (Figures <a href="analysis.html#fig:05a-cea-frontier-psa">5.2</a> - <a href="analysis.html#fig:05a-elc">5.4</a>) <span class="citation">(Alarid-Escudero et al. <a href="#ref-Alarid-Escudero2019">2019</a>)</span>. Followed by creating linear regression metamodeling sensitivity analysis graphs (Figures <a href="analysis.html#fig:05a-owsa-lrm-nmb">5.5</a> - <a href="analysis.html#fig:05a-twsa-lrm-uS1-uTrt-nmb">5.8</a>)<span class="citation">(H. Jalal et al. <a href="#ref-Jalal2013">2013</a>)</span>. All generated figures are shown below and stored to the <em>figs</em> folder .</p>
-<div class="figure" style="text-align: center"><span id="fig:05a-cea-frontier-psa"></span>
+<p>Next, we perform a CEA using the previously used <code>calculate_icers</code> functions from <code>dampack</code>. Table <a href="analysis.html#tab:df-cea-prob">5.2</a> shows the results of the probabilistic CEA. In addition, we plot a cost-effectiveness plane with the frontier, the cost-effectiveness acceptability curves (CEACs) and frontier (CEAF), expected Loss curves (ELCs) (Figures <a href="analysis.html#fig:05a-cea-frontier-psa">5.2</a> - <a href="analysis.html#fig:05a-elc">5.4</a>) <span class="citation">(<a href="#ref-Alarid-Escudero2019">Alarid-Escudero et al. 2019</a>)</span>. Followed by creating linear regression metamodeling sensitivity analysis graphs (Figures <a href="analysis.html#fig:05a-owsa-lrm-nmb">5.5</a> - <a href="analysis.html#fig:05a-twsa-lrm-uS1-uTrt-nmb">5.8</a>)<span class="citation">(<a href="#ref-Jalal2013">Jalal et al. 2013</a>)</span>. All generated figures are shown below and stored to the <em>figs</em> folder .</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:05a-cea-frontier-psa"></span>
 <img src="../figs/05a_cea_frontier_psa.png" alt="Cost-effectiveness frontier" width="100%" />
 <p class="caption">
 Figure 5.2: Cost-effectiveness frontier
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:05a-ceac-ceaf"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:05a-ceac-ceaf"></span>
 <img src="../figs/05a_ceac_ceaf.png" alt="Cost-effectiveness acceptability curves (CEACs) and frontier (CEAF)." width="100%" />
 <p class="caption">
 Figure 5.3: Cost-effectiveness acceptability curves (CEACs) and frontier (CEAF).
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:05a-elc"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:05a-elc"></span>
 <img src="../figs/05a_elc.png" alt="Expected Loss Curves." width="100%" />
 <p class="caption">
 Figure 5.4: Expected Loss Curves.
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:05a-owsa-lrm-nmb"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:05a-owsa-lrm-nmb"></span>
 <img src="../figs/05a_owsa_lrm_nmb.png" alt="One-way sensitivity analysis (OWSA)." width="100%" />
 <p class="caption">
 Figure 5.5: One-way sensitivity analysis (OWSA).
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:05a-optimal-owsa-lrm-nmb"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:05a-optimal-owsa-lrm-nmb"></span>
 <img src="../figs/05a_optimal_owsa_lrm_nmb.png" alt="Optimal strategy with OWSA" width="100%" />
 <p class="caption">
 Figure 5.6: Optimal strategy with OWSA
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:05a-tornado-lrm-Treatment-nmb"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:05a-tornado-lrm-Treatment-nmb"></span>
 <img src="../figs/05a_tornado_lrm_Treatment_nmb.png" alt="Tornado plot" width="100%" />
 <p class="caption">
 Figure 5.7: Tornado plot
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:05a-twsa-lrm-uS1-uTrt-nmb"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:05a-twsa-lrm-uS1-uTrt-nmb"></span>
 <img src="../figs/05a_twsa_lrm_uS1_uTrt_nmb.png" alt="Two-way sensitivity analysis (TWSA)." width="100%" />
 <p class="caption">
 Figure 5.8: Two-way sensitivity analysis (TWSA).
 </p>
 </div>
 </div>
-<div id="Deterministic-analysis" class="section level2">
-<h2><span class="header-section-number">5.2</span> 05b Deterministic analysis</h2>
+<div id="Deterministic-analysis" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> 05b Deterministic analysis<a href="analysis.html#Deterministic-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this subcomponent, we perform a deterministic CEA, followed by some deterministic sensitivity analysis, including one-way, two-way and tornado sensitivity analyses. The function script of this subcomponent, <em>05b_deterministic_analysis_function.R</em>, contains the function <code>calculate_ce_out</code>. This function calculates costs and effects for a given vector of parameters using a simulation model. We need to run our simulation model using the calibrated parameter values, but the list we created in component 01 (<a href="inputs.html#inputs">1</a>) still contain the placeholder values for the calibrated parameters. This means we need to update these values by the calibrated values stored in the vector <code>v_calib_post_map</code>. The function <code>update_param_list</code> updates the list of parameters with new values for some specific parameters.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print.function</span>(update_param_list)</code></pre></div>
-<pre><code>## function(l_params_all, params_updated){
-##   
-##   if (typeof(params_updated)!=&quot;list&quot;){
-##     params_updated &lt;- split(unname(params_updated),names(params_updated)) #converte the named vector to a list
-##   }
-##   l_params_all &lt;- modifyList(l_params_all, params_updated) #update the values
-##   return(l_params_all)
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="analysis.html#cb24-1" tabindex="-1"></a><span class="fu">print.function</span>(update_param_list)</span></code></pre></div>
+<pre><code>## function (l_params_all, params_updated, allow_new = FALSE) 
+## {
+##     if (is.null(names(params_updated)) || any(names(params_updated) == 
+##         &quot;&quot;)) {
+##         stop(&quot;All elements of &#39;params_updated&#39; must be named after the parameter &quot;, 
+##             &quot;they update&quot;)
+##     }
+##     if (typeof(params_updated) != &quot;list&quot;) {
+##         params_updated &lt;- split(unname(params_updated), names(params_updated))
+##     }
+##     v_names_unknown &lt;- setdiff(names(params_updated), names(l_params_all))
+##     if (length(v_names_unknown) &gt; 0 &amp;&amp; !allow_new) {
+##         stop(&quot;The following parameter(s) are not in &#39;l_params_all&#39;: &quot;, 
+##             paste(v_names_unknown, collapse = &quot;, &quot;), &quot;. Check the spelling, or set allow_new = TRUE to add them.&quot;)
+##     }
+##     l_params_all &lt;- modifyList(l_params_all, params_updated)
+##     return(l_params_all)
 ## }
-## &lt;bytecode: 0x7fb564d0c998&gt;
+## &lt;bytecode: 0x11dd97980&gt;
 ## &lt;environment: namespace:darthpack&gt;</code></pre>
 <p>The first argument of the function, called <code>l_params_all</code>, is a list with all the parameters of decision model. The second argument, <code>params_updated</code>, is an object with parameters for which values need to be updated. The function returns the list <code>l_params_all</code> with updated values.</p>
 <p>In the <em>05b_deterministic_analysis.R</em> script we execute the <code>update_param_list</code> function for our case-study, resulting in the list <code>l_params_basecase</code> where the placeholder values for <code>p_S1S2</code>, <code>hr_S1</code> and <code>hr_S2</code> are replaced by the calibration estimates.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l_params_basecase &lt;-<span class="st"> </span><span class="kw">update_param_list</span>(l_params_all, v_calib_post_map) </code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="analysis.html#cb26-1" tabindex="-1"></a>l_params_basecase <span class="ot">&lt;-</span> <span class="fu">update_param_list</span>(l_params_all, v_calib_post_map) </span></code></pre></div>
 <p>We use this new list as an argument in the <code>calculate_ce_out</code> function. In addition, we specify the willingness-to-pay (WTP) threshold value using the <code>n_wtp</code> argument of this function. This WTP value is used to compute a net monetary benefit (NMB) value. If the user does not specify the WTP, a default value of $100,000/QALY will be used by the function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_out_ce &lt;-<span class="st"> </span><span class="kw">calculate_ce_out</span>(<span class="dt">l_params_all =</span> l_params_basecase, 
-                                <span class="dt">n_wtp =</span> <span class="dv">150000</span>)
-<span class="kw">print.function</span>(calculate_ce_out) <span class="co"># print the function</span></code></pre></div>
-<pre><code>## function(l_params_all = load_all_params(), 
-##                              n_wtp = 100000){ # User defined
-##   with(as.list(l_params_all), {
-##     ## Create discounting vectors
-##     v_dwc &lt;- 1 / ((1 + d_e) ^ (0:(n_t))) # vector with discount weights for costs
-##     v_dwe &lt;- 1 / ((1 + d_c) ^ (0:(n_t))) # vector with discount weights for QALYs
-##     
-##     ## Run STM model at a parameter set for each intervention
-##     l_model_out_no_trt &lt;- decision_model(l_params_all = l_params_all)
-##     l_model_out_trt    &lt;- decision_model(l_params_all = l_params_all)
-##     
-##     ## Cohort trace by treatment
-##     m_M_no_trt &lt;- l_model_out_no_trt$m_M # No treatment
-##     m_M_trt    &lt;- l_model_out_trt$m_M    # Treatment
-##     
-##     ## Vectors with costs and utilities by treatment
-##     v_u_no_trt &lt;- c(u_H, u_S1, u_S2, u_D)
-##     v_u_trt    &lt;- c(u_H, u_Trt, u_S2, u_D)
-##     
-##     v_c_no_trt &lt;- c(c_H, c_S1, c_S2, c_D)
-##     v_c_trt    &lt;- c(c_H, c_S1 + c_Trt, c_S2 + c_Trt, c_D)
-##     
-##     ## Mean Costs and QALYs for Treatment and NO Treatment
-##     v_tu_no_trt &lt;- m_M_no_trt %*% v_u_no_trt
-##     v_tu_trt    &lt;- m_M_trt %*% v_u_trt
-##     
-##     v_tc_no_trt &lt;- m_M_no_trt %*% v_c_no_trt
-##     v_tc_trt    &lt;- m_M_trt %*% v_c_trt
-##     
-##     ## Total discounted mean Costs and QALYs
-##     tu_d_no_trt &lt;- t(v_tu_no_trt) %*% v_dwe 
-##     tu_d_trt    &lt;- t(v_tu_trt) %*% v_dwe
-##     
-##     tc_d_no_trt &lt;- t(v_tc_no_trt) %*% v_dwc
-##     tc_d_trt    &lt;- t(v_tc_trt)    %*% v_dwc
-##     
-##     ## Vector with total discounted mean Costs and QALYs
-##     v_tc_d &lt;- c(tc_d_no_trt, tc_d_trt)
-##     v_tu_d &lt;- c(tu_d_no_trt, tu_d_trt)
-##     
-##     ## Vector with discounted net monetary benefits (NMB)
-##     v_nmb_d &lt;- v_tu_d * n_wtp - v_tc_d
-##     
-##     ## Dataframe with discounted costs, effectiveness and NMB
-##     df_ce &lt;- data.frame(Strategy = v_names_str,
-##                         Cost     = v_tc_d,
-##                         Effect   = v_tu_d,
-##                         NMB      = v_nmb_d)
-##     
-##     return(df_ce)
-##   }
-##   )
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="analysis.html#cb27-1" tabindex="-1"></a>df_out_ce <span class="ot">&lt;-</span> <span class="fu">calculate_ce_out</span>(<span class="at">l_params_all =</span> l_params_basecase, </span>
+<span id="cb27-2"><a href="analysis.html#cb27-2" tabindex="-1"></a>                                <span class="at">n_wtp =</span> <span class="dv">150000</span>)</span>
+<span id="cb27-3"><a href="analysis.html#cb27-3" tabindex="-1"></a><span class="fu">print.function</span>(calculate_ce_out) <span class="co"># print the function</span></span></code></pre></div>
+<pre><code>## function (l_params_all = load_all_params(), n_wtp = 1e+05) 
+## {
+##     with(as.list(l_params_all), {
+##         v_dwc &lt;- 1/((1 + d_c)^(0:(n_t)))
+##         v_dwe &lt;- 1/((1 + d_e)^(0:(n_t)))
+##         l_model_out_no_trt &lt;- decision_model(l_params_all = l_params_all)
+##         l_model_out_trt &lt;- l_model_out_no_trt
+##         m_M_no_trt &lt;- l_model_out_no_trt$m_M
+##         m_M_trt &lt;- l_model_out_trt$m_M
+##         v_u_no_trt &lt;- c(u_H, u_S1, u_S2, u_D)
+##         v_u_trt &lt;- c(u_H, u_Trt, u_S2, u_D)
+##         v_c_no_trt &lt;- c(c_H, c_S1, c_S2, c_D)
+##         v_c_trt &lt;- c(c_H, c_S1 + c_Trt, c_S2 + c_Trt, c_D)
+##         v_tu_no_trt &lt;- m_M_no_trt %*% v_u_no_trt
+##         v_tu_trt &lt;- m_M_trt %*% v_u_trt
+##         v_tc_no_trt &lt;- m_M_no_trt %*% v_c_no_trt
+##         v_tc_trt &lt;- m_M_trt %*% v_c_trt
+##         tu_d_no_trt &lt;- t(v_tu_no_trt) %*% v_dwe
+##         tu_d_trt &lt;- t(v_tu_trt) %*% v_dwe
+##         tc_d_no_trt &lt;- t(v_tc_no_trt) %*% v_dwc
+##         tc_d_trt &lt;- t(v_tc_trt) %*% v_dwc
+##         v_tc_d &lt;- c(tc_d_no_trt, tc_d_trt)
+##         v_tu_d &lt;- c(tu_d_no_trt, tu_d_trt)
+##         v_nmb_d &lt;- v_tu_d * n_wtp - v_tc_d
+##         df_ce &lt;- data.frame(Strategy = v_names_str, Cost = v_tc_d, 
+##             Effect = v_tu_d, NMB = v_nmb_d)
+##         return(df_ce)
+##     })
 ## }
-## &lt;bytecode: 0x7fb5640c6d40&gt;
+## &lt;bytecode: 0x11d06df58&gt;
 ## &lt;environment: namespace:darthpack&gt;</code></pre>
 <p>After calculating the discount weights, this function runs the simulation model using the previously described function <code>decision_model</code> in the <em>02_simulatiomn_model_function.R</em> script. Inside the function <code>calculate_ce_out</code>, the simulation model is run for both the treatment, <code>l_model_out_trt</code>, and no treatment, <code>l_model_out_no_trt</code>, strategies of the Sick-Sicker model. Running it for both treatment strategies is done for illustration purposes. In this case-study, the resulting cohort traces are identical and we could have executed it only once.</p>
 <p>In the second part of the function we create multiple vectors for both the cost and effects of both strategies. These vectors multiply the cohort trace to compute the cycle-specific rewards. This results in vectors of total costs (<code>v_tc</code>) and total effects (<code>v_tu</code>) per cycle. By multiplying these vectors with the vectors with the discount weights for costs (<code>v_dwc</code>) and effects (<code>v_dwe</code>) we get the total discounted mean costs (<code>tc_d_no_trt</code> and <code>tc_d_trt</code>) and QALYs (<code>tu_d_no_trt</code> and <code>tu_d_trt</code>) for both strategies. These values are used in the calculation of the NMB. Finally, the total discounted costs, effectiveness and NMB are combined in the dataframe <code>df_ce</code>. The results for our case-study are shown below.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_out_ce <span class="co"># print the dataframe </span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="analysis.html#cb29-1" tabindex="-1"></a>df_out_ce <span class="co"># print the dataframe </span></span></code></pre></div>
 <pre><code>##       Strategy     Cost  Effect     NMB
 ## 1 No Treatment 115244.8 20.0233 2888250
 ## 2    Treatment 214165.8 20.7226 2894224</code></pre>
-<p>This dataframe of CE results can be used as an argument in the <code>calculate_icers</code> function from the <code>dampack</code> package to calculate the incremental cost-effectiveness ratios (ICERs) and noting which strategies are weakly and strongly dominated. Table <a href="analysis.html#tab:df-cea-det">5.3</a> shows the result of the deterministic CEA.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_cea_det &lt;-<span class="st"> </span><span class="kw">calculate_icers</span>(<span class="dt">cost =</span> df_out_ce<span class="op">$</span>Cost, 
-                              <span class="dt">effect =</span> df_out_ce<span class="op">$</span>Effect, 
-                              <span class="dt">strategies =</span> l_params_basecase<span class="op">$</span>v_names_str)</code></pre></div>
-<table>
+<p>This dataframe of CE results can be used as an argument in the <code>calculate_icers</code> function from the <code>dampack</code> package to calculate the incremental cost-effectiveness ratios (ICERs) and noting which strategies are weakly and strongly dominated. Table <a href="analysis.html#tab:df-cea-det">5.4</a> shows the result of the deterministic CEA.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="analysis.html#cb31-1" tabindex="-1"></a>df_cea_det <span class="ot">&lt;-</span> <span class="fu">calculate_icers</span>(<span class="at">cost =</span> df_out_ce<span class="sc">$</span>Cost, </span>
+<span id="cb31-2"><a href="analysis.html#cb31-2" tabindex="-1"></a>                              <span class="at">effect =</span> df_out_ce<span class="sc">$</span>Effect, </span>
+<span id="cb31-3"><a href="analysis.html#cb31-3" tabindex="-1"></a>                              <span class="at">strategies =</span> l_params_basecase<span class="sc">$</span>v_names_str)</span></code></pre></div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:df-cea-det">Table 5.3: </span>Deterministic cost-effectiveness analysis results of the Sick-Sicker model comparing no treatment with treatment.
+<span id="tab:df-cea-det">Table 5.4: </span><span id="tab:df-cea-det">Table 5.5: </span>Deterministic cost-effectiveness analysis results of the Sick-Sicker model comparing no treatment with treatment.
 </caption>
 <thead>
 <tr>
@@ -550,43 +610,43 @@ Treatment
 </tbody>
 </table>
 <p>Finally, Figure <a href="analysis.html#fig:05b-CEA-frontier">5.9</a> shows the cost-effectiveness frontier of the CEA.</p>
-<div class="figure" style="text-align: center"><span id="fig:05b-CEA-frontier"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:05b-CEA-frontier"></span>
 <img src="../figs/05b_cea_frontier.png" alt="Cost-effectiveness frontier." width="100%" />
 <p class="caption">
 Figure 5.9: Cost-effectiveness frontier.
 </p>
 </div>
 <p>We then conduct a series of deterministic sensitivity analysis. First, we conduct a one-way sensitivity analysis (OWSA) on the variables <code>c_Trt</code>, <code>p_HS1</code>, <code>u_S1</code> and <code>u_Trt</code> and a two-way sensitivity analysis (TWSA) using the owsa_det and twsa_det functions. We use the output of these functions to produce different SA plots, such as OWSA tornado, one-way optimal strategy and TWSA plots (Figures <a href="analysis.html#fig:05b-owsa-nmb">5.10</a> - <a href="analysis.html#fig:05b-twsa-uS1-uTrt-nmb">5.13</a>).</p>
-<div class="figure" style="text-align: center"><span id="fig:05b-owsa-nmb"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:05b-owsa-nmb"></span>
 <img src="../figs/05b_owsa_nmb.png" alt="One-way sensitivity analysis results" width="100%" />
 <p class="caption">
 Figure 5.10: One-way sensitivity analysis results
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:05b-optimal-owsa-nmb"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:05b-optimal-owsa-nmb"></span>
 <img src="../figs/05b_optimal_owsa_nmb.png" alt="The optimal strategy with OWSA" width="100%" />
 <p class="caption">
 Figure 5.11: The optimal strategy with OWSA
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:05b-tornado-Treatment-nmb"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:05b-tornado-Treatment-nmb"></span>
 <img src="../figs/05b_tornado_Treatment_nmb.png" alt="The tornado plot" width="100%" />
 <p class="caption">
 Figure 5.12: The tornado plot
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:05b-twsa-uS1-uTrt-nmb"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:05b-twsa-uS1-uTrt-nmb"></span>
 <img src="../figs/05b_twsa_uS1_uTrt_nmb.png" alt="Two-way sensitivity results." width="100%" />
 <p class="caption">
 Figure 5.13: Two-way sensitivity results.
 </p>
 </div>
 </div>
-<div id="voi" class="section level2">
-<h2><span class="header-section-number">5.3</span> 05c Value of information</h2>
+<div id="voi" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> 05c Value of information<a href="analysis.html#voi" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the VOI component, the results from the PSA generated in the probabilistic analysis subcomponent are used to determine whether further potential research is needed. We use the <code>calc_evpi</code> function from the <code>dampack</code> package to calculate the expected value of perfect information (EVPI). Figure <a href="analysis.html#fig:05c-evpi">5.14</a> shows the EVPI for the different WTP values.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">evpi &lt;-<span class="st"> </span><span class="kw">calc_evpi</span>(<span class="dt">wtp =</span> v_wtp, <span class="dt">psa =</span> l_psa)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:05c-evpi"></span>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="analysis.html#cb32-1" tabindex="-1"></a>evpi <span class="ot">&lt;-</span> <span class="fu">calc_evpi</span>(<span class="at">wtp =</span> v_wtp, <span class="at">psa =</span> l_psa)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:05c-evpi"></span>
 <img src="../figs/05c_evpi.png" alt="Expected value of perfect information" width="100%" />
 <p class="caption">
 Figure 5.14: Expected value of perfect information
@@ -595,13 +655,13 @@ Figure 5.14: Expected value of perfect information
 
 </div>
 </div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-Alarid-Escudero2019">
-<p>Alarid-Escudero, F, EA. Enns, KM. Kuntz, TL. Michaud, and H Jalal. 2019. “‘Time Traveling Is Just Too Dangerous’ But Some Methods Are Worth Revisiting: The Advantages of Expected Loss Curves Over Cost-Effectiveness Acceptability Curves and Frontier.” <em>Value in Health</em> 22 (5): 611–18. doi:<a href="https://doi.org/10.1016/j.jval.2019.02.008">10.1016/j.jval.2019.02.008</a>.</p>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-Alarid-Escudero2019" class="csl-entry">
+Alarid-Escudero, F, EA Enns, KM Kuntz, TL Michaud, and H Jalal. 2019. <span>“<span class="nocase">"Time Traveling Is Just Too Dangerous" But Some Methods Are Worth Revisiting: The Advantages of Expected Loss Curves Over Cost-Effectiveness Acceptability Curves and Frontier</span>.”</span> <em>Value in Health</em> 22 (5): 611–18. <a href="https://doi.org/10.1016/j.jval.2019.02.008">https://doi.org/10.1016/j.jval.2019.02.008</a>.
 </div>
-<div id="ref-Jalal2013">
-<p>Jalal, Hawre, Bryan Dowd, François Sainfort, and Karen M. Kuntz. 2013. “Linear regression metamodeling as a tool to summarize and present simulation model results.” <em>Medical Decision Making</em> 33 (7): 880–90. doi:<a href="https://doi.org/10.1177/0272989X13492014">10.1177/0272989X13492014</a>.</p>
+<div id="ref-Jalal2013" class="csl-entry">
+Jalal, Hawre, Bryan Dowd, François Sainfort, and Karen M. Kuntz. 2013. <span>“<span class="nocase">Linear regression metamodeling as a tool to summarize and present simulation model results.</span>”</span> <em>Medical Decision Making</em> 33 (7): 880–90. <a href="https://doi.org/10.1177/0272989X13492014">https://doi.org/10.1177/0272989X13492014</a>.
 </div>
 </div>
             </section>
@@ -614,43 +674,52 @@ Figure 5.14: Expected value of perfect information
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"google": false,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"download": ["report.pdf", "report.epub"],
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["report.pdf", "report.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>
@@ -660,10 +729,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

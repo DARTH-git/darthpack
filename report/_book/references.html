@@ -1,22 +1,21 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | darthpack: An R package with DARTH’s decision modeling coding framework</title>
+  <title>References | Sick-Sicker case-study using darthpack, an R package with DARTH’s decision modeling coding framework</title>
   <meta name="description" content="This is a minimal description of a report of a model-based cost-effectiveness analysis of a health technology example of using the bookdown package to write a book." />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.48 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | darthpack: An R package with DARTH’s decision modeling coding framework" />
+  <meta property="og:title" content="References | Sick-Sicker case-study using darthpack, an R package with DARTH’s decision modeling coding framework" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This is a minimal description of a report of a model-based cost-effectiveness analysis of a health technology example of using the bookdown package to write a book." />
   <meta name="github-repo" content="DARTH-git/darthpack/report" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | darthpack: An R package with DARTH’s decision modeling coding framework" />
+  <meta name="twitter:title" content="References | Sick-Sicker case-study using darthpack, an R package with DARTH’s decision modeling coding framework" />
   
   <meta name="twitter:description" content="This is a minimal description of a report of a model-based cost-effectiveness analysis of a health technology example of using the bookdown package to write a book." />
   
@@ -24,22 +23,24 @@
 <meta name="author" content="DARTH" />
 
 
-<meta name="date" content="2019-08-03" />
+<meta name="date" content="2026-09-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="analysis.html">
+<link rel="prev" href="analysis.html"/>
 
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,45 +48,106 @@
 
 
 
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -104,14 +166,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="./">darthpack</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The Sick-Sicker model</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>The Sick-Sicker model</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#set-up"><i class="fa fa-check"></i>Set-up</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="inputs.html"><a href="inputs.html"><i class="fa fa-check"></i><b>1</b> Define model inputs</a></li>
 <li class="chapter" data-level="2" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i><b>2</b> Decision model</a></li>
 <li class="chapter" data-level="3" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>3</b> Model calibration</a></li>
 <li class="chapter" data-level="4" data-path="validation.html"><a href="validation.html"><i class="fa fa-check"></i><b>4</b> Validation</a></li>
-<li class="chapter" data-level="5" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>5</b> Analysis</a><ul>
+<li class="chapter" data-level="5" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>5</b> Analysis</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="analysis.html"><a href="analysis.html#Probabilistic-analysis"><i class="fa fa-check"></i><b>5.1</b> 05a Probabilistic analysis</a></li>
 <li class="chapter" data-level="5.2" data-path="analysis.html"><a href="analysis.html#Deterministic-analysis"><i class="fa fa-check"></i><b>5.2</b> 05b Deterministic analysis</a></li>
 <li class="chapter" data-level="5.3" data-path="analysis.html"><a href="analysis.html#voi"><i class="fa fa-check"></i><b>5.3</b> 05c Value of information</a></li>
@@ -129,7 +193,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">darthpack: An R package with DARTH’s decision modeling coding framework</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Sick-Sicker case-study using darthpack, an R package with DARTH’s decision modeling coding framework</a>
           </h1>
         </div>
 
@@ -137,45 +201,45 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
+<div id="references" class="section level1 unnumbered hasAnchor">
+<h1>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 
-<div id="refs" class="references">
-<div>
-<p>Alarid-Escudero, F, EA. Enns, KM. Kuntz, TL. Michaud, and H Jalal. 2019. “‘Time Traveling Is Just Too Dangerous’ But Some Methods Are Worth Revisiting: The Advantages of Expected Loss Curves Over Cost-Effectiveness Acceptability Curves and Frontier.” <em>Value in Health</em> 22 (5): 611–18. doi:<a href="https://doi.org/10.1016/j.jval.2019.02.008">10.1016/j.jval.2019.02.008</a>.</p>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div class="csl-entry">
+Alarid-Escudero, F, EA Enns, KM Kuntz, TL Michaud, and H Jalal. 2019. <span>“<span class="nocase">"Time Traveling Is Just Too Dangerous" But Some Methods Are Worth Revisiting: The Advantages of Expected Loss Curves Over Cost-Effectiveness Acceptability Curves and Frontier</span>.”</span> <em>Value in Health</em> 22 (5): 611–18. <a href="https://doi.org/10.1016/j.jval.2019.02.008">https://doi.org/10.1016/j.jval.2019.02.008</a>.
 </div>
-<div>
-<p>Alarid-Escudero, F, RF MacLehose, Y Peralta, KM Kuntz, and Enns EA. 2018. “Nonidentifiability in Model Calibration and Implications for Medical Decision Making.” <em>Medical Decision Making</em> 38 (7): 810–21. doi:<a href="https://doi.org/10.1177/0272989X18792283">10.1177/0272989X18792283</a>.</p>
+<div class="csl-entry">
+Alarid-Escudero, F, RF MacLehose, Y Peralta, KM Kuntz, and Enns EA. 2018. <span>“Nonidentifiability in Model Calibration and Implications for Medical Decision Making.”</span> <em>Medical Decision Making</em> 38 (7): 810–21. <a href="https://doi.org/10.1177/0272989X18792283">https://doi.org/10.1177/0272989X18792283</a>.
 </div>
-<div>
-<p>Eddy, David M., William Hollingworth, J. Jaime Caro, Joel Tsevat, Kathryn M. McDonald, and John B. Wong. 2012. “Model transparency and validation: A report of the ISPOR-SMDM modeling good research practices task force-7.” <em>Medical Decision Making</em> 32 (5): 733–43. doi:<a href="https://doi.org/10.1177/0272989X12454579">10.1177/0272989X12454579</a>.</p>
+<div class="csl-entry">
+Eddy, David M., William Hollingworth, J. Jaime Caro, Joel Tsevat, Kathryn M. McDonald, and John B. Wong. 2012. <span>“<span class="nocase">Model transparency and validation: A report of the ISPOR-SMDM modeling good research practices task force-7</span>.”</span> <em>Medical Decision Making</em> 32 (5): 733–43. <a href="https://doi.org/10.1177/0272989X12454579">https://doi.org/10.1177/0272989X12454579</a>.
 </div>
-<div>
-<p>Enns, E A, L E Cipriano, C T Simons, and C Y Kong. 2015. “Identifying Best-Fitting Inputs in Health-Economic Model Calibration: A Pareto Frontier Approach.” <em>Medical Decision Making</em> 35 (2): 170–82. doi:<a href="https://doi.org/10.1177/0272989X14528382">10.1177/0272989X14528382</a>.</p>
+<div class="csl-entry">
+Enns, E A, L E Cipriano, C T Simons, and C Y Kong. 2015. <span>“<span class="nocase">Identifying Best-Fitting Inputs in Health-Economic Model Calibration: A Pareto Frontier Approach</span>.”</span> <em>Medical Decision Making</em> 35 (2): 170–82. <a href="https://doi.org/10.1177/0272989X14528382">https://doi.org/10.1177/0272989X14528382</a>.
 </div>
-<div>
-<p>Goldhaber-Fiebert, JD, NK Stout, and SJ Goldie. 2010. “Empirically evaluating decision-analytic models.” <em>Value in Health</em> 13 (5): 667–74. doi:<a href="https://doi.org/10.1111/j.1524-4733.2010.00698.x">10.1111/j.1524-4733.2010.00698.x</a>.</p>
+<div class="csl-entry">
+Goldhaber-Fiebert, JD, NK Stout, and SJ Goldie. 2010. <span>“<span class="nocase">Empirically evaluating decision-analytic models</span>.”</span> <em>Value in Health</em> 13 (5): 667–74. <a href="https://doi.org/10.1111/j.1524-4733.2010.00698.x">https://doi.org/10.1111/j.1524-4733.2010.00698.x</a>.
 </div>
-<div>
-<p>Iskandar, R. 2018. “A theoretical foundation for state-transition cohort models in health decision analysis.” <em>PloS One</em> 13 (12). Public Library of Science: e0205543–e0205543. doi:<a href="https://doi.org/10.1371/journal.pone.0205543">10.1371/journal.pone.0205543</a>.</p>
+<div class="csl-entry">
+Iskandar, R. 2018. <span>“<span class="nocase">A theoretical foundation for state-transition cohort models in health decision analysis</span>.”</span> <em>PloS One</em> 13 (12): e0205543–43. <a href="https://doi.org/10.1371/journal.pone.0205543">https://doi.org/10.1371/journal.pone.0205543</a>.
 </div>
-<div>
-<p>Jalal, Hawre, Bryan Dowd, François Sainfort, and Karen M. Kuntz. 2013. “Linear regression metamodeling as a tool to summarize and present simulation model results.” <em>Medical Decision Making</em> 33 (7): 880–90. doi:<a href="https://doi.org/10.1177/0272989X13492014">10.1177/0272989X13492014</a>.</p>
+<div class="csl-entry">
+Jalal, Hawre, Bryan Dowd, François Sainfort, and Karen M. Kuntz. 2013. <span>“<span class="nocase">Linear regression metamodeling as a tool to summarize and present simulation model results.</span>”</span> <em>Medical Decision Making</em> 33 (7): 880–90. <a href="https://doi.org/10.1177/0272989X13492014">https://doi.org/10.1177/0272989X13492014</a>.
 </div>
-<div>
-<p>Menzies, Nicolas A., Djøra I. Soeteman, Ankur Pandya, and Jane J. Kim. 2017. “Bayesian Methods for Calibrating Health Policy Models: A Tutorial.” <em>PharmacoEconomics</em> 35 (6). Springer International Publishing: 613–24. doi:<a href="https://doi.org/10.1007/s40273-017-0494-4">10.1007/s40273-017-0494-4</a>.</p>
+<div class="csl-entry">
+Menzies, Nicolas A., Djøra I. Soeteman, Ankur Pandya, and Jane J. Kim. 2017. <span>“<span class="nocase">Bayesian Methods for Calibrating Health Policy Models: A Tutorial</span>.”</span> <em>PharmacoEconomics</em> 35 (6): 613–24. <a href="https://doi.org/10.1007/s40273-017-0494-4">https://doi.org/10.1007/s40273-017-0494-4</a>.
 </div>
-<div>
-<p>Raftery, A, and L Bao. 2010. “Estimating and Projecting Trends in HIV/AIDS Generalized Epidemics Using Incremental Mixture Importance Sampling.” <em>Biometrics</em> 66 (4): 1162–73.</p>
+<div class="csl-entry">
+Raftery, A, and L Bao. 2010. <span>“<span class="nocase">Estimating and Projecting Trends in HIV/AIDS Generalized Epidemics Using Incremental Mixture Importance Sampling</span>.”</span> <em>Biometrics</em> 66 (4): 1162–73.
 </div>
-<div>
-<p>Raftery, Adrian, and Le Bao. 2012. <em>IMIS: Increamental Mixture Importance Sampling</em>. <a href="https://CRAN.R-project.org/package=IMIS" class="uri">https://CRAN.R-project.org/package=IMIS</a>.</p>
+<div class="csl-entry">
+Raftery, Adrian, and Le Bao. 2012. <em>IMIS: Increamental Mixture Importance Sampling</em>. <a href="https://CRAN.R-project.org/package=IMIS">https://CRAN.R-project.org/package=IMIS</a>.
 </div>
-<div>
-<p>Rutter, C, J Ozik, M DeYoreo, and Collier N. 2018. “Microsimulation Model Calibration using Incremental Mixture Approximate Bayesian Computation.” <em>arXiv</em>, no. april: 1–20. <a href="https://arxiv.org/abs/1804.02090v3" class="uri">https://arxiv.org/abs/1804.02090v3</a>.</p>
+<div class="csl-entry">
+Rutter, C, J Ozik, M DeYoreo, and Collier N. 2018. <span>“<span class="nocase">Microsimulation Model Calibration using Incremental Mixture Approximate Bayesian Computation.</span>”</span> <em>arXiv</em>, no. april: 1–20. <a href="https://arxiv.org/abs/1804.02090v3">https://arxiv.org/abs/1804.02090v3</a>.
 </div>
-<div>
-<p>Steele, R, A Raftery, and M Emond. 2006. “Computing Normalizing Constants for Finite Mixture Models via Incremental Mixture Importance Sampling (IMIS).” <em>Journal ofComputational and Graphical Statistics</em> 15 (3): 712–34. doi:<a href="https://doi.org/10.1198/106186006X132358">10.1198/106186006X132358</a>.</p>
+<div class="csl-entry">
+Steele, R, A Raftery, and M Emond. 2006. <span>“<span class="nocase">Computing Normalizing Constants for Finite Mixture Models via Incremental Mixture Importance Sampling (IMIS)</span>.”</span> <em>Journal ofComputational and Graphical Statistics</em> 15 (3): 712–34. <a href="https://doi.org/10.1198/106186006X132358">https://doi.org/10.1198/106186006X132358</a>.
 </div>
 </div>
 </div>
@@ -189,43 +253,52 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"google": false,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"download": ["report.pdf", "report.epub"],
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["report.pdf", "report.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>
@@ -235,10 +308,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

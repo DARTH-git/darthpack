@@ -15,3 +15,5 @@
 ^\.Rhistory$
 ^\.DS_Store$
 ^\.github$
+^\.claude$
+^pkgdown$
