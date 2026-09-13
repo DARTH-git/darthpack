@@ -20,6 +20,7 @@ rm(list = ls()) # to clean the workspace
 #### 05a.1.1 Load packages ####
 # PSA functionality
 library(dampack)   # decision-analytic modeling visualization tool
+library(ggplot2)   # for ggsave() and theme() used below
 
 #### 05a.1.2 Load inputs ####
 l_params_all <- load_all_params(file.init = "data-raw/01_init_params.csv",
@@ -41,6 +42,10 @@ n_sim <- 1000
 ### Generate PSA input dataset
 df_psa_input <- generate_psa_params(n_sim = n_sim)
 
+### Take the number of simulations from the dataset that was actually generated,
+### so that the loop below cannot run past the end of df_psa_input
+n_sim <- nrow(df_psa_input)
+
 ### Initialize matrices for PSA output 
 ## Matrix of costs
 df_c <- as.data.frame(matrix(0, 
@@ -56,16 +61,20 @@ colnames(df_e) <- v_names_str
 #### 05a.4 Conduct probabilistic sensitivity analysis ####
 ### Run decision model on each parameter set of PSA input dataset to produce
 ### PSA outputs for cost and effects
+### Cycles at which to report progress, computed once so that the report does
+### not depend on an exact equality between floating point numbers
+v_sims_progress <- unique(round(seq(n_sim / 10, n_sim, length.out = 10)))
 for(i in 1:n_sim){ # i <- 1
-  l_psa_input <- update_param_list(l_params_all, df_psa_input[i,])
+  l_psa_input <- update_param_list(l_params_all, df_psa_input[i, ])
   df_out_temp <- calculate_ce_out(l_psa_input)
   df_c[i, ] <- df_out_temp$Cost
   df_e[i, ] <- df_out_temp$Effect
   # Display simulation progress
-  if(i/(n_sim/10) == round(i/(n_sim/10),0)) {
-    cat('\r', paste(i/n_sim * 100, "% done", sep = " "))
+  if(i %in% v_sims_progress) {
+    cat('\r', paste(round(i / n_sim * 100), "% done", sep = " "))
   }
 }
+cat('\n')
 
 ### Create PSA object for dampack
 l_psa <- make_psa_obj(cost = df_c, 
@@ -79,7 +88,10 @@ save(df_psa_input, df_c, df_e, v_names_str, n_str,
      file = "output/05a_psa_dataset.RData")
 
 #### 05a.6 Create probabilistic analysis graphs ####
-data("l_psa") # stored as data object in 'darthpack'
+### The graphs below use the PSA object created in 05a.4. To reproduce the
+### figures of the manuscript from the archived PSA dataset instead of the one
+### just simulated, uncomment the next line.
+# data("l_psa") # stored as data object in 'darthpack'
 
 ### Vector with willingness-to-pay (WTP) thresholds
 v_wtp <- seq(0, 200000, by = 10000)
@@ -104,7 +116,8 @@ save(df_cea_psa,
      file = "data/05a_probabilistic_cea_results.RData")
 ## As .csv
 write.csv(df_cea_psa, 
-          file = "tables/05a_probabilistic_cea_results.csv")
+          file = "tables/05a_probabilistic_cea_results.csv", 
+          row.names = FALSE)
 
 #### 05a.6.3 Plot cost-effectiveness frontier ####
 plot(df_cea_psa)
@@ -118,7 +131,7 @@ summary(ceac_obj)
 plot(ceac_obj)
 ggsave("figs/05a_ceac_ceaf.png", width = 8, height = 6)
 
-#### 05a.6.3 Expected Loss Curves (ELCs) ####
+#### 05a.6.5 Expected Loss Curves (ELCs) ####
 elc_obj <- calc_exp_loss(wtp = v_wtp, psa = l_psa)
 elc_obj
 plot(elc_obj, log_y = FALSE)

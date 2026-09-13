@@ -7,9 +7,13 @@
 generate_psa_params(n_sim = 1000, seed = 20190220)
 }
 \arguments{
-\item{n_sim}{Number of PSA samples.}
+\item{n_sim}{Number of PSA samples. Default = 1000, the size of the
+posterior sample of the calibrated parameters stored in
+\code{\link{m_calib_post}}.}
 
-\item{seed}{Seed for reproducibility of Monte Carlo sampling.}
+\item{seed}{Seed for reproducibility of Monte Carlo sampling. Use
+\code{NULL} to sample from the current state of the random number
+generator, for instance when the seed is set by the calling script.}
 }
 \value{
 A data frame with \code{n_sim} rows and 15 columns of parameters for PSA.
@@ -23,5 +27,6 @@ parameters is a draw from their posterior distribution obtained with the
 IMIS algorithm.
 }
 \examples{
-generate_psa_params()
+df_psa_input <- generate_psa_params(n_sim = 10)
+dim(df_psa_input)
 }
