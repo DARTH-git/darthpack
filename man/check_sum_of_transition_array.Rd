@@ -4,8 +4,13 @@
 \alias{check_sum_of_transition_array}
 \title{Check if the sum of transition probabilities equal to one.}
 \usage{
-check_sum_of_transition_array(a_P, n_states, n_t, err_stop = FALSE,
-  verbose = FALSE)
+check_sum_of_transition_array(
+  a_P,
+  n_states,
+  n_t,
+  err_stop = FALSE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{a_P}{A transition probability array.}

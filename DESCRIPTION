@@ -78,7 +78,7 @@ VignetteBuilder:
     knitr
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
 URL: https://darth-git.github.io/darthpack, https://github.com/DARTH-git/darthpack
 BugReports: https://github.com/DARTH-git/darthpack/issues
+Config/roxygen2/version: 8.0.0

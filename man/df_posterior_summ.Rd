@@ -4,16 +4,18 @@
 \name{df_posterior_summ}
 \alias{df_posterior_summ}
 \title{Posterior distribution of calibrated parameters}
-\format{A \code{data.frame} with three rows, one per calibrated parameter
+\format{
+A \code{data.frame} with three rows, one per calibrated parameter
 and 6 columns:
 \describe{
 \item{Parameter}{Parameter name.}
 \item{Mean}{Posterior mean.}
-\item{2.5\%}{Lower bound of credible interval.}
-\item{50\%}{Posterior median.}
-\item{97.5\%}{Upper bound of credible interval.}
+\item{2.5\\%}{Lower bound of credible interval.}
+\item{50\\%}{Posterior median.}
+\item{97.5\\%}{Upper bound of credible interval.}
 \item{MAP}{Maximum-a-posteriori (MAP) estimate.}
-}}
+}
+}
 \usage{
 df_posterior_summ
 }

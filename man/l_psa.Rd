@@ -4,7 +4,8 @@
 \name{l_psa}
 \alias{l_psa}
 \title{PSA object of the cost-effectiveness analysis decision model}
-\format{A list with 11 rows and 5 variables:
+\format{
+A list with 11 rows and 5 variables:
 \describe{
 \item{n_strategies}{Number of strategies.}
 \item{strategies}{Strategy names.}
@@ -34,7 +35,8 @@
 \item d_e: Annual discount rate for effectiveness}}
 \item{parnames}{A vector of strings with parameter names.}
 \item{currency}{A string with the currency.}
-}}
+}
+}
 \usage{
 l_psa
 }

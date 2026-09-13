@@ -50,6 +50,7 @@ reference:
   - '`log_prior`'
   - '`posterior`'
   - '`prior`'
+  - '`sample_prior`'
   - '`sample.prior`'
 - title: "04 Validation"
   desc: >

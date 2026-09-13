@@ -18,9 +18,10 @@ rm(list = ls()) # to clean the workspace
 
 #### 03.1 Load packages, data and functions ####
 #### 03.1.1 Load packages and functions ####
-# Install IMIS from CRAN archive
-# devtools::install_version("IMIS", version = "0.1", repos = "http://cran.us.r-project.org")
+# 'IMIS' has been archived on CRAN, so it must be installed from the archive:
+# devtools::install_version("IMIS", version = "0.1", repos = "https://cloud.r-project.org")
 library(IMIS)
+library(matrixStats)     # For the posterior credible intervals
 # Dependencies have been loaded with 'darthpack'
 
 #### 03.1.2 Load inputs ####
@@ -51,10 +52,10 @@ plotrix::plotCI(x    = SickSicker_targets$Prev$Time,
 
 ### TARGET 3: Proportion who are Sicker ("PropSicker"), among all those 
 ###           afflicted (Sick+Sicker)
-plotrix::plotCI(x    = SickSicker_targets$PropSick$Time, 
-                y    = SickSicker_targets$PropSick$value, 
-                ui   = SickSicker_targets$PropSick$ub,
-                li   = SickSicker_targets$PropSick$lb,
+plotrix::plotCI(x    = SickSicker_targets$PropSicker$Time, 
+                y    = SickSicker_targets$PropSicker$value, 
+                ui   = SickSicker_targets$PropSicker$ub,
+                li   = SickSicker_targets$PropSicker$lb,
                 ylim = c(0, 1), 
                 xlab = "Time", ylab = "Pr(Sicker | Sick+Sicker)")
 
@@ -79,10 +80,13 @@ v_lb <- c(p_S1S2 = 0.01, hr_S1 = 1.0, hr_S2 = 5)  # lower bound
 v_ub <- c(p_S1S2 = 0.50, hr_S1 = 4.5, hr_S2 = 15) # upper bound
 
 ### Number of calibration targets
-v_target_names <- c("Surv", "Prev", "PropSick")
+v_target_names <- c("Surv", "Prev", "PropSicker")
 n_target       <- length(v_target_names)
 
 #### 03.3.2 Run IMIS algorithm ####
+### IMIS() looks up the functions 'sample.prior', 'prior' and 'likelihood' by
+### name on the search path. They are exported by 'darthpack', so make sure the
+### package is attached (library(darthpack)) or loaded (devtools::load_all(".")).
 l_fit_imis <- IMIS::IMIS(B        =  1000,      # incremental sample size at each iteration of IMIS
                          B.re     =  n_resamp,  # desired posterior sample size
                          number_k =  10,        # maximum number of iterations in IMIS
@@ -99,11 +103,18 @@ v_calib_post_mean <- colMeans(m_calib_post)
 m_calib_post_95cr <- matrixStats::colQuantiles(m_calib_post, 
                                                probs = c(0.025, 0.5, 0.975))
 
-### Compute posterior values for draw
-v_calib_post      <- exp(log_post(m_calib_post))
+### Compute log-posterior values for each draw
+### The log-posterior is used rather than the posterior itself: exp() of a
+### large negative log-posterior underflows to 0 for every draw, which would
+### silently make which.max() below return the first draw instead of the mode.
+v_calib_lpost     <- log_post(m_calib_post)
 
 ### Compute maximum-a-posteriori (MAP) as the mode of the sampled values
-v_calib_post_map  <- m_calib_post[which.max(v_calib_post), ]
+v_calib_post_map  <- m_calib_post[which.max(v_calib_lpost), ]
+
+### Posterior values on the natural scale, normalized by the maximum so that
+### the largest value is 1 and the rescaling below is numerically stable
+v_calib_post      <- exp(v_calib_lpost - max(v_calib_lpost))
 
 # Summary statistics
 df_posterior_summ <- data.frame(

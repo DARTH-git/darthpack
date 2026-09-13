@@ -4,7 +4,8 @@
 \name{df_cea_psa}
 \alias{df_cea_psa}
 \title{Cost-effectiveness results from probabilistic analysis}
-\format{A \code{data.frame} with with 2 rows, ane per strategy and
+\format{
+A \code{data.frame} with with 2 rows, ane per strategy and
 5 variables:
 \describe{
 \item{Strategy}{Strategy name}
@@ -16,7 +17,8 @@
 \item{Status}{Domination status. ND, not dominated (i.e., on the
 cost-effectivenes efficiency frontier); D, strongly dominated; d,
 dominated by extension}
-}}
+}
+}
 \usage{
 df_cea_psa
 }

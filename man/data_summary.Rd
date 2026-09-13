@@ -18,5 +18,5 @@ A data frame containing the posterior output.
 }
 \description{
 \code{data_summary} is used to to calculate the mean, standard deviation and
-95% credible interval.
+95\% credible interval.
 }

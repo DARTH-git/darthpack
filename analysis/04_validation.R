@@ -145,9 +145,9 @@ dev.off()
 ### TARGET 3: Proportion who are Sicker ("PropSicker"), among all those afflicted (Sick+Sicker)
 png("figs/04_posterior_vs_targets_proportion_sicker.png", 
     width = 8, height = 6, units = 'in', res = 300)
-plotrix::plotCI(x = SickSicker_targets$PropSick$Time, y = SickSicker_targets$PropSick$value, 
-                ui = SickSicker_targets$PropSick$ub,
-                li = SickSicker_targets$PropSick$lb,
+plotrix::plotCI(x = SickSicker_targets$PropSicker$Time, y = SickSicker_targets$PropSicker$value, 
+                ui = SickSicker_targets$PropSicker$ub,
+                li = SickSicker_targets$PropSicker$lb,
                 ylim = c(0, 1), 
                 xlab = "Time", ylab = "Pr(Sicker | Sick+Sicker)")
 lines(x = SickSicker_targets$PropSicker$Time,

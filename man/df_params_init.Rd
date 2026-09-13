@@ -4,7 +4,8 @@
 \name{df_params_init}
 \alias{df_params_init}
 \title{Base-case parameter set}
-\format{A data frame with 1 rows and 19 variables:
+\format{
+A data frame with 1 rows and 19 variables:
 \describe{
 \item{c_H}{Annual cost for healthy individuals}
 \item{c_S1}{Annual cost for sick individuals in S1}
@@ -25,7 +26,8 @@
 \item{n_t}{Time horizon in years}
 \item{d_c}{Annual discount rate for costs}
 \item{d_e}{Annual discount rate for effectiveness}
-}}
+}
+}
 \usage{
 df_params_init
 }

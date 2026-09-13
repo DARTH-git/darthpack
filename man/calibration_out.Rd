@@ -4,18 +4,29 @@
 \alias{calibration_out}
 \title{Generate model outputs for calibration from a parameter set}
 \usage{
-calibration_out(v_params_calib, l_params_all)
+calibration_out(v_params_calib, l_params_all, v_target_times = c(10, 20, 30))
 }
 \arguments{
 \item{v_params_calib}{Vector of parameters that need to be calibrated.}
 
 \item{l_params_all}{List with all parameters of the decision model.}
+
+\item{v_target_times}{Numeric vector with the model cycles (i.e., the times
+of the calibration targets) at which model outputs should be returned.
+Default = \code{c(10, 20, 30)}, matching the times of
+\code{\link{SickSicker_targets}}.}
 }
 \value{
 A list with Survival (Surv), Prevalence of Sick and Sicker (Prev), and
-proportion of Sicker (PropSicker) out of all sick (Sick+Sicker) individuals.
+proportion of Sicker (PropSicker) out of all sick (Sick+Sicker) individuals,
+each evaluated at \code{v_target_times}.
 }
 \description{
 \code{calibration_out} computes model outputs to be used for calibration
 routines.
+}
+\examples{
+l_params_all <- load_all_params()
+calibration_out(v_params_calib = c(p_S1S2 = 0.105, hr_S1 = 3, hr_S2 = 10),
+                l_params_all   = l_params_all)
 }

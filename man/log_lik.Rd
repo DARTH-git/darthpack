@@ -4,28 +4,34 @@
 \alias{log_lik}
 \title{Log-likelihood function for a parameter set}
 \usage{
-log_lik(v_params, l_params_all = load_all_params())
+log_lik(v_params, l_params_all = load_all_params(), v_weights = NULL)
 }
 \arguments{
 \item{v_params}{Vector (or matrix) of model parameters.}
 
 \item{l_params_all}{List with all parameters of the decision model.}
+
+\item{v_weights}{Numeric vector with one weight per calibration target, used
+to compute the overall log-likelihood as a weighted sum of the
+target-specific log-likelihoods. If \code{NULL} (default), all targets get
+an equal weight of one.}
 }
 \value{
-A scalar (or vector) with log-likelihood values.
+A scalar (or vector) with log-likelihood values. Parameter sets for which the
+decision model cannot be evaluated return \code{-Inf}.
 }
 \description{
 \code{log_lik} computes a log-likelihood value for one (or multiple)
 parameter set(s).
 }
 \examples{
-\dontrun{
+\donttest{
   v_param_names  <- c("p_S1S2", "hr_S1", "hr_S2")
   n_param        <- length(v_param_names)
   v_lb <- c(p_S1S2 = 0.01, hr_S1 = 1.0, hr_S2 = 5)  # lower bound
   v_ub <- c(p_S1S2 = 0.50, hr_S1 = 4.5, hr_S2 = 15) # upper bound
-  v_target_names <- c("Surv", "Prev", "PropSick")
+  v_target_names <- c("Surv", "Prev", "PropSicker")
   n_target       <- length(v_target_names)
-  log_lik(v_params = sample.prior(n_samp = 2))
+  log_lik(v_params = sample_prior(n_samp = 2))
 }
 }

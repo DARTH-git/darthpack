@@ -4,8 +4,17 @@
 \alias{twsa_det}
 \title{Two-way sensitivity analysis (TWSA)}
 \usage{
-twsa_det(parm1, parm2, ranges, nsamps = 40, params_basecase, FUN,
-  outcome, strategies = NULL, ...)
+twsa_det(
+  parm1,
+  parm2,
+  ranges,
+  nsamps = 40,
+  params_basecase,
+  FUN,
+  outcome,
+  strategies = NULL,
+  ...
+)
 }
 \arguments{
 \item{parm1}{String with the name of the first parameter of interest}

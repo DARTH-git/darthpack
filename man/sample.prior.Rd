@@ -4,31 +4,36 @@
 \alias{sample.prior}
 \title{Sample from prior distributions of calibrated parameters}
 \usage{
-sample.prior(n_samp, v_param_names = c("p_S1S2", "hr_S1", "hr_S2"),
-  v_lb = c(p_S1S2 = 0.01, hr_S1 = 1, hr_S2 = 5), v_ub = c(p_S1S2 = 0.5,
-  hr_S1 = 4.5, hr_S2 = 15))
+sample.prior(
+  n_samp,
+  v_param_names = c("p_S1S2", "hr_S1", "hr_S2"),
+  v_lb = c(p_S1S2 = 0.01, hr_S1 = 1, hr_S2 = 5),
+  v_ub = c(p_S1S2 = 0.5, hr_S1 = 4.5, hr_S2 = 15)
+)
 }
 \arguments{
 \item{n_samp}{Number of samples.}
 
 \item{v_param_names}{Vector with parameter names.}
 
-\item{v_lb}{Vector with upper bounds for each parameter.}
+\item{v_lb}{Vector with lower bounds for each parameter.}
 
-\item{v_ub}{Vector with lower bounds for each parameter.}
+\item{v_ub}{Vector with upper bounds for each parameter.}
 }
 \value{
-A matrix with 3 rows and \code{n_samp} rows. Each row corresponds to a
-parameter set sampled from their prior distributions
+A matrix with \code{n_samp} rows and one column per calibrated parameter.
+Each row corresponds to a parameter set sampled from their prior
+distributions.
 }
 \description{
-\code{sample.prior} generates a sample of parameter sets from their prior
-distribution.
+\code{sample.prior} is kept for backwards compatibility and because the
+\code{IMIS} package calls the sampling function by this exact name. It is a
+thin wrapper around \code{\link{sample_prior}}, which follows the DARTH
+naming conventions and should be preferred in new code.
 }
 \examples{
-v_param_names  <- c("p_S1S2", "hr_S1", "hr_S2")
-n_param        <- length(v_param_names)
-v_lb <- c(p_S1S2 = 0.01, hr_S1 = 1.0, hr_S2 = 5)  # lower bound
-v_ub <- c(p_S1S2 = 0.50, hr_S1 = 4.5, hr_S2 = 15) # upper bound
 sample.prior(2)
+}
+\seealso{
+\code{\link{sample_prior}}
 }

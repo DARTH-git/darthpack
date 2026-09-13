@@ -2,8 +2,8 @@
 % Please edit documentation in R/darthpack.R
 \docType{package}
 \name{darthpack}
-\alias{darthpack}
 \alias{darthpack-package}
+\alias{darthpack}
 \title{\code{darthpack} package}
 \description{
 The Decision Analysis in R for Technologies in Health (DARTH) coding framework
@@ -13,4 +13,33 @@ See the description of the package on
 \href{https://darth-git.github.io/darthpack/index.html}{darthpack website}
 or the README on
 \href{https://github.com/DARTH-git/darthpack#readme}{GitHub}
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://darth-git.github.io/darthpack}
+  \item \url{https://github.com/DARTH-git/darthpack}
+  \item Report bugs at \url{https://github.com/DARTH-git/darthpack/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Fernando Alarid-Escudero \email{fernando.alarid@cide.edu} (\href{https://orcid.org/0000-0001-5076-1172}{ORCID})
+
+Authors:
+\itemize{
+  \item Fernando Alarid-Escudero \email{fernando.alarid@cide.edu} (\href{https://orcid.org/0000-0001-5076-1172}{ORCID})
+  \item Eline Krijkamp \email{elinekrijkamp@gmail.com} (\href{https://orcid.org/0000-0003-3970-2205}{ORCID})
+  \item Petros Pechlivanoglou \email{petros.pechlivanoglou@sickkids.ca} (\href{https://orcid.org/0000-0001-5090-7936}{ORCID})
+  \item Hawre Jalal \email{hjalal@pitt.edu} (\href{https://orcid.org/0000-0002-8224-6834}{ORCID})
+  \item Szu-Yu Kao \email{kaoxx085@umn.edu} (\href{https://orcid.org/0000-0002-4987-3983}{ORCID})
+  \item Alan Yang \email{alan.yang@sickkids.ca} (\href{https://orcid.org/0000-0002-0344-6812}{ORCID})
+  \item Eva Enns \email{eenns@umn.edu} (\href{https://orcid.org/0000-0003-0693-7358}{ORCID})
+}
+
+Other contributors:
+\itemize{
+  \item DARTH workgroup \email{darth.workgroup@gmail.com} [copyright holder]
+}
+
 }

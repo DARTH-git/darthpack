@@ -4,10 +4,21 @@
 \alias{prior}
 \title{Evaluate prior of calibrated parameters}
 \usage{
-prior(v_params)
+prior(
+  v_params,
+  v_param_names = c("p_S1S2", "hr_S1", "hr_S2"),
+  v_lb = c(p_S1S2 = 0.01, hr_S1 = 1, hr_S2 = 5),
+  v_ub = c(p_S1S2 = 0.5, hr_S1 = 4.5, hr_S2 = 15)
+)
 }
 \arguments{
-\item{v_params}{Vector (or matrix) of model parameters}
+\item{v_params}{Vector (or matrix) of model parameters.}
+
+\item{v_param_names}{Vector with parameter names.}
+
+\item{v_lb}{Vector with lower bounds for each parameter.}
+
+\item{v_ub}{Vector with upper bounds for each parameter.}
 }
 \value{
 A scalar (or vector) with prior values.
@@ -20,5 +31,5 @@ v_param_names  <- c("p_S1S2", "hr_S1", "hr_S2")
 n_param        <- length(v_param_names)
 v_lb <- c(p_S1S2 = 0.01, hr_S1 = 1.0, hr_S2 = 5)  # lower bound
 v_ub <- c(p_S1S2 = 0.50, hr_S1 = 4.5, hr_S2 = 15) # upper bound
-prior(v_params = sample.prior(n_samp = 5))
+prior(v_params = sample_prior(n_samp = 5))
 }

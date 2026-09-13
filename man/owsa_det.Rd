@@ -4,8 +4,16 @@
 \alias{owsa_det}
 \title{One-way sensitivity analysis (OWSA)}
 \usage{
-owsa_det(parms, ranges, nsamps = 100, params_basecase, FUN, outcome,
-  strategies = NULL, ...)
+owsa_det(
+  parms,
+  ranges,
+  nsamps = 100,
+  params_basecase,
+  FUN,
+  outcome,
+  strategies = NULL,
+  ...
+)
 }
 \arguments{
 \item{parms}{Vector with strings with the name of the parameters of interest}
