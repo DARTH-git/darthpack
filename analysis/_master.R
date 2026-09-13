@@ -32,12 +32,23 @@ source("analysis/02_decision_model.R", echo = TRUE)
 ### reuse the calibrated parameters already stored in the package.
 source("analysis/03_calibration.R", echo = TRUE)
 
+### Store the new posterior as package data, so that the components below and
+### the 'm_calib_post' and 'v_calib_post_map' data objects use the calibration
+### that has just been run rather than the one shipped with the package.
+### Reload the package (devtools::load_all(".")) afterwards to pick them up.
+source("data-raw/03_imis_output.R", echo = TRUE)
+devtools::load_all(".")
+
 #### 04 Validate simulation model ####
 ### Comment out if you do not want to rerun the validation component
 source("analysis/04_validation.R", echo = TRUE)
 
 #### 05a Conduct probabilistic analysis ####
 source("analysis/05a_probabilistic_analysis.R", echo = TRUE)
+
+### Store the new PSA dataset as the 'l_psa' package data object
+source("data-raw/05a_psa_dataset.R", echo = TRUE)
+devtools::load_all(".")
 
 #### 05b Conduct deterministic analysis ####
 source("analysis/05b_deterministic_analysis.R", echo = TRUE)

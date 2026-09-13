@@ -5,13 +5,14 @@
 \alias{l_psa}
 \title{PSA object of the cost-effectiveness analysis decision model}
 \format{
-A list with 8 elements:
+A list with 9 elements:
 \describe{
 \item{n_strategies}{Number of strategies.}
 \item{strategies}{Strategy names.}
 \item{n_sim}{Number of PSA samples.}
 \item{cost}{A data frame with \code{n_sim} rows and \code{n_strategies} columns with the cost per strategy for all PSA samples.}
 \item{effectiveness}{A data frame with \code{n_sim} rows and \code{n_strategies} columns with the effectiveness per strategy for all PSA samples.}
+\item{other_outcome}{An optional third outcome, \code{NULL} here.}
 \item{parameters}{A data frame of input parameters with
 \code{n_sim} rows and 15 columns:
 \itemize{\item p_S1S2: Annual transition probability of disease progression (S1 to S2)

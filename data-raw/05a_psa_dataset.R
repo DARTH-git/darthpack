@@ -2,4 +2,4 @@
 load(file = "output/05a_psa_dataset.RData")
 
 # Create .rda object with the PSA object from dampack
-usethis::use_data(l_psa)
+usethis::use_data(l_psa, overwrite = TRUE)
