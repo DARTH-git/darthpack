@@ -12,13 +12,17 @@ calculate_ce_out <- function(l_params_all = load_all_params(),
                              n_wtp = 100000){ # User defined
   with(as.list(l_params_all), {
     ## Create discounting vectors
-    v_dwc <- 1 / ((1 + d_e) ^ (0:(n_t))) # vector with discount weights for costs
-    v_dwe <- 1 / ((1 + d_c) ^ (0:(n_t))) # vector with discount weights for QALYs
-    
+    v_dwc <- 1 / ((1 + d_c) ^ (0:(n_t))) # vector with discount weights for costs
+    v_dwe <- 1 / ((1 + d_e) ^ (0:(n_t))) # vector with discount weights for QALYs
+
     ## Run STM model at a parameter set for each intervention
+    ## In the Sick-Sicker model, treatment does not alter the transition
+    ## probabilities, only the state rewards, so both strategies share one run of
+    ## the decision model. Give each strategy its own call to decision_model()
+    ## whenever treatment changes the natural history of the disease.
     l_model_out_no_trt <- decision_model(l_params_all = l_params_all)
-    l_model_out_trt    <- decision_model(l_params_all = l_params_all)
-    
+    l_model_out_trt    <- l_model_out_no_trt
+
     ## Cohort trace by treatment
     m_M_no_trt <- l_model_out_no_trt$m_M # No treatment
     m_M_trt    <- l_model_out_trt$m_M    # Treatment
@@ -67,73 +71,61 @@ calculate_ce_out <- function(l_params_all = load_all_params(),
 #' This function runs a deterministic one-way sensitivity analysis (OWSA) on a
 #' given function that produces outcomes.
 #' @param parms Vector with strings with the name of the parameters of interest
-#' @param ranges A named list of the form c("parm" = c(0, 1), ...) that gives 
-#' the ranges for the parameters of interest. The number of samples from this 
-#' range is determined by \code{nsamp}
-#' @param nsamps number of parameter values. If NULL, 100 parameter values are 
-#' used
+#' @param ranges A named list of the form list("parm" = c(0, 1), ...) that gives
+#' the ranges for the parameters of interest. The list is matched to
+#' \code{parms} by name, so the order of its elements does not matter. The
+#' number of samples from each range is determined by \code{nsamps}
+#' @param nsamps Number of parameter values to evaluate for each parameter.
+#' Default = 100
 #' @param params_basecase List with parameters for the base case
-#' @param FUN Function that takes \code{params_basecase} and \code{...} and 
+#' @param FUN Function that takes \code{params_basecase} and \code{...} and
 #' produces \code{outcome} of interest
-#' @param outcome String with the outcome of interest produced by \code{nsamp}
-#' @param strategies vector of strategy names. The default (NULL) will use 
+#' @param outcome String with the name of the outcome of interest produced by
+#' \code{FUN}
+#' @param strategies vector of strategy names. The default (NULL) will use
 #' strategy names in FUN
 #' @param ... Further arguments to FUN (not used)
 #' @keywords owsa
-#' @return A dataframe with the results of the sensitivity analysis. Can be 
-#' visualized with \code{plot.owsa}, \code{owsa_opt_strat} and 
+#' @return A dataframe with the results of the sensitivity analysis. Can be
+#' visualized with \code{plot.owsa}, \code{owsa_opt_strat} and
 #' \code{owsa_tornado} from \code{dampack}
 #' @section Details:
 #' FUN must return a dataframe where the first column are the strategy names
 #' and the rest of the columns must be outcomes.
+#' @examples
+#' \donttest{
+#'   l_params_all <- load_all_params()
+#'   owsa_det(parms  = c("c_Trt", "u_S1"),
+#'            ranges = list("c_Trt" = c(6000, 13000),
+#'                          "u_S1"  = c(0.75, 0.95)),
+#'            nsamps = 10,
+#'            params_basecase = l_params_all,
+#'            FUN     = calculate_ce_out,
+#'            outcome = "NMB",
+#'            n_wtp   = 150000)
+#' }
 #' @export
-owsa_det <- function(parms, ranges, nsamps = 100, params_basecase, FUN, outcome, 
+owsa_det <- function(parms, ranges, nsamps = 100, params_basecase, FUN, outcome,
                      strategies = NULL, ...){
   ### Check for errors
-  if(sum(parms %in% names(params_basecase)) != length(parms)){
-    stop("parms should be in names of params_basecase")
-  }
-  
-  if(typeof(ranges)!="list"){
-    stop("ranges should be a list")
-  }
-  
-  if(length(parms) != length(ranges)){
-    stop("The number of parameters is not the same as the number of ranges")
-  }
-  
-  if(sum(parms==names(ranges)) != length(parms)){
-    stop("The name of parameters in parms does not match the name in ranges")
-  }
-  
-  jj <- tryCatch({
-    funtest <- FUN(params_basecase, ...)  
-  }, error = function(e) NA)
-  if(is.na(sum(is.na(jj)))){
-    stop("FUN is not well defined by 'params_basecase' and ...")
-  }
-  funtest <- FUN(params_basecase, ...)
+  ranges <- check_sa_ranges(parms = parms, ranges = ranges,
+                            params_basecase = params_basecase, nsamps = nsamps)
+
+  funtest <- check_sa_fun(FUN = FUN, params_basecase = params_basecase,
+                          outcome = outcome, ...)
   if(is.null(strategies)){
     strategies <- funtest[, 1]
-    n_str <- length(strategies) 
   }
-  else{
-    n_str <- length(strategies)
-  }
-  if(length(strategies)!=length(funtest[, 1])){
+  n_str <- length(strategies)
+  if(length(strategies) != length(funtest[, 1])){
     stop("Number of strategies not the same as in FUN")
   }
-  v_outcomes <- colnames(funtest)[-1]
-  
-  if(!(outcome %in% v_outcomes)){
-    stop("outcome is not part of FUN outcomes")
-  }
-  
+
   df_owsa_all <- NULL
   for (i in 1:length(parms)) { # i <- 2
     ### Generate matrix of inputs
-    v_owsa_input <- seq(ranges[[i]][1], 
-                        ranges[[i]][2], 
+    v_owsa_input <- seq(ranges[[i]][1],
+                        ranges[[i]][2],
                         length.out = nsamps)
     ### Initialize matrix to store outcomes from a OWSA of the CEA
     m_out_owsa <- matrix(0, 
@@ -173,91 +165,91 @@ owsa_det <- function(parms, ranges, nsamps = 100, params_basecase, FUN, outcome,
 #' given function that produces outcomes.
 #' @param parm1 String with the name of the first parameter of interest
 #' @param parm2 String with the name of the second parameter of interest
-#' @param ranges A named list of the form list("parm1" = c(0, 1), ...) that gives 
-#' the ranges for the parameters of interest. The number of samples from this 
-#' range is determined by \code{nsamp}
-#' @param nsamps number of parameter values. If NULL, 100 parameter values are 
-#' used
+#' @param ranges A named list of the form list("parm1" = c(0, 1), ...) that gives
+#' the ranges for the parameters of interest. The list is matched to
+#' \code{parm1} and \code{parm2} by name, so the order of its elements does not
+#' matter. The number of samples from each range is determined by \code{nsamps}
+#' @param nsamps Number of parameter values to evaluate for each parameter, so
+#' that \code{FUN} is evaluated \code{nsamps^2} times. Default = 40
 #' @param params_basecase List with parameters for the base case
-#' @param FUN Function that takes \code{params_basecase} and \code{...} and 
+#' @param FUN Function that takes \code{params_basecase} and \code{...} and
 #' produces \code{outcome} of interest
-#' @param outcome String with the outcome of interest produced by \code{nsamp}
-#' @param strategies vector of strategy names. The default (NULL) will use 
+#' @param outcome String with the name of the outcome of interest produced by
+#' \code{FUN}
+#' @param strategies vector of strategy names. The default (NULL) will use
 #' strategy names in FUN
+#' @param progress Logical variable to display the simulation progress.
+#' Default = TRUE
 #' @param ... Further arguments to FUN (not used)
-#' @keywords owsa
-#' @return 
-#' A dataframe with the results of the sensitivity analysis. Can be 
-#' visualized with \code{plot.owsa}, and \code{owsa_tornado}
+#' @keywords twsa
+#' @return
+#' A dataframe with the results of the sensitivity analysis. Can be
+#' visualized with \code{plot.twsa} from \code{dampack}
 #' @section Details:
 #' FUN must return a dataframe where the first column are the strategy names
 #' and the rest of the columns must be outcomes.
+#' @examples
+#' \donttest{
+#'   l_params_all <- load_all_params()
+#'   twsa_det(parm1  = "u_S1",
+#'            parm2  = "u_Trt",
+#'            ranges = list("u_S1"  = c(0.70, 0.80),
+#'                          "u_Trt" = c(0.90, 1.00)),
+#'            nsamps = 5,
+#'            params_basecase = l_params_all,
+#'            FUN     = calculate_ce_out,
+#'            outcome = "NMB",
+#'            n_wtp   = 150000)
+#' }
 #' @export
-twsa_det <- function(parm1, parm2, ranges, nsamps = 40, params_basecase, FUN, outcome, 
-                     strategies = NULL, ...){
+twsa_det <- function(parm1, parm2, ranges, nsamps = 40, params_basecase, FUN, outcome,
+                     strategies = NULL, progress = TRUE, ...){
   ### Check for errors
-  if(sum(c(parm1, parm2) %in% names(params_basecase)) != 2){
-    stop("parm1 and parm2 should be in names of params_basecase")
-  }
-  
-  if(typeof(ranges)!="list"){
-    stop("ranges should be a list")
-  }
-  
-  if(length(ranges)!=2){
-    stop("The number of elements in ranges has to be two")
-  }
-  
-  jj <- tryCatch({
-    funtest <- FUN(params_basecase, ...)  
-  }, error = function(e) NA)
-  if(is.na(sum(is.na(jj)))){
-    stop("FUN is not well defined by 'params_basecase' and ...")
-  }
-  funtest <- FUN(params_basecase, ...)
+  parms  <- c(parm1, parm2)
+  ranges <- check_sa_ranges(parms = parms, ranges = ranges,
+                            params_basecase = params_basecase, nsamps = nsamps)
+
+  funtest <- check_sa_fun(FUN = FUN, params_basecase = params_basecase,
+                          outcome = outcome, ...)
   if(is.null(strategies)){
-    strategies <- funtest[,1]
-    n_str <- length(strategies) 
+    strategies <- funtest[, 1]
   }
-  else{
-    n_str <- length(strategies)
-  }
-  if(length(strategies)!=length(funtest[, 1])){
+  n_str <- length(strategies)
+  if(length(strategies) != length(funtest[, 1])){
     stop("Number of strategies not the same as in FUN")
   }
-  v_outcomes <- colnames(funtest)[-1]
-  
-  if(!(outcome %in% v_outcomes)){
-    stop("outcome is not part of FUN outcomes")
-  }
-  
+
   ### Generate matrix of inputs
-  df_twsa_params <- expand.grid(placeholder_name1 = seq(ranges[[1]][1], 
-                                                        ranges[[1]][2], 
-                                                        length.out = nsamps), 
-                                placeholder_name2 = seq(ranges[[2]][1], 
-                                                        ranges[[2]][2], 
+  df_twsa_params <- expand.grid(placeholder_name1 = seq(ranges[[1]][1],
+                                                        ranges[[1]][2],
+                                                        length.out = nsamps),
+                                placeholder_name2 = seq(ranges[[2]][1],
+                                                        ranges[[2]][2],
                                                         length.out = nsamps))
   names(df_twsa_params) <- c(parm1, parm2)
   n_rows <- nrow(df_twsa_params)
-  
-  ### Initialize matrix to store outcomes from a OWSA of the CEA
-  m_out_twsa <- matrix(0, 
-                       nrow = n_rows, 
+
+  ### Initialize matrix to store outcomes from a TWSA of the CEA
+  m_out_twsa <- matrix(0,
+                       nrow = n_rows,
                        ncol = n_str)
-  
+
   ### Run model and capture outcome
   l_twsa_input <- params_basecase
+  ## Cycles at which to report progress, computed once so that the report does
+  ## not depend on an exact equality between floating point numbers
+  v_cycles_progress <- unique(round(seq(n_rows / 10, n_rows, length.out = 10)))
   for (i in 1:n_rows){ # i <- 1
-    l_twsa_input[names(l_twsa_input) == parm1] <- df_twsa_params[i,1]
-    l_twsa_input[names(l_twsa_input) == parm2] <- df_twsa_params[i,2]
+    l_twsa_input[names(l_twsa_input) == parm1] <- df_twsa_params[i, 1]
+    l_twsa_input[names(l_twsa_input) == parm2] <- df_twsa_params[i, 2]
     m_out_twsa[i, ] <- FUN(l_twsa_input, ...)[[outcome]]
-    
+
     ## Display simulation progress
-    if(i/(n_rows/10) == round(i/(n_rows/10),0)) {
-      cat('\r', paste(i/n_rows * 100, "% done", sep = " "))
+    if(progress && i %in% v_cycles_progress) {
+      cat('\r', paste(round(i / n_rows * 100), "% done", sep = " "))
     }
   }
+  if(progress) cat('\n')
   
   df_twsa <- data.frame(df_twsa_params,
                         m_out_twsa)
@@ -269,6 +261,115 @@ twsa_det <- function(parm1, parm2, ranges, nsamps = 40, params_basecase, FUN, ou
                                 value.name = "outcome_val")
   
   class(df_twsa_lng) <- c("twsa", "data.frame")
-  
+
   return(df_twsa_lng)
+}
+
+#-----------------------------------------------------------------------------#
+#### Internal helpers                                                      ####
+#-----------------------------------------------------------------------------#
+
+#' Check the parameters and ranges of a deterministic sensitivity analysis
+#'
+#' Internal helper shared by \code{owsa_det} and \code{twsa_det}. It verifies
+#' that every parameter of interest exists in the base-case parameter list and
+#' has a valid range, and returns the list of ranges reordered to match
+#' \code{parms} so that callers can index it positionally.
+#'
+#' @param parms Vector with strings with the name of the parameters of interest.
+#' @param ranges A named list with the range of each parameter in \code{parms}.
+#' @param params_basecase List with parameters for the base case.
+#' @param nsamps Number of parameter values to evaluate for each parameter.
+#' @return The \code{ranges} list, reordered to follow \code{parms}.
+#' @noRd
+check_sa_ranges <- function(parms, ranges, params_basecase, nsamps) {
+  v_parms_notfound <- setdiff(parms, names(params_basecase))
+  if (length(v_parms_notfound) > 0) {
+    stop("The following parameter(s) are not in 'params_basecase': ",
+         paste(v_parms_notfound, collapse = ", "))
+  }
+
+  if (!is.list(ranges)) {
+    stop("'ranges' should be a list of the form ",
+         "list(\"", parms[1], "\" = c(lower, upper), ...)")
+  }
+
+  if (length(parms) != length(ranges)) {
+    stop("The number of parameters (", length(parms), ") is not the same as ",
+         "the number of ranges (", length(ranges), ")")
+  }
+
+  # Matching by name means a 'ranges' list given in a different order than
+  # 'parms' varies each parameter over its own range rather than over another
+  # parameter's range
+  v_ranges_notfound <- setdiff(parms, names(ranges))
+  if (length(v_ranges_notfound) > 0) {
+    stop("'ranges' must be a named list with one element per parameter. ",
+         "No range was given for: ",
+         paste(v_ranges_notfound, collapse = ", "))
+  }
+  ranges <- ranges[parms]
+
+  v_ranges_notvalid <- names(ranges)[!vapply(ranges,
+                                             function(x) is.numeric(x) &&
+                                               length(x) == 2 &&
+                                               !anyNA(x) && x[1] <= x[2],
+                                             logical(1))]
+  if (length(v_ranges_notvalid) > 0) {
+    stop("Each element of 'ranges' must be a numeric vector of length two, ",
+         "c(lower, upper), with lower <= upper. Not valid: ",
+         paste(v_ranges_notvalid, collapse = ", "))
+  }
+
+  if (!is.numeric(nsamps) || length(nsamps) != 1 || is.na(nsamps)) {
+    stop("'nsamps' must be a single number")
+  }
+  if (nsamps < 2) {
+    stop("'nsamps' must be at least 2, got ", nsamps)
+  }
+
+  return(ranges)
+}
+
+#' Check the outcome function of a deterministic sensitivity analysis
+#'
+#' Internal helper shared by \code{owsa_det} and \code{twsa_det}. It evaluates
+#' \code{FUN} once at the base case, re-raising any error with a message that
+#' points at the cause, and checks that the requested outcome is one of the
+#' columns \code{FUN} returns.
+#'
+#' @param FUN Function that takes \code{params_basecase} and \code{...} and
+#' produces \code{outcome} of interest.
+#' @param params_basecase List with parameters for the base case.
+#' @param outcome String with the name of the outcome of interest.
+#' @param ... Further arguments to FUN.
+#' @return The data frame returned by \code{FUN} at the base case.
+#' @noRd
+check_sa_fun <- function(FUN, params_basecase, outcome, ...) {
+  # The previous version wrapped this call in tryCatch() but tested the result
+  # with is.na(sum(is.na(jj))), which is FALSE both when FUN works and when it
+  # fails, so the check never fired and the error surfaced further down with no
+  # indication of its cause
+  funtest <- tryCatch(FUN(params_basecase, ...),
+                      error = function(e) {
+                        stop("FUN is not well defined by 'params_basecase' ",
+                             "and ...: ", conditionMessage(e), call. = FALSE)
+                      })
+
+  # '||' short-circuits, so ncol() is only reached for an actual data frame
+  if (!is.data.frame(funtest) || ncol(funtest) < 2) {
+    stop("FUN must return a data frame whose first column holds the strategy ",
+         "names and whose remaining columns hold the outcomes")
+  }
+
+  v_outcomes <- colnames(funtest)[-1]
+  if (length(outcome) != 1) {
+    stop("'outcome' must be a single outcome name")
+  }
+  if (!(outcome %in% v_outcomes)) {
+    stop("outcome '", outcome, "' is not part of FUN outcomes: ",
+         paste(v_outcomes, collapse = ", "))
+  }
+
+  return(funtest)
 }

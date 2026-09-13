@@ -13,6 +13,7 @@ twsa_det(
   FUN,
   outcome,
   strategies = NULL,
+  progress = TRUE,
   ...
 )
 }
@@ -22,27 +23,32 @@ twsa_det(
 \item{parm2}{String with the name of the second parameter of interest}
 
 \item{ranges}{A named list of the form list("parm1" = c(0, 1), ...) that gives
-the ranges for the parameters of interest. The number of samples from this
-range is determined by \code{nsamp}}
+the ranges for the parameters of interest. The list is matched to
+\code{parm1} and \code{parm2} by name, so the order of its elements does not
+matter. The number of samples from each range is determined by \code{nsamps}}
 
-\item{nsamps}{number of parameter values. If NULL, 100 parameter values are
-used}
+\item{nsamps}{Number of parameter values to evaluate for each parameter, so
+that \code{FUN} is evaluated \code{nsamps^2} times. Default = 40}
 
 \item{params_basecase}{List with parameters for the base case}
 
 \item{FUN}{Function that takes \code{params_basecase} and \code{...} and
 produces \code{outcome} of interest}
 
-\item{outcome}{String with the outcome of interest produced by \code{nsamp}}
+\item{outcome}{String with the name of the outcome of interest produced by
+\code{FUN}}
 
 \item{strategies}{vector of strategy names. The default (NULL) will use
 strategy names in FUN}
+
+\item{progress}{Logical variable to display the simulation progress.
+Default = TRUE}
 
 \item{...}{Further arguments to FUN (not used)}
 }
 \value{
 A dataframe with the results of the sensitivity analysis. Can be
-visualized with \code{plot.owsa}, and \code{owsa_tornado}
+visualized with \code{plot.twsa} from \code{dampack}
 }
 \description{
 This function runs a deterministic two-way sensitivity analysis (TWSA) on a
@@ -54,4 +60,18 @@ FUN must return a dataframe where the first column are the strategy names
 and the rest of the columns must be outcomes.
 }
 
-\keyword{owsa}
+\examples{
+\donttest{
+  l_params_all <- load_all_params()
+  twsa_det(parm1  = "u_S1",
+           parm2  = "u_Trt",
+           ranges = list("u_S1"  = c(0.70, 0.80),
+                         "u_Trt" = c(0.90, 1.00)),
+           nsamps = 5,
+           params_basecase = l_params_all,
+           FUN     = calculate_ce_out,
+           outcome = "NMB",
+           n_wtp   = 150000)
+}
+}
+\keyword{twsa}

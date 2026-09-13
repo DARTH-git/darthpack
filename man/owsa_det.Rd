@@ -18,19 +18,21 @@ owsa_det(
 \arguments{
 \item{parms}{Vector with strings with the name of the parameters of interest}
 
-\item{ranges}{A named list of the form c("parm" = c(0, 1), ...) that gives
-the ranges for the parameters of interest. The number of samples from this
-range is determined by \code{nsamp}}
+\item{ranges}{A named list of the form list("parm" = c(0, 1), ...) that gives
+the ranges for the parameters of interest. The list is matched to
+\code{parms} by name, so the order of its elements does not matter. The
+number of samples from each range is determined by \code{nsamps}}
 
-\item{nsamps}{number of parameter values. If NULL, 100 parameter values are
-used}
+\item{nsamps}{Number of parameter values to evaluate for each parameter.
+Default = 100}
 
 \item{params_basecase}{List with parameters for the base case}
 
 \item{FUN}{Function that takes \code{params_basecase} and \code{...} and
 produces \code{outcome} of interest}
 
-\item{outcome}{String with the outcome of interest produced by \code{nsamp}}
+\item{outcome}{String with the name of the outcome of interest produced by
+\code{FUN}}
 
 \item{strategies}{vector of strategy names. The default (NULL) will use
 strategy names in FUN}
@@ -52,4 +54,17 @@ FUN must return a dataframe where the first column are the strategy names
 and the rest of the columns must be outcomes.
 }
 
+\examples{
+\donttest{
+  l_params_all <- load_all_params()
+  owsa_det(parms  = c("c_Trt", "u_S1"),
+           ranges = list("c_Trt" = c(6000, 13000),
+                         "u_S1"  = c(0.75, 0.95)),
+           nsamps = 10,
+           params_basecase = l_params_all,
+           FUN     = calculate_ce_out,
+           outcome = "NMB",
+           n_wtp   = 150000)
+}
+}
 \keyword{owsa}
