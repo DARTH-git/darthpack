@@ -4,11 +4,29 @@
 \alias{open_guide}
 \title{Open UserGuide of the package}
 \usage{
-open_guide(ext = "html")
+open_guide(ext = "html", online = FALSE)
 }
 \arguments{
-\item{ext}{extension of the book to open: 'html', 'pdf'}
+\item{ext}{Extension of the book to open: 'html' or 'pdf'}
+
+\item{online}{Logical variable to open the online version of the guide
+rather than looking for a local copy. Default = FALSE}
+}
+\value{
+Invisibly, the URL or path that was opened.
 }
 \description{
-Open UserGuide of the package
+\code{open_guide} opens the bookdown user guide of the framework. The guide
+is built from the \emph{report} directory of the \code{darthpack}
+repository, so it is available when the repository is used as a coding
+template (for instance after \code{devtools::load_all(".")}). When
+\code{darthpack} is used as an installed package the guide is not part of
+the installation, and this function opens the online version instead.
+}
+\examples{
+\dontrun{
+  open_guide()
+  open_guide("pdf")
+}
+
 }

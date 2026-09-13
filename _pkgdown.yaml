@@ -95,7 +95,9 @@ reference:
   - '`SickSicker_targets`'
   - '`m_calib_post`'
   - '`v_calib_post_map`'
-  - '`l_psa`'  
+  - '`df_posterior_summ`'
+  - '`l_psa`'
+  - '`df_cea_psa`'
 
 news:
 - one_page: false

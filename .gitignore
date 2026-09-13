@@ -42,3 +42,5 @@ inst/doc
 
 # Developer history
 dev_history.R
+# Python virtual environment
+.venv/

@@ -2,6 +2,13 @@ context("testing 01_model_inputs_functions.R")
 
 library(darthpack)
 
+# The data-raw directory is listed in .Rbuildignore, so the .csv files are
+# present when the repository is used as a coding template but not when the
+# tests run from an installed package under R CMD check
+path_init <- "../../data-raw/01_init_params.csv"
+path_mort <- "../../data-raw/01_all_cause_mortality.csv"
+has_csv <- file.exists(path_init) && file.exists(path_mort)
+
 #### Unit tests start ####
 test_that("load_mort_data returns the mortality rates of the total population", {
   v_r_mort_by_age <- load_mort_data()
@@ -11,8 +18,8 @@ test_that("load_mort_data returns the mortality rates of the total population", 
   expect_equal(as.vector(v_r_mort_by_age), all_cause_mortality$Total)
   expect_true(all(v_r_mort_by_age >= 0))
   # mortality is read from a .csv file identically
-  expect_equal(load_mort_data("../../data-raw/01_all_cause_mortality.csv"),
-               v_r_mort_by_age)
+  skip_if_not(has_csv, "data-raw/*.csv not available")
+  expect_equal(load_mort_data(path_mort), v_r_mort_by_age)
 })
 
 test_that("load_mort_data reports a missing file or a missing Total column", {
@@ -46,8 +53,8 @@ test_that("load_all_params returns every parameter the model needs", {
                nrow(decision_model(l_params_all)$m_M))
 
   # reading the shipped .csv files gives the same parameters as the package data
-  expect_equal(load_all_params(file.init = "../../data-raw/01_init_params.csv",
-                               file.mort = "../../data-raw/01_all_cause_mortality.csv"),
+  skip_if_not(has_csv, "data-raw/*.csv not available")
+  expect_equal(load_all_params(file.init = path_init, file.mort = path_mort),
                l_params_all)
 })
 

@@ -1,7 +1,7 @@
 Type: Package
 Package: darthpack
 Title: The Decision Analysis in R for Technologies in Health (DARTH) coding framework
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: 
     c(person(given = "Fernando",
              family = "Alarid-Escudero",
@@ -44,11 +44,11 @@ Authors@R:
 Maintainer: Fernando Alarid-Escudero <fernando.alarid@cide.edu>
 Description: A collection of functions that implements the Decision Analysis in R for 
   Technologies in Health (DARTH) coding framework to construct model-based 
-  cost-effectiveness analysis in R. This repository is part of the following 
-  working paper submitted for publication: Alarid-Escudero F, Krijkamp E, 
-  Pechlivanoglou P, Jalal H, Kao SY, Yang A, Enns EA. "A need for change! A 
-  coding framework for improving transparency in decision modeling". (2019). 
-  Under revision.
+  cost-effectiveness analysis in R. This repository accompanies the following 
+  publication: Alarid-Escudero F, Krijkamp E, Pechlivanoglou P, Jalal H, 
+  Kao SY, Yang A, Enns EA. "A need for change! A coding framework for improving 
+  transparency in decision modeling". PharmacoEconomics 2019;37(11):1329-1339. 
+  <doi:10.1007/s40273-019-00837-x>.
 License: file LICENSE
 Depends:
     R (>= 3.5.0)
@@ -57,23 +57,29 @@ Imports:
     lhs,
     plyr,
     reshape2,
+    stats,
     truncnorm,
-    utils,
-    plotrix,
-    rlang
+    utils
 Suggests: 
-    knitr,
-    rmarkdown,
+    bookdown,
     dampack,
+    ggplot2,
     IMIS,
-    ggplot2, 
-    testthat,
-    pkgdown,
-    survival,
-    BiocManager,
     kableExtra,
+    knitr,
+    matrixStats,
+    pkgdown,
+    plotrix,
     png,
-    scales
+    psych,
+    rmarkdown,
+    rstudioapi,
+    scales,
+    scatterplot3d,
+    shiny,
+    survival,
+    testthat,
+    usethis
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
