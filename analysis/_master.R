@@ -27,11 +27,13 @@ source("analysis/01_model_inputs.R", echo = TRUE)
 source("analysis/02_decision_model.R", echo = TRUE)
 
 #### 03 Calibrate simulation model ####
-### Uncomment if you want to rerun the calibration component 
+### This reruns the Bayesian calibration with the IMIS algorithm, which takes
+### several minutes and overwrites output/03_imis_output.RData. Comment it out to
+### reuse the calibrated parameters already stored in the package.
 source("analysis/03_calibration.R", echo = TRUE)
 
 #### 04 Validate simulation model ####
-### Uncomment if you want to rerun the validation component
+### Comment out if you do not want to rerun the validation component
 source("analysis/04_validation.R", echo = TRUE)
 
 #### 05a Conduct probabilistic analysis ####
