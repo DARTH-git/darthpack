@@ -15,9 +15,18 @@ check_transition_probability(a_P, err_stop = FALSE, verbose = FALSE)
 Default = FALSE}
 }
 \value{
-This function stops if transition probability array is not valid and shows
-what are the entries that are not valid
+Invisibly, a data frame with one row per entry of \code{a_P} that is not a
+valid probability, empty when the array is valid. With
+\code{err_stop = TRUE} the function stops instead, and with
+\code{verbose = TRUE} it warns, listing the offending entries.
 }
 \description{
-\code{check_transition_probability} checks if transition probabilities are in [0, 1].
+\code{check_transition_probability} checks if transition probabilities are in
+[0, 1] and reports any entry that is not, including entries that are
+\code{NA} or \code{NaN}.
+}
+\examples{
+l_params_all <- load_all_params()
+a_P <- decision_model(l_params_all)$a_P
+check_transition_probability(a_P, verbose = TRUE)
 }

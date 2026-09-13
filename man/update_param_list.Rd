@@ -4,12 +4,18 @@
 \alias{update_param_list}
 \title{Update parameters}
 \usage{
-update_param_list(l_params_all, params_updated)
+update_param_list(l_params_all, params_updated, allow_new = FALSE)
 }
 \arguments{
 \item{l_params_all}{List with all parameters of decision model}
 
 \item{params_updated}{Parameters for which values need to be updated}
+
+\item{allow_new}{Logical variable to allow \code{params_updated} to contain
+names that are not already in \code{l_params_all}. When \code{FALSE}
+(default), such names raise an error, which catches misspelled parameter
+names before they silently leave the model running at its old values.
+Default = FALSE.}
 }
 \value{
 A list with all parameters updated.
@@ -17,4 +23,9 @@ A list with all parameters updated.
 \description{
 \code{update_param_list} is used to update list of all parameters with new
 values for specific parameters.
+}
+\examples{
+l_params_all <- load_all_params()
+l_params_upd <- update_param_list(l_params_all, c(p_S1S2 = 0.2))
+l_params_upd$p_S1S2
 }

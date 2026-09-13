@@ -7,13 +7,20 @@
 load_all_params(file.init = NULL, file.mort = NULL)
 }
 \arguments{
-\item{file.init}{String with the location and name of the file with initial set of parameters}
+\item{file.init}{String with the location and name of the file with initial
+set of parameters. If \code{NULL}, \code{df_params_init} will be used as
+default}
 
-\item{file.mort}{String with the location and name of the file with mortality data}
+\item{file.mort}{String with the location and name of the file with mortality
+data. If \code{NULL}, \code{all_cause_mortality} will be used as default}
 }
 \value{
 A list of all parameters used for the decision model.
 }
 \description{
 \code{load_all_params} loads all parameters for the decision model from multiple sources and creates a list.
+}
+\examples{
+l_params_all <- load_all_params()
+str(l_params_all)
 }

@@ -12,6 +12,7 @@
 #' @importFrom dplyr %>% filter
 #' @importFrom rlang .data
 NULL
-globalVariables(c("all_cause_mortality", 
+globalVariables(c("all_cause_mortality",
                   "SickSicker_targets",
-                  "m_calib_post"))
+                  "m_calib_post",
+                  "df_params_init"))

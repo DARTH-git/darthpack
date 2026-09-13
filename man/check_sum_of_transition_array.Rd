@@ -6,28 +6,41 @@
 \usage{
 check_sum_of_transition_array(
   a_P,
-  n_states,
-  n_t,
+  n_states = dim(a_P)[1],
+  n_t = dim(a_P)[3],
   err_stop = FALSE,
-  verbose = FALSE
+  verbose = FALSE,
+  tolerance = 1e-08
 )
 }
 \arguments{
 \item{a_P}{A transition probability array.}
 
-\item{n_states}{Number of health states.}
+\item{n_states}{Number of health states. Defaults to the first dimension of
+\code{a_P}.}
 
-\item{n_t}{Number of cycles.}
+\item{n_t}{Number of cycles. Defaults to the third dimension of \code{a_P}.}
 
 \item{err_stop}{Logical variable to stop model run if set up as TRUE. Default = FALSE.}
 
 \item{verbose}{Logical variable to indicate print out of messages.
 Default = FALSE}
+
+\item{tolerance}{Numeric tolerance for the comparison of each row sum with
+one. Default = 1e-08.}
 }
 \value{
-The transition probability array and the cohort trace matrix.
+Invisibly, a data frame with one row per row of \code{a_P} whose transition
+probabilities do not sum to one, empty when the array is valid. With
+\code{err_stop = TRUE} the function stops instead, and with
+\code{verbose = TRUE} it warns, listing the offending rows and cycles.
 }
 \description{
 \code{check_sum_of_transition_array} checks if each of the rows of the
 transition matrices sum to one.
+}
+\examples{
+l_params_all <- load_all_params()
+a_P <- decision_model(l_params_all)$a_P
+check_sum_of_transition_array(a_P, verbose = TRUE)
 }

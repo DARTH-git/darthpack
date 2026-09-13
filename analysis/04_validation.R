@@ -47,14 +47,21 @@ m_out_prop <- matrix(NA, nrow = n_samp, ncol = nrow(SickSicker_targets$PropSicke
 colnames(m_out_prop) <- SickSicker_targets$PropSicker$Time
 
 ### Evaluate model at each posterior sample and store results
+### Cycles at which to report progress, so the report does not print on every
+### one of the n_samp iterations
+v_samps_progress <- unique(round(seq(n_samp / 10, n_samp, length.out = 10)))
 for(i in 1:n_samp){ # i = 1
-  l_out_post <- calibration_out(v_params_calib = m_calib_post[i, ], 
+  l_out_post <- calibration_out(v_params_calib = m_calib_post[i, ],
                                   l_params_all = l_params_all)
   m_out_surv[i, ] <- l_out_post$Surv
   m_out_prev[i, ] <- l_out_post$Prev
   m_out_prop[i, ] <- l_out_post$PropSicker
-  cat('\r', paste(round(i/n_samp * 100), "% done", sep = " ")) # display progress
+  # display progress
+  if(i %in% v_samps_progress) {
+    cat('\r', paste(round(i/n_samp * 100), "% done", sep = " "))
+  }
 }
+cat('\n')
 
 ### Create data frames with model predicted outputs
 df_out_surv <- data.frame(Type = "Model", 
