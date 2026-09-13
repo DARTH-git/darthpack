@@ -24,11 +24,11 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Fernando Alarid-Escudero \email{fernando.alarid@cide.edu} (\href{https://orcid.org/0000-0001-5076-1172}{ORCID})
+\strong{Maintainer}: Fernando Alarid-Escudero \email{falarid@stanford.edu} (\href{https://orcid.org/0000-0001-5076-1172}{ORCID}) (affiliation: Department of Health Policy, Stanford University School of Medicine)
 
 Authors:
 \itemize{
-  \item Fernando Alarid-Escudero \email{fernando.alarid@cide.edu} (\href{https://orcid.org/0000-0001-5076-1172}{ORCID})
+  \item Fernando Alarid-Escudero \email{falarid@stanford.edu} (\href{https://orcid.org/0000-0001-5076-1172}{ORCID}) (affiliation: Department of Health Policy, Stanford University School of Medicine)
   \item Eline Krijkamp \email{elinekrijkamp@gmail.com} (\href{https://orcid.org/0000-0003-3970-2205}{ORCID})
   \item Petros Pechlivanoglou \email{petros.pechlivanoglou@sickkids.ca} (\href{https://orcid.org/0000-0001-5090-7936}{ORCID})
   \item Hawre Jalal \email{hjalal@pitt.edu} (\href{https://orcid.org/0000-0002-8224-6834}{ORCID})

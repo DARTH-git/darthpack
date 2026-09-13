@@ -6,8 +6,9 @@ Authors@R:
     c(person(given = "Fernando",
              family = "Alarid-Escudero",
              role = c("aut", "cre"),
-             email = "fernando.alarid@cide.edu",
-             comment = c(ORCID = "0000-0001-5076-1172")),
+             email = "falarid@stanford.edu",
+             comment = c(ORCID = "0000-0001-5076-1172",
+                         affiliation = "Department of Health Policy, Stanford University School of Medicine")),
       person(given = "Eline",
              family = "Krijkamp",
              role = "aut",
@@ -41,7 +42,7 @@ Authors@R:
       person(given = "DARTH workgroup", 
              email = "darth.workgroup@gmail.com",
              role = "cph"))
-Maintainer: Fernando Alarid-Escudero <fernando.alarid@cide.edu>
+Maintainer: Fernando Alarid-Escudero <falarid@stanford.edu>
 Description: A collection of functions that implements the Decision Analysis in R for 
   Technologies in Health (DARTH) coding framework to construct model-based 
   cost-effectiveness analysis in R. This repository accompanies the following 
