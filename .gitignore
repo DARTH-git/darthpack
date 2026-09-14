@@ -48,3 +48,4 @@ dev_history.R
 # bookdown intermediates
 report/report_files/
 report/report.Rmd
+README.html
