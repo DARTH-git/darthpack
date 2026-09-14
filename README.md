@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![DOI](https://zenodo.org/badge/197059951.svg)](https://zenodo.org/badge/latestdoi/197059951)
+[![DOI](https://zenodo.org/badge/197059951.svg)](https://doi.org/10.5281/zenodo.3445447)
 
 # darthpack <img src='man/figures/logo.png' align="right" height="139" alt="darthpack hex sticker logo" />
 
@@ -26,15 +26,27 @@ following manuscript:
 **Version included in the published paper.** The article above describes
 `darthpack` release
 [**v0.1.1**](https://github.com/DARTH-git/darthpack/tree/v0.1.1)
-(package version 0.1.0), which is permanently archived in Zenodo under
-[**DOI
-10.5281/zenodo.3445451**](https://doi.org/10.5281/zenodo.3445451). Cite
-that DOI, and use that release, to reproduce the results reported in the
-paper. Later releases fix defects in the framework and are documented in
-the [NEWS](https://darth-git.github.io/darthpack/news/index.html) file;
-the [concept DOI
-10.5281/zenodo.3445447](https://doi.org/10.5281/zenodo.3445447) always
-resolves to the most recent release.
+(package version 0.1.0), archived in Zenodo under [**DOI
+10.5281/zenodo.3445451**](https://doi.org/10.5281/zenodo.3445451).
+**Cite that DOI, and use that release, to reproduce the results reported
+in the paper.** Later releases fix defects in the framework and change
+some of the cost-effectiveness results; see the
+[NEWS](https://darth-git.github.io/darthpack/news/index.html) file.
+
+Each release has its own Zenodo DOI, and one further DOI covers the
+deposit as a whole:
+
+| DOI | Resolves to | Use it to cite |
+|----|----|----|
+| [10.5281/zenodo.3445447](https://doi.org/10.5281/zenodo.3445447) | whichever release is newest, currently v0.2.0 | `darthpack` in general, any version |
+| [10.5281/zenodo.3445451](https://doi.org/10.5281/zenodo.3445451) | v0.1.1, fixed | **the version described in the paper** |
+| [10.5281/zenodo.22740474](https://doi.org/10.5281/zenodo.22740474) | v0.2.0, fixed | the current release |
+
+The first is Zenodo’s *concept* DOI. It deliberately forwards to the
+newest version, so it will open a different record number as new
+releases appear, and it is not the right DOI to cite when you need a
+specific version. The DOI badge at the top of this page points to it.
+The other two are *version* DOIs and never move.
 
 ## What’s new in version 0.2.0
 
