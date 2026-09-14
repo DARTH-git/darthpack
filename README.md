@@ -23,8 +23,18 @@ following manuscript:
   PharmacoEconomics 2019;37(11):1329–1339.
   <http://dx.doi.org/10.1007/s40273-019-00837-x>
 
-The release that accompanies the published article has been archived in
-zenodo: <https://zenodo.org/record/3445451>.
+**Version included in the published paper.** The article above describes
+`darthpack` release
+[**v0.1.1**](https://github.com/DARTH-git/darthpack/tree/v0.1.1)
+(package version 0.1.0), which is permanently archived in Zenodo under
+[**DOI
+10.5281/zenodo.3445451**](https://doi.org/10.5281/zenodo.3445451). Cite
+that DOI, and use that release, to reproduce the results reported in the
+paper. Later releases fix defects in the framework and are documented in
+the [NEWS](https://darth-git.github.io/darthpack/news/index.html) file;
+the [concept DOI
+10.5281/zenodo.3445447](https://doi.org/10.5281/zenodo.3445447) always
+resolves to the most recent release.
 
 ## What’s new in version 0.2.0
 
@@ -83,6 +93,28 @@ dynamics in R described in:
   dynamics](https://journals.sagepub.com/doi/full/10.1177/0272989X19893973).
   [Medical Decision Making](https://journals.sagepub.com/home/mdm),
   2020;40(2):242-248. <https://doi.org/10.1177/0272989X19893973>
+
+To model individual-level rather than cohort dynamics, we recommend our
+tutorial on **microsimulation**, also known as individual-based
+state-transition models (iSTMs), in R:
+
+- Krijkamp EM, Alarid-Escudero F, Enns EA, Jalal HJ, Hunink MGM,
+  Pechlivanoglou P. [Microsimulation Modeling for Health Decision
+  Sciences Using R: A
+  Tutorial](https://journals.sagepub.com/doi/10.1177/0272989X18754513).
+  [Medical Decision Making](https://journals.sagepub.com/home/mdm),
+  2018;38(3):400-422. <https://doi.org/10.1177/0272989X18754513>
+
+and, for simulating individual-level state-transition models in
+**continuous time**, our tutorial on **discrete event simulation** (DES)
+in R:
+
+- Lopez-Mendez M, Goldhaber-Fiebert JD, Alarid-Escudero F. [A Tutorial
+  on Discrete Event Simulation Models Using a Cost-Effectiveness
+  Analysis Example in
+  R](https://journals.sagepub.com/doi/10.1177/0272989X261437826).
+  [Medical Decision Making](https://journals.sagepub.com/home/mdm),
+  2026;46(5):533-548. <https://doi.org/10.1177/0272989X261437826>
 
 # Preliminaries
 
