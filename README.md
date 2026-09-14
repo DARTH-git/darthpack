@@ -36,17 +36,19 @@ some of the cost-effectiveness results; see the
 Each release has its own Zenodo DOI, and one further DOI covers the
 deposit as a whole:
 
-| DOI | Resolves to | Use it to cite |
+| Release | Zenodo record | DOI to cite |
 |----|----|----|
-| [10.5281/zenodo.3445447](https://doi.org/10.5281/zenodo.3445447) | whichever release is newest, currently v0.2.0 | `darthpack` in general, any version |
-| [10.5281/zenodo.3445451](https://doi.org/10.5281/zenodo.3445451) | v0.1.1, fixed | **the version described in the paper** |
-| [10.5281/zenodo.22740474](https://doi.org/10.5281/zenodo.22740474) | v0.2.0, fixed | the current release |
+| v0.2.0 (current) | [zenodo.org/records/22740474](https://zenodo.org/records/22740474) | 10.5281/zenodo.22740474 |
+| **v0.1.1 — described in the paper** | [zenodo.org/records/3445451](https://zenodo.org/records/3445451) | **10.5281/zenodo.3445451** |
+| v0.1.0 | [zenodo.org/records/3445448](https://zenodo.org/records/3445448) | 10.5281/zenodo.3445448 |
+| *all versions* | [always opens the newest release](https://doi.org/10.5281/zenodo.3445447) | 10.5281/zenodo.3445447 |
 
-The first is Zenodo’s *concept* DOI. It deliberately forwards to the
-newest version, so it will open a different record number as new
-releases appear, and it is not the right DOI to cite when you need a
-specific version. The DOI badge at the top of this page points to it.
-The other two are *version* DOIs and never move.
+The first three are *version* DOIs, each permanently tied to one
+release. The last is Zenodo’s *concept* DOI: it deliberately forwards to
+whichever release is newest, so it opens a different record number as
+new releases appear. Cite it for `darthpack` in general, and a version
+DOI when you need a specific release. The DOI badge at the top of this
+page points to the concept DOI.
 
 ## What’s new in version 0.2.0
 
